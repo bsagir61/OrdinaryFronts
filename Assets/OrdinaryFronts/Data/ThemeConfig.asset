@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb517c6d5f2e7e44695695480d5ecd6a, type: 3}
+  m_Name: ThemeConfig
+  m_EditorClassIdentifier: 
+  sootNavy: {r: 0.09019608, g: 0.105882354, b: 0.12941177, a: 1}
+  agedPaper: {r: 0.84705883, g: 0.8117647, b: 0.7137255, a: 1}
+  rust: {r: 0.61960787, g: 0.26666668, b: 0.20392157, a: 1}
+  petrol: {r: 0.24705882, g: 0.39215687, b: 0.40784314, a: 1}
+  mustard: {r: 0.65882355, g: 0.54509807, b: 0.2901961, a: 1}
+  ink: {r: 0.14901961, g: 0.14509805, b: 0.13333334, a: 1}
+  paperPanel: {fileID: 21300000, guid: 0c38ed89b49935d48b7a5863796e2e8b, type: 3}
+  buttonPanel: {fileID: 21300000, guid: 96cbac7b028b726468b112000ca9edde, type: 3}
+  vignette: {fileID: 21300000, guid: 67078f7d52118a844bad762bf474ccbb, type: 3}
+  transitionDuration: 0.26

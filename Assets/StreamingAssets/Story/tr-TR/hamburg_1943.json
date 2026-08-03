@@ -1,0 +1,1475 @@
+{
+  "schemaVersion": 1,
+  "storyId": "hamburg_1943",
+  "locale": "tr-TR",
+  "startNodeId": "sir_01_vardiya_sonu",
+  "initialStats": {
+    "resilience": 62,
+    "supplies": 46,
+    "bonds": 42,
+    "surveillance": 16
+  },
+  "nodes": [
+    {
+      "id": "sir_01_vardiya_sonu",
+      "act": "Sirenler",
+      "date": "24/25 Temmuz 1943 gecesi",
+      "location": "Liman tersanesi",
+      "imageKey": "shipyard_evening",
+      "body": "Matthias Krüger, akşam vardiyasının son kontrolünü bitirirken limanın üzerinde sirenler yükselir. Vinçlerin kolları karanlıkta donmuş gibidir; atölye lambaları birer birer söner. Ustabaşı Otto Brehm, ana şalterin açık kalmasının yangın çıkarabileceğini söyler. Kapıda bekleyen Polonyalı zorunlu işçi Olek Nowak ise işçilere ayrılan sığınağın erken kilitlenmesinden kaygılıdır. Matthias'ın bakım elektrikçisi kartı bazı kapıları açar, fakat siren sürerken her dakika başka bir kapıyı kapatabilir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_01_a",
+          "text": "Brehm'le kalıp ana şalteri güvene al.",
+          "trace": "Sirenler başladığında ana şalteri güvene almak için tersanede kaldın.",
+          "nextNodeId": "sir_02_salter_dairesi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "switchgear_secured", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_switchgear_secured", "op": "set", "boolValue": true, "text": "Ana şalteri kapatman ilk saldırıdan sonra tersanedeki yangın riskini azalttı." }
+          ]
+        },
+        {
+          "id": "sir_01_b",
+          "text": "Olek'le birlikte sığınak kuyruğuna çık.",
+          "trace": "İlk sirende şalter dairesinden ayrılıp Olek'le sığınak yoluna çıktın.",
+          "nextNodeId": "sir_02_tophane_kapisi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "left_with_olek", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_left_with_olek", "op": "set", "boolValue": true, "text": "Olek'le birlikte çıkman, kapanan servis kapısından önce avluya ulaşmanızı sağladı." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_02_salter_dairesi",
+      "act": "Sirenler",
+      "date": "24/25 Temmuz 1943 gecesi",
+      "location": "Tersane şalter dairesi",
+      "imageKey": "shipyard_evening",
+      "body": "Son kolu indirdiğinde atölye sessizleşir. Brehm, kontrol defterini koltuğunun altına sıkıştırıp sığınağa yönelir. Olek geri dönmüştür; soyunma dolabında kendi kimlik kâğıtlarıyla arkadaşının adresi bulunan küçük bir defter kaldığını söyler. Dolap sırası mühürlü kapının arkasındadır. Olek, Matthias'tan kendisi adına karar vermesini istemez: Kilidi açarsa defteri alıp doğu servis yoluna tek başına gideceğini açıkça belirtir. Yaklaşan uçakların sesi, metal çatıda düzenli bir titreşime dönüşür.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_02_salter_a",
+          "text": "Bakım anahtarıyla dolap bölümünü aç.",
+          "trace": "Olek'in kimlik kâğıtlarıyla isim defterini alabilmesi için mühürlü bölümü açtın.",
+          "nextNodeId": "sir_03_servis_gecidi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "worker_notebook_saved", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_worker_notebook", "op": "set", "boolValue": true, "text": "Kurtarılan isim defteri, daha sonra kayıp işçiler için somut bir dayanak oldu." }
+          ]
+        },
+        {
+          "id": "sir_02_salter_b",
+          "text": "Vakit kalmadığını söyleyip merdivene yönel.",
+          "trace": "Mühürlü dolabı açmadan sığınağa yöneldin; Olek isimleri aklında tutmaya çalıştı.",
+          "nextNodeId": "sir_03_siginak_merdiveni",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
+            { "type": "flag", "key": "worker_notebook_left", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_worker_notebook_left", "op": "set", "boolValue": true, "text": "Dolapta kalan defter yüzünden bazı isimler daha sonra yalnızca hafızadan yazılabildi." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_02_tophane_kapisi",
+      "act": "Sirenler",
+      "date": "24/25 Temmuz 1943 gecesi",
+      "location": "Tersane doğu kapısı",
+      "imageKey": "shipyard_evening",
+      "body": "Doğu kapısında iki kuyruk birbirine dolanır. Mahallenin sivil savunma görevlisi Elsbeth Dorn, dışarıdan gelenleri taş merdivene yönlendirirken tersane bekçisi yabancı işçileri daha uzaktaki bodruma göndermektedir. Olek o bodrumun kapısının açık olup olmadığını bilmiyor. Elsbeth, Matthias'ın elektrikçi çantasını görüp kararan merdiven lambasına yardım etmesini ister. Olek ise servis geçidini bildiğini, beklerse kendi grubuna yetişemeyeceğini söyler. Hiçbiri Matthias'ın seçimini güvenli bir çözüm gibi sunmaz.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_02_kapi_a",
+          "text": "Olek'le servis geçidine yönel.",
+          "trace": "Olek'in uzaktaki bodruma ulaşabilmesi için servis geçidini seçtin.",
+          "nextNodeId": "sir_03_servis_gecidi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "service_route_chosen", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "sir_02_kapi_b",
+          "text": "Elsbeth'le kalıp merdiven girişini aç.",
+          "trace": "Kapıdaki kalabalık için Elsbeth'le birlikte sığınak girişini işler hâle getirdin.",
+          "nextNodeId": "sir_03_siginak_merdiveni",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "shelter_entry_helped", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_shelter_entry", "op": "set", "boolValue": true, "text": "Merdiven girişinde yardım ettiğin insanlar, sonraki sabah seni Elsbeth'in yanında hatırladı." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_03_servis_gecidi",
+      "act": "Sirenler",
+      "date": "24/25 Temmuz 1943 gecesi",
+      "location": "Doğu servis geçidi",
+      "imageKey": "shelter_stairs",
+      "body": "Servis geçidindeki tek ampul söndüğünde duvarı borular boyunca yoklayarak ilerlersiniz. Bir yangın kapısı sıkışmış, arkasında üç işçi beklemektedir. Olek, arkadaşlarını bodruma götürmek için batı kapısını açacağını, Matthias'ın isterse ana sığınağa giden dar kablo tünelini kullanabileceğini söyler. Kapıyı zorlamak bakım levyesini eğebilir; tünel ise çantayla ancak sürünerek geçilecek kadar dardır. Yukarıdan dökülen ince sıva, karar vermek için kalan zamanı ölçer gibi omuzlarınıza iner.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_03_servis_a",
+          "text": "Levyeyi kullanıp batı kapısını aç.",
+          "trace": "Servis geçidindeki sıkışmış kapıyı açıp Olek'in grubuna yol verdin.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "west_door_opened", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_west_door", "op": "set", "boolValue": true, "text": "Açtığın batı kapısından çıkan işçiler, sabah kayıp listesini birbirlerine ulaştırdı." }
+          ]
+        },
+        {
+          "id": "sir_03_servis_b",
+          "text": "Kablo tünelinden ana sığınağa geç.",
+          "trace": "Bakım aletlerini koruyup dar kablo tünelinden ana sığınağa geçtin.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "tools_preserved", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_03_siginak_merdiveni",
+      "act": "Sirenler",
+      "date": "24/25 Temmuz 1943 gecesi",
+      "location": "Sivil sığınak merdiveni",
+      "imageKey": "shelter_stairs",
+      "body": "Taş merdiven insanlarla doludur. Elektrik kesilince aşağıdan kapının kapanmadığına dair sesler yükselir; yukarıdakiler ise karanlıkta basamaklara oturur. Elsbeth, acil durum lambasının kablosunu Matthias'a uzatır. Kabloyu bağlamak birkaç dakika alacak ve onu girişte tutacaktır. Diğer seçenek, lambayı bırakıp insanları el ele korkuluk boyunca aşağı indirmektir. İki yöntemde de sıra yavaşlar. Matthias, uzaktan gelen gümbürtüler arasında Ruth'un bu gece hangi sığınağa gittiğini düşünmemeye çalışır.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_03_merdiven_a",
+          "text": "Acil durum lambasını onar.",
+          "trace": "Karanlık sığınak merdiveninde acil durum lambasını onardın.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "shelter_light_fixed", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_shelter_light", "op": "set", "boolValue": true, "text": "Onardığın merdiven lambası, çıkışta insanların birbirini ezmeden ilerlemesine yardım etti." }
+          ]
+        },
+        {
+          "id": "sir_03_merdiven_b",
+          "text": "Lambayı bırakıp sırayı korkuluktan indir.",
+          "trace": "Lambayı onarmak yerine sığınaktaki sırayı karanlıkta aşağı yönlendirdin.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
+            { "type": "flag", "key": "stairs_guided", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_04_ilk_dalga",
+      "act": "Sirenler",
+      "date": "25 Temmuz 1943, gece yarısından sonra",
+      "location": "Kanal kenarı sığınağı",
+      "imageKey": "shelter_stairs",
+      "body": "İlk uzun sarsıntıdan sonra bodrumda yalnızca boruların tıkırtısı duyulur. Hava sıcak, sıva kokusu keskindir. Elsbeth isimleri kâğıt parçalarına yazarken bir kadın susayan çocuğuna boş bir kupa uzatır. Matthias'ın çantasında yarım matara ile Ruth için vardiya çıkışında aldığı küçük ekmek paketi vardır. Dışarı çıkmanın ne zaman mümkün olacağı bilinmez. Paylaşmak içerideki bekleyişi kolaylaştırabilir; saklamak ise sabah aile ararken ona hareket alanı bırakacaktır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_01_switchgear_result",
+          "text": "Ana şalteri kapattığın için tersanenin yanındaki atölyeden yeni bir yangın haberi gelmedi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_02_left_column_result",
+          "text": "Şalter dairesinden erken ayrılman, doğu kapısı kapanmadan sığınak yoluna çıkmanızı sağladı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_left_with_olek", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "sir_04_a",
+          "text": "Matara ile ekmeği sığınaktakilerle paylaş.",
+          "trace": "Sığınaktaki bekleyişte suyunla ekmeğini paylaştın.",
+          "nextNodeId": "ash_05_paylasilan_su",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": -8 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 6 },
+            { "type": "flag", "key": "shared_shelter_food", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_shared_shelter_food", "op": "set", "boolValue": true, "text": "Sığınakta paylaştığın erzak, sabah kayıt sırasında bir tanığın seni hatırlamasını sağladı." }
+          ]
+        },
+        {
+          "id": "sir_04_b",
+          "text": "Erzağı Ruth'u aramak için sakla.",
+          "trace": "Sığınaktaki erzağı sabah Ruth'u ararken kullanmak üzere sakladın.",
+          "nextNodeId": "ash_05_saklanan_paket",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": 4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": -2 },
+            { "type": "flag", "key": "saved_family_supplies", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_saved_family_supplies", "op": "set", "boolValue": true, "text": "Sakladığın paket, Ruth'u bulduğunda ikinizin de ayakta kalmasına yaradı." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_05_paylasilan_su",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 06.20",
+      "location": "Kanal geçidi",
+      "imageKey": "bombed_street",
+      "body": "Sabah olduğunda sokakların adları yerinde, görüntüleri değişmiştir. Islak kül ayakkabılara yapışır; elektrik telleri kaldırım boyunca sessizce uzanır. Elsbeth, Ruth'un mahallesinden gelen bir kadının okul binasına yönlendirildiğini söyler, fakat soyadını doğrulayamaz. Yardım masası aynı yönde, Ruth'un evi ise iki sokak ötededir. Matthias'ın matarası boştur ve kalabalık her iki yolu da yavaşlatır. Önce kayda geçmek bilgi sağlayabilir; doğrudan eve gitmek ise henüz silinmemiş bir iz bulma şansı taşır.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_05_paylas_a",
+          "text": "Okuldaki yardım ve kayıt masasına git.",
+          "trace": "Ruth'u ararken önce resmî yardım kayıtlarını kontrol ettin.",
+          "nextNodeId": "ash_06_kayit_masasi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_05_paylas_b",
+          "text": "Önce Ruth'un evinin avlusunu ara.",
+          "trace": "Kayıt sırasını geçip önce Ruth'un evine yöneldin.",
+          "nextNodeId": "ash_06_arka_avlu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 1 },
+            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_05_saklanan_paket",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 06.20",
+      "location": "Kanal geçidi",
+      "imageKey": "bombed_street",
+      "body": "Sığınaktan çıktığında duman liman tarafını tek bir gri yüzeye çevirmiştir. Matthias, Ruth için sakladığı paketi çantasının dibinde hisseder. Elsbeth, okulda kurulan kayıt masasının mahalle sakinlerini topladığını anlatır. Tam o sırada Ruth'un sokağından gelen yaşlı bir komşu, apartman kapısına tebeşirle bir yön işareti konduğunu söyler; ne yazdığını hatırlamaz. Kayıt masasındaki sıra uzamadan oraya varmak mümkündür. Eve giden yol daha belirsizdir, ama işaret yağmurla silinebilir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_05_paket_a",
+          "text": "Paketin bir kısmıyla kayıt sırasına hazırlan.",
+          "trace": "Sakladığın erzağın bir kısmını ayırıp yardım kayıtlarına yöneldin.",
+          "nextNodeId": "ash_06_kayit_masasi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_05_paket_b",
+          "text": "Tebeşir işareti silinmeden eve git.",
+          "trace": "Ruth'un bıraktığı olası işareti bulmak için doğrudan eve gittin.",
+          "nextNodeId": "ash_06_arka_avlu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_06_kayit_masasi",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 07.35",
+      "location": "Geçici yardım masası",
+      "imageKey": "aid_registry",
+      "body": "Okulun girişinde masa yerine iki kapı kanadı kullanılmıştır. Kâğıtlar taşlarla tutulur; görevliler adres, yaralanma ve gidilen yer bilgilerini ayrı listelere geçirir. Olek, Irena Sawicka'nın adını yazdırmaya çalışmaktadır. Görevli, zorunlu işçiler için başka kayıt tutulduğunu söyleyip satırı boş bırakır. Olek adın doğru masaya ulaşmasını, Matthias ise Ruth'un izini kaybetmemeyi ister. Tersane kartı görevlinin dikkatini çekebilir, ama Matthias'ın burada bulunduğunu da resmî bir kayda bağlayacaktır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_03_notebook_saved_result",
+          "text": "Olek'in kurtardığı defterde Irena'nın soyadı ve baraka numarası eksiksiz duruyordu.",
+          "conditions": [
+            { "type": "echo", "key": "echo_worker_notebook", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_04_notebook_left_result",
+          "text": "Dolapta kalan defter yüzünden Olek, Irena'nın baraka numarasını hafızasından tamamlamak zorunda kaldı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_worker_notebook_left", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_06_kayit_a",
+          "text": "Tersane kartını gösterip Irena'nın adını kayda eklet.",
+          "trace": "Tersane kartını kullanarak Irena Sawicka'nın adını yardım kaydına eklettin.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 6 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "irena_registered", "op": "set", "boolValue": true },
+            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_irena_registered", "op": "set", "boolValue": true, "text": "Irena'nın kayda geçen adı daha sonra farklı yardım masalarının aynı kişiyi aramasını sağladı." }
+          ]
+        },
+        {
+          "id": "ash_06_kayit_b",
+          "text": "Önce Ruth'un kaydını arat, Olek isimleri kendi götürsün.",
+          "trace": "Kayıt masasında önceliği Ruth'un izine verdin; Olek Irena'nın adını başka masaya taşıdı.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
+            { "type": "flag", "key": "ruth_registry_clue", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_olek_carried_names", "op": "set", "boolValue": true, "text": "Olek isimleri başka masaya kendi götürdü; bu yüzden yollarınız bir süre ayrıldı." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_06_arka_avlu",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 07.35",
+      "location": "Ruth'un sokağı",
+      "imageKey": "bombed_street",
+      "body": "Ruth'un apartmanının ön cephesi ayaktadır, fakat merdiven boşluğu kullanılamaz. Arka avluda Elsbeth komşuların adlarını toplar. Kapı yanında yağmurun incelttiği tebeşir yazısında yalnızca “R.K. — Okul 17” okunur. Yan binanın kileri açılmış; içeride konserve ve sabun vardır. Elsbeth, malzemenin sahipleri bulunana kadar sayılıp tutanağa geçirilmesini ister. Okula götürmek için hemen birkaç parça almak daha hızlıdır, ama belgesiz malzeme taşıyanların çevirmede sorgulandığını da ekler.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_06_avlu_a",
+          "text": "Malzemeyi Elsbeth'le sayıp bir teslim notu bırak.",
+          "trace": "Açılmış kilerdeki malzemeyi Elsbeth'le kayda geçirip teslim notu bıraktın.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": 4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "pantry_logged", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_pantry_logged", "op": "set", "boolValue": true, "text": "Kiler için bıraktığın teslim notu, sonraki kontrolde malzemenin kayıp sayılmasını önledi." }
+          ]
+        },
+        {
+          "id": "ash_06_avlu_b",
+          "text": "Okula yetişmek için küçük bir erzak çantası al.",
+          "trace": "Kilerden küçük bir erzak çantası alıp tutanak beklemeden okula yöneldin.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": 9 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": -1 },
+            { "type": "flag", "key": "pantry_unlogged", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_pantry_unlogged", "op": "set", "boolValue": true, "text": "Tutanaksız aldığın erzak yardım etti, fakat kiler sayımındaki eksik daha sonra senin rotanla eşleştirildi." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_07_kanal_koprusu",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 09.10",
+      "location": "Kanal köprüsü",
+      "imageKey": "bombed_street",
+      "body": "Okul 17'ye giden köprüde geçiş tek şeride düşmüştür. Olek kalabalığın ters yönünden gelir. Irena'nın işçi yurdunda olmadığını, son vardiyada liman revirine gönderilmiş olabileceğini öğrenmiştir. Kendisinin kayıt deposuna gidip sevk listesine bakacağını söyler; Matthias'tan ya Ruth'un işaretini izlemeye devam etmesini ya da kartıyla depo kapısından geçmesine yardım etmesini ister. Son kararı Olek verecektir, fakat kart olmadan daha uzun ve denetimli bir yol kullanması gerekecektir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_05_shelter_entry_result",
+          "text": "Sığınak girişinde yardım ettiğin bir komşu, Ruth'un okul yönüne gittiğini doğruladı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_shelter_entry", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_06_west_door_result",
+          "text": "Batı kapısından çıkan bir işçi, Olek'e Irena'nın son görüldüğü reviri anlattı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_west_door", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_07_shelter_light_result",
+          "text": "Onardığın lamba sayesinde Elsbeth'in isim kâğıtları sığınaktan eksiksiz çıkarılmıştı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_shelter_light", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_07_a",
+          "text": "Kartı sende tutup Ruth'un işaretini izle.",
+          "trace": "Köprüde tersane kartını koruyup Ruth'un izini sürmeyi seçtin.",
+          "nextNodeId": "ash_08_okul_avlusu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": -1 },
+            { "type": "flag", "key": "work_card_kept", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_07_b",
+          "text": "Kayıt deposuna kadar Olek'e eşlik et.",
+          "trace": "Ruth'u aramaya ara verip Olek'le sevk kayıtlarının peşine düştün.",
+          "nextNodeId": "ash_08_kayit_deposu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "olek_archive_help", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_olek_archive", "op": "set", "boolValue": true, "text": "Kayıt deposunda bulunan sevk satırı, Irena'nın izini liman revirine çevirdi." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_08_okul_avlusu",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 10.05",
+      "location": "Okul 17 avlusu",
+      "imageKey": "aid_registry",
+      "body": "Okul avlusunda çamaşır iplerine adres kartları asılmıştır. Ruth'un adı mutfak yardım listesinde vardır, fakat kendisi ilaç almak için birkaç sokak ötedeki dağıtım noktasına gitmiştir. Kazan dairesindeki su pompası çalışmadığı için mutfak kapanmak üzeredir. Matthias pompayı onarırsa Ruth geri döndüğünde onu burada bulabilir; ilaç sırasına giderse daha çabuk karşılaşabilir, fakat okulun sıcak yemek dağıtımı gecikecektir. Avludaki saat durmuş, kimse doğru vaktin ne olduğunu bilmiyordur.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_08_okul_a",
+          "text": "Avluda kalıp su pompasını onar.",
+          "trace": "Ruth'un dönmesini beklerken okul mutfağının su pompasını onardın.",
+          "nextNodeId": "ash_09_okul_mutfagi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "flag", "key": "school_pump_fixed", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_08_okul_b",
+          "text": "Ruth'un ardından ilaç dağıtım noktasına git.",
+          "trace": "Okulda beklemek yerine Ruth'un ardından ilaç dağıtım noktasına gittin.",
+          "nextNodeId": "ash_09_yurt_kapisi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "followed_ruth_route", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_08_kayit_deposu",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 10.05",
+      "location": "Tersane kayıt deposu",
+      "imageKey": "aid_registry",
+      "body": "Depoda pencereler kâğıt şeritlerle tutturulmuş, sevk kartları yere saçılmıştır. Olek, Irena'nın satırını bulur: gece vardiyasından sonra liman revirine gönderildiğine dair silik bir not vardır. Olek revire kendisi gideceğini, Matthias'ın isterse notun bir kopyasını Okul 17'deki yardım masasına ulaştırabileceğini söyler. Kopya, farklı listelerin birbirini bulmasını sağlayabilir. Onunla revire gitmek ise tanık olabileceği bir sorguda Matthias'ın da adının kayda geçmesi demektir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_08_depo_a",
+          "text": "Notun kopyasını alıp Okul 17'ye götür.",
+          "trace": "Irena'nın sevk notunu kopyalayıp yardım masasındaki kayda ulaştırdın.",
+          "nextNodeId": "ash_09_okul_mutfagi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "irena_note_delivered", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_08_depo_b",
+          "text": "Olek'le liman revirine giden yolu tut.",
+          "trace": "Kayıt kopyasını bırakıp Olek'le Irena'nın götürüldüğü revire yöneldin.",
+          "nextNodeId": "ash_09_yurt_kapisi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "went_to_infirmary", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_09_okul_mutfagi",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 11.40",
+      "location": "Okul 17 mutfağı",
+      "imageKey": "aid_registry",
+      "body": "Ruth, okul mutfağına iki kutu sargı beziyle döner. Yüzü kül içindedir ama yaralı değildir. Matthias'a sarılmadan önce kayıp listesini yerine asar; sabahtan beri komşuların adlarını karşılaştırmaktadır. Binada kalırsa akşam dağıtımına yardım edebileceğini, ayrılırsa tahliye sırasına erkenden girebileceğini söyler. Matthias'tan kendisini kurtarmasını değil, hangi yükü birlikte taşıyacaklarına karar vermesini ister. Mutfak kazanı çalışsa bile erzak ve taşıyacak insan azdır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_08_irena_registered_result",
+          "text": "Irena'nın adını kayda ekletmen sayesinde okul masası liman revirine bir sorgu notu gönderdi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_irena_registered", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_09_olek_names_result",
+          "text": "Olek isimleri kendi taşıdığı için okul listesinde Irena'nın satırı geç ve eksik açıldı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_olek_carried_names", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_09_mutfak_a",
+          "text": "Ruth'la kalıp akşam dağıtımını hazırla.",
+          "trace": "Ruth'u bulduktan sonra okulun akşam dağıtımını birlikte hazırladınız.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "relief_shift_helped", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_09_mutfak_b",
+          "text": "Ruth'la tahliye sırasını kontrol et.",
+          "trace": "Ruth'la birlikte okuldan ayrılıp tahliye sırasının durumunu kontrol ettin.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "evacuation_queue_checked", "op": "set", "boolValue": true },
+            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_09_yurt_kapisi",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 11.40",
+      "location": "Liman reviri yolu",
+      "imageKey": "bombed_street",
+      "body": "Revir yolundaki kontrol kapısında Olek'in geçiş belgesi kabul edilmez. İçeriden çıkan bir hademe Irena'nın burada tedavi edilmediğini, başka bir çalışma ekibiyle kuzeye gönderildiğini fısıldar. Olek geri dönüp yeni listenin peşine düşmeye karar verir; Matthias'a, Ruth'u aramayı daha fazla ertelememesini söyler. Kapının bozuk zili sürekli çalmaktadır. Matthias zili onarırsa görevli kayıt defterini açmayı teklif eder. Beklemeden okula gitmek Ruth'a daha çabuk ulaşır, fakat Irena'nın yeni sevk yeri yine belirsiz kalır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_10_archive_result",
+          "text": "Depoda bulduğunuz sevk satırı, Irena'nın revirden önce başka bir ekibe yazıldığını ortaya çıkardı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_olek_archive", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_09_yurt_a",
+          "text": "Zili onarıp yeni sevk defterini kontrol et.",
+          "trace": "Kontrol kapısındaki zili onarıp Irena'nın yeni sevk kaydını aradın.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "irena_transfer_found", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ash_09_yurt_b",
+          "text": "Olek'in kararına saygı duyup Okul 17'ye dön.",
+          "trace": "Olek yeni sevk listesini kendi ararken Ruth'u bulmak için okula döndün.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "olek_plan_respected", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_10_bir_arada",
+      "act": "Kül",
+      "date": "25 Temmuz 1943, 16.15",
+      "location": "Okul 17 yardım merkezi",
+      "imageKey": "aid_registry",
+      "body": "Öğleden sonra Matthias ile Ruth sonunda aynı masanın iki yanında oturur. Ruth yaralı değildir; bütün gece komşularla birlikte farklı sığınaklarda kalanların adlarını taşımıştır. Eve dönmenin mümkün olmadığını, okulun ise karanlık basmadan jeneratöre ihtiyaç duyduğunu söyler. İstasyondaki tahliye listesi akşama kadar açık kalacaktır. Matthias jeneratörü çalıştırırsa merkez bir gece daha hizmet verebilir. Ruth'la hemen istasyona giderse şehirden çıkma ihtimalleri artar, fakat okulun listelerini Elsbeth'e bırakmaları gerekir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_11_shared_food_result",
+          "text": "Sığınakta paylaştığın suyu hatırlayan bir kadın, Ruth'un adını doğru okul listesine taşıdı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_shared_shelter_food", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_12_saved_food_result",
+          "text": "Sakladığın ekmek paketi, Ruth'la buluştuğunuzda ikinize de ilk sakin öğünü verdi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_saved_family_supplies", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_13_pantry_logged_result",
+          "text": "Kiler için bıraktığın not kabul edildi; okula getirdiğin malzeme kayıp sayılmadı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_pantry_logged", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_14_pantry_unlogged_result",
+          "text": "Tutanaksız erzak mutfakta kullanıldı, fakat Elsbeth eksik sayım için adını not etmek zorunda kaldı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_10_a",
+          "text": "Okulda kalıp jeneratörü çalıştır.",
+          "trace": "Ruth'u bulduktan sonra yardım merkezinin jeneratörünü çalıştırmak için kaldın.",
+          "nextNodeId": "ord_11_jenerator_nobeti",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 6 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "relief_generator_repaired", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_relief_generator", "op": "set", "boolValue": true, "text": "Çalıştırdığın jeneratör, yardım merkezinin listelerini ve mutfağını gece boyunca açık tuttu." }
+          ]
+        },
+        {
+          "id": "ash_10_b",
+          "text": "Ruth'la istasyondaki tahliye listesine git.",
+          "trace": "Yardım merkezinden ayrılıp Ruth'la tahliye listesine yöneldin.",
+          "nextNodeId": "ord_11_istasyon_sirasi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
+            { "type": "flag", "key": "left_for_station", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_11_jenerator_nobeti",
+      "act": "Emir",
+      "date": "26 Temmuz 1943, 05.50",
+      "location": "Okul 17 kazan dairesi",
+      "imageKey": "aid_registry",
+      "body": "Jeneratör sabaha kadar düzensiz çalışır. Gün ağarırken Brehm okula gelir; elinde tersaneye dönmeyen gerekli işçiler için hazırlanmış bir liste vardır. Matthias'ın askerlik ertelemesinin bakım görevine bağlı olduğunu, sabah yoklamasına katılmazsa dosyanın yeniden inceleneceğini söyler. Ruth'un tahliye kaydı da aynı saatte istasyonda kesinleşecektir. Brehm, bisikletini ve imzalı bir görev kâğıdını bırakmayı teklif eder. Ruth ise Matthias'ın onun adına karar vermemesini, yalnızca hangi kapıya kadar birlikte gideceklerini seçmesini ister.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_15_generator_result",
+          "text": "Jeneratörü çalıştırman, Brehm'in seni yardım merkezinde görev yaparken bulmasını sağladı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_11_jenerator_a",
+          "text": "Brehm'in bisikletiyle tersane bürosuna git.",
+          "trace": "Erteleme dosyanı açıklığa kavuşturmak için Brehm'in bisikletiyle tersaneye gittin.",
+          "nextNodeId": "ord_12_ustabasinin_burosu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "returned_toward_yard", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_11_jenerator_b",
+          "text": "Ruth'la istasyona gidip isim çağrısını bekle.",
+          "trace": "Tersane yoklamasını erteleyip Ruth'la istasyondaki isim çağrısına gittin.",
+          "nextNodeId": "ord_12_belge_kontrolu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "yard_muster_missed", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_11_istasyon_sirasi",
+      "act": "Emir",
+      "date": "26 Temmuz 1943, 05.50",
+      "location": "Tahliye istasyonu",
+      "imageKey": "train_platform",
+      "body": "İstasyonun camları mukavvayla kapatılmıştır. Peronda aileler küçük kâğıt numaralarını avuçlarında tutar; tren saatleri tebeşirle değiştirilir. Ruth'un adı geçici listede vardır, Matthias'ınki yoktur. Bir tersane habercisi, Matthias'a iki zarf uzatır: işe dönüş bildirimi ve askerlik şubesinden gelen çağrı. Olek kalabalığın dışında kendi geçiş belgesini düzeltmeye uğraşır; Irena'yı aramak için şehirde kalacağını söyler. Zarfları burada açmak denetimi hızlandırabilir. Brehm'e götürmek ise tahliye sırasını kaybetme riski taşır.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_11_istasyon_a",
+          "text": "Zarfları sırada açıp belge masasına göster.",
+          "trace": "İşe dönüş ve askerlik zarflarını istasyondaki belge masasında açtın.",
+          "nextNodeId": "ord_12_belge_kontrolu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "orders_opened_publicly", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_11_istasyon_b",
+          "text": "Zarfları Brehm'le birlikte okumak için tersaneye git.",
+          "trace": "Resmî zarfları açmadan Brehm'in açıklamasını istemek üzere tersaneye döndün.",
+          "nextNodeId": "ord_12_ustabasinin_burosu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": -1 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "orders_taken_to_brehm", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_12_ustabasinin_burosu",
+      "act": "Emir",
+      "date": "26 Temmuz 1943, 07.10",
+      "location": "Tersane idare barakası",
+      "imageKey": "shipyard_evening",
+      "body": "İdare barakasında pencereler açık, masalar gri toz içindedir. Brehm zarfları yan yana koyar. İşe dönüş kâğıdı Matthias'ın gerekli işçi sayıldığını belirtir; askerlik çağrısı ise ertelemenin yeniden değerlendirilmesi için iki gün içinde başvurmasını ister. Brehm, vardiya defterini şimdi imzalarsa tersanede bulunduğuna tanıklık edeceğini söyler. Matthias aile yardım görevini kayda geçirirse zaman kazanabilir, fakat Brehm kendi yetkisinin sorgulanmasından çekinir. Ustabaşının desteği koruma değil, koşullu bir iş düzenidir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_12_buro_a",
+          "text": "Dönüş defterini imzala.",
+          "trace": "Geçici işçi ertelemesini korumak için tersanenin dönüş defterini imzaladın.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "yard_return_signed", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_yard_return_signed", "op": "set", "boolValue": true, "text": "Dönüş defterindeki imza erteleme görüşmesinde Brehm'e resmî bir dayanak verdi." }
+          ]
+        },
+        {
+          "id": "ord_12_buro_b",
+          "text": "Aile yardım görevini deftere ayrıca yazdır.",
+          "trace": "Tersane defterine aile ve yardım merkezi sorumluluğunu da kaydettirdin.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": -1 },
+            { "type": "flag", "key": "relief_duty_recorded", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_12_belge_kontrolu",
+      "act": "Emir",
+      "date": "26 Temmuz 1943, 07.10",
+      "location": "İstasyon belge masası",
+      "imageKey": "train_platform",
+      "body": "Belge masasındaki görevli, genç erkeklerin kâğıtlarını ayrı bir yığına koyar. Matthias'ın tersane kartı, Ruth'un tahliye numarası ve askerlik çağrısı aynı anda masadadır. Çağrıyı açıkça sunarsa dosyası hemen şubeye iletilebilir; yardım merkezi görev kâğıdını üste koyarsa Ruth'un sırası korunabilir, fakat zarfı sakladığı düşünülürse şüphe artacaktır. Ruth, trene binmenin emri ortadan kaldırmayacağını hatırlatır. Masanın arkasındaki memur sabırsızca sıradakileri hızlandırır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_16_card_kept_result",
+          "text": "Tersane kartını yanında tutmuş olman, kimliğini ve işçi ertelemesini aynı kayıtta doğruladı.",
+          "conditions": [
+            { "type": "flag", "key": "work_card_kept", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_17_notebook_attention",
+          "text": "Mühürlü dolabın açıldığına dair not, kartının yanında kısa bir açıklama istenmesine yol açtı.",
+          "conditions": [
+            { "type": "flag", "key": "worker_notebook_saved", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_12_belge_a",
+          "text": "Çağrı zarfını diğer belgelerle birlikte ver.",
+          "trace": "Askerlik çağrısını istasyon görevlisine açıkça sundun.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "conscription_disclosed", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_conscription_disclosed", "op": "set", "boolValue": true, "text": "Çağrıyı açıkça sunman, dosyanın kayıp değil zamanında teslim edilmiş görünmesini sağladı." }
+          ]
+        },
+        {
+          "id": "ord_12_belge_b",
+          "text": "Yardım kâğıdını gösterip çağrıyı çantada tut.",
+          "trace": "Tahliye sırasını korumak için yardım belgesini gösterip askerlik zarfını çantanda tuttun.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 7 },
+            { "type": "flag", "key": "conscription_concealed", "op": "set", "boolValue": true },
+            { "type": "echo", "key": "echo_conscription_concealed", "op": "set", "boolValue": true, "text": "Çağrıyı çantada tutman Ruth'un sırasını korudu, ancak zarf numarası daha sonra listede göründü." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_13_cifte_emir",
+      "act": "Emir",
+      "date": "26 Temmuz 1943, 12.30",
+      "location": "Liman tramvay durağı",
+      "imageKey": "harbor_dawn",
+      "body": "Öğlene doğru Matthias'ın önünde iki geçici yol belirir. Tersane, ertesi sabah bakım vardiyasına katılırsa işçi ertelemesi için yeniden yazı verecektir. İstasyon ise Ruth'un adını akşam trenine aktarmıştır; yanında aile üyesi için kesin yer sözü yoktur. Askerlik şubesi iki gün içinde cevap bekler. Hiçbir kâğıt bombardımanı, tahliyeyi ya da zorunlu çalıştırmayı durdurmaz. Matthias yalnızca hangi kurumun kapısına önce gideceğini ve bu sırada kiminle bağını koruyacağını seçebilir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_18_switchgear_vouch",
+          "text": "İlk gece şalteri kapatmış olman, Brehm'in erteleme talebine yazabileceği somut bir iş kaydı verdi.",
+          "conditions": [
+            { "type": "flag", "key": "switchgear_secured", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_19_unlogged_pantry_pressure",
+          "text": "Kilerdeki tutanak eksikliği, yardım görevi açıklamana küçük ama resmî bir şüphe ekledi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_20_return_signature",
+          "text": "Dönüş defterini imzaladığın için tersane seni hâlâ kendi sorumluluğundaki işçi saydı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_yard_return_signed", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_21_concealed_order",
+          "text": "İstasyonda göstermediğin zarfın numarası başka bir listeden dosyana ulaştı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_conscription_concealed", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_13_a",
+          "text": "Önce tersaneye dönüp erteleme yazısını güvenceye al.",
+          "trace": "Çifte emir karşısında önce tersanedeki işçi ertelemesini güvenceye almaya yöneldin.",
+          "nextNodeId": "ord_14_tersane_kapisi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "yard_priority", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_13_b",
+          "text": "Önce Ruth'un tahliye yerini kesinleştir.",
+          "trace": "Çifte emir karşısında önce Ruth'un tahliye yerini kesinleştirmeye yöneldin.",
+          "nextNodeId": "ord_14_tren_peronu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "evacuation_priority", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_14_tersane_kapisi",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 05.35",
+      "location": "Tersane ana kapısı",
+      "imageKey": "harbor_dawn",
+      "body": "Şafakta tersane kapısında yoklama masası kurulmuştur. Brehm, Matthias'ın adını vardiya listesinde açık tutar, ama içeride hemen işbaşı yapmasını bekler. Yolun karşısında Olek durur. Irena'nın kuzeydeki bir çalışma ekibinde olduğunu öğrendiğini ve adının hastane sevk listesine yanlış geçirildiğini söyler. Düzeltme kâğıdını tahliye bürosuna ulaştıracaktır; Matthias'ın gelmesi şart değildir, fakat bakım kartı işlemi hızlandırabilir. Kapı görevlisi ikinci kez seslenir. Olek cevabı bekler, yardım dilenmez.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_22_irena_route_result",
+          "text": "Daha önce kayda giren Irena adı, Olek'in yanlış sevk satırını başka bir listeyle karşılaştırmasını sağladı.",
+          "conditions": [
+            { "type": "flag", "key": "irena_registered", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_23_olek_relation_result",
+          "text": "Olek, önceki yardımların yüzünden planını açıkça paylaştı; kararı yine kendisi verdi.",
+          "conditions": [
+            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 5 }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_14_kapi_a",
+          "text": "Brehm'le kapıdan girip vardiyaya başla.",
+          "trace": "Olek'in kayıt işini kendisine bırakıp Brehm'le tersane vardiyasına girdin.",
+          "nextNodeId": "ord_15_salter_evi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "yard_shift_entered", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_14_kapi_b",
+          "text": "Olek'le tahliye bürosuna git.",
+          "trace": "Vardiyaya girmeden önce Olek'le yanlış sevk kaydını düzeltmeye gittin.",
+          "nextNodeId": "ord_15_tahliye_burosu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 6 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
+            { "type": "flag", "key": "yard_gate_left", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_14_tren_peronu",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 05.35",
+      "location": "Tahliye peronu",
+      "imageKey": "train_platform",
+      "body": "Peronda geceyi geçirenler bavullarına yaslanmıştır. Ruth'un numarası akşam trenine aktarılmış, fakat “bir aile üyesi” satırı hâlâ boş bırakılmıştır. Genç erkeklerin belgeleri yeniden kontrol edilir. Brehm'in gönderdiği bir çırak, Matthias'a tersaneye dönerse erteleme görüşmesine yetişebileceğini söyler. Ruth gitmek istediğini, ama Matthias'ın onunla gelmek için kâğıtlarını saklamasını istemediğini açıkça belirtir. İstasyonda kalmak yeri savunmak; tersaneye dönmek ise o yerden vazgeçme ihtimalidir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_24_evacuation_access_result",
+          "text": "Daha önce yardım kayıtlarına erişmiş olman, Ruth'un geçici numarasının silinmesini önledi.",
+          "conditions": [
+            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_25_disclosed_order_result",
+          "text": "Çağrıyı açıkça sunduğun için kontrol memuru zarfı saklanmış belge olarak işaretlemedi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_conscription_disclosed", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_14_peron_a",
+          "text": "Ruth'la kalıp aile üyesi satırını kesinleştir.",
+          "trace": "Peronda kalıp Ruth'un yanındaki aile üyesi yerini kesinleştirmeye çalıştın.",
+          "nextNodeId": "ord_15_tahliye_burosu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "family_slot_requested", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_14_peron_b",
+          "text": "Erteleme görüşmesi için tersaneye dön.",
+          "trace": "Ruth'un tahliye sırasından ayrılıp erteleme görüşmesi için tersaneye döndün.",
+          "nextNodeId": "ord_15_salter_evi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": -2 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "left_platform_for_yard", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_15_salter_evi",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 08.00",
+      "location": "Tersane şalter evi",
+      "imageKey": "shipyard_evening",
+      "body": "Şalter evindeki panolar çalışır durumdadır, fakat bazı kablolar ısıdan çatlamıştır. Brehm, Matthias'ın önüne gerekli işçi beyanını koyar. İmza, geçici erteleme için güçlü bir dayanak sağlayacak; aynı zamanda izinsiz ayrılan işçileri bildirme yükümlülüğünü de kabul ettirecektir. Yan masadaki eksik listesinde Olek'in adı vardır, oysa Matthias onun kayıt düzeltmek için nerede olduğunu bilir. Beyanı olduğu gibi imzalamak kendi dosyasını korur. Liste düzeltilmeden imzalamamak ise erteleme görüşmesini belirsizleştirir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_26_switchgear_physical_result",
+          "text": "İlk gece kapattığın ana şalter sağlam kaldı; Brehm bunu bakım yeterliliğinin kanıtı olarak dosyaya ekledi.",
+          "conditions": [
+            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_27_tools_result",
+          "text": "Servis tünelinde koruduğun aletler, çatlamış kabloyu yedek beklemeden ölçmeni sağladı.",
+          "conditions": [
+            { "type": "flag", "key": "tools_preserved", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_15_salter_a",
+          "text": "Gerekli işçi beyanını olduğu gibi imzala.",
+          "trace": "Erteleme için gerekli işçi beyanını, bildirim yükümlülüğüyle birlikte imzaladın.",
+          "nextNodeId": "ord_16_erteleme_gorusmesi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": -4 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "essential_worker_signed", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_15_salter_b",
+          "text": "Olek'in kaydı düzeltilmeden imzalamayı ertele.",
+          "trace": "Eksik işçi listesi düzeltilmeden gerekli işçi beyanını imzalamadın.",
+          "nextNodeId": "ord_16_rihtim_safagi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 7 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
+            { "type": "flag", "key": "essential_worker_delayed", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_15_tahliye_burosu",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 08.00",
+      "location": "Tahliye bürosu",
+      "imageKey": "train_platform",
+      "body": "Tahliye bürosunda kâğıt ruloları sicimle bağlanmış, isimler sürekli başka sütunlara taşınmaktadır. Ruth için bir yer kesinleşir. Görevli, Matthias'ın aile üyesi olarak aynı trene yazılabileceğini, fakat askerlik çağrısının istasyondaki son kontrolde yeniden inceleneceğini söyler. Ruth tek başına gidebileceğini ve varış yerini Elsbeth'e bildireceğini belirtir. Matthias onunla giderse işçi ertelemesi zayıflar; Ruth'u gönderip şehirde kalırsa hem tersane hem askerlik şubesiyle yüzleşmek için kısa bir süre kazanır.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_28_registry_access_result",
+          "text": "Yardım kayıtlarındaki önceki adımların, Ruth'un satırına aile bağlantısı eklenmesini kolaylaştırdı.",
+          "conditions": [
+            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_29_relief_record_result",
+          "text": "Okuldaki yardım görevin kayda geçtiği için görevli sana geçici bir refakat gerekçesi yazabildi.",
+          "conditions": [
+            { "type": "flag", "key": "relief_duty_recorded", "op": "equals", "boolValue": true }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_15_tahliye_a",
+          "text": "Aile üyesi satırını kullanıp Ruth'la trene hazırlan.",
+          "trace": "Tahliye listesindeki aile üyesi yerini kabul edip Ruth'la trene hazırlandın.",
+          "nextNodeId": "ord_16_hareket_cagrisi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "supplies", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
+            { "type": "flag", "key": "family_ticket_accepted", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_15_tahliye_b",
+          "text": "Yeri Ruth'a bırakıp şehirdeki emirleri çöz.",
+          "trace": "Tahliye yerini Ruth'a bırakıp tersane ve askerlik emirleriyle yüzleşmek için şehirde kaldın.",
+          "nextNodeId": "ord_16_rihtim_safagi",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
+            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "ruth_ticket_only", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_erteleme_gorusmesi",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 10.25",
+      "location": "Tersane personel odası",
+      "imageKey": "harbor_dawn",
+      "body": "Personel odasında bir memur Brehm'in yazısını ve askerlik çağrısını okur. Matthias'a dört haftalık geçici erteleme önerilir; karşılığında gece bakım vardiyasına dönecek ve işe gelmeyenleri aynı gün bildirecektir. Brehm bunun tek kesin yol olduğunu söyler. Matthias çalışma koşulunu kabul edebilir, fakat isim bildirme yükümlülüğünü de üstlenmiş olur. Ya da bakım görevini kabul edip çalışanlar hakkında rapor vermeyeceğini söyleyebilir; bu durumda erteleme kâğıdı verilebilir, ama dosyasına itaatsizlik notu düşülmesi muhtemeldir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_30_brehm_support_result",
+          "text": "Brehm'le koruduğun çalışma ilişkisi, personel memurunun geçici ertelemeyi masada tutmasını sağladı.",
+          "conditions": [
+            { "type": "relation", "key": "brehm", "op": "atleast", "intValue": 5 }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_16_erteleme_a",
+          "text": "Ertelemeyi bütün koşullarıyla kabul et.",
+          "trace": "Dört haftalık işçi ertelemesini gece vardiyası ve bildirim koşullarıyla kabul ettin.",
+          "nextNodeId": "end_gecici_erteleme",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -5 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": -6 },
+            { "type": "flag", "key": "deferral_accepted", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_16_erteleme_b",
+          "text": "Çalışmayı kabul et, isim bildirmeyi reddet.",
+          "trace": "Bakım görevini kabul ederken iş arkadaşlarının adlarını bildirmeyi reddettin.",
+          "nextNodeId": "end_gozetimli_vardiya",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 10 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
+            { "type": "relation", "key": "brehm", "op": "add", "intValue": -2 },
+            { "type": "flag", "key": "reporting_refused", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_hareket_cagrisi",
+      "act": "Emir",
+      "date": "27 Temmuz 1943, 18.05",
+      "location": "Tahliye peronu",
+      "imageKey": "train_platform",
+      "body": "Akşam treninin kapıları açıldığında peronda önce çocukların ve yaşlıların numaraları okunur. Ruth'un bileti geçerlidir. Matthias'ın refakat satırı da listede görünür, fakat son kontroldeki görevli askerlik zarfını fark eder. Görevli, trene binerse varış yerindeki şubeye üç gün içinde başvuracağına dair imza ister. Ruth, Matthias'ın gelmesini ister ama kalırsa bunu da kendi seçimi olarak kabul edeceğini söyler. Düdük çalmadan önce ya belirsiz bir tahliyeye birlikte çıkacaklar ya da ayrılığı açıkça üstleneceklerdir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_16_hareket_a",
+          "text": "Başvuru taahhüdünü imzalayıp Ruth'la bin.",
+          "trace": "Yeni yerde askerlik şubesine başvurma taahhüdüyle Ruth'la tahliye trenine bindin.",
+          "nextNodeId": "end_tahliye_yolu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "flag", "key": "evacuated_with_ruth", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_16_hareket_b",
+          "text": "Bileti Ruth'a verip peronda kal.",
+          "trace": "Ruth'u tahliye treniyle gönderdin; askerlik çağrısını çözmek için Hamburg'da kaldın.",
+          "nextNodeId": "end_ayri_peronlar",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
+            { "type": "flag", "key": "ruth_departed_alone", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_rihtim_safagi",
+      "act": "Emir",
+      "date": "28 Temmuz 1943, 06.10",
+      "location": "Şafakta liman",
+      "imageKey": "harbor_dawn",
+      "body": "Limanın üzerinde yeni bir sabah açılırken Matthias ne tersane kapısının içinde ne de tahliye trenindedir. Ruth'un yeri ayrılmıştır; Olek, Irena için düzeltilmiş kayıtla başka bir büroya gider. Elsbeth okul yardım ekibine bir günlük elektrikçi kaydı açabileceğini, bunun çağrıyı iptal etmeyeceğini söyler. Askerlik şubesi öğlene kadar başvuru bekler. Şubeye gitmek belirsizliği resmî bir karara bırakacaktır. Yardım ekibine yazılmak ise kısa zaman kazandırabilir, ama gecikmenin kayda geçmesi ve izlenmenin artması pahasına.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_31_relief_network_result",
+          "text": "Okul jeneratörünü çalıştırmış olman, Elsbeth'in sana gerçek bir günlük yardım görevi yazabilmesini sağladı.",
+          "conditions": [
+            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+          ]
+        },
+        {
+          "id": "echo_32_olek_record_result",
+          "text": "Olek'le kurduğun güven, Irena kaydının sonucunu sana bildirmesine yetti; rotasını yine kendisi seçti.",
+          "conditions": [
+            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 7 }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_16_rihtim_a",
+          "text": "Çağrı kâğıdıyla askerlik şubesine git.",
+          "trace": "Süre dolmadan askerlik şubesine gidip çağrıya resmen cevap verdin.",
+          "nextNodeId": "end_askerlik_yolu",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
+            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
+            { "type": "flag", "key": "reported_to_conscription", "op": "set", "boolValue": true }
+          ]
+        },
+        {
+          "id": "ord_16_rihtim_b",
+          "text": "Elsbeth'in yardım ekibine yazılıp süre iste.",
+          "trace": "Askerlik şubesinden süre isterken Elsbeth'in sivil yardım ekibine kaydoldun.",
+          "nextNodeId": "end_yardim_aginda",
+          "conditions": [],
+          "effects": [
+            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
+            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 10 },
+            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
+            { "type": "flag", "key": "relief_delay_requested", "op": "set", "boolValue": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "end_gecici_erteleme",
+      "act": "Emir",
+      "date": "Ağustos 1943",
+      "location": "Hamburg limanı",
+      "imageKey": "harbor_dawn",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "temporary_deferral",
+        "title": "Dört Haftalık Kâğıt",
+        "paragraphs": [
+          "Personel odasından çıkan erteleme belgesi Matthias'ı cepheye göndermedi; yalnızca kararı dört hafta öteledi. Gece vardiyasına döndü. Limandaki onarımlar sürerken yeni saldırıların ve emirlerin akışı da sürdü. Brehm onu güvenilir bir elektrikçi olarak tuttu, fakat yoklama listeleri artık her sabah Matthias'ın masasından geçiyordu.",
+          "Ruth tahliye listesinde kaldı ve şehir dışına çıktı. Mektupları düzensiz ulaştı. Olek, Irena'nın başka bir çalışma ekibine sevk edildiğini doğruladı; bu bilgi özgürlük getirmedi, yalnızca kaybolmuş bir adı yeniden görünür kıldı. Matthias'ın belgesi bir zafer değil, rejimin ihtiyaç duyduğu emeğe bağlanmış geçici bir soluklanmaydı.",
+          "Hamburg'un tarihî yıkımı değişmedi. Matthias, dört haftanın sonunda aynı soruların yeniden geleceğini bilerek şalter evinin anahtarını cebinde taşıdı."
+        ],
+        "traceFallbacks": [
+          "Tersanedeki işçi ertelemesini korumayı seçtin.",
+          "Ruth'un şehir dışına çıkmasına imkân bıraktın.",
+          "Geçici güvenlik karşılığında vardiya yükümlülüklerini kabul ettin.",
+          "Kişisel kararların saldırıların tarihsel sonucunu değiştirmedi."
+        ]
+      }
+    },
+    {
+      "id": "end_gozetimli_vardiya",
+      "act": "Emir",
+      "date": "Ağustos 1943",
+      "location": "Tersane şalter evi",
+      "imageKey": "shipyard_evening",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "watched_shift",
+        "title": "Açık Dosya",
+        "paragraphs": [
+          "Matthias bakım görevine döndü, ancak iş arkadaşlarının adlarını bildirmeyi reddettiği cümle personel dosyasına yazıldı. Erteleme kâğıdı kısa süreliğine verildi; yanında haftalık kontrol ve yeni bir imza şartı vardı. Brehm işi sürdürmesine izin verdi, fakat artık konuşmalarında kapıyı kapatıyor, listeleri masada açık bırakmıyordu.",
+          "Ruth'un tahliye haberi Elsbeth üzerinden geldi. Olek kendi kayıt düzeltme çabasına devam etti; Matthias'ın sessizliği onun hareket alanını biraz korudu, rejimin zorunlu çalışma düzenini ortadan kaldırmadı. Gözetim, tek bir dramatik tutuklama olarak değil, vardiya çizelgelerinde, sorulan küçük sorularda ve uzayan bekleyişlerde birikti.",
+          "Hamburg'un yıkımı ve savaşın yönü değişmedi. Matthias yalnızca hangi isimlerin kendi el yazısıyla resmî bir dosyaya girmeyeceğini belirleyebildi."
+        ],
+        "traceFallbacks": [
+          "Bakım görevine dönmeyi kabul ettin.",
+          "İş arkadaşlarını bildirme koşulunu reddettin.",
+          "Geçici ertelemen daha sıkı gözetimle sürdü.",
+          "Ruth'la bağın mesafe üzerinden devam etti."
+        ]
+      }
+    },
+    {
+      "id": "end_tahliye_yolu",
+      "act": "Emir",
+      "date": "Temmuz 1943 sonu",
+      "location": "Hamburg dışına giden tren",
+      "imageKey": "train_platform",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "evacuation_route",
+        "title": "Geçici Uzaklık",
+        "paragraphs": [
+          "Tren hareket ettiğinde Matthias ile Ruth aynı kompartımanda değildi; kalabalık onları iki vagona ayırdı. Varış noktasında yeniden buluştular ve bir okul salonunda yer aldılar. Şehirden çıkmak güvenli bir son anlamına gelmedi. Matthias'ın imzaladığı taahhüt, üç gün sonra yerel askerlik şubesinin masasında onu bekliyordu.",
+          "Ruth geçici barınakta komşuların isimlerini yeniden toplamaya başladı. Matthias, tersanedeki erteleme belgesini posta yoluyla doğrulatmaya çalıştı; sonuç gelene kadar ne işçi statüsü ne de çağrı kesinleşti. Olek ve Irena hakkında yalnızca Elsbeth'in kısa notları ulaştı. Uzaklık, bağları koruduğu kadar bilgiyi de inceltti.",
+          "Hamburg'da olanlar değişmedi. Matthias'ın seçimi, tarihî felaketten kaçış değil, ailesiyle birlikte belirsizliğin başka bir adresini paylaşmaktı."
+        ],
+        "traceFallbacks": [
+          "Ruth'la tahliye trenine binmeyi seçtin.",
+          "Askerlik başvurusunu yeni yerde yapmayı taahhüt ettin.",
+          "Tersanedeki ertelemenin kesinliğinden vazgeçtin.",
+          "Aile bağını korurken resmî belirsizliği yanında taşıdın."
+        ]
+      }
+    },
+    {
+      "id": "end_ayri_peronlar",
+      "act": "Emir",
+      "date": "Temmuz 1943 sonu",
+      "location": "Hamburg tahliye istasyonu",
+      "imageKey": "train_platform",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "separate_platforms",
+        "title": "Ayrı Peronlar",
+        "paragraphs": [
+          "Ruth'un treni akşam karanlığında istasyondan ayrıldı. Matthias peronda kaldı; cebinde işe dönüş kâğıdıyla askerlik çağrısı yan yana duruyordu. Ertesi sabah şubeye başvurduğunda işçi ertelemesi yeniden incelendi, fakat sonuç çıkana kadar tersanede geçici vardiyaya dönmesi emredildi.",
+          "Ruth ilk kartpostalında varış yerini ve kaldığı okulun adresini yazdı. Ayrılık, onu edilgen bir bekleyişe itmedi; yeni yerde tahliye edilen komşular için kayıt tutmayı sürdürdü. Matthias'ın işçi ertelemesi birkaç gün sonra yenilenmedi ve birliğe katılacağı tarih bildirildi. Elsbeth ise Olek'in Irena hakkında topladığı haberleri Ruth'a aktardı; aralarındaki bağ, aynı şehirde bulunmaktan çok haberlerin taşınmasına dayandı.",
+          "Askerlik emri yürürlüğe girdi. Matthias, birliğe katılmadan önce Ruth'un o gün şehirden çıkmasını sağlamış ve geride kalacak haber yollarını düzenlemişti."
+        ],
+        "traceFallbacks": [
+          "Tahliye yerini Ruth'a bıraktın.",
+          "Hamburg'da kalıp askerlik çağrısına cevap verdin.",
+          "Tersanedeki geçici görevle aileden ayrı düştün.",
+          "Bağlarını mektuplar ve taşınan haberlerle sürdürdün."
+        ]
+      }
+    },
+    {
+      "id": "end_askerlik_yolu",
+      "act": "Emir",
+      "date": "Ağustos 1943",
+      "location": "Hamburg askerlik şubesi",
+      "imageKey": "harbor_dawn",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "conscription_route",
+        "title": "Çağrıya Cevap",
+        "paragraphs": [
+          "Matthias askerlik şubesine süresi içinde başvurdu. Tersanenin yazısı dosyaya girdi, ancak bu kez erteleme yenilenmedi. Birliğe katılmadan önce kendisine birkaç günlük hazırlık süresi verildi. Bu sonuç bir kahramanlık başlangıcı değildi; üniformanın ne yapacağını, kimi koruyacağını ya da geri dönüp dönmeyeceğini belirlemediğini biliyordu.",
+          "Ruth tahliye edildi ve adresini Elsbeth'e bıraktı. Olek, Irena'nın sevk kaydını düzeltmeyi başardı, fakat ikisi de zorunlu çalışma düzeninden kurtulmadı. Matthias ayrılmadan önce şalter evinin anahtarını Brehm'e, Ruth'un adresini de güvenli bulduğu bir komşuya teslim etti.",
+          "Hamburg'un yıkımı değişmedi. Matthias'ın kişisel cephesi, verdiği kararların kapanmasıyla değil, artık başkalarının taşıdığı kâğıtlarda bıraktığı izlerle sürdü."
+        ],
+        "traceFallbacks": [
+          "Askerlik çağrısına süresi içinde cevap verdin.",
+          "İşçi ertelemen bu kez yenilenmedi.",
+          "Ruth'un tahliye bağlantısını korudun.",
+          "Anahtarlarını ve haber yollarını geride bıraktın."
+        ]
+      }
+    },
+    {
+      "id": "end_yardim_aginda",
+      "act": "Emir",
+      "date": "Ağustos 1943",
+      "location": "Okul 17 yardım merkezi",
+      "imageKey": "aid_registry",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "relief_under_watch",
+        "title": "Kayıtlı Bir Gün Daha",
+        "paragraphs": [
+          "Elsbeth'in yazdığı günlük görev kâğıdı Matthias'a kısa bir süre kazandırdı. Okulun elektriğini ve su pompasını çalışır tuttu, tahliye listelerinin kopyalanmasına yardım etti. Askerlik şubesi erteleme talebini reddetmedi, ama dosyayı açık bıraktı. İki kez adres kontrolü yapıldı; üçüncü çağrının ne zaman geleceği belirsiz kaldı.",
+          "Ruth şehir dışına çıktı. Olek, Irena'nın yerini doğrulayan kâğıdı aldı ve sonraki adımını Matthias'tan bağımsız kurdu. Yardım ağında kurulan ilişkiler insanlara bilgi ve birkaç saatlik hareket alanı sağladı; devlet baskısını ya da zorunlu çalışmayı eşitlemedi, ortadan da kaldırmadı.",
+          "Hamburg'un tarihî sonucu değişmedi. Matthias'ın kazandığı şey güvenli bir son değil, gözetim altında başkalarının gündelik ihtiyaçlarına ayırabildiği birkaç gündü."
+        ],
+        "traceFallbacks": [
+          "Elsbeth'in sivil yardım ekibine kaydoldun.",
+          "Askerlik çağrısı için yalnızca kısa bir süre kazandın.",
+          "Yardım merkezinin gündelik işlerini sürdürdün.",
+          "Artan gözetimi kabul ederek şehirde kaldın."
+        ]
+      }
+    }
+  ]
+}

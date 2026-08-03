@@ -1,0 +1,207 @@
+# Ordinary Fronts - Sanat Yönetimi
+
+## 1. Görsel tez
+
+Ana tema:
+
+> **1940’lar belediye arşivi + linol baskı + editoryal gölge tiyatrosu**
+
+Ekran, tarihî bir fotoğraf albümü veya gerçekçi 3D rekonstrüksiyon gibi değil; arşiv masasındaki kâğıt katmanlarının, sınırlı mürekkep baskılarının ve kesilmiş silüetlerin sakin bir editoryal kompozisyonu gibi görünmelidir. Görsel kimlik savaş ihtişamı değil, kayıt, eksiklik, baskı ve taşınan yük hissi üretir.
+
+Başka oyunların kart düzenleri, karakterleri, ikonları veya resimleri kopyalanmaz. Rastgele internet fotoğrafı kullanılmaz. Tüm sahne görselleri özgün üretilir ya da sabit seed kullanan deterministik araçlarla proje içinde oluşturulur.
+
+## 2. Renk paleti
+
+| Rol | Hex | Kullanım |
+|---|---|---|
+| İsli lacivert | `#171B21` | Ana arka plan, gece, en koyu silüet |
+| Eskimiş kâğıt | `#D8CFB6` | Anlatı kartı, açık yüzey, ikincil metin zemini |
+| Kor pası | `#9E4434` | Tehlike/baskı vurgusu, sınırlı odak; dekoratif kırmızı değil |
+| Soğuk petrol yeşili | `#3F6468` | Bağlar, serin gölge, seçili/etkileşimli yüzey |
+| Soluk hardal | `#A88B4A` | Belge, lamba, dikkat ve küçük sıcak vurgu |
+| Koyu mürekkep | `#262522` | Açık kâğıt üstünde ana metin ve çizgi |
+
+Paletin ana oranı yaklaşık `%55` isli lacivert/koyu mürekkep, `%30` kâğıt, `%10` petrol yeşili ve `%5` pas/hardal vurgu olarak düşünülür. Bu oran katı bir shader kuralı değil, sahnelerin parlak veya oyunumsu görünmesini engelleyen bir kompozisyon hedefidir.
+
+Metin kontrastı her çözünürlükte ayrıca kontrol edilir. Kor pası ile petrol yeşili birbirinin tek anlamsal karşıtı yapılmaz; etiket, simge, desen veya yön işareti mutlaka eşlik eder.
+
+## 3. Şekil ve doku dili
+
+- Silüetler iki-dört büyük değer katmanından kurulur; küçük ayrıntı yerine okunabilir dış hat kullanılır.
+- Kenarlar hafif pürüzlü linol kesim hissi taşır, fakat metin ve UI sınırları net kalır.
+- Kâğıt dokusu düşük kontrastlı lif, seyrek is lekesi ve çok ince vignette içerir.
+- Halftone/tram yalnız geniş gölge alanlarında kullanılır; metin panelinin altında titreşimli desen oluşturmaz.
+- Katman maskeleri tam mekanik simetri yerine kontrollü sapma gösterir.
+- Panel köşeleri kareye yakın veya çok küçük yarıçaplıdır. Aşırı yuvarlatılmış mobil kart görünümü yoktur.
+- İnce çerçeve, kesik kayıt çizgisi, mühür izi ve dosya sekmesi gibi arşiv çağrışımları sınırlı kullanılır; sahte okunabilir resmî belge üretilmez.
+- Vignette, is ve duman metni asla örtmez. En yoğun efekt görsel alanın dış kenarlarında kalır.
+
+## 4. Katman şeması
+
+Her sahne görseli mümkünse şu katmanlardan oluşur:
+
+1. İsli lacivert temel ve yumuşak vignette.
+2. Uzak mimari/ufuk silüeti.
+3. Orta plan mekân öğesi: vinç, merdiven, cephe, masa veya tren.
+4. Ön plan insan/nesne silüeti.
+5. Çok düşük opaklıklı kâğıt ve halftone katmanı.
+6. Tek bir kontrollü pas, petrol yeşili veya hardal odak.
+
+Parallax yalnız 2-3 büyük katmanda, birkaç piksel ölçüsünde ve ağır hareketle kullanılabilir. `Hareket azaltma` açıkken katmanlar tamamen sabitlenir.
+
+## 5. Altı ana sahne briefi
+
+### 5.1 Akşam tersanesi ve liman vinçleri
+
+- **Kompozisyon:** Vinç kolları üst üçte birde çapraz ritim kurar; Matthias küçük bir ön plan silüeti olarak kalır.
+- **Palet:** İsli lacivert baskın, su/metal gölgelerinde petrol yeşili, tek tük hardal pencere ışığı.
+- **Atmosfer:** Uzak şehir sisi, kablo ve iskele ritmi; gemi veya silah kahramanlaştırılmaz.
+- **Kaçınılacaklar:** Bayrak, okunabilir şirket logosu, parlak kıvılcım yağmuru, görkemli savaş gemisi pozu.
+
+### 5.2 Sivil sığınak merdiveni
+
+- **Kompozisyon:** Yukarıdan aşağı inen dar diyagonal; korkuluk ve basamaklar oyuncunun gözünü küçük kapı ışığına götürür.
+- **Palet:** Koyu mürekkep/lacivert, kâğıt rengi duvar aşınması, sınırlı hardal lamba.
+- **Atmosfer:** Kalabalık baş ve omuz silüetleri; bireysel yüz detayı yerine sıkışıklık ve bekleme.
+- **Kaçınılacaklar:** Grafik yaralanma, aşırı titreşim, korku oyunu karanlığı nedeniyle okunmazlık.
+
+### 5.3 Bombardıman sonrası konut sokağı
+
+- **Kompozisyon:** Hasarlı cepheler iki yanda çerçeve, ortada geçilebilir fakat belirsiz bir yol.
+- **Palet:** Kâğıt külü, koyu moloz, küçük kor pası lekeleri; alev görselin ana konusu değildir.
+- **Atmosfer:** Toz, kopmuş hat, açık pencere boşlukları ve sessiz insan grupları.
+- **Kaçınılacaklar:** Ceset, grafik şiddet, felaketi estetik bir “ateş gösterisi”ne dönüştürmek.
+
+### 5.4 Yardım veya kayıt masası
+
+- **Kompozisyon:** Yatay masa katmanı ekranın alt üçte birinde; üstte kuyruk ve duvara iliştirilmiş soyut kâğıt şekilleri.
+- **Palet:** Eskimiş kâğıt baskın, petrol yeşili gölge, hardal küçük odak.
+- **Atmosfer:** Kalem, dosya kenarı, el ve sıra numarası çağrışımı; görselin içinde okunabilir metin yok.
+- **Kaçınılacaklar:** Gerçek kurum formunu taklit etmek, dekoratif mühür kalabalığı, oyuncuya oyun adı göstermek.
+
+### 5.5 Tren peronu / tahliye alanı
+
+- **Kompozisyon:** Ray ve peron çizgileri uzak kaçış noktasına yönelir; bavullar ve insanlar ritmik, düzensiz kümeler oluşturur.
+- **Palet:** Lacivert/hardal şafak öncesi, petrol yeşili tren gövdesi, kâğıt sisi.
+- **Atmosfer:** Bekleme, liste kontrolü ve yön belirsizliği. Tren özgürlük simgesi olarak kesinleştirilmez.
+- **Kaçınılacaklar:** Okunabilir istasyon tabelası gerekiyormuş gibi davranmak, romantik buhar treni posteri, bayrak.
+
+### 5.6 Şafakta liman silüeti
+
+- **Kompozisyon:** Alçak ufuk, geniş negatif alan ve sabit vinç çizgileri. Final kartı için sakin fakat çözümsüz bir zemin.
+- **Palet:** İsli lacivertten kâğıt grisine geçiş; küçük soğuk petrol yeşili; pas rengi minimum.
+- **Atmosfer:** Dumanın ardından işleyen liman, uzaklık ve yarım kalmış sorumluluk.
+- **Kaçınılacaklar:** Zafer güneşi, askerî selam, slogan veya finali “iyi son” gibi kodlayan parlaklık.
+
+Görsellerin içinde yazı, logo, bayrak, filigran, oyun adı veya slogan bulunmaz.
+
+## 6. Arayüz sistemi
+
+### Anlatı ekranı
+
+- Üstte küçük bölüm, tarih ve konum etiketi.
+- Orta/üst alanda sahne illüstrasyonu; metin için güvenli negatif alan.
+- Alt bölümde açık kâğıt anlatı paneli.
+- En altta iki belirgin, eş ağırlıklı seçim alanı.
+- Dört ince durum şeridi ikincil hiyerarşide; gereksiz HUD simgesi yok.
+- Oynanış ekranında ürün adı veya logo bulunmaz.
+
+### Kart ve düğmeler
+
+- Kartlar düşük yarıçaplı, ince mürekkep çerçeveli ve hafif kâğıt gölgeli 9-slice sprite kullanır.
+- Normal, üzerine gelme, odak, basılı ve pasif durumların her biri şekil/çizgi değişimiyle ayırt edilir.
+- Varsayılan Unity mavi düğmeleri ve parlak gradyanlar kullanılmaz.
+- Sol/sağ seçeneklerde küçük `A / ←` ve `D / →` ipuçları bulunur; ipucu eylem metninin önüne geçmez.
+- Büyük metin ayarında kart yüksekliği layout tarafından genişler; sabit piksel yüksekliğiyle metin kırpılmaz.
+
+### Durum şeritleri
+
+- Her şerit adını açıkça yazar.
+- Sayı büyük biçimde gösterilmez; doluluk, ince işaretler ve kısa değişim oku birlikte kullanılır.
+- `Gözetim` artışı pas rengi ve sıklaşan tarama deseniyle; diğer değişimler uygun palet ve yön işaretiyle gösterilir.
+- Renk körlüğü için etiket ve desen bilgisi korunur.
+
+## 7. Tipografi
+
+- Tüm çalışma zamanı metni TextMeshPro kullanır.
+- Lisansı belirsiz sistem fontları projeye kopyalanmaz. Yalnız proje içinde lisansı açıkça belgelenmiş veya Unity/TMP ile güvenli dağıtılan font assetleri kullanılır.
+- Başlıklar arşiv etiketini andıran sıkı fakat rahat okunan bir ağırlıkta; gövde metni uzun okumaya uygun sade bir ailede olmalıdır.
+- Tamamı büyük harf yalnız kısa bölüm/konum etiketlerinde kullanılabilir; uzun metin ve seçeneklerde kullanılmaz.
+- Türkçe karakterler (`ç, ğ, ı, İ, ö, ş, ü`) font atlasında ve fallback zincirinde doğrulanır.
+- Normal/Büyük ayarları yalnız ölçek büyütmez; satır yüksekliği, panel minimum yüksekliği ve seçenek aralığı da uyarlanır.
+
+## 8. Hareket dili
+
+Standart geçişler `0.18-0.35 saniye` aralığındadır:
+
+- Kart değişimi: çok hafif yatay kayma + kâğıt katmanı değişimi + yumuşak kararma.
+- Seçim onayı: kısa çerçeve koyulaşması ve ses; zıplama veya büyüyüp küçülme yok.
+- Durum değişimi: doluluk değerinin kısa interpolasyonu ve tek seferlik yön işareti.
+- Arka plan: isteğe bağlı birkaç piksellik sakin parallax.
+- Menü: opaklık ve küçük konum geçişi; sürekli hareket eden parça yok.
+
+`Hareket azaltma` açıkken parallax, kamera titreşimi ve büyük yatay hareket kapanır. Ekranlar kısa cross-fade ile değişir; işlevsel durum değişimleri anında ve anlaşılır kalır.
+
+## 9. Yerleşim ve çözünürlük
+
+- Canvas Scaler: `Scale With Screen Size`.
+- Referans çözünürlük: `1920x1080`.
+- Güvenli test hedefleri: `1366x768`, `1920x1080`, `2560x1440`, 16:10 ve ultrawide.
+- Ana içerik için merkezde maksimum okunabilir genişlik kullanılır; ultrawide’da metin satırı uzatılmaz, yan görsel alan nefes alır.
+- 16:10’da dikey alan artışı görseli büyütebilir, seçimler ekran dışına itilmez.
+- Anlatı ve seçenekler layout grupları/anchor’larla büyür; önemli kontroller sabit koordinata bağlanmaz.
+- Büyük metin ayarında gövde alanı kaydırılabilir olabilir, fakat iki seçim ve geri/duraklatma erişimi kaybolmaz.
+- UI kenar güvenliği minimum 48 referans piksel; birincil metin satır uzunluğu yaklaşık 55-85 karakter hedefler.
+
+## 10. Doku ve sprite üretimi
+
+Görüntü üretme aracı kullanılırsa altı sahne aynı palet, katman yoğunluğu ve silüet dilinde üretilir. Promptlar yazı, logo, bayrak, filigran ve grafik şiddeti açıkça dışlar.
+
+Deterministik Editor üretimi kullanılırsa:
+
+- Sabit seed ile kâğıt lifi, halftone, is lekesi ve vignette PNG’leri üretilir.
+- Liman, bina, merdiven, tren ve insan silüetleri basit çokgen/maske katmanlarından oluşturulur.
+- Kart, düğme ve durum şeritleri için kenarları güvenli 9-slice sprite’lar üretilir.
+- Aynı seed ve ayarlar aynı dosyayı üretir; araç yeniden çalıştırıldığında kopya asset oluşturmaz.
+- Karmaşık shader yerine Built-In Render Pipeline ile güvenilir önceden işlenmiş dokular tercih edilir.
+
+Önerilen import tabanı:
+
+- `Texture Type`: `Sprite (2D and UI)`.
+- `sRGB`: açık.
+- `Wrap Mode`: `Clamp`.
+- `Filter Mode`: sahne görselinde `Bilinear`; piksel estetiği hedeflenmediği için `Point` kullanılmaz.
+- UI arka planlarında mipmap kapalı; sahne görsellerinde hedef kullanım ve belleğe göre doğrulanır.
+- Sıkıştırma, kâğıt dokusunda blok artefaktı üretmeyecek kaliteyle ayarlanır.
+- Sprite sınırları ve 9-slice kenarları yeniden üretim sonrası otomatik doğrulanır.
+
+## 11. Sesle görsel eşleşme
+
+- Kâğıt geçişi, kart hareketinin başladığı anda çok düşük seviyede çalar.
+- Seçim onayı görsel çerçeve vurgusuyla senkrondur.
+- Liman, sığınak ve peron ambience’ı sahne değişiminde kısa cross-fade yapar.
+- Siren görsel titreme üretmez; varsa kısa, uzak ve düşük seviyede kalır.
+- Ses kapalıyken bütün durum ve odak bilgisi görsel olarak eksiksizdir.
+
+## 12. Marka ve içerik yasakları
+
+- `Ordinary Fronts` adı yalnız ana menü ve künyede görünür. İşletim sistemi pencere başlığı doğal istisnadır.
+- Oynanış, duraklatma, ayarlar, yükleme ve final ekranında büyük ürün adı/logo yoktur.
+- Slogan üretilmez veya gösterilmez.
+- Nazi sembolleri logo, desen, menü süsü veya dekoratif tekrar olarak kullanılmaz.
+- Neon, parlak mobil gradyan, aşırı yuvarlatılmış panel, rozet kalabalığı ve zıplayan düğme yoktur.
+- Grafik şiddet, ceset odağı ve yangını görsel gösteriye dönüştüren kompozisyon yoktur.
+- Tarihî fotoğraf rastgele indirilmez; kaynak görsel varsa yalnız araştırma referansıdır, oyuna lisanssız kopyalanmaz.
+
+## 13. Görsel QA kontrolü
+
+- Altı ana sahne özgün ve birbiriyle tutarlı mı?
+- Her sahnede anlatı paneli için yeterli kontrast ve negatif alan var mı?
+- Türkçe karakterler tüm TMP boyutlarında doğru mu?
+- Normal ve Büyük metinde anlatı/iki seçenek kırpılmadan okunuyor mu?
+- Fare hover, klavye odağı ve pasif durum renk dışında da ayırt ediliyor mu?
+- `1366x768`, `1920x1080`, `2560x1440`, 16:10 ve ultrawide’da öğeler üst üste biniyor mu?
+- Hareket azaltma açıkken parallax, titreşim ve büyük geçişler tamamen kapanıyor mu?
+- Ürün adı ana menü/künye dışında veya görsel asset içinde yanlışlıkla görünüyor mu?
+- Varsayılan Unity mavi butonu, kayıp sprite/font veya pembe shader yüzeyi var mı?
+- Duman, vignette ve halftone metin okunurluğunu etkiliyor mu?
