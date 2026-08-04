@@ -11,7 +11,6 @@ namespace OrdinaryFronts
         public string storyId;
         public string activeChapter;
         public string currentNodeId;
-        public StatBlock stats = new StatBlock();
         public BoolStateEntry[] flags = Array.Empty<BoolStateEntry>();
         public IntStateEntry[] relations = Array.Empty<IntStateEntry>();
         public string[] seenResults = Array.Empty<string>();
@@ -20,15 +19,12 @@ namespace OrdinaryFronts
 
         public static GameState Create(StoryDatabase story)
         {
-            GameState state = new GameState
+            return new GameState
             {
                 storyId = story.storyId,
                 currentNodeId = story.startNodeId,
-                stats = story.initialStats != null ? story.initialStats.Clone() : new StatBlock(),
                 completed = false
             };
-            state.stats.Clamp();
-            return state;
         }
 
         public bool GetFlag(string key)

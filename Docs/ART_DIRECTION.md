@@ -99,27 +99,24 @@ Görsellerin içinde yazı, logo, bayrak, filigran, oyun adı veya slogan bulunm
 
 ### Anlatı ekranı
 
-- Üstte küçük bölüm, tarih ve konum etiketi.
-- Orta/üst alanda sahne illüstrasyonu; metin için güvenli negatif alan.
-- Alt bölümde açık kâğıt anlatı paneli.
-- En altta iki belirgin, eş ağırlıklı seçim alanı.
-- Dört ince durum şeridi ikincil hiyerarşide; gereksiz HUD simgesi yok.
-- Oynanış ekranında ürün adı veya logo bulunmaz.
+Ekran üç bölgeden oluşur ve **hiçbir HUD sayacı içermez**:
+
+- **Başlık şeridi (üst ~%8.5):** tek satır. Solda bölüm adı (harf aralıklı, versal), sağda tarih · konum, en sağda küçük `ESC` ipucu. Altında ince pas çizgisi. Durum çubukları kaldırıldığı için bu şerit iki satırdan tek satıra indi.
+- **İllüstrasyon alanı (orta ~%38):** sahne görseli buradan nefes alır. Anlatı kartı ile başlık arasındaki bu bant, kompozisyonun asıl konusudur; kart onu ezmez.
+- **Anlatı kartı (alt ~%48):** açık kâğıt panel. Sol kenarında tam boy pas şeridi arşiv dosya sekmesi çağrışımı kurar. İçinde sırasıyla gecikmeli yankı (varsa), anlatı gövdesi ve iki eş ağırlıklı seçim alanı bulunur.
+
+Yankı yoksa anlatı gövdesi o alanı da kullanır; kartta düğüm başına değişen boşluk bırakılmaz.
+
+Oynanış ekranında ürün adı, logo, yüzde, kalp, yıldız veya kaynak sayacı bulunmaz.
 
 ### Kart ve düğmeler
 
 - Kartlar düşük yarıçaplı, ince mürekkep çerçeveli ve hafif kâğıt gölgeli 9-slice sprite kullanır.
-- Normal, üzerine gelme, odak, basılı ve pasif durumların her biri şekil/çizgi değişimiyle ayırt edilir.
+- Seçim düğmeleri: sol kenarda tam boy pas vurgu şeridi, üstte küçük hardal tuş etiketi (`A / ←`), altında eylem metni. Tuş etiketi eylem metninin önüne geçmez.
+- Düğme arka planı sprite'ın kendi rengiyle çizilir. **Koyu bir tint uygulanmaz**: 9-slice kenarındaki pas çizgisini karartıp düğmeyi düz siyah bir bloğa çevirir.
+- Normal, üzerine gelme, odak, basılı ve pasif durumların her biri ayırt edilir; pasif seçenek metni `—` olur, yani ayrım yalnız renge dayanmaz.
 - Varsayılan Unity mavi düğmeleri ve parlak gradyanlar kullanılmaz.
-- Sol/sağ seçeneklerde küçük `A / ←` ve `D / →` ipuçları bulunur; ipucu eylem metninin önüne geçmez.
-- Büyük metin ayarında kart yüksekliği layout tarafından genişler; sabit piksel yüksekliğiyle metin kırpılmaz.
-
-### Durum şeritleri
-
-- Her şerit adını açıkça yazar.
-- Sayı büyük biçimde gösterilmez; doluluk, ince işaretler ve kısa değişim oku birlikte kullanılır.
-- `Gözetim` artışı pas rengi ve sıklaşan tarama deseniyle; diğer değişimler uygun palet ve yön işaretiyle gösterilir.
-- Renk körlüğü için etiket ve desen bilgisi korunur.
+- Büyük metin ayarında gövde ve seçenek metinleri birlikte ölçeklenir; sabit piksel yüksekliğiyle metin kırpılmaz.
 
 ## 7. Tipografi
 
@@ -142,6 +139,22 @@ Standart geçişler `0.18-0.35 saniye` aralığındadır:
 
 `Hareket azaltma` açıkken parallax, kamera titreşimi ve büyük yatay hareket kapanır. Ekranlar kısa cross-fade ile değişir; işlevsel durum değişimleri anında ve anlaşılır kalır.
 
+### Açılış kurgusu hareketi
+
+Açılış kurgusu, oynanış içi UI geçişlerinden bilinçli olarak daha yavaştır; sinematik bir giriş olduğu için `0.18-0.35 saniye` kuralının dışındadır. Kullanılan araçlar sınırlıdır:
+
+- **Kart geçişi:** iki arka plan katmanı arasında yaklaşık `0.55 saniyelik` çapraz geçiş.
+- **Yakınlaşma:** kart süresince en çok `%5.5` ölçek artışı. Kaydırma, döndürme veya kamera hareketi yoktur.
+- **Letterbox:** açılışta bir kez `0.5 saniyede` içeri girer, kurgu boyunca sabit kalır.
+- **Etiket:** tarih/yer etiketi `0.5 saniyede` harf harf belirir; gövde satırı yalnızca kararmayla gelir, harf harf yazılmaz.
+- **Gren:** üç kare arşiv greni yaklaşık `7 fps` ile döner ve opaklığı `0.05`'i geçmez. Metnin okunurluğunu etkilemez.
+
+Kontrast iki katmanla kurulur: tüm görüntüye serilen hafif bir is perdesi (`0.55`) sahneleri birleştirir; metin bandına serilen yumuşak dikey gradyan (`intro_text_scrim`, tepe opaklık `0.62`) kontrastı yalnız gerektiği yerde yükseltir. Tek başına güçlü bir genel perde, illüstrasyonun değer katmanlarını düzleştirdiği için tercih edilmez. Gradyan üstte ve altta tamamen saydamdır ve sert kenarlı bir bant gibi okunmamalıdır.
+
+`Hareket azaltma` açıkken bu beş öğenin tamamı kapanır: yakınlaşma yok, letterbox anında yerleşir, etiket anında tam görünür, gren tek kareye sabitlenir ve geçiş `0.12 saniyeye` iner. Kurgu bu modda da tam olarak okunabilir ve aynı süre boyunca durur.
+
+Açılış kurgusunda parlama, ekran sarsıntısı, hızlı kesme ve titreşimli efekt kullanılmaz. Kurgu her koşulda atlanabilir.
+
 ## 9. Yerleşim ve çözünürlük
 
 - Canvas Scaler: `Scale With Screen Size`.
@@ -161,7 +174,7 @@ Deterministik Editor üretimi kullanılırsa:
 
 - Sabit seed ile kâğıt lifi, halftone, is lekesi ve vignette PNG’leri üretilir.
 - Liman, bina, merdiven, tren ve insan silüetleri basit çokgen/maske katmanlarından oluşturulur.
-- Kart, düğme ve durum şeritleri için kenarları güvenli 9-slice sprite’lar üretilir.
+- Kart ve düğmeler için kenarları güvenli 9-slice sprite’lar üretilir.
 - Aynı seed ve ayarlar aynı dosyayı üretir; araç yeniden çalıştırıldığında kopya asset oluşturmaz.
 - Karmaşık shader yerine Built-In Render Pipeline ile güvenilir önceden işlenmiş dokular tercih edilir.
 
@@ -185,7 +198,7 @@ Deterministik Editor üretimi kullanılırsa:
 
 ## 12. Marka ve içerik yasakları
 
-- `Ordinary Fronts` adı yalnız ana menü ve künyede görünür. İşletim sistemi pencere başlığı doğal istisnadır.
+- `Ordinary Fronts` adı yalnız ana menü ve emeği geçenler ekranında görünür. İşletim sistemi pencere başlığı doğal istisnadır.
 - Oynanış, duraklatma, ayarlar, yükleme ve final ekranında büyük ürün adı/logo yoktur.
 - Slogan üretilmez veya gösterilmez.
 - Nazi sembolleri logo, desen, menü süsü veya dekoratif tekrar olarak kullanılmaz.
@@ -202,6 +215,6 @@ Deterministik Editor üretimi kullanılırsa:
 - Fare hover, klavye odağı ve pasif durum renk dışında da ayırt ediliyor mu?
 - `1366x768`, `1920x1080`, `2560x1440`, 16:10 ve ultrawide’da öğeler üst üste biniyor mu?
 - Hareket azaltma açıkken parallax, titreşim ve büyük geçişler tamamen kapanıyor mu?
-- Ürün adı ana menü/künye dışında veya görsel asset içinde yanlışlıkla görünüyor mu?
+- Ürün adı ana menü ve emeği geçenler ekranı dışında veya görsel asset içinde yanlışlıkla görünüyor mu?
 - Varsayılan Unity mavi butonu, kayıp sprite/font veya pembe shader yüzeyi var mı?
 - Duman, vignette ve halftone metin okunurluğunu etkiliyor mu?

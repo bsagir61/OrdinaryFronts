@@ -25,7 +25,8 @@ namespace OrdinaryFronts.Editor
             Directory.CreateDirectory(UiRoot);
             Directory.CreateDirectory(AudioRoot);
             GenerateUiTextures();
-            GenerateStatusIcons();
+            GenerateIntroGrain();
+            GenerateIntroTextScrim();
             GenerateMissingBackgrounds();
             GenerateAudio();
             AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
@@ -95,43 +96,65 @@ namespace OrdinaryFronts.Editor
             UnityEngine.Object.DestroyImmediate(vignette);
         }
 
-        private static void GenerateStatusIcons()
+        /// <summary>
+        /// Açılış kurgusu için üç kare arşiv greni. Kareler çok seyrek ve düşük opaklıktadır;
+        /// amaç okunabilirliği bozmadan taranmış film dokusu hissi vermektir.
+        /// </summary>
+        private static void GenerateIntroGrain()
         {
-            string[] names = { "status_resilience", "status_supplies", "status_bonds", "status_surveillance" };
-            for (int icon = 0; icon < names.Length; icon++)
+            const int size = 256;
+            for (int frame = 0; frame < 3; frame++)
             {
-                Texture2D texture = NewTexture(64, 64);
-                Color32[] pixels = new Color32[64 * 64];
-                for (int i = 0; i < pixels.Length; i++) pixels[i] = new Color32(0, 0, 0, 0);
+                Texture2D texture = NewTexture(size, size);
+                Color32[] pixels = new Color32[size * size];
+                System.Random random = new System.Random(19430724 + frame * 613);
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    int roll = random.Next(0, 100);
+                    if (roll < 4) pixels[i] = new Color32(Paper.r, Paper.g, Paper.b, (byte)random.Next(24, 70));
+                    else if (roll < 7) pixels[i] = new Color32(Ink.r, Ink.g, Ink.b, (byte)random.Next(20, 60));
+                    else pixels[i] = new Color32(0, 0, 0, 0);
+                }
+                // Seyrek dikey çizikler: taranmış film kenarı çağrışımı, metnin üstünden geçmeyecek yoğunlukta.
+                int scratches = random.Next(1, 3);
+                for (int s = 0; s < scratches; s++)
+                {
+                    int x = random.Next(0, size);
+                    int top = random.Next(0, size);
+                    int length = random.Next(size / 6, size / 2);
+                    for (int y = top; y < Mathf.Min(size, top + length); y++)
+                        pixels[y * size + x] = new Color32(Paper.r, Paper.g, Paper.b, 38);
+                }
                 texture.SetPixels32(pixels);
-                if (icon == 0)
-                {
-                    DrawLine(texture, 18, 45, 32, 15, Paper, 4);
-                    DrawLine(texture, 32, 15, 47, 45, Paper, 4);
-                    DrawLine(texture, 23, 34, 42, 34, Rust, 3);
-                }
-                else if (icon == 1)
-                {
-                    FillRect(texture, 17, 20, 47, 43, Paper);
-                    FillRect(texture, 24, 43, 40, 49, Mustard);
-                    DrawLine(texture, 23, 28, 41, 28, Soot, 2);
-                }
-                else if (icon == 2)
-                {
-                    DrawCircle(texture, 23, 34, 10, Paper);
-                    DrawCircle(texture, 41, 34, 10, Paper);
-                    FillRect(texture, 23, 29, 41, 39, Rust);
-                }
-                else
-                {
-                    DrawCircle(texture, 32, 32, 17, Paper);
-                    DrawCircle(texture, 32, 32, 7, Rust);
-                    DrawLine(texture, 12, 32, 52, 32, Paper, 2);
-                }
                 texture.Apply(false, false);
-                WritePng(UiRoot + "/" + names[icon] + ".png", texture);
+                WritePng(UiRoot + "/intro_grain_" + frame + ".png", texture);
                 UnityEngine.Object.DestroyImmediate(texture);
             }
+        }
+
+        /// <summary>
+        /// Açılış metninin arkasına serilen dikey gradyan. Üstte ve altta tamamen saydam,
+        /// ortada yumuşak biçimde koyulaşır. Amaç, tüm görüntüyü karartmadan yalnız metin
+        /// bandında kontrast kazanmaktır; sert kenarlı bir bant gibi okunmamalıdır.
+        /// </summary>
+        private static void GenerateIntroTextScrim()
+        {
+            const int width = 64;
+            const int height = 256;
+            const float peak = 0.62f;
+            Texture2D texture = NewTexture(width, height);
+            Color32[] pixels = new Color32[width * height];
+            for (int y = 0; y < height; y++)
+            {
+                float n = y / (float)(height - 1);
+                float bump = Mathf.SmoothStep(0f, 1f, 1f - Mathf.Abs(n - 0.5f) * 2f);
+                byte alpha = (byte)Mathf.Clamp(Mathf.RoundToInt(peak * bump * 255f), 0, 255);
+                for (int x = 0; x < width; x++) pixels[y * width + x] = new Color32(Soot.r, Soot.g, Soot.b, alpha);
+            }
+            texture.SetPixels32(pixels);
+            texture.Apply(false, false);
+            WritePng(UiRoot + "/intro_text_scrim.png", texture);
+            UnityEngine.Object.DestroyImmediate(texture);
         }
 
         private static void GenerateMissingBackgrounds()

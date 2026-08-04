@@ -21,4 +21,10 @@ MonoBehaviour:
   paperPanel: {fileID: 21300000, guid: 0c38ed89b49935d48b7a5863796e2e8b, type: 3}
   buttonPanel: {fileID: 21300000, guid: 96cbac7b028b726468b112000ca9edde, type: 3}
   vignette: {fileID: 21300000, guid: 67078f7d52118a844bad762bf474ccbb, type: 3}
+  introGrain:
+  - {fileID: 21300000, guid: 51b6544d7ad43534bb2e1025dd304bb2, type: 3}
+  - {fileID: 21300000, guid: 0dabc7ce33e4a9a439d073a83c7d7bb4, type: 3}
+  - {fileID: 21300000, guid: fe11a9d838aa842439217a20457d2ccd, type: 3}
+  introTextScrim: {fileID: 21300000, guid: 95428886f6025a7468e7059623fe0d9c, type: 3}
   transitionDuration: 0.26
+  introFadeDuration: 0.45

@@ -58,12 +58,13 @@ namespace OrdinaryFronts
                         issues.Add("Geçersiz next-node: " + node.id + " -> " + (choice == null ? "null" : choice.nextNodeId));
                     if (choice != null && choice.effects != null)
                     {
+                        ValidateEffects(node.id + " #" + i, choice.effects, issues);
                         for (int e = 0; e < choice.effects.Length; e++)
                         {
                             EffectData effect = choice.effects[e];
                             if (effect == null || string.IsNullOrWhiteSpace(effect.key)) continue;
-                            if (effect.type == "flag" || effect.type == "echo") knownFlags.Add(effect.key);
-                            if (effect.type == "relation") knownRelations.Add(effect.key);
+                            if (StoryVocabulary.IsFlagType(effect.type)) knownFlags.Add(effect.key);
+                            if (StoryVocabulary.Normalize(effect.type) == StoryVocabulary.TypeRelation) knownRelations.Add(effect.key);
                         }
                     }
                 }
@@ -79,6 +80,15 @@ namespace OrdinaryFronts
             foreach (StoryNode node in nodes.Values)
             {
                 ValidateConditions(node.id, node.conditions, knownFlags, knownRelations, issues);
+                if (node.choices != null)
+                {
+                    for (int i = 0; i < node.choices.Length; i++)
+                    {
+                        ChoiceData choice = node.choices[i];
+                        if (choice != null)
+                            ValidateConditions(node.id + " #" + i, choice.conditions, knownFlags, knownRelations, issues);
+                    }
+                }
                 if (node.echoes == null) continue;
                 for (int i = 0; i < node.echoes.Length; i++)
                 {
@@ -89,6 +99,8 @@ namespace OrdinaryFronts
                         ValidateConditions(node.id + "/" + echo.id, echo.conditions, knownFlags, knownRelations, issues);
                 }
             }
+
+            ValidateIntro(story.intro, nodes, issues);
             return issues;
         }
 
@@ -162,12 +174,66 @@ namespace OrdinaryFronts
                     issues.Add("Boş koşul: " + owner);
                     continue;
                 }
-                if ((condition.type == "flag" || condition.type == "echo") && !flags.Contains(condition.key))
-                    issues.Add("Üretilmeyen bayrağa bağlı yankı/koşul: " + owner + " -> " + condition.key);
-                if (condition.type == "relation" && !relations.Contains(condition.key))
-                    issues.Add("Üretilmeyen ilişkiye bağlı koşul: " + owner + " -> " + condition.key);
-                if (condition.type != "flag" && condition.type != "echo" && condition.type != "relation" && condition.type != "stat")
+                if (!StoryVocabulary.IsKnownType(condition.type))
+                {
                     issues.Add("Bilinmeyen koşul türü: " + owner + " -> " + condition.type);
+                    continue;
+                }
+                if (!StoryVocabulary.IsKnownConditionOperation(condition.type, condition.op))
+                    issues.Add("Bilinmeyen koşul operasyonu: " + owner + " -> " + condition.type + "/" + condition.op);
+
+                string type = StoryVocabulary.Normalize(condition.type);
+                if (StoryVocabulary.IsFlagType(type) && !flags.Contains(condition.key))
+                    issues.Add("Üretilmeyen bayrağa bağlı yankı/koşul: " + owner + " -> " + condition.key);
+                if (type == StoryVocabulary.TypeRelation && !relations.Contains(condition.key))
+                    issues.Add("Üretilmeyen ilişkiye bağlı koşul: " + owner + " -> " + condition.key);
+            }
+        }
+
+        /// <summary>
+        /// Açılış kurgusu isteğe bağlıdır, fakat tanımlıysa her kartın metni ve düğümlerde
+        /// fiilen kullanılan bir görsel anahtarı olmalıdır; yazım hatası sessizce boş bir
+        /// arka plana düşmemelidir.
+        /// </summary>
+        private static void ValidateIntro(IntroData intro, Dictionary<string, StoryNode> nodes, List<string> issues)
+        {
+            if (intro == null || !intro.HasBeats) return;
+            HashSet<string> imageKeys = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values)
+                if (!string.IsNullOrWhiteSpace(node.imageKey)) imageKeys.Add(node.imageKey);
+
+            for (int i = 0; i < intro.beats.Length; i++)
+            {
+                IntroBeat beat = intro.beats[i];
+                string owner = "açılış #" + i;
+                if (beat == null || string.IsNullOrWhiteSpace(beat.line))
+                {
+                    issues.Add("Boş açılış kartı: " + owner);
+                    continue;
+                }
+                if (string.IsNullOrWhiteSpace(beat.imageKey) || !imageKeys.Contains(beat.imageKey))
+                    issues.Add("Açılış kartında bilinmeyen görsel anahtarı: " + owner + " -> " + beat.imageKey);
+            }
+        }
+
+        private static void ValidateEffects(string owner, EffectData[] effects, List<string> issues)
+        {
+            if (effects == null) return;
+            for (int i = 0; i < effects.Length; i++)
+            {
+                EffectData effect = effects[i];
+                if (effect == null || string.IsNullOrWhiteSpace(effect.key))
+                {
+                    issues.Add("Boş etki: " + owner);
+                    continue;
+                }
+                if (!StoryVocabulary.IsKnownType(effect.type))
+                {
+                    issues.Add("Bilinmeyen etki türü: " + owner + " -> " + effect.type);
+                    continue;
+                }
+                if (!StoryVocabulary.IsKnownEffectOperation(effect.op))
+                    issues.Add("Bilinmeyen etki operasyonu: " + owner + " -> " + effect.type + "/" + effect.op);
             }
         }
     }

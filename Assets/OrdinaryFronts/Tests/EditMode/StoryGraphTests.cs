@@ -113,17 +113,56 @@ namespace OrdinaryFronts.Tests.EditMode
         }
 
         [Test]
-        public void Stats_AreAlwaysClampedToZeroAndOneHundred()
+        public void Intro_IsDefinedWithKnownImageKeysAndReadableLines()
         {
-            StatBlock stats = new StatBlock { resilience = -40, supplies = 999, bonds = 101, surveillance = -1 };
-            stats.Clamp();
-            Assert.That(stats.resilience, Is.EqualTo(0));
-            Assert.That(stats.supplies, Is.EqualTo(100));
-            Assert.That(stats.bonds, Is.EqualTo(100));
-            Assert.That(stats.surveillance, Is.EqualTo(0));
-            GameState state = new GameState { stats = stats };
-            EffectResolver.Apply(new[] { new EffectData { type = "stat", key = "resilience", op = "add", intValue = -500 } }, state);
-            Assert.That(state.stats.resilience, Is.EqualTo(0));
+            Assert.That(story.intro, Is.Not.Null, "Yeni oyun için açılış kurgusu tanımlı olmalı.");
+            Assert.That(story.intro.HasBeats, Is.True);
+            Assert.That(story.intro.beats.Length, Is.InRange(3, 6));
+
+            HashSet<string> imageKeys = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values)
+                if (!string.IsNullOrWhiteSpace(node.imageKey)) imageKeys.Add(node.imageKey);
+
+            for (int i = 0; i < story.intro.beats.Length; i++)
+            {
+                IntroBeat beat = story.intro.beats[i];
+                Assert.That(beat.line, Is.Not.Empty, "Açılış kartı " + i + " boş.");
+                Assert.That(beat.kicker, Is.Not.Empty, "Açılış kartı " + i + " etiketi boş.");
+                Assert.That(imageKeys.Contains(beat.imageKey), Is.True, "Bilinmeyen görsel anahtarı: " + beat.imageKey);
+                Assert.That(beat.ResolvedHold, Is.InRange(IntroBeat.MinimumHold, IntroBeat.MaximumHold));
+            }
+        }
+
+        [Test]
+        public void Intro_StaysWithinFirstChoiceTimeBudget()
+        {
+            // GDD §16 kalite kapısı: ilk seçim en geç 45 saniyede erişilebilir olmalı.
+            // Yalnız holdSeconds toplamına bakmak yanıltıcıdır; kart başına geçiş, belirme ve
+            // kararma yükü gerçek süreyi belirgin biçimde artırır. Bu yüzden tahmini toplam
+            // ekran süresi ölçülür.
+            float total = story.intro.EstimatedTotalSeconds;
+            Assert.That(total, Is.LessThan(20f), "Açılış kurgusunun tahmini toplam süresi çok uzun: " + total);
+            Assert.That(total, Is.GreaterThan(6f), "Açılış kurgusu anlam taşıyamayacak kadar kısa: " + total);
+        }
+
+        [Test]
+        public void Relations_AreAlwaysClampedToPlusMinusOneHundred()
+        {
+            GameState state = new GameState();
+            EffectResolver.Apply(new[] { new EffectData { type = "relation", key = "olek", op = "add", intValue = 5000 } }, state);
+            Assert.That(state.GetRelation("olek"), Is.EqualTo(100));
+            EffectResolver.Apply(new[] { new EffectData { type = "relation", key = "olek", op = "set", intValue = -5000 } }, state);
+            Assert.That(state.GetRelation("olek"), Is.EqualTo(-100));
+        }
+
+        [Test]
+        public void Story_HasNoLeftoverStatMechanic()
+        {
+            // Görünür durum çubukları kaldırıldı. Hikâye verisinde artık hiçbir "stat"
+            // etkisi veya koşulu kalmamalıdır; kalırsa sessizce yok sayılırdı.
+            string raw = File.ReadAllText(Path.Combine(Application.dataPath, "StreamingAssets", StoryRepository.RelativeStoryPath));
+            Assert.That(raw, Does.Not.Contain("\"stat\""), "Hikâye verisinde artakalan stat girdisi var.");
+            Assert.That(raw, Does.Not.Contain("initialStats"), "Hikâye verisinde artakalan initialStats bloğu var.");
         }
 
         [Test]
@@ -136,7 +175,6 @@ namespace OrdinaryFronts.Tests.EditMode
                 GameState original = GameState.Create(story);
                 original.currentNodeId = story.nodes[2].id;
                 original.activeChapter = story.nodes[2].act;
-                original.stats.resilience = 73;
                 original.SetFlag("documents_kept", true);
                 original.SetRelation("olek_trust", 14);
                 original.MarkResultSeen("echo_documents");
@@ -147,7 +185,6 @@ namespace OrdinaryFronts.Tests.EditMode
                 string message;
                 Assert.That(service.TryLoad(out loaded, out message), Is.True, message);
                 Assert.That(loaded.currentNodeId, Is.EqualTo(original.currentNodeId));
-                Assert.That(loaded.stats.resilience, Is.EqualTo(73));
                 Assert.That(loaded.GetFlag("documents_kept"), Is.True);
                 Assert.That(loaded.GetRelation("olek_trust"), Is.EqualTo(14));
                 Assert.That(loaded.HasSeenResult("echo_documents"), Is.True);

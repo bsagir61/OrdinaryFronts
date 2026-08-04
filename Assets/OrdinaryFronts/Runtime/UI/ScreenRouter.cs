@@ -7,6 +7,7 @@ namespace OrdinaryFronts
     {
         None,
         MainMenu,
+        Intro,
         Gameplay,
         Settings,
         Credits,

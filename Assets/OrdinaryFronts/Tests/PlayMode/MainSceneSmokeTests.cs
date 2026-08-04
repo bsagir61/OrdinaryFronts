@@ -73,5 +73,58 @@ namespace OrdinaryFronts.Tests.PlayMode
             TMP_Text[] text = gameplay.GetComponentsInChildren<TMP_Text>(true);
             for (int i = 0; i < text.Length; i++) Assert.That(text[i].text, Does.Not.Contain("Ordinary Fronts"), "Ürün adı oynanış HUD'ında görünmemeli.");
         }
+
+        [UnityTest]
+        public IEnumerator Credits_AreLabelledEmegiGecenlerAndNameTheAuthor()
+        {
+            AppController app = UnityEngine.Object.FindObjectOfType<AppController>();
+            Assert.That(app, Is.Not.Null, "Main sahnesinde AppController yok.");
+            yield return null;
+
+            TMP_Text[] all = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
+            bool hasMenuButton = false;
+            bool namesAuthor = false;
+            for (int i = 0; i < all.Length; i++)
+            {
+                if (all[i].text == "Emeği Geçenler") hasMenuButton = true;
+                if (all[i].text.Contains("Berat Sağır")) namesAuthor = true;
+            }
+            Assert.That(hasMenuButton, Is.True, "Ana menüde 'Emeği Geçenler' düğmesi bulunamadı.");
+            Assert.That(namesAuthor, Is.True, "Emeği geçenler ekranında yazar adı bulunamadı.");
+        }
+
+        [UnityTest]
+        public IEnumerator Intro_PlaysBeforeGameplayAndCanBeSkipped()
+        {
+            AppController app = UnityEngine.Object.FindObjectOfType<AppController>();
+            Assert.That(app, Is.Not.Null, "Main sahnesinde AppController yok.");
+
+            app.PlayIntroForTests();
+            yield return null;
+            yield return null;
+
+            Assert.That(app.IntroPlaying, Is.True, "Yeni oyun açılış kurgusuyla başlamalı.");
+            Assert.That(app.CurrentScreen, Is.EqualTo(AppScreen.Intro));
+
+            GameObject intro = GameObject.Find("Intro");
+            Assert.That(intro, Is.Not.Null, "Açılış ekranı görünmüyor.");
+            TMP_Text[] introTexts = intro.GetComponentsInChildren<TMP_Text>(true);
+            for (int i = 0; i < introTexts.Length; i++)
+                Assert.That(introTexts[i].text, Does.Not.Contain("Ordinary Fronts"), "Ürün adı açılış kurgusunda görünmemeli.");
+
+            app.RequestIntroSkipForTests();
+            float timeout = 8f;
+            while (app.IntroPlaying && timeout > 0f)
+            {
+                timeout -= Time.unscaledDeltaTime;
+                yield return null;
+            }
+            Assert.That(app.IntroPlaying, Is.False, "Atlama isteği açılış kurgusunu sonlandırmalı.");
+
+            yield return new WaitForSecondsRealtime(0.4f);
+            Assert.That(app.CurrentScreen, Is.EqualTo(AppScreen.Gameplay), "Kurgu bittiğinde oynanışa geçilmeli.");
+            Assert.That(app.CurrentNodeId, Is.Not.Null.And.Not.Empty);
+            Assert.That(File.Exists(app.ActiveSavePath), Is.True, "Açılış sonrası otomatik kayıt bulunmalı.");
+        }
     }
 }

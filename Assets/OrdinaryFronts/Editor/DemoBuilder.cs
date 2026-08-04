@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build;
@@ -129,6 +128,16 @@ namespace OrdinaryFronts.Editor
             asset.paperPanel = AssetDatabase.LoadAssetAtPath<Sprite>(GeneratedAssetFactory.UiRoot + "/paper_panel.png");
             asset.buttonPanel = AssetDatabase.LoadAssetAtPath<Sprite>(GeneratedAssetFactory.UiRoot + "/button_panel.png");
             asset.vignette = AssetDatabase.LoadAssetAtPath<Sprite>(GeneratedAssetFactory.UiRoot + "/vignette.png");
+            Sprite[] grain = new Sprite[3];
+            for (int i = 0; i < grain.Length; i++)
+            {
+                string grainPath = GeneratedAssetFactory.UiRoot + "/intro_grain_" + i + ".png";
+                grain[i] = AssetDatabase.LoadAssetAtPath<Sprite>(grainPath);
+                if (grain[i] == null) throw new InvalidOperationException("Açılış greni yüklenemedi: " + grainPath);
+            }
+            asset.introGrain = grain;
+            asset.introTextScrim = AssetDatabase.LoadAssetAtPath<Sprite>(GeneratedAssetFactory.UiRoot + "/intro_text_scrim.png");
+            if (asset.introTextScrim == null) throw new InvalidOperationException("Açılış metin gradyanı yüklenemedi.");
             EditorUtility.SetDirty(asset);
             return asset;
         }
@@ -209,16 +218,10 @@ namespace OrdinaryFronts.Editor
 
         private static void ConfigureBuildSettings()
         {
-            List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>
-            {
-                new EditorBuildSettingsScene(ScenePath, true)
-            };
-            EditorBuildSettingsScene[] existing = EditorBuildSettings.scenes;
-            for (int i = 0; i < existing.Length; i++)
-            {
-                if (!string.Equals(existing[i].path, ScenePath, StringComparison.OrdinalIgnoreCase)) scenes.Add(existing[i]);
-            }
-            EditorBuildSettings.scenes = scenes.ToArray();
+            // Demo tek sahnelidir. Önceden listede kalan sahneleri korumak, şablondan gelen
+            // örnek sahnelerin sessizce derlemeye girmesine yol açıyordu; liste artık tam olarak
+            // bu üreticinin ürettiği sahneden ibarettir.
+            EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
         }
 
         private static void ConfigurePlayer(BrandConfig brand)
