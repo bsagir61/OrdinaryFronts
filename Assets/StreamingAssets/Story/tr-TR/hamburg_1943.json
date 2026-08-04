@@ -3,11 +3,33 @@
   "storyId": "hamburg_1943",
   "locale": "tr-TR",
   "startNodeId": "sir_01_vardiya_sonu",
-  "initialStats": {
-    "resilience": 62,
-    "supplies": 46,
-    "bonds": 42,
-    "surveillance": 16
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "harbor_dawn",
+        "kicker": "HAMBURG",
+        "line": "Hamburg limanı ve tersaneleri savaş için gece gündüz çalışır.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "shipyard_evening",
+        "kicker": "LİMAN TERSANESİ",
+        "line": "Matthias Krüger bu tersanede bakım elektrikçisi olarak çalışır.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "aid_registry",
+        "kicker": "TEMMUZ 1943",
+        "line": "Vazgeçilmez işçi sayıldığı için askerliği ertelenmiştir.",
+        "holdSeconds": 2.6
+      },
+      {
+        "imageKey": "shelter_stairs",
+        "kicker": "24/25 TEMMUZ",
+        "line": "24 Temmuz gecesi sirenler çaldığında bu erteleme onu koruyamaz.",
+        "holdSeconds": 3.2
+      }
+    ]
   },
   "nodes": [
     {
@@ -27,8 +49,6 @@
           "nextNodeId": "sir_02_salter_dairesi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "switchgear_secured", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_switchgear_secured", "op": "set", "boolValue": true, "text": "Ana şalteri kapatman ilk saldırıdan sonra tersanedeki yangın riskini azalttı." }
@@ -41,8 +61,6 @@
           "nextNodeId": "sir_02_tophane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "left_with_olek", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_left_with_olek", "op": "set", "boolValue": true, "text": "Olek'le birlikte çıkman, kapanan servis kapısından önce avluya ulaşmanızı sağladı." }
@@ -67,8 +85,6 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "worker_notebook_saved", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_worker_notebook", "op": "set", "boolValue": true, "text": "Kurtarılan isim defteri, daha sonra kayıp işçiler için somut bir dayanak oldu." }
@@ -81,7 +97,6 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
             { "type": "flag", "key": "worker_notebook_left", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_worker_notebook_left", "op": "set", "boolValue": true, "text": "Dolapta kalan defter yüzünden bazı isimler daha sonra yalnızca hafızadan yazılabildi." }
@@ -106,8 +121,6 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "service_route_chosen", "op": "set", "boolValue": true }
           ]
@@ -119,7 +132,6 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "shelter_entry_helped", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_shelter_entry", "op": "set", "boolValue": true, "text": "Merdiven girişinde yardım ettiğin insanlar, sonraki sabah seni Elsbeth'in yanında hatırladı." }
@@ -144,8 +156,6 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "west_door_opened", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_west_door", "op": "set", "boolValue": true, "text": "Açtığın batı kapısından çıkan işçiler, sabah kayıp listesini birbirlerine ulaştırdı." }
@@ -158,8 +168,6 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "tools_preserved", "op": "set", "boolValue": true }
           ]
         }
@@ -182,8 +190,6 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "shelter_light_fixed", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_shelter_light", "op": "set", "boolValue": true, "text": "Onardığın merdiven lambası, çıkışta insanların birbirini ezmeden ilerlemesine yardım etti." }
@@ -196,8 +202,6 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
             { "type": "flag", "key": "stairs_guided", "op": "set", "boolValue": true }
           ]
         }
@@ -235,8 +239,6 @@
           "nextNodeId": "ash_05_paylasilan_su",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": -8 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 6 },
             { "type": "flag", "key": "shared_shelter_food", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_shared_shelter_food", "op": "set", "boolValue": true, "text": "Sığınakta paylaştığın erzak, sabah kayıt sırasında bir tanığın seni hatırlamasını sağladı." }
           ]
@@ -248,8 +250,6 @@
           "nextNodeId": "ash_05_saklanan_paket",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": 4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": -2 },
             { "type": "flag", "key": "saved_family_supplies", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_saved_family_supplies", "op": "set", "boolValue": true, "text": "Sakladığın paket, Ruth'u bulduğunda ikinizin de ayakta kalmasına yaradı." }
           ]
@@ -273,8 +273,6 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
           ]
         },
@@ -285,8 +283,6 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 1 },
             { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
           ]
         }
@@ -309,8 +305,6 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
           ]
         },
@@ -321,7 +315,6 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
             { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
           ]
         }
@@ -359,8 +352,6 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 6 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "irena_registered", "op": "set", "boolValue": true },
             { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
@@ -374,7 +365,6 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
             { "type": "flag", "key": "ruth_registry_clue", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_olek_carried_names", "op": "set", "boolValue": true, "text": "Olek isimleri başka masaya kendi götürdü; bu yüzden yollarınız bir süre ayrıldı." }
@@ -399,9 +389,6 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": 4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "pantry_logged", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_pantry_logged", "op": "set", "boolValue": true, "text": "Kiler için bıraktığın teslim notu, sonraki kontrolde malzemenin kayıp sayılmasını önledi." }
@@ -414,8 +401,6 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": 9 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "elsbeth", "op": "add", "intValue": -1 },
             { "type": "flag", "key": "pantry_unlogged", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_pantry_unlogged", "op": "set", "boolValue": true, "text": "Tutanaksız aldığın erzak yardım etti, fakat kiler sayımındaki eksik daha sonra senin rotanla eşleştirildi." }
@@ -462,7 +447,6 @@
           "nextNodeId": "ash_08_okul_avlusu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": -1 },
             { "type": "flag", "key": "work_card_kept", "op": "set", "boolValue": true }
@@ -475,8 +459,6 @@
           "nextNodeId": "ash_08_kayit_deposu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "olek_archive_help", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_olek_archive", "op": "set", "boolValue": true, "text": "Kayıt deposunda bulunan sevk satırı, Irena'nın izini liman revirine çevirdi." }
@@ -501,8 +483,6 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
             { "type": "flag", "key": "school_pump_fixed", "op": "set", "boolValue": true }
           ]
         },
@@ -513,7 +493,6 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "followed_ruth_route", "op": "set", "boolValue": true }
           ]
@@ -537,7 +516,6 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "irena_note_delivered", "op": "set", "boolValue": true }
           ]
@@ -549,8 +527,6 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "went_to_infirmary", "op": "set", "boolValue": true }
           ]
@@ -589,8 +565,6 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "relief_shift_helped", "op": "set", "boolValue": true }
           ]
@@ -602,8 +576,6 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "evacuation_queue_checked", "op": "set", "boolValue": true },
             { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true }
@@ -636,8 +608,6 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "irena_transfer_found", "op": "set", "boolValue": true }
           ]
@@ -649,7 +619,6 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "olek_plan_respected", "op": "set", "boolValue": true }
           ]
@@ -702,9 +671,6 @@
           "nextNodeId": "ord_11_jenerator_nobeti",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -5 },
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 6 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "relief_generator_repaired", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_relief_generator", "op": "set", "boolValue": true, "text": "Çalıştırdığın jeneratör, yardım merkezinin listelerini ve mutfağını gece boyunca açık tuttu." }
@@ -717,8 +683,6 @@
           "nextNodeId": "ord_11_istasyon_sirasi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": 2 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
             { "type": "flag", "key": "left_for_station", "op": "set", "boolValue": true }
@@ -751,8 +715,6 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "returned_toward_yard", "op": "set", "boolValue": true }
           ]
@@ -764,8 +726,6 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "yard_muster_missed", "op": "set", "boolValue": true }
           ]
@@ -789,7 +749,6 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "orders_opened_publicly", "op": "set", "boolValue": true }
           ]
         },
@@ -800,7 +759,6 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": -1 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "orders_taken_to_brehm", "op": "set", "boolValue": true }
@@ -825,8 +783,6 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "yard_return_signed", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_yard_return_signed", "op": "set", "boolValue": true, "text": "Dönüş defterindeki imza erteleme görüşmesinde Brehm'e resmî bir dayanak verdi." }
@@ -839,8 +795,6 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": -1 },
             { "type": "flag", "key": "relief_duty_recorded", "op": "set", "boolValue": true }
           ]
@@ -879,7 +833,6 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "conscription_disclosed", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_conscription_disclosed", "op": "set", "boolValue": true, "text": "Çağrıyı açıkça sunman, dosyanın kayıp değil zamanında teslim edilmiş görünmesini sağladı." }
           ]
@@ -891,8 +844,6 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 7 },
             { "type": "flag", "key": "conscription_concealed", "op": "set", "boolValue": true },
             { "type": "echo", "key": "echo_conscription_concealed", "op": "set", "boolValue": true, "text": "Çağrıyı çantada tutman Ruth'un sırasını korudu, ancak zarf numarası daha sonra listede göründü." }
           ]
@@ -945,8 +896,6 @@
           "nextNodeId": "ord_14_tersane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "yard_priority", "op": "set", "boolValue": true }
           ]
@@ -958,8 +907,6 @@
           "nextNodeId": "ord_14_tren_peronu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "evacuation_priority", "op": "set", "boolValue": true }
           ]
@@ -998,8 +945,6 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "yard_shift_entered", "op": "set", "boolValue": true }
           ]
@@ -1011,8 +956,6 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 6 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
             { "type": "flag", "key": "yard_gate_left", "op": "set", "boolValue": true }
@@ -1052,8 +995,6 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -2 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "family_slot_requested", "op": "set", "boolValue": true }
           ]
@@ -1065,8 +1006,6 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": -2 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "left_platform_for_yard", "op": "set", "boolValue": true }
@@ -1106,8 +1045,6 @@
           "nextNodeId": "ord_16_erteleme_gorusmesi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": -4 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "essential_worker_signed", "op": "set", "boolValue": true }
           ]
@@ -1119,8 +1056,6 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 7 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
             { "type": "flag", "key": "essential_worker_delayed", "op": "set", "boolValue": true }
@@ -1160,9 +1095,6 @@
           "nextNodeId": "ord_16_hareket_cagrisi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "supplies", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
             { "type": "flag", "key": "family_ticket_accepted", "op": "set", "boolValue": true }
           ]
@@ -1174,8 +1106,6 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
             { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "ruth_ticket_only", "op": "set", "boolValue": true }
           ]
@@ -1207,8 +1137,6 @@
           "nextNodeId": "end_gecici_erteleme",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -5 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": -6 },
             { "type": "flag", "key": "deferral_accepted", "op": "set", "boolValue": true }
           ]
         },
@@ -1219,8 +1147,6 @@
           "nextNodeId": "end_gozetimli_vardiya",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 10 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 4 },
             { "type": "relation", "key": "brehm", "op": "add", "intValue": -2 },
             { "type": "flag", "key": "reporting_refused", "op": "set", "boolValue": true }
           ]
@@ -1244,8 +1170,6 @@
           "nextNodeId": "end_tahliye_yolu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 5 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
             { "type": "flag", "key": "evacuated_with_ruth", "op": "set", "boolValue": true }
           ]
         },
@@ -1256,8 +1180,6 @@
           "nextNodeId": "end_ayri_peronlar",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 2 },
             { "type": "flag", "key": "ruth_departed_alone", "op": "set", "boolValue": true }
           ]
         }
@@ -1295,8 +1217,6 @@
           "nextNodeId": "end_askerlik_yolu",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": -3 },
-            { "type": "stat", "key": "resilience", "op": "add", "intValue": -4 },
             { "type": "flag", "key": "reported_to_conscription", "op": "set", "boolValue": true }
           ]
         },
@@ -1307,8 +1227,6 @@
           "nextNodeId": "end_yardim_aginda",
           "conditions": [],
           "effects": [
-            { "type": "stat", "key": "bonds", "op": "add", "intValue": 5 },
-            { "type": "stat", "key": "surveillance", "op": "add", "intValue": 10 },
             { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
             { "type": "flag", "key": "relief_delay_requested", "op": "set", "boolValue": true }
           ]

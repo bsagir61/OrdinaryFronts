@@ -14,7 +14,16 @@ namespace OrdinaryFronts
         public Sprite paperPanel;
         public Sprite buttonPanel;
         public Sprite vignette;
+
+        /// <summary>Açılış kurgusunda çok düşük opaklıkta döndürülen arşiv filmi grenleri.</summary>
+        public Sprite[] introGrain = new Sprite[0];
+
+        /// <summary>Açılış metninin arkasındaki yumuşak dikey gradyan.</summary>
+        public Sprite introTextScrim;
+
         [Range(0.18f, 0.35f)] public float transitionDuration = 0.26f;
+        /// <summary>Açılış kartları arasındaki geçiş; UI geçişlerinden bilinçli olarak daha yavaştır.</summary>
+        [Range(0.30f, 0.9f)] public float introFadeDuration = 0.45f;
 
         public void ApplyCanonicalDefaults()
         {
@@ -25,6 +34,7 @@ namespace OrdinaryFronts
             mustard = new Color32(0xA8, 0x8B, 0x4A, 0xFF);
             ink = new Color32(0x26, 0x25, 0x22, 0xFF);
             transitionDuration = 0.26f;
+            introFadeDuration = 0.45f;
         }
     }
 }

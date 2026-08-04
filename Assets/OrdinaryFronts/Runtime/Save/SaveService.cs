@@ -6,7 +6,9 @@ namespace OrdinaryFronts
 {
     public sealed class SaveService
     {
-        public const int CurrentSchemaVersion = 1;
+        // Sürüm 2: görünür durum çubukları (StatBlock) kaldırıldı. Sürüm 1 kayıtları
+        // uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur.
+        public const int CurrentSchemaVersion = 2;
         public const string SaveFileName = "hamburg-demo-save.json";
 
         private readonly string directory;
@@ -22,7 +24,6 @@ namespace OrdinaryFronts
         {
             if (state == null) throw new ArgumentNullException("state");
             state.schemaVersion = CurrentSchemaVersion;
-            state.stats.Clamp();
             string json = JsonUtility.ToJson(state, true);
             AtomicJsonFile.Write(SavePath, json);
         }
@@ -42,8 +43,6 @@ namespace OrdinaryFronts
                 state = JsonUtility.FromJson<GameState>(json);
                 if (state == null || state.schemaVersion != CurrentSchemaVersion || string.IsNullOrWhiteSpace(state.currentNodeId))
                     throw new InvalidDataException("Kayıt şeması veya aktif düğüm geçersiz.");
-                if (state.stats == null) throw new InvalidDataException("Kayıt durum değerlerini içermiyor.");
-                state.stats.Clamp();
                 return true;
             }
             catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException || exception is ArgumentException || exception is InvalidDataException)

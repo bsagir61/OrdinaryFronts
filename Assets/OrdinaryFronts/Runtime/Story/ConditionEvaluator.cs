@@ -1,5 +1,3 @@
-using System;
-
 namespace OrdinaryFronts
 {
     public static class ConditionEvaluator
@@ -17,25 +15,26 @@ namespace OrdinaryFronts
         public static bool Evaluate(ConditionData condition, GameState state)
         {
             if (condition == null || state == null) return false;
-            string type = (condition.type ?? string.Empty).Trim().ToLowerInvariant();
-            string operation = (condition.op ?? "equals").Trim().ToLowerInvariant();
-            if (type == "flag" || type == "echo")
+            string type = StoryVocabulary.Normalize(condition.type);
+            string operation = StoryVocabulary.ConditionOperationOrDefault(condition.op);
+            // Tanınmayan operasyonda kapalı-güvenli davranırız: koşul sağlanmamış sayılır.
+            if (!StoryVocabulary.IsKnownConditionOperation(type, operation)) return false;
+
+            if (StoryVocabulary.IsFlagType(type))
             {
                 bool actual = state.GetFlag(condition.key);
-                return operation == "notequals" ? actual != condition.boolValue : actual == condition.boolValue;
+                return operation == StoryVocabulary.OperationNotEquals ? actual != condition.boolValue : actual == condition.boolValue;
             }
 
-            int value;
-            if (type == "relation") value = state.GetRelation(condition.key);
-            else if (type == "stat") value = state.stats.Get(condition.key);
-            else return false;
+            if (type != StoryVocabulary.TypeRelation) return false;
+            int value = state.GetRelation(condition.key);
 
             switch (operation)
             {
-                case "atleast": return value >= condition.intValue;
-                case "atmost": return value <= condition.intValue;
-                case "notequals": return value != condition.intValue;
-                case "equals": return value == condition.intValue;
+                case StoryVocabulary.OperationAtLeast: return value >= condition.intValue;
+                case StoryVocabulary.OperationAtMost: return value <= condition.intValue;
+                case StoryVocabulary.OperationNotEquals: return value != condition.intValue;
+                case StoryVocabulary.OperationEquals: return value == condition.intValue;
                 default: return false;
             }
         }

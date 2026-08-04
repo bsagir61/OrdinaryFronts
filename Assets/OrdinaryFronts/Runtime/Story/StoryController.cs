@@ -44,7 +44,6 @@ namespace OrdinaryFronts
                 userMessage = "Kayıt bu demo sürümüyle uyumlu değil. Yeni bir oyun başlatabilirsiniz.";
                 return false;
             }
-            loaded.stats.Clamp();
             State = loaded;
             return true;
         }
@@ -59,7 +58,6 @@ namespace OrdinaryFronts
             if (!ConditionEvaluator.EvaluateAll(choice.conditions, State))
                 throw new InvalidOperationException("Bu seçim mevcut durumda kullanılamıyor.");
 
-            StatBlock before = State.stats.Clone();
             EffectResolver.Apply(choice.effects, State);
             State.AddTrace(choice.trace);
             State.currentNodeId = choice.nextNodeId;
@@ -73,9 +71,7 @@ namespace OrdinaryFronts
             {
                 source = source,
                 choice = choice,
-                destination = destination,
-                before = before,
-                after = State.stats.Clone()
+                destination = destination
             };
         }
 
@@ -122,7 +118,5 @@ namespace OrdinaryFronts
         public StoryNode source;
         public ChoiceData choice;
         public StoryNode destination;
-        public StatBlock before;
-        public StatBlock after;
     }
 }

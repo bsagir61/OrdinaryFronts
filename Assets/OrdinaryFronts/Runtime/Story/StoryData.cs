@@ -9,64 +9,58 @@ namespace OrdinaryFronts
         public string storyId;
         public string locale;
         public string startNodeId;
-        public StatBlock initialStats = new StatBlock();
+        public IntroData intro;
         public StoryNode[] nodes = Array.Empty<StoryNode>();
     }
 
+    /// <summary>
+    /// Yeni oyun başlarken ilk anlatı düğümünden önce oynatılan açılış kurgusu.
+    /// Boş bırakılırsa oyun doğrudan ilk düğümle başlar.
+    /// </summary>
     [Serializable]
-    public sealed class StatBlock
+    public sealed class IntroData
     {
-        public int resilience = 62;
-        public int supplies = 46;
-        public int bonds = 42;
-        public int surveillance = 18;
+        public IntroBeat[] beats = Array.Empty<IntroBeat>();
 
-        public StatBlock Clone()
+        public bool HasBeats { get { return beats != null && beats.Length > 0; } }
+
+        /// <summary>
+        /// Kart başına çapraz geçiş + belirme + kararma yükü. Gerçek değerler AppController'daki
+        /// geçiş sabitlerinden gelir; buradaki yaklaşıklık, kurgunun toplam süresini otomatik
+        /// olarak sınayabilmek içindir. Geçiş süreleri değişirse burası da güncellenmelidir.
+        /// </summary>
+        public const float PerBeatOverheadSeconds = 1.1f;
+        public const float OpeningOverheadSeconds = 0.45f;
+
+        /// <summary>Kurgunun atlanmadığı durumda yaklaşık toplam ekran süresi.</summary>
+        public float EstimatedTotalSeconds
         {
-            return new StatBlock
+            get
             {
-                resilience = resilience,
-                supplies = supplies,
-                bonds = bonds,
-                surveillance = surveillance
-            };
-        }
-
-        public void Clamp()
-        {
-            resilience = ClampValue(resilience);
-            supplies = ClampValue(supplies);
-            bonds = ClampValue(bonds);
-            surveillance = ClampValue(surveillance);
-        }
-
-        public int Get(string key)
-        {
-            switch (key)
-            {
-                case "resilience": return resilience;
-                case "supplies": return supplies;
-                case "bonds": return bonds;
-                case "surveillance": return surveillance;
-                default: return 0;
+                if (!HasBeats) return 0f;
+                float total = OpeningOverheadSeconds;
+                for (int i = 0; i < beats.Length; i++)
+                    if (beats[i] != null) total += beats[i].ResolvedHold + PerBeatOverheadSeconds;
+                return total;
             }
         }
+    }
 
-        public void Set(string key, int value)
-        {
-            value = ClampValue(value);
-            switch (key)
-            {
-                case "resilience": resilience = value; break;
-                case "supplies": supplies = value; break;
-                case "bonds": bonds = value; break;
-                case "surveillance": surveillance = value; break;
-            }
-        }
+    [Serializable]
+    public sealed class IntroBeat
+    {
+        public string imageKey;
+        public string kicker;
+        public string line;
+        public float holdSeconds = 3.2f;
 
-        private static int ClampValue(int value)
+        public const float MinimumHold = 1.2f;
+        public const float MaximumHold = 8f;
+
+        /// <summary>JSON'da eksik veya saçma bir süre verilse bile okunabilir bir aralıkta kalır.</summary>
+        public float ResolvedHold
         {
-            return value < 0 ? 0 : value > 100 ? 100 : value;
+            get { return holdSeconds <= 0f ? 3.2f : (holdSeconds < MinimumHold ? MinimumHold : (holdSeconds > MaximumHold ? MaximumHold : holdSeconds)); }
         }
     }
 

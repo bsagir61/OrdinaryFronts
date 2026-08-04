@@ -60,7 +60,7 @@ Mahalle bilgisi, yardım ağı ve resmî kurallar arasında bağlantı kurar. Oy
 
 **Tarih:** 24/25 Temmuz 1943 gecesi  
 **Ana baskı:** İlk alarm, tersaneden dönüş, sığınak merdiveni, elektrik kesintisi, sınırlı yer ve ilk yardım kararı.  
-**Sistem öğretimi:** İki seçenek, dört durum şeridi, seçim sonrası zarif geri bildirim ve ilk gecikmeli yankı.  
+**Sistem öğretimi:** İki seçenek, seçim sonrası zarif geçiş ve ilk gecikmeli yankı.  
 **Duygusal soru:** İnsan en yakın tehlikede kime karşı sorumludur?
 
 ### Bölüm II - Kül
@@ -82,7 +82,7 @@ Mahalle bilgisi, yardım ağı ve resmî kurallar arasında bağlantı kurar. Oy
 1. Bölüm/tarih/konum etiketi ve sahne görseli belirir.
 2. Oyuncu 55-110 kelimelik anlatı kartını okur.
 3. İki açık seçenekten birini fareyle veya klavyeyle seçer.
-4. Kısa geçiş sırasında anlık etkiler çözülür; ilgili durum şeritleri zarifçe değişir.
+4. Kısa geçiş sırasında etkiler görünmez katmanda çözülür; ekranda sayaç oynamaz.
 5. Görünmeyen bayraklar, ilişkiler ve gecikmeli sonuçlar kaydedilir.
 6. Oyun otomatik kayıt yapar ve sonraki düğüme geçer.
 7. Uygun sonraki düğümde tek satırlık doğal bir “önceki kararın yankısı” anlatıya katılır.
@@ -101,18 +101,17 @@ Ana yolda TODO, sahte seçenek, boş kart veya kilitli gelecek bölüm kutusu bu
 
 Seçim girişi geçiş sırasında kilitlenir; aynı seçimin iki kez işlenmesine izin verilmez. Klavye odağı görünürdür ve renk tek başına odak bilgisi taşımaz.
 
-## 8. Görünür durumlar
+## 8. Görünür sayaç yoktur
 
-Dört durum da `0-100` aralığında sınırlandırılır. Büyük sayılar yerine ad, ince şerit, desen/işaret ve kısa değişim geri bildirimi kullanılır.
+Oyun bilinçli olarak **hiçbir görünür durum çubuğu, puan veya sayaç kullanmaz.**
 
-| Durum | Anlamı | Düşük/yüksek sonuç ilkesi |
-|---|---|---|
-| Dayanıklılık | Matthias’ın fiziksel ve zihinsel sürdürme kapasitesi | Düşük değer bazı yolları zorlaştırır, fakat açıklamasız ani oyun sonu üretmez. |
-| Erzak | Su, yiyecek ve taşınabilir temel malzeme | Kaynak paylaşımı veya rota seçimi için bağlam oluşturur; yalnızca “para” gibi davranmaz. |
-| Bağlar | Aile, mahalle ve işyeri içindeki karşılıklı erişim | Tek bir itibar puanı değildir; görünür özet, ayrı gizli ilişkilerin genel hissidir. |
-| Gözetim | Resmî şüphe, yoklama ve ihbar baskısı | Yükseldikçe belge kontrolü ve baskı artar. Yüksek değer otomatik “kötü son” değildir. |
+Erken bir sürümde `Dayanıklılık`, `Erzak`, `Bağlar` ve `Gözetim` adlı dört şerit oynanış başlığında gösteriliyordu. Ölçüm bu şeritlerin hikâye üzerinde hiçbir etkisi olmadığını gösterdi: veri setinde `104` durum etkisi vardı fakat **sıfır** durum koşulu; yani değerler sürekli yazılıyor, hiçbir yerde okunmuyordu. Hiçbir dallanmayı, yankıyı veya finali değiştirmiyorlardı. Oyuncuya anlamlı bir bilgi vermeden ekranın üst şeridini işgal eden ve kararları "optimize edilebilir" gösteren bir cila katmanıydı.
 
-Seçim öncesinde kesin `+10/-10` sonuçları gösterilmez. Seçim sonrasında yalnızca etkilenen şerit kısa süre vurgulanır; renk değişimine küçük yön işareti veya metinsel ipucu eşlik eder.
+Bu yüzden mekanik tamamen kaldırıldı. Yerine yeni bir sayaç konmadı; kararların ağırlığı sayı hareketiyle değil, anlatının kendisiyle ve gecikmeli yankılarla kurulur.
+
+Sonucu taşıyan durum bilgisi görünmez katmanda korunur (bkz. §9): bayraklar, ilişkiler ve görülmüş yankılar. Oyuncu bunları bir çubuk olarak değil, sonraki sahnelerde dönen satırlar ve final `İzler` listesi olarak görür.
+
+Bu bir tasarım taahhüdüdür: oynanış ekranına yüzde, kalp, yıldız veya kaynak sayacı eklenmez.
 
 ## 9. Gizli durum ve koşullar
 
@@ -128,7 +127,23 @@ Veri odaklı hikâye en az şu kavramları destekler:
 - Tahliye listesine erişim.
 - Görülmüş gecikmeli yankılar; aynı yankı iki kez gösterilmez.
 
-Koşullar okunabilir veri ifadeleriyle değerlendirilir. Etkiler görünür durum değişimi, bayrak, ilişki değişimi, gecikmeli yankı ve sonraki düğüm yönlendirmesini kapsar. Düşük bir durum değerinin sonucu da yazılmış bir anlatı düğümüdür.
+Koşullar okunabilir veri ifadeleriyle değerlendirilir. Etkiler bayrak, ilişki değişimi, gecikmeli yankı ve sonraki düğüm yönlendirmesini kapsar. Her sonuç yazılmış bir anlatı düğümüdür; hiçbir eşik oyuncuya sayı olarak gösterilmez.
+
+### Veri şeması kuralları
+
+Aşağıdaki adlar `StoryVocabulary` içinde tanımlıdır ve `StoryGraphValidator` tarafından açılışta doğrulanır. Tanınmayan bir tür, operasyon veya durum anahtarı oyunu sessizce farklı çalıştırmaz; doğrulama hatası üretir.
+
+| Alan | İzin verilen değerler |
+|---|---|
+| `type` (koşul ve etki) | `stat`, `relation`, `flag`, `echo` |
+| Etki `op` | `add` (mevcut değere ekler), `set` (değeri atar). Boş bırakılırsa `set` sayılır. |
+| Koşul `op` — `stat`/`relation` | `atleast`, `atmost`, `equals`, `notequals`. Boş bırakılırsa `equals` sayılır. |
+| Koşul `op` — `flag`/`echo` | Yalnız `equals`, `notequals`. Eşik operasyonları bayraklarda geçersizdir. |
+| `stat` anahtarları | `resilience`, `supplies`, `bonds`, `surveillance` |
+
+Bayrak etkilerinde `op` davranışı özeldir: **`op: "add"`, `boolValue` ne olursa olsun bayrağı `true` yazar** (yankı bayraklarını açmak için kısayol). Bir bayrağı kapatmak için `op: "set"` ve `boolValue: false` kullanılmalıdır.
+
+`relation` değerleri `-100..100`, `stat` değerleri `0..100` aralığına kelepçelenir.
 
 ## 10. Seçim yazımı kuralları
 
@@ -164,10 +179,10 @@ Ana menüde kilitli antoloji bölümleri veya sahte gelecek içerik gösterilmez
 
 ```text
 Ana Menü
-  ├─ Yeni Oyun → tek seferlik içerik notu → Sirenler
+  ├─ Yeni Oyun → tek seferlik içerik notu → açılış kurgusu (atlanabilir) → Sirenler
   ├─ Devam Et → son güvenli otomatik kayıt
   ├─ Ayarlar
-  ├─ Künye
+  ├─ Emeği Geçenler
   └─ Çıkış
 
 Oynanış → Escape → Duraklat/Ayarlar → Oynanış
@@ -175,11 +190,23 @@ Oynanış → Final → Yeniden Oyna | Ana Menü
 Bozuk kayıt → anlaşılır uyarı → Yeni Oyun | Ana Menü
 ```
 
-`Devam Et`, geçerli kayıt yoksa pasiftir. Ürün adı yalnızca ana menü ve künyede görünür; oynanış, duraklatma, ayarlar, yükleme ve final ekranlarında büyük ürün logosu yoktur. Slogan kullanılmaz.
+`Devam Et`, geçerli kayıt yoksa pasiftir. Ürün adı yalnızca ana menü ve emeği geçenler ekranında görünür; oynanış, duraklatma, ayarlar, yükleme, açılış kurgusu ve final ekranlarında büyük ürün logosu yoktur. Slogan kullanılmaz.
+
+### Açılış kurgusu
+
+Yeni oyun, ilk anlatı düğümünden önce kısa bir açılış kurgusuyla başlar. Amaç, oyuncuyu kararların ağırlığına hazırlamak ve tarihsel çerçeveyi oyuncunun okuma yükü olmadan kurmaktır.
+
+- Kurgu, hikâye verisindeki `intro.beats` dizisinden okunur; kod değişikliği gerektirmeden düzenlenebilir ve yerelleştirilebilir.
+- Her kart bir sahne görseli, kısa bir tarih/yer etiketi ve tek cümlelik anlatı satırı taşır.
+- Toplam tutma süresi `20 saniyenin` altında tutulur; bu, GDD §16'daki "ilk seçim en geç 45 saniyede" kapısını korur ve otomatik testle sınanır.
+- Kurgu **her zaman atlanabilir**: herhangi bir tuş veya tıklama doğrudan ilk düğüme geçirir. Atlama, kurguyu başlatan tıklamanın kazara sayılmaması için kısa bir gecikmeyle etkinleşir.
+- `Devam Et` açılış kurgusunu oynatmaz; kurgu yalnızca yeni oyuna aittir.
+- `Hareket azaltma` açıkken yakınlaşma, letterbox animasyonu, daktilo etkisi ve gren döngüsü kapanır; kartlar yalnızca çok kısa bir kararmayla değişir ve metin anında tam görünür.
+- Açılış kurgusu oyunun sonucunu etkilemez, durum değiştirmez ve seçim içermez.
 
 ## 14. Kayıt ve ayarlar
 
-Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. Kayıt; şema sürümü, bölüm/düğüm, görünür durumlar, bayraklar, ilişkiler, görülmüş yankılar ve tamamlanma durumunu içerir. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
+Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. Kayıt; şema sürümü, bölüm/düğüm, bayraklar, ilişkiler, görülmüş yankılar, izler ve tamamlanma durumunu içerir. Durum çubukları kaldırıldığında şema sürümü `2`'ye yükseltildi; sürüm `1` kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
 
 Ayarlar kalıcıdır:
 
@@ -206,6 +233,6 @@ Ses, müzik yerine düşük seviyeli özgün atmosferi öne çıkarır: uzak lim
 - Her karar düğümünde tam iki dolu seçenek ve geçerli sonraki düğüm.
 - Ana yolda dead-end, boş kart, TODO veya sahte buton yok.
 - Beş final de 3-5 somut iz gösterir ve sıralanmaz.
-- Ürün adı yalnız ana menü/künye; slogan yok.
+- Ürün adı yalnız ana menü ve emeği geçenler ekranı; slogan yok.
 - Grafik şiddet, savaş propagandası ve dekoratif Nazi sembolü yok.
 - Tarihsel gerçek, tanıklık ve dramatik bileşim [HISTORICAL_NOTES.md](HISTORICAL_NOTES.md) ile ayrılır.
