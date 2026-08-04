@@ -7,7 +7,10 @@ namespace OrdinaryFronts
     [Serializable]
     public sealed class SettingsData
     {
-        public int schemaVersion = 1;
+        // Sürüm 2: dil tercihi eklendi. Sürüm 1 ayarları varsayılanlara döner, yani mevcut
+        // kurulumlar da yeni kurulumlar gibi İngilizce başlar.
+        public int schemaVersion = 2;
+        public string locale = LocalizationService.DefaultLocale;
         public float masterVolume = 0.82f;
         public float ambientVolume = 0.56f;
         public float effectsVolume = 0.68f;
@@ -21,6 +24,7 @@ namespace OrdinaryFronts
             masterVolume = Mathf.Clamp01(masterVolume);
             ambientVolume = Mathf.Clamp01(ambientVolume);
             effectsVolume = Mathf.Clamp01(effectsVolume);
+            locale = LocalizationService.Normalize(locale);
         }
     }
 
@@ -41,7 +45,7 @@ namespace OrdinaryFronts
             {
                 if (!File.Exists(SettingsPath)) return new SettingsData { fullscreen = Screen.fullScreen };
                 SettingsData data = JsonUtility.FromJson<SettingsData>(File.ReadAllText(SettingsPath));
-                if (data == null || data.schemaVersion != 1) return new SettingsData { fullscreen = Screen.fullScreen };
+                if (data == null || data.schemaVersion != 2) return new SettingsData { fullscreen = Screen.fullScreen };
                 data.Clamp();
                 return data;
             }

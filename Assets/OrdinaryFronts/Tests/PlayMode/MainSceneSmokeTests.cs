@@ -81,15 +81,17 @@ namespace OrdinaryFronts.Tests.PlayMode
             Assert.That(app, Is.Not.Null, "Main sahnesinde AppController yok.");
             yield return null;
 
+            // Varsayılan dil İngilizce olduğu için düğme "Credits" yazar; yazar adı ise
+            // her dilde aynı kalmalıdır.
             TMP_Text[] all = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
             bool hasMenuButton = false;
             bool namesAuthor = false;
             for (int i = 0; i < all.Length; i++)
             {
-                if (all[i].text == "Emeği Geçenler") hasMenuButton = true;
+                if (all[i].text == "Credits") hasMenuButton = true;
                 if (all[i].text.Contains("Berat Sağır")) namesAuthor = true;
             }
-            Assert.That(hasMenuButton, Is.True, "Ana menüde 'Emeği Geçenler' düğmesi bulunamadı.");
+            Assert.That(hasMenuButton, Is.True, "Ana menüde 'Credits' düğmesi bulunamadı.");
             Assert.That(namesAuthor, Is.True, "Emeği geçenler ekranında yazar adı bulunamadı.");
         }
 

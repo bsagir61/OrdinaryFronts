@@ -35,6 +35,37 @@ namespace OrdinaryFronts
         private SettingsService settingsService;
         private SettingsData settings;
         private StoryController storyController;
+        private LocalizationService localization;
+        private TMP_Text languageValueText;
+
+        /// <summary>Arayüz metni kısayolu.</summary>
+        private string T(string key)
+        {
+            return localization == null ? key : localization.Get(key);
+        }
+
+        /// <summary>
+        /// Seçili dilin hikâye dosyasını yükler ve doğrular. Oyun sürerken çağrılırsa
+        /// oyuncunun ilerlemesi korunur; düğüm kimlikleri diller arasında aynıdır.
+        /// </summary>
+        private void LoadStoryForLocale(string locale)
+        {
+            StoryRepository repository = new StoryRepository(null, locale);
+            repository.Load();
+            List<string> issues = StoryGraphValidator.Validate(repository.Database);
+            if (issues.Count > 0)
+                throw new InvalidDataException(T(UiKey.ErrorStoryValidation) + string.Join(" | ", issues.ToArray()));
+
+            if (storyController == null)
+            {
+                storyController = new StoryController(repository, saveService);
+                storyController.Initialize();
+            }
+            else
+            {
+                storyController.SwapRepository(repository);
+            }
+        }
 
         private Image backgroundArt;
         private RectTransform backgroundRect;
@@ -111,18 +142,26 @@ namespace OrdinaryFronts
             settings = settingsService.Load();
             ApplySettings(false);
 
+            localization = new LocalizationService();
             try
             {
-                StoryRepository repository = new StoryRepository();
-                repository.Load();
-                List<string> issues = StoryGraphValidator.Validate(repository.Database);
-                if (issues.Count > 0) throw new InvalidDataException("Hikâye doğrulaması başarısız: " + string.Join(" | ", issues.ToArray()));
-                storyController = new StoryController(repository, saveService);
-                storyController.Initialize();
+                localization.Load(settings.locale);
             }
             catch (Exception exception)
             {
-                initializationError = "Demo verileri hazırlanamadı.\n\n" + exception.Message;
+                // Arayüz metni olmadan hiçbir hata bile gösterilemez; varsayılan dile düşülür.
+                Debug.LogError(exception);
+                settings.locale = LocalizationService.DefaultLocale;
+                localization.Load(LocalizationService.DefaultLocale);
+            }
+
+            try
+            {
+                LoadStoryForLocale(settings.locale);
+            }
+            catch (Exception exception)
+            {
+                initializationError = localization.Get(UiKey.ErrorInitFailed) + "\n\n" + exception.Message;
                 Debug.LogError(exception);
             }
 
@@ -233,23 +272,23 @@ namespace OrdinaryFronts
             title.enableAutoSizing = true;
             title.fontSizeMin = 54f;
             title.fontSizeMax = 82f;
-            TMP_Text context = CreateText("Context", screen.transform, "HAMBURG · TEMMUZ 1943", 21f, FontStyles.Normal, theme.mustard,
+            TMP_Text context = CreateText("Context", screen.transform, T(UiKey.MenuContext), 21f, FontStyles.Normal, theme.mustard,
                 new Vector2(0.08f, 0.63f), new Vector2(0.385f, 0.675f), Vector2.zero, Vector2.zero, TextAlignmentOptions.TopLeft);
             context.characterSpacing = 4f;
 
-            Button newButton = CreateButton("New Game", screen.transform, "Yeni Oyun", () => RequestNewGame(),
+            Button newButton = CreateButton("New Game", screen.transform, T(UiKey.MenuNewGame), () => RequestNewGame(),
                 new Vector2(0.08f, 0.525f), new Vector2(0.385f, 0.595f));
-            continueButton = CreateButton("Continue", screen.transform, "Devam Et", ContinueGame,
+            continueButton = CreateButton("Continue", screen.transform, T(UiKey.MenuContinue), ContinueGame,
                 new Vector2(0.08f, 0.435f), new Vector2(0.385f, 0.505f));
-            CreateButton("Settings", screen.transform, "Ayarlar", () => OpenSettings(AppScreen.MainMenu),
+            CreateButton("Settings", screen.transform, T(UiKey.MenuSettings), () => OpenSettings(AppScreen.MainMenu),
                 new Vector2(0.08f, 0.345f), new Vector2(0.385f, 0.415f));
-            CreateButton("Credits", screen.transform, "Emeği Geçenler", ShowCredits,
+            CreateButton("Credits", screen.transform, T(UiKey.MenuCredits), ShowCredits,
                 new Vector2(0.08f, 0.255f), new Vector2(0.385f, 0.325f));
-            CreateButton("Exit", screen.transform, "Çıkış", ExitApplication,
+            CreateButton("Exit", screen.transform, T(UiKey.MenuExit), ExitApplication,
                 new Vector2(0.08f, 0.165f), new Vector2(0.385f, 0.235f));
             firstSelection = newButton.gameObject;
 
-            TMP_Text hint = CreateText("Input Hint", screen.transform, "Fare veya yön tuşlarıyla gezin · Enter ile onayla", 18f, FontStyles.Normal,
+            TMP_Text hint = CreateText("Input Hint", screen.transform, T(UiKey.MenuInputHint), 18f, FontStyles.Normal,
                 new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.7f), new Vector2(0.08f, 0.105f), new Vector2(0.385f, 0.145f), Vector2.zero, Vector2.zero, TextAlignmentOptions.BottomLeft);
             hint.enableAutoSizing = true;
             hint.fontSizeMin = 14f;
@@ -309,7 +348,7 @@ namespace OrdinaryFronts
             introLineText.lineSpacing = 10f;
             scalableBodyTexts.Add(introLineText);
 
-            CreateText("Skip Hint", screen.transform, "Atlamak için herhangi bir tuşa bas", 17f, FontStyles.Normal,
+            CreateText("Skip Hint", screen.transform, T(UiKey.IntroSkipHint), 17f, FontStyles.Normal,
                 new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.62f),
                 new Vector2(0.55f, 0.092f), new Vector2(0.95f, 0.13f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Right);
         }
@@ -345,7 +384,7 @@ namespace OrdinaryFronts
             chapterText.characterSpacing = 6f;
             dateLocationText = CreateText("Date and Location", header.transform, string.Empty, 17f, FontStyles.Normal, theme.mustard,
                 new Vector2(0.40f, 0.12f), new Vector2(0.875f, 1f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Right);
-            TMP_Text escape = CreateText("Pause Hint", header.transform, "ESC", 15f, FontStyles.Bold,
+            TMP_Text escape = CreateText("Pause Hint", header.transform, T(UiKey.GameplayPauseHint), 15f, FontStyles.Bold,
                 new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.55f),
                 new Vector2(0.89f, 0.12f), new Vector2(0.965f, 1f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Right);
             escape.characterSpacing = 3f;
@@ -435,31 +474,29 @@ namespace OrdinaryFronts
             GameObject screen = CreateScreen("Settings", parent);
             router.Register(AppScreen.Settings, screen);
             GameObject panel = CreatePaperPanel("Settings Panel", screen.transform, new Vector2(0.22f, 0.08f), new Vector2(0.78f, 0.92f));
-            CreateText("Title", panel.transform, "Ayarlar", 48f, FontStyles.Bold, theme.ink,
-                new Vector2(0.08f, 0.84f), new Vector2(0.92f, 0.94f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
-            masterSlider = CreateSliderRow(panel.transform, "ANA SES", 0.69f, value => { settings.masterVolume = value; SaveAndApplySettings(); });
-            ambientSlider = CreateSliderRow(panel.transform, "ORTAM SESİ", 0.57f, value => { settings.ambientVolume = value; SaveAndApplySettings(); });
-            effectsSlider = CreateSliderRow(panel.transform, "EFEKT SESİ", 0.45f, value => { settings.effectsVolume = value; SaveAndApplySettings(); });
+            CreateText("Title", panel.transform, T(UiKey.SettingsTitle), 48f, FontStyles.Bold, theme.ink,
+                new Vector2(0.08f, 0.86f), new Vector2(0.92f, 0.95f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
+            masterSlider = CreateSliderRow(panel.transform, T(UiKey.SettingsMasterVolume), 0.745f, value => { settings.masterVolume = value; SaveAndApplySettings(); });
+            ambientSlider = CreateSliderRow(panel.transform, T(UiKey.SettingsAmbientVolume), 0.655f, value => { settings.ambientVolume = value; SaveAndApplySettings(); });
+            effectsSlider = CreateSliderRow(panel.transform, T(UiKey.SettingsEffectsVolume), 0.565f, value => { settings.effectsVolume = value; SaveAndApplySettings(); });
 
-            CreateText("Fullscreen Label", panel.transform, "TAM EKRAN", 22f, FontStyles.Bold, theme.ink,
-                new Vector2(0.08f, 0.35f), new Vector2(0.43f, 0.41f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
-            Button fullscreenButton = CreateButton("Fullscreen Toggle", panel.transform, string.Empty, ToggleFullscreen,
-                new Vector2(0.55f, 0.34f), new Vector2(0.91f, 0.415f));
-            fullscreenValueText = fullscreenButton.GetComponentInChildren<TMP_Text>();
+            // Dil satırı en üstte durur: oyuncu oyunu anlamadığı bir dilde açtıysa ilk aradığı
+            // ayar budur ve diğer etiketleri okumadan bulabilmelidir.
+            languageValueText = CreateSettingsToggleRow(panel.transform, T(UiKey.SettingsLanguage), 0.455f, "Language Toggle", ToggleLanguage);
+            fullscreenValueText = CreateSettingsToggleRow(panel.transform, T(UiKey.SettingsFullscreen), 0.355f, "Fullscreen Toggle", ToggleFullscreen);
+            textSizeValueText = CreateSettingsToggleRow(panel.transform, T(UiKey.SettingsTextSize), 0.255f, "Text Size Toggle", ToggleTextSize);
+            motionValueText = CreateSettingsToggleRow(panel.transform, T(UiKey.SettingsReduceMotion), 0.155f, "Motion Toggle", ToggleMotion);
 
-            CreateText("Text Size Label", panel.transform, "METİN BOYUTU", 22f, FontStyles.Bold, theme.ink,
-                new Vector2(0.08f, 0.25f), new Vector2(0.43f, 0.31f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
-            Button textButton = CreateButton("Text Size Toggle", panel.transform, string.Empty, ToggleTextSize,
-                new Vector2(0.55f, 0.24f), new Vector2(0.91f, 0.315f));
-            textSizeValueText = textButton.GetComponentInChildren<TMP_Text>();
+            CreateButton("Back", panel.transform, T(UiKey.SettingsBack), CloseSettings, new Vector2(0.08f, 0.035f), new Vector2(0.35f, 0.11f));
+        }
 
-            CreateText("Motion Label", panel.transform, "HAREKETİ AZALT", 22f, FontStyles.Bold, theme.ink,
-                new Vector2(0.08f, 0.15f), new Vector2(0.43f, 0.21f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
-            Button motionButton = CreateButton("Motion Toggle", panel.transform, string.Empty, ToggleMotion,
-                new Vector2(0.55f, 0.14f), new Vector2(0.91f, 0.215f));
-            motionValueText = motionButton.GetComponentInChildren<TMP_Text>();
-
-            CreateButton("Back", panel.transform, "Geri", CloseSettings, new Vector2(0.08f, 0.035f), new Vector2(0.35f, 0.11f));
+        private TMP_Text CreateSettingsToggleRow(Transform panel, string label, float centerY, string buttonName, UnityEngine.Events.UnityAction action)
+        {
+            CreateText(label + " Label", panel, label, 22f, FontStyles.Bold, theme.ink,
+                new Vector2(0.08f, centerY - 0.03f), new Vector2(0.43f, centerY + 0.03f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
+            Button button = CreateButton(buttonName, panel, string.Empty, action,
+                new Vector2(0.55f, centerY - 0.038f), new Vector2(0.91f, centerY + 0.038f));
+            return button.GetComponentInChildren<TMP_Text>();
         }
 
         private void BuildCredits(Transform parent)
@@ -469,12 +506,11 @@ namespace OrdinaryFronts
             GameObject panel = CreatePaperPanel("Credits Panel", screen.transform, new Vector2(0.19f, 0.09f), new Vector2(0.81f, 0.91f));
             CreateText("Product Title", panel.transform, brand.ProductName, 50f, FontStyles.Bold, theme.ink,
                 new Vector2(0.08f, 0.79f), new Vector2(0.92f, 0.92f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
-            TMP_Text copy = CreateText("Credits Copy", panel.transform,
-                "TASARIM VE GELİŞTİRME\nBerat Sağır\n\nANLATI ÇERÇEVESİ\nBütün karakterler ve kişisel olaylar kurgusaldır. Tarihsel bağlam; Hamburg şehir tarihi kaynakları, müze koleksiyonları ve eğitim materyalleriyle sınanmıştır.\n\nGÖRSEL VE SES\nArşiv kâğıdı, linol baskı ve gölge tiyatrosu yaklaşımıyla bu proje için üretilmiştir. İnternetten alınmış fotoğraf, telifli müzik veya başka bir oyundan içerik kullanılmamıştır.\n\nAYRINTILI KAYNAKLAR\nProje içindeki Docs/HISTORICAL_NOTES.md dosyasındadır.",
+            TMP_Text copy = CreateText("Credits Copy", panel.transform, T(UiKey.CreditsBody),
                 25f, FontStyles.Normal, theme.ink, new Vector2(0.08f, 0.18f), new Vector2(0.92f, 0.77f), Vector2.zero, Vector2.zero, TextAlignmentOptions.TopLeft);
             copy.enableAutoSizing = true;
             copy.fontSizeMin = 18f;
-            CreateButton("Back", panel.transform, "Ana Menü", () => ShowMainMenu(true), new Vector2(0.08f, 0.045f), new Vector2(0.36f, 0.13f));
+            CreateButton("Back", panel.transform, T(UiKey.CommonMainMenu), () => ShowMainMenu(true), new Vector2(0.08f, 0.045f), new Vector2(0.36f, 0.13f));
         }
 
         private void BuildContentNote(Transform parent)
@@ -483,14 +519,14 @@ namespace OrdinaryFronts
             router.Register(AppScreen.ContentNote, screen);
             AddImage(CreateRect("Dim", screen.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero), new Color(0f, 0f, 0f, 0.72f));
             GameObject panel = CreatePaperPanel("Content Note Panel", screen.transform, new Vector2(0.28f, 0.27f), new Vector2(0.72f, 0.73f));
-            CreateText("Title", panel.transform, "İçerik Notu", 42f, FontStyles.Bold, theme.ink,
+            CreateText("Title", panel.transform, T(UiKey.ContentNoteTitle), 42f, FontStyles.Bold, theme.ink,
                 new Vector2(0.1f, 0.70f), new Vector2(0.9f, 0.88f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
             TMP_Text note = CreateText("Note", panel.transform,
-                "Savaş, bombardıman, zorunlu çalışma ve devlet baskısı temaları içerir. Grafik şiddet içermez.", 29f, FontStyles.Normal, theme.ink,
+                T(UiKey.ContentNoteBody), 29f, FontStyles.Normal, theme.ink,
                 new Vector2(0.1f, 0.35f), new Vector2(0.9f, 0.67f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
             note.enableAutoSizing = true;
             note.fontSizeMin = 22f;
-            CreateButton("Continue", panel.transform, "Devam Et", ConfirmContentNote,
+            CreateButton("Continue", panel.transform, T(UiKey.ContentNoteContinue), ConfirmContentNote,
                 new Vector2(0.25f, 0.10f), new Vector2(0.75f, 0.27f));
         }
 
@@ -500,11 +536,11 @@ namespace OrdinaryFronts
             router.Register(AppScreen.Pause, screen);
             AddImage(CreateRect("Dim", screen.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero), new Color(theme.sootNavy.r, theme.sootNavy.g, theme.sootNavy.b, 0.9f));
             GameObject panel = CreatePaperPanel("Pause Panel", screen.transform, new Vector2(0.35f, 0.2f), new Vector2(0.65f, 0.8f));
-            CreateText("Title", panel.transform, "Duraklatıldı", 44f, FontStyles.Bold, theme.ink,
+            CreateText("Title", panel.transform, T(UiKey.PauseTitle), 44f, FontStyles.Bold, theme.ink,
                 new Vector2(0.1f, 0.76f), new Vector2(0.9f, 0.9f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
-            CreateButton("Resume", panel.transform, "Devam Et", ResumeGame, new Vector2(0.14f, 0.56f), new Vector2(0.86f, 0.69f));
-            CreateButton("Settings", panel.transform, "Ayarlar", () => OpenSettings(AppScreen.Pause), new Vector2(0.14f, 0.38f), new Vector2(0.86f, 0.51f));
-            CreateButton("Main Menu", panel.transform, "Ana Menü", () => ShowMainMenu(true), new Vector2(0.14f, 0.20f), new Vector2(0.86f, 0.33f));
+            CreateButton("Resume", panel.transform, T(UiKey.PauseResume), ResumeGame, new Vector2(0.14f, 0.56f), new Vector2(0.86f, 0.69f));
+            CreateButton("Settings", panel.transform, T(UiKey.MenuSettings), () => OpenSettings(AppScreen.Pause), new Vector2(0.14f, 0.38f), new Vector2(0.86f, 0.51f));
+            CreateButton("Main Menu", panel.transform, T(UiKey.CommonMainMenu), () => ShowMainMenu(true), new Vector2(0.14f, 0.20f), new Vector2(0.86f, 0.33f));
         }
 
         private void BuildEnding(Transform parent)
@@ -523,9 +559,9 @@ namespace OrdinaryFronts
                 new Vector2(0.07f, 0.15f), new Vector2(0.93f, 0.38f), Vector2.zero, Vector2.zero, TextAlignmentOptions.TopLeft);
             endingTracesText.enableAutoSizing = true;
             endingTracesText.fontSizeMin = 17f;
-            CreateButton("Replay", panel.transform, "Yeniden Oyna", RequestNewGame,
+            CreateButton("Replay", panel.transform, T(UiKey.EndingReplay), RequestNewGame,
                 new Vector2(0.07f, 0.035f), new Vector2(0.43f, 0.12f));
-            CreateButton("Main Menu", panel.transform, "Ana Menü", () => ShowMainMenu(true),
+            CreateButton("Main Menu", panel.transform, T(UiKey.CommonMainMenu), () => ShowMainMenu(true),
                 new Vector2(0.57f, 0.035f), new Vector2(0.93f, 0.12f));
         }
 
@@ -535,15 +571,15 @@ namespace OrdinaryFronts
             router.Register(AppScreen.Error, screen);
             AddImage(CreateRect("Dim", screen.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero), new Color(0f, 0f, 0f, 0.78f));
             GameObject panel = CreatePaperPanel("Error Panel", screen.transform, new Vector2(0.27f, 0.25f), new Vector2(0.73f, 0.75f));
-            CreateText("Title", panel.transform, "Kayıt / Veri Uyarısı", 38f, FontStyles.Bold, theme.rust,
+            CreateText("Title", panel.transform, T(UiKey.ErrorTitle), 38f, FontStyles.Bold, theme.rust,
                 new Vector2(0.1f, 0.72f), new Vector2(0.9f, 0.88f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
             errorText = CreateText("Message", panel.transform, string.Empty, 25f, FontStyles.Normal, theme.ink,
                 new Vector2(0.1f, 0.30f), new Vector2(0.9f, 0.70f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
             errorText.enableAutoSizing = true;
             errorText.fontSizeMin = 18f;
-            CreateButton("New Game", panel.transform, "Yeni Oyun", RequestNewGame,
+            CreateButton("New Game", panel.transform, T(UiKey.MenuNewGame), RequestNewGame,
                 new Vector2(0.1f, 0.10f), new Vector2(0.46f, 0.24f));
-            CreateButton("Main Menu", panel.transform, "Ana Menü", () => ShowMainMenu(true),
+            CreateButton("Main Menu", panel.transform, T(UiKey.CommonMainMenu), () => ShowMainMenu(true),
                 new Vector2(0.54f, 0.10f), new Vector2(0.9f, 0.24f));
         }
 
@@ -551,7 +587,7 @@ namespace OrdinaryFronts
         {
             if (storyController == null)
             {
-                ShowError(initializationError ?? "Hikâye verisi kullanılamıyor.");
+                ShowError(initializationError ?? T(UiKey.ErrorStoryUnavailable));
                 return;
             }
             audioManager.PlayConfirm();
@@ -595,7 +631,7 @@ namespace OrdinaryFronts
                 introActive = false;
                 transitionBusy = false;
                 Debug.LogError(exception);
-                ShowError("Yeni oyun başlatılamadı.\n\n" + exception.Message);
+                ShowError(T(UiKey.ErrorNewGameFailed) + "\n\n" + exception.Message);
             }
         }
 
@@ -756,10 +792,10 @@ namespace OrdinaryFronts
         private void ContinueGame()
         {
             if (storyController == null) return;
-            string message;
-            if (!storyController.TryContinue(out message))
+            string messageKey;
+            if (!storyController.TryContinue(out messageKey))
             {
-                ShowError(message);
+                ShowError(T(messageKey));
                 return;
             }
             audioManager.PlayConfirm();
@@ -800,7 +836,7 @@ namespace OrdinaryFronts
             {
                 transitionBusy = false;
                 Debug.LogError(exception);
-                ShowError("Seçim uygulanamadı.\n\n" + exception.Message);
+                ShowError(T(UiKey.ErrorChoiceFailed) + "\n\n" + exception.Message);
                 yield break;
             }
 
@@ -852,9 +888,14 @@ namespace OrdinaryFronts
             chapterText.text = (node.act ?? string.Empty).ToUpperInvariant();
             dateLocationText.text = (node.date ?? string.Empty) + "   ·   " + (node.location ?? string.Empty);
             storyBodyText.text = node.body ?? string.Empty;
-            string echo = storyController.ConsumeEchoes(node);
-            bool hasEcho = !string.IsNullOrWhiteSpace(echo);
-            echoText.text = echo;
+            string[] echoLines = storyController.ConsumeEchoes(node);
+            bool hasEcho = echoLines.Length > 0;
+            if (hasEcho)
+            {
+                string prefix = T(UiKey.EchoPrefix);
+                for (int i = 0; i < echoLines.Length; i++) echoLines[i] = prefix + echoLines[i];
+            }
+            echoText.text = string.Join("\n", echoLines);
             echoText.gameObject.SetActive(hasEcho);
             // Yankı yoksa anlatı gövdesi o alanı da kullanır; sabit bırakmak kartın üstünde
             // düğüm başına değişen bir boşluk bırakıyordu.
@@ -870,7 +911,7 @@ namespace OrdinaryFronts
                 ChoiceData choice = node.choices != null && i < node.choices.Length ? node.choices[i] : null;
                 bool available = choice != null && ConditionEvaluator.EvaluateAll(choice.conditions, storyController.State);
                 choiceButtons[i].interactable = available;
-                choiceLabels[i].text = choice == null ? "—" : choice.text;
+                choiceLabels[i].text = choice == null ? T(UiKey.GameplayNoChoice) : choice.text;
                 if (choiceKeyLabels[i] != null) choiceKeyLabels[i].gameObject.SetActive(choice != null);
             }
         }
@@ -909,7 +950,8 @@ namespace OrdinaryFronts
             endingTitleText.text = ending.title;
             endingBodyText.text = string.Join("\n\n", ending.paragraphs ?? Array.Empty<string>());
             string[] traces = storyController.BuildEndingTraces(ending);
-            endingTracesText.text = "İZLER\n" + (traces.Length == 0 ? "• Bu yolun ayrıntıları kayda geçti." : "• " + string.Join("\n• ", traces));
+            endingTracesText.text = T(UiKey.EndingTracesTitle) + "\n" +
+                (traces.Length == 0 ? T(UiKey.EndingTracesFallback) : "• " + string.Join("\n• ", traces));
             router.Show(AppScreen.Ending);
             SelectFirstButton(router.Get(AppScreen.Ending));
         }
@@ -968,7 +1010,7 @@ namespace OrdinaryFronts
 
         private void ShowError(string message)
         {
-            if (errorText != null) errorText.text = string.IsNullOrWhiteSpace(message) ? "Beklenmeyen bir sorun oluştu." : message;
+            if (errorText != null) errorText.text = string.IsNullOrWhiteSpace(message) ? T(UiKey.ErrorGeneric) : message;
             router.Show(AppScreen.Error);
             SelectFirstButton(router.Get(AppScreen.Error));
         }
@@ -998,6 +1040,69 @@ namespace OrdinaryFronts
         {
             settings.largeText = !settings.largeText;
             SaveAndApplySettings();
+            RefreshSettingsControls();
+        }
+
+        /// <summary>
+        /// Dili değiştirir, o dilin arayüz tablosunu ve hikâye dosyasını yükler, ardından
+        /// arayüzü yeniden kurar. Oyuncunun ilerlemesi korunur; düğüm kimlikleri diller
+        /// arasında aynı olduğu için sürmekte olan oyun kaldığı yerden okunur.
+        /// </summary>
+        private void ToggleLanguage()
+        {
+            string previous = settings.locale;
+            string next = LocalizationService.NextLocale(previous);
+            audioManager.PlayConfirm();
+
+            try
+            {
+                localization.Load(next);
+                if (storyController != null) LoadStoryForLocale(next);
+            }
+            catch (Exception exception)
+            {
+                // Yeni dil yüklenemezse eskisine geri dönülür; oyuncu metinsiz kalmaz.
+                Debug.LogError(exception);
+                localization.Load(previous);
+                if (storyController != null) LoadStoryForLocale(previous);
+                ShowError(T(UiKey.ErrorInitFailed) + "\n\n" + exception.Message);
+                return;
+            }
+
+            settings.locale = next;
+            settingsService.Save(settings);
+
+            string currentNodeId = storyController == null || storyController.State == null ? null : storyController.State.currentNodeId;
+            bool wasInGameplay = router.Current == AppScreen.Gameplay;
+
+            RebuildInterfaceForLocale();
+
+            if (wasInGameplay && currentNodeId != null)
+            {
+                StoryNode node = storyController.CurrentNode;
+                if (node != null && !node.IsEnding)
+                {
+                    RenderNodeContent(node);
+                    if (storyCardGroup != null) storyCardGroup.alpha = 1f;
+                }
+            }
+            OpenSettings(settingsReturnScreen);
+        }
+
+        /// <summary>
+        /// Arayüz metinleri kuruluşta yazıldığı için dil değişiminde ekranlar yeniden üretilir.
+        /// Yeniden kurulum, tek tek metin güncellemekten hem daha kısa hem de eksik kalma
+        /// riski taşımayan yoldur.
+        /// </summary>
+        private void RebuildInterfaceForLocale()
+        {
+            if (cardRoutine != null) { StopCoroutine(cardRoutine); cardRoutine = null; }
+            if (introRoutine != null) { StopCoroutine(introRoutine); introRoutine = null; }
+            introActive = false;
+            transitionBusy = false;
+            scalableBodyTexts.Clear();
+            BuildInterface();
+            ApplyTextScale();
             RefreshSettingsControls();
         }
 
@@ -1042,9 +1147,12 @@ namespace OrdinaryFronts
             masterSlider.SetValueWithoutNotify(settings.masterVolume);
             ambientSlider.SetValueWithoutNotify(settings.ambientVolume);
             effectsSlider.SetValueWithoutNotify(settings.effectsVolume);
-            fullscreenValueText.text = settings.fullscreen ? "Açık" : "Kapalı";
-            textSizeValueText.text = settings.largeText ? "Büyük" : "Normal";
-            motionValueText.text = settings.reduceMotion ? "Açık" : "Kapalı";
+            fullscreenValueText.text = settings.fullscreen ? T(UiKey.CommonOn) : T(UiKey.CommonOff);
+            textSizeValueText.text = settings.largeText ? T(UiKey.SettingsTextSizeLarge) : T(UiKey.SettingsTextSizeNormal);
+            motionValueText.text = settings.reduceMotion ? T(UiKey.CommonOn) : T(UiKey.CommonOff);
+            // Dil adı her zaman kendi dilinde yazılır; oyuncu anlamadığı bir dilde bile
+            // hangi seçeneğin ne olduğunu tanıyabilmelidir.
+            if (languageValueText != null) languageValueText.text = LocalizationService.DisplayName(settings.locale);
         }
 
         private void SetBackground(string key)

@@ -1,0 +1,59 @@
+{
+  "locale": "tr-TR",
+  "entries": [
+    { "key": "menu.newGame", "value": "Yeni Oyun" },
+    { "key": "menu.continue", "value": "Devam Et" },
+    { "key": "menu.settings", "value": "Ayarlar" },
+    { "key": "menu.credits", "value": "Emeği Geçenler" },
+    { "key": "menu.exit", "value": "Çıkış" },
+    { "key": "menu.context", "value": "HAMBURG · TEMMUZ 1943" },
+    { "key": "menu.inputHint", "value": "Fare veya yön tuşlarıyla gezin · Enter ile onayla" },
+
+    { "key": "gameplay.pauseHint", "value": "ESC" },
+    { "key": "gameplay.noChoice", "value": "—" },
+    { "key": "gameplay.echoPrefix", "value": "Önceki kararın yankısı — " },
+
+    { "key": "intro.skipHint", "value": "Atlamak için herhangi bir tuşa bas" },
+
+    { "key": "settings.title", "value": "Ayarlar" },
+    { "key": "settings.masterVolume", "value": "ANA SES" },
+    { "key": "settings.ambientVolume", "value": "ORTAM SESİ" },
+    { "key": "settings.effectsVolume", "value": "EFEKT SESİ" },
+    { "key": "settings.fullscreen", "value": "TAM EKRAN" },
+    { "key": "settings.textSize", "value": "METİN BOYUTU" },
+    { "key": "settings.reduceMotion", "value": "HAREKETİ AZALT" },
+    { "key": "settings.language", "value": "DİL" },
+    { "key": "settings.back", "value": "Geri" },
+    { "key": "settings.textSizeNormal", "value": "Normal" },
+    { "key": "settings.textSizeLarge", "value": "Büyük" },
+
+    { "key": "common.on", "value": "Açık" },
+    { "key": "common.off", "value": "Kapalı" },
+    { "key": "common.mainMenu", "value": "Ana Menü" },
+
+    { "key": "credits.body", "value": "TASARIM VE GELİŞTİRME\nBerat Sağır\n\nANLATI ÇERÇEVESİ\nBütün karakterler ve kişisel olaylar kurgusaldır. Tarihsel bağlam; Hamburg şehir tarihi kaynakları, müze koleksiyonları ve eğitim materyalleriyle sınanmıştır.\n\nGÖRSEL VE SES\nArşiv kâğıdı, linol baskı ve gölge tiyatrosu yaklaşımıyla bu proje için üretilmiştir. İnternetten alınmış fotoğraf, telifli müzik veya başka bir oyundan içerik kullanılmamıştır.\n\nAYRINTILI KAYNAKLAR\nProje içindeki Docs/HISTORICAL_NOTES.md dosyasındadır." },
+
+    { "key": "contentNote.title", "value": "İçerik Notu" },
+    { "key": "contentNote.body", "value": "Savaş, bombardıman, zorunlu çalışma ve devlet baskısı temaları içerir. Grafik şiddet içermez." },
+    { "key": "contentNote.continue", "value": "Devam Et" },
+
+    { "key": "pause.title", "value": "Duraklatıldı" },
+    { "key": "pause.resume", "value": "Devam Et" },
+
+    { "key": "ending.tracesTitle", "value": "İZLER" },
+    { "key": "ending.tracesFallback", "value": "• Bu yolun ayrıntıları kayda geçti." },
+    { "key": "ending.replay", "value": "Yeniden Oyna" },
+
+    { "key": "error.title", "value": "Kayıt / Veri Uyarısı" },
+    { "key": "error.generic", "value": "Beklenmeyen bir sorun oluştu." },
+    { "key": "error.storyUnavailable", "value": "Hikâye verisi kullanılamıyor." },
+    { "key": "error.initFailed", "value": "Demo verileri hazırlanamadı." },
+    { "key": "error.newGameFailed", "value": "Yeni oyun başlatılamadı." },
+    { "key": "error.choiceFailed", "value": "Seçim uygulanamadı." },
+    { "key": "error.storyValidation", "value": "Hikâye doğrulaması başarısız: " },
+
+    { "key": "save.none", "value": "Henüz devam edilebilecek bir kayıt yok." },
+    { "key": "save.unreadable", "value": "Kayıt dosyası okunamadı. Dosyanız korunuyor; yeni bir oyun başlatabilirsiniz." },
+    { "key": "save.incompatible", "value": "Kayıt bu demo sürümüyle uyumlu değil. Yeni bir oyun başlatabilirsiniz." }
+  ]
+}

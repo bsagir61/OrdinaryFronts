@@ -7,21 +7,31 @@ namespace OrdinaryFronts
 {
     public sealed class StoryRepository
     {
-        public const string RelativeStoryPath = "Story/tr-TR/hamburg_1943.json";
+        public const string StoryFileName = "hamburg_1943.json";
+
+        /// <summary>Türkçe dosyanın yolu; testler ve geriye dönük başvurular için korunur.</summary>
+        public const string RelativeStoryPath = "Story/tr-TR/" + StoryFileName;
+
+        public static string RelativePathFor(string locale)
+        {
+            return "Story/" + LocalizationService.Normalize(locale) + "/" + StoryFileName;
+        }
 
         private readonly string explicitPath;
+        private readonly string locale;
         private readonly Dictionary<string, StoryNode> index = new Dictionary<string, StoryNode>();
 
         public StoryDatabase Database { get; private set; }
 
-        public StoryRepository(string path = null)
+        public StoryRepository(string path = null, string locale = null)
         {
             explicitPath = path;
+            this.locale = LocalizationService.Normalize(locale);
         }
 
         public StoryDatabase Load()
         {
-            string path = explicitPath ?? Path.Combine(Application.streamingAssetsPath, RelativeStoryPath);
+            string path = explicitPath ?? Path.Combine(Application.streamingAssetsPath, RelativePathFor(locale));
             if (!File.Exists(path)) throw new FileNotFoundException("Hikâye verisi bulunamadı.", path);
             string json = File.ReadAllText(path);
             StoryDatabase data = JsonUtility.FromJson<StoryDatabase>(json);

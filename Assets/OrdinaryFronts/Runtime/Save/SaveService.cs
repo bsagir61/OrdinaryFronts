@@ -28,13 +28,17 @@ namespace OrdinaryFronts
             AtomicJsonFile.Write(SavePath, json);
         }
 
-        public bool TryLoad(out GameState state, out string userMessage)
+        /// <summary>
+        /// <paramref name="userMessageKey"/> doğrudan gösterilecek metni değil, arayüz dil
+        /// tablosundaki anahtarı döndürür; böylece mesaj oyuncunun seçtiği dilde görünür.
+        /// </summary>
+        public bool TryLoad(out GameState state, out string userMessageKey)
         {
             state = null;
-            userMessage = string.Empty;
+            userMessageKey = string.Empty;
             if (!HasSave)
             {
-                userMessage = "Henüz devam edilebilecek bir kayıt yok.";
+                userMessageKey = UiKey.SaveNone;
                 return false;
             }
             try
@@ -48,7 +52,7 @@ namespace OrdinaryFronts
             catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException || exception is ArgumentException || exception is InvalidDataException)
             {
                 state = null;
-                userMessage = "Kayıt dosyası okunamadı. Dosyanız korunuyor; yeni bir oyun başlatabilirsiniz.";
+                userMessageKey = UiKey.SaveUnreadable;
                 return false;
             }
         }

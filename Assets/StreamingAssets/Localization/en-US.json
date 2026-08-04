@@ -1,0 +1,59 @@
+{
+  "locale": "en-US",
+  "entries": [
+    { "key": "menu.newGame", "value": "New Game" },
+    { "key": "menu.continue", "value": "Continue" },
+    { "key": "menu.settings", "value": "Settings" },
+    { "key": "menu.credits", "value": "Credits" },
+    { "key": "menu.exit", "value": "Exit" },
+    { "key": "menu.context", "value": "HAMBURG · JULY 1943" },
+    { "key": "menu.inputHint", "value": "Navigate with the mouse or arrow keys · Confirm with Enter" },
+
+    { "key": "gameplay.pauseHint", "value": "ESC" },
+    { "key": "gameplay.noChoice", "value": "—" },
+    { "key": "gameplay.echoPrefix", "value": "An echo of an earlier decision — " },
+
+    { "key": "intro.skipHint", "value": "Press any key to skip" },
+
+    { "key": "settings.title", "value": "Settings" },
+    { "key": "settings.masterVolume", "value": "MASTER VOLUME" },
+    { "key": "settings.ambientVolume", "value": "AMBIENCE" },
+    { "key": "settings.effectsVolume", "value": "EFFECTS" },
+    { "key": "settings.fullscreen", "value": "FULLSCREEN" },
+    { "key": "settings.textSize", "value": "TEXT SIZE" },
+    { "key": "settings.reduceMotion", "value": "REDUCE MOTION" },
+    { "key": "settings.language", "value": "LANGUAGE" },
+    { "key": "settings.back", "value": "Back" },
+    { "key": "settings.textSizeNormal", "value": "Normal" },
+    { "key": "settings.textSizeLarge", "value": "Large" },
+
+    { "key": "common.on", "value": "On" },
+    { "key": "common.off", "value": "Off" },
+    { "key": "common.mainMenu", "value": "Main Menu" },
+
+    { "key": "credits.body", "value": "DESIGN AND DEVELOPMENT\nBerat Sağır\n\nNARRATIVE FRAME\nAll characters and personal events are fictional. The historical context was checked against Hamburg city history sources, museum collections and educational material.\n\nART AND SOUND\nMade for this project in an archive paper, linocut and shadow theatre idiom. No photographs taken from the internet, no licensed music and no content from another game were used.\n\nDETAILED SOURCES\nSee Docs/HISTORICAL_NOTES.md inside the project." },
+
+    { "key": "contentNote.title", "value": "Content Note" },
+    { "key": "contentNote.body", "value": "Contains themes of war, bombing, forced labour and state repression. No graphic violence." },
+    { "key": "contentNote.continue", "value": "Continue" },
+
+    { "key": "pause.title", "value": "Paused" },
+    { "key": "pause.resume", "value": "Resume" },
+
+    { "key": "ending.tracesTitle", "value": "TRACES" },
+    { "key": "ending.tracesFallback", "value": "• The details of this path went on the record." },
+    { "key": "ending.replay", "value": "Play Again" },
+
+    { "key": "error.title", "value": "Save / Data Warning" },
+    { "key": "error.generic", "value": "Something unexpected went wrong." },
+    { "key": "error.storyUnavailable", "value": "Story data is unavailable." },
+    { "key": "error.initFailed", "value": "The demo data could not be prepared." },
+    { "key": "error.newGameFailed", "value": "The new game could not be started." },
+    { "key": "error.choiceFailed", "value": "The choice could not be applied." },
+    { "key": "error.storyValidation", "value": "Story validation failed: " },
+
+    { "key": "save.none", "value": "There is no save to continue from yet." },
+    { "key": "save.unreadable", "value": "The save file could not be read. Your file is kept; you can start a new game." },
+    { "key": "save.incompatible", "value": "This save does not match the current build. You can start a new game." }
+  ]
+}

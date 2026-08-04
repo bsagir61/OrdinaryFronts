@@ -5,7 +5,7 @@ namespace OrdinaryFronts
 {
     public sealed class StoryController
     {
-        private readonly StoryRepository repository;
+        private StoryRepository repository;
         private readonly SaveService saveService;
 
         public StoryDatabase Story { get { return repository.Database; } }
@@ -34,14 +34,14 @@ namespace OrdinaryFronts
             return node;
         }
 
-        public bool TryContinue(out string userMessage)
+        public bool TryContinue(out string userMessageKey)
         {
             Initialize();
             GameState loaded;
-            if (!saveService.TryLoad(out loaded, out userMessage)) return false;
+            if (!saveService.TryLoad(out loaded, out userMessageKey)) return false;
             if (loaded.storyId != repository.Database.storyId || repository.GetNode(loaded.currentNodeId) == null)
             {
-                userMessage = "Kayıt bu demo sürümüyle uyumlu değil. Yeni bir oyun başlatabilirsiniz.";
+                userMessageKey = UiKey.SaveIncompatible;
                 return false;
             }
             State = loaded;
@@ -75,9 +75,13 @@ namespace OrdinaryFronts
             };
         }
 
-        public string ConsumeEchoes(StoryNode node)
+        /// <summary>
+        /// Görünür hâle gelen yankı satırlarını döndürür. Başa eklenen "önceki kararın yankısı"
+        /// ifadesi arayüz metnidir ve sunum katmanında dile göre eklenir.
+        /// </summary>
+        public string[] ConsumeEchoes(StoryNode node)
         {
-            if (node == null || State == null || node.echoes == null) return string.Empty;
+            if (node == null || State == null || node.echoes == null) return Array.Empty<string>();
             List<string> lines = new List<string>();
             bool changed = false;
             for (int i = 0; i < node.echoes.Length; i++)
@@ -85,12 +89,23 @@ namespace OrdinaryFronts
                 EchoData echo = node.echoes[i];
                 if (echo == null || string.IsNullOrWhiteSpace(echo.text) || State.HasSeenResult(echo.id)) continue;
                 if (!ConditionEvaluator.EvaluateAll(echo.conditions, State)) continue;
-                lines.Add("Önceki kararın yankısı — " + echo.text.Trim());
+                lines.Add(echo.text.Trim());
                 State.MarkResultSeen(echo.id);
                 changed = true;
             }
             if (changed) saveService.Save(State);
-            return string.Join("\n", lines.ToArray());
+            return lines.ToArray();
+        }
+
+        /// <summary>
+        /// Dil değiştiğinde oyuncunun ilerlemesini koruyarak hikâye kaynağını değiştirir.
+        /// Düğüm kimlikleri diller arasında aynı olduğu için mevcut durum geçerli kalır.
+        /// </summary>
+        public void SwapRepository(StoryRepository next)
+        {
+            if (next == null) throw new ArgumentNullException("next");
+            repository = next;
+            Initialize();
         }
 
         public string[] BuildEndingTraces(EndingData ending)

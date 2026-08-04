@@ -9,7 +9,9 @@ Hamburg, 1943 dikey kesiti. Proje Unity `2021.3.45f2`, 3D Built-In Render Pipeli
 3. Gerekirse **Ordinary Fronts > Build Demo Assets and Scene** menüsünü çalıştırın; bunun batch eşdeğeri `OrdinaryFronts.Editor.DemoBuilder.BuildAll` metodudur.
 4. `Assets/OrdinaryFronts/Scenes/Main.unity` sahnesini açın ve **Play** düğmesine basın.
 
-Ana menüde `Yeni Oyun`, geçerli kayıt varsa `Devam Et`, `Ayarlar`, `Emeği Geçenler` ve `Çıkış` bulunur. Seçimler fareyle veya `A`/`Sol Ok` ve `D`/`Sağ Ok` ile; duraklatma `Escape` ile çalışır.
+Oyun **varsayılan olarak İngilizce başlar**. Dil, Ayarlar ekranındaki ilk satırdan `English` ↔ `Türkçe` olarak değiştirilir; değişiklik oyunun ortasında yapılsa bile ilerleme korunur. Ayrıntılar için `Docs/GDD.md` §15.
+
+Ana menüde `New Game`, geçerli kayıt varsa `Continue`, `Settings`, `Credits` ve `Exit` bulunur. Seçimler fareyle veya `A`/`Sol Ok` ve `D`/`Sağ Ok` ile; duraklatma `Escape` ile çalışır.
 
 Oynanış ekranı üç bölgeden oluşur: ince bir başlık şeridi (bölüm · tarih · konum), nefes alan sahne illüstrasyonu ve altta arşiv kâğıdı anlatı kartı. **Görünür durum çubuğu, puan veya sayaç yoktur** — bkz. `Docs/GDD.md` §8.
 
@@ -83,8 +85,9 @@ Bu çalışma sürecinde Windows x86_64 Development Build başarıyla üretildi:
 ## İçerik ve veri
 
 - Ana sahne: `Assets/OrdinaryFronts/Scenes/Main.unity`
-- Türkçe Hamburg hikâyesi: `Assets/StreamingAssets/Story/tr-TR/hamburg_1943.json`
-- Yeni oyun açılış kurgusu: aynı dosyadaki `intro.beats` dizisi (kod değişikliği gerektirmeden düzenlenebilir; her zaman atlanabilir)
+- Hikâye verisi: `Assets/StreamingAssets/Story/<locale>/hamburg_1943.json` (`en-US`, `tr-TR`)
+- Arayüz metinleri: `Assets/StreamingAssets/Localization/<locale>.json`
+- Yeni oyun açılış kurgusu: hikâye dosyasındaki `intro.beats` dizisi (kod değişikliği gerektirmeden düzenlenebilir; her zaman atlanabilir)
 - Tasarım: `Docs/GDD.md`
 - Sanat yönü: `Docs/ART_DIRECTION.md`
 - Tarihsel kaynak ve kurgu ayrımı: `Docs/HISTORICAL_NOTES.md`

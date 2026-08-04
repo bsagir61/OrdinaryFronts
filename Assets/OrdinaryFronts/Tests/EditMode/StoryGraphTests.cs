@@ -210,7 +210,8 @@ namespace OrdinaryFronts.Tests.EditMode
                 Assert.DoesNotThrow(() => service.TryLoad(out loaded, out message));
                 Assert.That(service.TryLoad(out loaded, out message), Is.False);
                 Assert.That(loaded, Is.Null);
-                Assert.That(message, Does.Contain("okunamadı"));
+                // Servis artık dile bağlı metin değil, arayüz tablosundaki anahtarı döndürür.
+                Assert.That(message, Is.EqualTo(UiKey.SaveUnreadable));
                 Assert.That(File.Exists(service.SavePath), Is.True, "Bozuk kayıt kanıt için korunmalı.");
             }
             finally

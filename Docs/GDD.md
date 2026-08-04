@@ -210,12 +210,31 @@ Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt al
 
 Ayarlar kalıcıdır:
 
+- **Dil: English / Türkçe.**
 - Ana ses seviyesi.
 - Ortam sesi seviyesi.
 - Efekt sesi seviyesi.
 - Tam ekran.
 - Metin boyutu: Normal/Büyük.
 - Hareket azaltma.
+
+## 15. Dil ve yerelleştirme
+
+Oyun **varsayılan olarak İngilizce başlar**; ayar dosyası bulunmayan bir kurulumda dil `en-US` olur. Oyuncu dili Ayarlar ekranındaki ilk satırdan değiştirir. Dil adı her zaman kendi dilinde yazılır (`English`, `Türkçe`) ki oyuncu anlamadığı bir dilde açtığında da seçeneği tanıyabilsin; bu yüzden dil satırı listenin en üstündedir.
+
+Yerelleştirme tamamen veri katmanındadır. Yeni bir dil eklemek **kod değişikliği gerektirmez**, iki dosya eklemek yeterlidir:
+
+| Dosya | İçerik |
+|---|---|
+| `StreamingAssets/Localization/<locale>.json` | Arayüz metinleri (anahtar → değer) |
+| `StreamingAssets/Story/<locale>/hamburg_1943.json` | Hikâye verisi |
+
+Kurallar:
+
+- Arayüzde kullanılan bütün anahtarlar `UiKey` içinde sabit olarak tanımlıdır; testler her anahtarın her dilde dolu bir karşılığı olmasını zorunlu kılar.
+- Hikâye dosyaları **yalnız metinde** ayrışır. Düğüm kimlikleri, seçim kimlikleri, hedef düğümler, etkiler ve yankı kimlikleri diller arasında birebir aynı olmalıdır; bir test bunu doğrular. Bu sayede oyuncu oyunun ortasında dil değiştirse bile kaydı geçerli kalır ve aynı daldan devam eder.
+- Kayıt dosyası dil bilgisi tutmaz; ilerleme dilden bağımsızdır.
+- Bir dil dosyası yüklenemezse oyun varsayılan dile düşer ve metinsiz kalmaz.
 
 ## 15. Görsel ve ses sunumu
 
