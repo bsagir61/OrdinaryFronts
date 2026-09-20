@@ -7,12 +7,13 @@ namespace OrdinaryFronts
     {
         None,
         MainMenu,
+        StorySelect,
         Intro,
         Gameplay,
         Settings,
-        Credits,
-        ContentNote,
         Pause,
+        Journal,
+        Interlude,
         Ending,
         Error
     }

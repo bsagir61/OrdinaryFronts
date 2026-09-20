@@ -6,9 +6,10 @@ namespace OrdinaryFronts
 {
     public sealed class SaveService
     {
-        // Sürüm 2: görünür durum çubukları (StatBlock) kaldırıldı. Sürüm 1 kayıtları
-        // uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur.
-        public const int CurrentSchemaVersion = 2;
+        // Sürüm 2: görünür durum çubukları (StatBlock) kaldırıldı.
+        // Sürüm 3: izler bölüm etiketiyle saklanmaya başladı (final raporu için).
+        // Eski sürüm kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur.
+        public const int CurrentSchemaVersion = 3;
         public const string SaveFileName = "hamburg-demo-save.json";
 
         private readonly string directory;

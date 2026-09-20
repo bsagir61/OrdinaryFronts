@@ -1,0 +1,3134 @@
+{
+  "schemaVersion": 1,
+  "storyId": "neretva_1943",
+  "locale": "tr-TR",
+  "startNodeId": "kol_01_yola_cikis",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "burned_village",
+        "kicker": "YUGOSLAVYA",
+        "line": "Şubat 1943'te Alman ve İtalyan birlikleri Bosna'da dördüncü büyük harekâtı yürütür.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "mountain_column",
+        "kicker": "KAFİLE",
+        "line": "Partizanların merkez hastanesi, dört bine yakın yaralıyla dağlara çekilir.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "typhus_barn",
+        "kicker": "MİLENA RADIĆ",
+        "line": "Milena Radić bir köy ebesidir. Asker değildir; kafileye yaralı taşıdığı için katılmıştır.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "broken_bridge",
+        "kicker": "6 MART 1943",
+        "line": "Kafilenin önünde tek bir geçit vardır: Neretva üzerindeki yıkık köprü.",
+        "holdSeconds": 3.2
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "stevan",
+      "name": "Stevan Lukić",
+      "warm": "Yolun geri kalanında kağnısının yanında sana da yer ayırdı.",
+      "cold": "Çiftlikten sonra seninle ancak işi düştükçe konuştu."
+    },
+    {
+      "key": "dragica",
+      "name": "Dragica",
+      "warm": "Sedyenin ön ucunu artık yalnız seninle paylaşıyor.",
+      "cold": "Sedyeyi başkasıyla taşımayı seçti ve nedenini söylemedi."
+    },
+    {
+      "key": "peric",
+      "name": "Doktor Vlado Perić",
+      "warm": "Bildiği her şeyi sana bıraktı; defteri kimseye sormadan senin saydı.",
+      "cold": "Son günlerinde sana bir şey sormadı, bir şey de anlatmadı."
+    },
+    {
+      "key": "bogdan",
+      "name": "Rade Bogdan",
+      "warm": "Emirlerini artık önce sana veriyor; bu bir güven değil, bir alışkanlık.",
+      "cold": "Adını bir rapora yazdı; ne yazdığını hiçbir zaman öğrenmedin."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "kol_01_yola_cikis",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Prozor'un kuzeyi",
+      "imageKey": "burned_village",
+      "body": "Köyden geriye dört duvar ve ayakta kalan bacalar kaldı. Milena Radić on bir yıldır bu vadide ebelik yapıyor; bu sabah çantasında iki makara sargı, bir şişe ispirto ve bir cımbız var. Merkez hastanenin yaralıları güneye çekiliyor ve kafileye katılan herkes bir yük alıyor. Stevan Lukić'in kağnısının dingili çatlamış; onarılmazsa yükü olduğu yerde kalacak. Birkaç adım ötede bir sedyenin arka ucunu tutacak kimse yok. Milena ikisine birden yetişemez.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_lamp_fixed",
+          "text": "Bir sığınak merdiveninde de aynı seçim önüne gelmişti: lambayı onarmak ya da insanları elle indirmek. O gece lambayı seçmiştin.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shelter_light_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_stairs_guided",
+          "text": "Bir sığınak merdiveninde de aynı seçim önüne gelmişti: lambayı onarmak ya da insanları elle indirmek. O gece insanları seçmiştin.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:stairs_guided",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_switchgear",
+          "text": "Sirenler çaldığında şalteri güvene almak için tersanede kalmıştın. Kağnıyı yola çıkarmak da aynı türden bir iş: önce makine, sonra insanlar.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_01_a",
+          "text": "Stevan'ın kağnısını yola çıkar.",
+          "trace": "Kafile kalkarken Stevan'ın kırık dingilini onarmaya yardım ettin.",
+          "nextNodeId": "kol_02_kagni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_repaired",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "set",
+              "boolValue": true,
+              "text": "Onarılan kağnı, taşınamayan yaralılar için kafilenin tek tekerlekli aracı oldu."
+            }
+          ]
+        },
+        {
+          "id": "kol_01_b",
+          "text": "Sedyenin boştaki ucunu tut.",
+          "trace": "İlk sabah sedyenin arka ucunu sen tuttun.",
+          "nextNodeId": "kol_02_sedye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "carried_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sedyeyi ilk günden taşıdığın için Dragica seni kendi ekibinden saydı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_02_kagni",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Rama yolu",
+      "imageKey": "mountain_column",
+      "body": "Kağnı yola çıktı ama üstünde yalnız üç kişiye yer var. Kafilede taşınmadan yürüyemeyeceklerin sayısı bundan çok daha fazla. Stevan, ağır yaralıları yükleyip yavaş gitmeyi öneriyor. Doktor Vlado Perić ise hafif yaralıları bindirip kafilenin hızını korumak istiyor; geride kalanlar karanlıkta dağ yolunda kalır. Milena'ya soruyorlar, çünkü kimin ne kadar dayanacağını en iyi o kestiriyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ams_woman_on_cart",
+          "text": "Bir sette yaşlı bir kadını arabaya alıp çocuğu yürütmüştün. Kağnıdaki üç yer aynı soru.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_02_a",
+          "text": "Ağır yaralıları bindir, yavaş gidelim.",
+          "trace": "Kağnıya ağır yaralıları bindirdin ve kafilenin hızını düşürdün.",
+          "nextNodeId": "kol_03_kar_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "heavy_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_heavy_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ağır yaralıları bindirmen üçünün o geceyi görmesini sağladı, ama kafile karanlığa yakalandı."
+            }
+          ]
+        },
+        {
+          "id": "kol_02_b",
+          "text": "Hafif yaralıları bindir, hızı koru.",
+          "trace": "Kağnıya hafif yaralıları bindirip kafilenin hızını korudun.",
+          "nextNodeId": "kol_03_orman_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "light_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_light_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "Hız korunduğu için kafile geçidi hava kararmadan aştı; kağnıya binemeyenler yürümek zorunda kaldı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_02_sedye",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Rama yolu",
+      "imageKey": "mountain_column",
+      "body": "Sedyedeki adam Prozor'da karnından vurulmuş. Dragica on yedi yaşında ve ön ucu iki gündür bırakmıyor. Kar dizden yukarı çıkınca bir sedye dört taşıyıcı ister; oysa onlar üç kişi. Dragica sırayla dinlenerek devam etmeyi öneriyor. Stevan ise sedyeyi bırakıp adamı kağnıya yüklemeyi, kağnıdaki iki hafif yaralıyı yürütmeyi söylüyor. Adamın karnındaki yara sarsıntıya gelmez.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "kol_02_c",
+          "text": "Sırayla dinlenerek taşımaya devam edin.",
+          "trace": "Karda sedyeyi bırakmayıp sırayla dinlenerek taşıdın.",
+          "nextNodeId": "kol_03_kar_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "kept_stretcher",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_kept_stretcher",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sedyeyi bırakmadığın için adamın yarası açılmadı, fakat üçünüz de bitkin düştünüz."
+            }
+          ]
+        },
+        {
+          "id": "kol_02_d",
+          "text": "Adamı kağnıya yükleyin.",
+          "trace": "Sedyedeki adamı kağnıya yükleyip yerine iki kişiyi yürüttün.",
+          "nextNodeId": "kol_03_orman_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "man_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_man_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kağnının sarsıntısı yarayı açtı; adam akşama kadar sustu, sonra hiç konuşmadı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_03_kar_yolu",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Açık sırt",
+      "imageKey": "mountain_column",
+      "body": "Sırtın üstü açık ve kar sert. Yol buradan kısa, fakat gündüz vakti kafile kilometrelerce öteden görünür. Ağaç sınırının altındaki dolambaç yolu üç saat uzun, buna karşılık kapalı. Kafilenin başındaki siyasi komiser Rade Bogdan kararı hızlı vermek istiyor: geride kalanlar akşam ayazına yakalanır. Milena'ya soruyorlar, çünkü kaç kişinin gerçekten yürüyebileceğini bilen tek kişi o.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_cart",
+          "text": "Sabah onardığın kağnı, sırtı çıkarken tek başına yirmi kişinin yükünü taşıdı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_carry",
+          "text": "Dragica sedyenin ucunu yine sana bıraktı; başkasına güvenmiyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_03_a",
+          "text": "Sırttan geç, kısa yolu seç.",
+          "trace": "Açık sırttan geçip kısa yolu seçtin.",
+          "nextNodeId": "kol_04_koy_kalintisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "open_ridge",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_open_ridge",
+              "op": "set",
+              "boolValue": true,
+              "text": "Açık sırt kafileye üç saat kazandırdı; öğleden sonra iki uçak vadinin üzerinden geçti."
+            }
+          ]
+        },
+        {
+          "id": "kol_03_b",
+          "text": "Ağaç sınırının altından dolan.",
+          "trace": "Kafileyi ağaç sınırının altındaki uzun yola soktun.",
+          "nextNodeId": "kol_04_dere_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "tree_line",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_tree_line",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ağaçların altından gitmek kafileyi gizledi, ama üç yaralı o üç saati çıkaramadı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_03_orman_yolu",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Ağaç sınırı",
+      "imageKey": "mountain_column",
+      "body": "Ormanın içi karanlık ve yol dar. Kafilenin ortasında bir kadın doğuruyor; kimse bunu hesaba katmamıştı. Rade Bogdan durmadan yürünmesini, kadının bir sedyeye alınmasını istiyor. Milena, doğumun sedyede yürürken tamamlanamayacağını biliyor. Yarım saat durmak, kafilenin kuyruğunu karanlıkta bırakır. Yürümeye devam etmek de bir seçim; ama o seçimin bedelini kimse yüksek sesle söylemiyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_cart2",
+          "text": "Onardığın kağnı dar yolda iki kez devrildi, ama hâlâ yürüyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_carry2",
+          "text": "Sedyeyi ilk gün taşıdığını duyanlar, sana taşıyıcı gibi davranmaya başladı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_03_c",
+          "text": "Kafileyi durdur, doğumu tamamla.",
+          "trace": "Doğum için kafileyi yarım saat durdurdun.",
+          "nextNodeId": "kol_04_koy_kalintisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "birth_halt",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_birth_halt",
+              "op": "set",
+              "boolValue": true,
+              "text": "Yarım saatlik durak yüzünden kafilenin kuyruğu karanlıkta kaldı; çocuk yaşadı."
+            }
+          ]
+        },
+        {
+          "id": "kol_03_d",
+          "text": "Kadını sedyeye al, kafile yürüsün.",
+          "trace": "Kadını sedyeye alıp kafileyi yürüttün.",
+          "nextNodeId": "kol_04_dere_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "birth_moving",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_birth_moving",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kafile yürüdü ve kuyruk karanlığa yakalanmadı; kadın ertesi sabah kan kaybından öldü."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_04_koy_kalintisi",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Yanmış çiftlik",
+      "imageKey": "burned_village",
+      "body": "Yolun kenarında yanmış bir çiftlik var. Ambarın altında üç çuval mısır unu duruyor. Kilerde bir aile var; ölmüşler, üstlerini kar tutmuş. Kafilenin iki günlük yiyeceği kaldı. Rade Bogdan unu almayı ve yürümeyi söylüyor. Stevan ise bu insanları toprağa vermeden gitmenin yapılacak en kötü şey olduğunu söylüyor. Donmuş toprakta üç mezar bir saat sürer.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_ridge",
+          "text": "Sırttan geçerken kazanılan zaman, çiftlikte harcanacak saati mümkün kıldı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_open_ridge",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_birth",
+          "text": "Gece doğan çocuk kafilenin içinde elden ele taşınıyor; adını kimse koymadı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_birth_halt",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_saved_supplies",
+          "text": "Sığınakta erzağı ailen için saklamıştın. Şimdi üç çuval un ve gömülmemiş bir aile var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_04_a",
+          "text": "Unu al ve yürü.",
+          "trace": "Çiftlikteki unu alıp ölüleri gömmeden yürüdün.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "took_flour",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_took_flour",
+              "op": "set",
+              "boolValue": true,
+              "text": "Üç çuval un kafileyi dört gün daha ayakta tuttu; Stevan o günden sonra seninle az konuştu."
+            }
+          ]
+        },
+        {
+          "id": "kol_04_b",
+          "text": "Önce ölüleri göm.",
+          "trace": "Donmuş toprakta üç mezar kazılana kadar kafileyi beklettin.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "buried_dead",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_buried_dead",
+              "op": "set",
+              "boolValue": true,
+              "text": "Bir saat kaybettiniz, fakat kafilede o günden söz edenler hâlâ bunu anlatıyor."
+            }
+          ],
+          "omission": "Yanmış çiftlikteki aileyi toprağa vermedin."
+        }
+      ]
+    },
+    {
+      "id": "kol_04_dere_gecidi",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Dere geçidi",
+      "imageKey": "mountain_column",
+      "body": "Dere donmuş değil ve taşlar buzlu. Sedyeler tek tek geçirilecek; her geçiş iki kişiyi belden aşağı ıslatıyor. Islanan biri bu havada üç saat sonra yürüyemez. Dragica, sedye taşıyanların çorabını değiştirebilmesi için kafilenin karşı yakada ateş yakmasını istiyor. Ateş, vadinin yukarısından görülür. Rade Bogdan ateşe karşı; ıslak ayak, uçaktan daha az öldürür diye düşünüyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_trees",
+          "text": "Ağaçların altından gelmek kafileyi gizledi, ama dereye üç saat geç ulaştınız.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_tree_line",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_moving",
+          "text": "Sedyede doğuran kadının yeri boş; kimse o sedyeyi başka birine vermek istemiyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_birth_moving",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_04_c",
+          "text": "Karşı yakada ateş yak.",
+          "trace": "Islanan taşıyıcılar için karşı yakada ateş yaktırdın.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "lit_fire",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_lit_fire",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ateş sayesinde kimse ayağını kaybetmedi; duman vadiden görüldü mü, bilinmiyor."
+            }
+          ]
+        },
+        {
+          "id": "kol_04_d",
+          "text": "Ateş yakma, ıslak geç.",
+          "trace": "Ateş yaktırmadın, kafile ıslak geçti.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "no_fire",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_no_fire",
+              "op": "set",
+              "boolValue": true,
+              "text": "Duman çıkmadı ve kafile görülmedi; iki taşıyıcının ayak parmakları donarak karardı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_05_gece_molasi",
+      "act": "Yük",
+      "date": "20 Şubat 1943",
+      "location": "Gece molası",
+      "imageKey": "mountain_column",
+      "body": "Kafile bir yamacın rüzgâr almayan yüzünde durdu. Doktor Perić, Milena'ya bir defter uzatıyor: yaralıların adları, yaraları ve nereden geldikleri. Kendisinin buna vakti yok, elleri de titriyor. Defteri tutmak her akşam bir saat demek; sedye ekibinden çıkmak demek. Tutmamak, kafilede ölen birinin adının hiçbir yere yazılmaması demek. Perić ısrar etmiyor, sadece defteri uzatıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_notebook_saved",
+          "text": "Bir sirenin altında, mühürlü bir dolaptan birinin defterini çıkarmıştın. Şimdi biri sana kendi defterini uzatıyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_notebook_left",
+          "text": "Bir sirenin altında bir defteri dolapta bırakmıştın; vakit yoktu. Şimdi biri sana bir defter uzatıyor ve vakit yine yok.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_05_a",
+          "text": "Defteri al.",
+          "trace": "Perić'in yaralı defterini tutmayı üstlendin.",
+          "nextNodeId": "tif_06_ilk_belirti",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "keeps_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "Defteri aldığın akşamdan sonra kafilede ölen herkesin adı bir yere yazıldı."
+            }
+          ],
+          "omission": "Perić'in defterini almadın; o hafta ölenlerin adı yazılmadı."
+        },
+        {
+          "id": "kol_05_b",
+          "text": "Defteri alma, taşımaya devam et.",
+          "trace": "Defteri almayıp sedye taşımayı sürdürdün.",
+          "nextNodeId": "tif_06_kayit_defteri",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "no_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "Defteri almadın; taşıyıcı sayısı bir eksilmedi, adlar da yazılmadı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_06_ilk_belirti",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır avlusu",
+      "imageKey": "typhus_barn",
+      "body": "Defterdeki adların yanına Milena üç gündür aynı şeyi yazıyor: ateş, baş ağrısı, gövdede kızarıklık. Lekeli humma, yani tifüs. Kafilede bunu yüksek sesle söyleyen yok, çünkü söylenirse ahır boşaltılır ve hastalar dışarıda kalır. Perić bunu biliyor. Rade Bogdan henüz bilmiyor. Milena akşam raporunda ne yazacağına karar vermek zorunda, çünkü defteri o tutuyor.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_06_a",
+          "text": "Tifüsü rapora yaz.",
+          "trace": "Tifüsü akşam raporuna yazdın.",
+          "nextNodeId": "tif_07_ayirma",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "reported_typhus",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_reported_typhus",
+              "op": "set",
+              "boolValue": true,
+              "text": "Tifüsü yazdığın için ahır ayrıldı ve hastalık kafilenin tamamına yayılmadı."
+            }
+          ],
+          "omission": "Tifüsü ilk gördüğün gün rapora yazmadın."
+        },
+        {
+          "id": "tif_06_b",
+          "text": "Bir gün daha bekle.",
+          "trace": "Tifüsü rapora yazmayıp bir gün beklemeyi seçtin.",
+          "nextNodeId": "tif_07_saklama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "hid_typhus",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_hid_typhus",
+              "op": "set",
+              "boolValue": true,
+              "text": "Bir gün beklemen hastaları ahırda tuttu; o gün içinde dokuz kişi daha ateşlendi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_06_kayit_defteri",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır avlusu",
+      "imageKey": "typhus_barn",
+      "body": "Perić'in defterini kimse tutmadığı için kafilede kimin ne zamandır ateşli olduğunu bilen yok. Milena bunu bir sabah fark ediyor: aynı adamı iki gün üst üste iki ayrı sedyeye koymuşlar. Şimdi ateşlileri saymak, herkesi tek tek gezip sormak demek, bir buçuk gün demek. Saymamak, ahırdakilerin kaçının hasta olduğunu tahmine bırakmak demek.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_06_c",
+          "text": "Herkesi tek tek gez ve say.",
+          "trace": "Bir buçuk gün boyunca kafileyi tek tek gezip ateşlileri saydın.",
+          "nextNodeId": "tif_07_ayirma",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "counted_sick",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_counted_sick",
+              "op": "set",
+              "boolValue": true,
+              "text": "Saydığın liste, ahırın hangi yarısının ayrılacağını belirleyen tek belge oldu."
+            }
+          ]
+        },
+        {
+          "id": "tif_06_d",
+          "text": "Tahminle yürüt, zaman yok.",
+          "trace": "Ateşlileri saymadın, ahırı tahminle yönettin.",
+          "nextNodeId": "tif_07_saklama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "guessed_sick",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_guessed_sick",
+              "op": "set",
+              "boolValue": true,
+              "text": "Tahmin tuttu sayılır; ahırın sağlam yarısına konan on bir kişi bir hafta içinde yattı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_07_ayirma",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahırın içi",
+      "imageKey": "typhus_barn",
+      "body": "Ahır ikiye ayrıldı. Hasta tarafına giren bir daha çıkmıyor; kafile yürüdüğünde o taraf ya kağnıyla gelecek ya da gelmeyecek. Dragica'nın ateşi bu sabah çıktı. Kendisi söylemedi, Milena gözünden anladı. Onu hasta tarafa yazmak, bir sedye taşıyıcısını daha kaybetmek demek. Yazmamak, sağlam tarafta yatan otuz kişiyi tehlikeye atmak demek.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_07_a",
+          "text": "Dragica'yı hasta tarafa yaz.",
+          "trace": "Dragica'yı hasta tarafa yazdın.",
+          "nextNodeId": "tif_08_ilac_kutusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "dragica_isolated",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_dragica_isolated",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dragica'yı ayırdın; sağlam tarafta yeni ateş çıkmadı, o seninle üç gün konuşmadı."
+            }
+          ]
+        },
+        {
+          "id": "tif_07_b",
+          "text": "Yazma, yanında tut.",
+          "trace": "Dragica'yı hasta tarafa yazmayıp yanında tuttun.",
+          "nextNodeId": "tif_08_su_kuyrugu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "dragica_kept",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_dragica_kept",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dragica yanında kaldı ve yürüdü; sağlam taraftaki iki kişi ondan sonra yattı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_07_saklama",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahırın içi",
+      "imageKey": "typhus_barn",
+      "body": "Ahırda ayrım yok; hasta da sağlam da aynı samanın üstünde yatıyor. Rade Bogdan bunu öğrenince ahırı boşaltmayı ve hastaları dışarıdaki sundurmaya çıkarmayı emrediyor. Dışarısı gece eksi on. Perić emre karşı çıkacak durumda değil, iki gündür ayakta duramıyor. Emri uygulayacak olan Milena, çünkü defteri de ahırı da o tutuyor.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_07_c",
+          "text": "Emri uygula, hastaları çıkar.",
+          "trace": "Bogdan'ın emriyle hastaları ahırdan sundurmaya çıkardın.",
+          "nextNodeId": "tif_08_ilac_kutusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "obeyed_clearance",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_obeyed_clearance",
+              "op": "set",
+              "boolValue": true,
+              "text": "Hastaları çıkardın; ahırdaki bulaş durdu, sundurmada iki gecede dört kişi öldü."
+            }
+          ]
+        },
+        {
+          "id": "tif_07_d",
+          "text": "Emri uygulama, ahırı ikiye böl.",
+          "trace": "Emri uygulamayıp ahırı içeriden ikiye böldün.",
+          "nextNodeId": "tif_08_su_kuyrugu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "defied_clearance",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_defied_clearance",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ahırı bölmen kimseyi soğuğa çıkarmadı; Bogdan bunu unutmadı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_08_ilac_kutusu",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Sargı yeri",
+      "imageKey": "typhus_barn",
+      "body": "Kafilenin elinde altı ampul morfin kaldı ve yenisi gelmeyecek. İki aday var: on dokuz yaşında bir kurye, bacağı dizden aşağı parçalanmış, dört gün dayanırsa kurtulur; ve Prozor'da esir alınan İtalyan er Nello, göğsünden yaralı, kimse ne kadar dayanacağını bilmiyor. Perić karar veremiyor. Karar Milena'ya kalıyor: defter onun elinde ve ikisinin de adı o deftere yazılı.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_list",
+          "text": "Tuttuğun defter olmasa bu iki adı kimse hatırlamayacaktı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_nolist",
+          "text": "Defter tutulmadığı için ikisinin de ne zaman yaralandığını kimse söyleyemiyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_08_a",
+          "text": "Morfini kuryeye ver.",
+          "trace": "Kalan morfini bacağı parçalanan kuryeye verdin.",
+          "nextNodeId": "tif_09_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "morphine_courier",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_morphine_courier",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kurye dört günü çıkardı ve bacağını kaybederek yaşadı; Nello o geceyi bağırarak geçirdi."
+            }
+          ]
+        },
+        {
+          "id": "tif_08_b",
+          "text": "Morfini İtalyan'a ver.",
+          "trace": "Kalan morfini esir İtalyan Nello'ya verdin.",
+          "nextNodeId": "tif_09_disarida",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "morphine_nello",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_morphine_nello",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello sustu ve iki gün daha yaşadı; kurye bacağını ameliyat masasında bağırarak kaybetti."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_08_su_kuyrugu",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Kuyu başı",
+      "imageKey": "typhus_barn",
+      "body": "Tek kuyu ahırın elli adım ötesinde ve kova bir tane. Hasta tarafla sağlam taraf aynı kovadan içiyor; tifüs böyle de geçiyor. İkinci bir kova yok, ama Stevan kağnının su fıçısını verebilir; o zaman kağnı yolda su taşıyamaz ve kafile Neretva'ya kadar susuz gider. Karla su yapmak yakacak ister, yakacak da yok.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_list2",
+          "text": "Defteri tutmadığın için kuyudan kimin su taşıdığını da kimse bilmiyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_count",
+          "text": "Saydığın liste, kuyuya hangi tarafın önce gideceğini belirledi.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_counted_sick",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_08_c",
+          "text": "Fıçıyı al, iki kovaya böl.",
+          "trace": "Kağnının su fıçısını alıp hasta ve sağlam tarafı ayırdın.",
+          "nextNodeId": "tif_09_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "split_water",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_split_water",
+              "op": "set",
+              "boolValue": true,
+              "text": "İki ayrı kap, hasta ve sağlam tarafın suyunu birbirinden ayırdı; kafile yola susuz çıktı ve Neretva'ya kadar kar yaladı."
+            }
+          ]
+        },
+        {
+          "id": "tif_08_d",
+          "text": "Fıçıya dokunma, tek kovayla idare et.",
+          "trace": "Su fıçısını kağnıda bıraktın, tek kovayla idare ettin.",
+          "nextNodeId": "tif_09_disarida",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "one_bucket",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_one_bucket",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kağnı suyunu korudu; tek kova yüzünden hasta olmayanların yarısı bir hafta içinde yattı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_09_ahir_gecesi",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır, gece",
+      "imageKey": "typhus_barn",
+      "body": "Perić'in ateşi kırka çıktı. Kafilenin tek doktoru hasta tarafta yatıyor ve sabaha çıkarsa şaşırtıcı olur. Yanına girmek, bitin bir gövdeden ötekine geçmesine izin vermek demek. Girmemek, hangi şişede ne kaldığını ve hangi yaranın nasıl kapatılacağını kimsenin bilmemesi demek. Bunu ondan başka bilen yok; ancak konuşabildiği sürece anlatabilir.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_09_a",
+          "text": "İçeri gir, ne biliyorsa yazdır.",
+          "trace": "Hasta tarafa girip Perić'in bildiği her şeyi yazdın.",
+          "nextNodeId": "tif_10_alman_yarali",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "flag",
+              "key": "took_notes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_took_notes",
+              "op": "set",
+              "boolValue": true,
+              "text": "Perić'in anlattıkları defterin son sayfalarına geçti; o gece yarısı öldü."
+            }
+          ],
+          "omission": "Perić'in yanına girmedin; bildikleri onunla gitti."
+        },
+        {
+          "id": "tif_09_b",
+          "text": "Girme, kafilenin sana ihtiyacı var.",
+          "trace": "Hasta tarafa girmeyip kendini kafile için sakladın.",
+          "nextNodeId": "tif_10_kendi_atesin",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "stayed_out",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_stayed_out",
+              "op": "set",
+              "boolValue": true,
+              "text": "İçeri girmedin ve hastalanmadın; Perić'in bildikleri onunla gitti."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_09_disarida",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Sundurma",
+      "imageKey": "typhus_barn",
+      "body": "Sundurmada on dört kişi yatıyor ve iki battaniye var. Milena battaniyeleri en ağır ikisine verdi; sabaha ikisi de sağ çıktı, öbürlerinden biri çıkmadı. Bu gece aynı hesabı yeniden yapması gerekiyor. Stevan, battaniyeleri kesip on dört parçaya bölmeyi öneriyor; hiçbiri kimseyi ısıtmaz ama herkes bir şey alır. Bu, bir hesap değil, bir tercih.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_water",
+          "text": "Ayırdığın su, sundurmadakilere ayrı kaptan gitti.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_split_water",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_bucket",
+          "text": "Tek kova sundurmaya en son uğruyor; sıra onlara gelene kadar dibi görünüyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_one_bucket",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_shared_food",
+          "text": "Sığınakta suyunu ve ekmeğini paylaşmıştın. Bu gece paylaşılacak şey iki battaniye, ve on dört kişi var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_shared_street",
+          "text": "Bir kış, dolu bir arabanın yarısını sokağın ortak mutfağına vermiştin. İki battaniye de bir yük; bölünür ya da bölünmez.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_09_c",
+          "text": "Battaniyeleri en ağır ikisine ver.",
+          "trace": "Battaniyeleri yine en ağır iki hastaya verdin.",
+          "nextNodeId": "tif_10_alman_yarali",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "blankets_two",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_blankets_two",
+              "op": "set",
+              "boolValue": true,
+              "text": "İki kişi sabaha çıktı; sundurmadaki geri kalanlar seni sessizce izledi."
+            }
+          ]
+        },
+        {
+          "id": "tif_09_d",
+          "text": "Battaniyeleri kes, herkese pay et.",
+          "trace": "Battaniyeleri kesip sundurmadaki herkese pay ettin.",
+          "nextNodeId": "tif_10_kendi_atesin",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "blankets_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_blankets_shared",
+              "op": "set",
+              "boolValue": true,
+              "text": "Herkese bir parça düştü; o gece sundurmada üç kişi öldü, ikisi en ağırlardı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_10_alman_yarali",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır avlusu",
+      "imageKey": "typhus_barn",
+      "body": "Nello'nun durumu belli: götürülemez. Kafile iki gün sonra Neretva'ya iniyor ve esirler için sedye yok. Rade Bogdan, esirin bırakılmasını söylüyor; kendi yaralısını taşıyamayan bir kafilenin düşman erini taşıması savunulamaz. Stevan, adamı kağnının arkasına bağlanacak bir kızağa alabileceğini söylüyor. Kızak, kağnının hızını üçte bir düşürür.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_notes",
+          "text": "Perić'in yazdırdıkları sayesinde kızaktaki adamın sargısını doğru bağladın.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_took_notes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_morph",
+          "text": "Morfini ona vermeseydin bugün bu kararı vermene gerek kalmayacaktı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_morphine_nello",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_olek_help",
+          "text": "Hamburg'da bir Polonyalı zorunlu işçinin yanında kayıt deposuna yürümüştün. Bu kez karşındaki adam düşman üniforması giyiyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:olek_archive_help",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_10_a",
+          "text": "Nello'yu kızağa al.",
+          "trace": "Esir İtalyan'ı kağnının arkasındaki kızağa aldırdın.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "nello_taken",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_taken",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello kızakta indi; kağnı yavaşladı ve kafilenin kuyruğu bir gün geriden geldi."
+            }
+          ],
+          "omission": "Nello'yu kızağa almadın."
+        },
+        {
+          "id": "tif_10_b",
+          "text": "Nello'yu bırak.",
+          "trace": "Esir İtalyan'ı ahırda bıraktın.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "nello_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello ahırda kaldı; kafile zamanında indi ve onun adı defterde açık kaldı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_10_kendi_atesin",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır avlusu",
+      "imageKey": "typhus_barn",
+      "body": "Milena'nın kendi ateşi çıktı. Henüz yürüyebiliyor, ama başındaki ağrıyı biliyor; defterde aynı satırı yüz kere yazdı. Kendini hasta tarafa yazmak, kafilenin ayakta kalan tek sağlıkçısını kaybetmesi demek. Yazmamak, tuttuğu her sedyenin, sardığı her yaranın bulaş yolu olması demek. Kimse fark etmedi. Fark etmesi gereken tek kişi kendisi.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_out",
+          "text": "Perić'in yanına girmemiştin; ateşin oradan gelmedi, ama geldiği yer de belli değil.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_stayed_out",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_blank",
+          "text": "Kestiğin battaniye parçalarından biri şimdi senin omzunda.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_concealed",
+          "text": "Bir belge masasında askerlik çağrını çantanda tutmuştun. Şimdi saklanacak şey kendi ateşin.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_disclosed",
+          "text": "Bir belge masasında askerlik çağrını açıkça sunmuştun. Ateşini de öyle mi yazacaksın?",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_10_c",
+          "text": "Kendini hasta tarafa yaz.",
+          "trace": "Kendi ateşini deftere yazıp hasta tarafa geçtin.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "self_reported",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_self_reported",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kendini yazdın; üç gün yattın ve kalktığında kafilenin yarısı Neretva'ya inmişti."
+            }
+          ]
+        },
+        {
+          "id": "tif_10_d",
+          "text": "Yazma, ayakta kal.",
+          "trace": "Kendi ateşini kimseye söylemeyip çalışmayı sürdürdün.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "self_hidden",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_self_hidden",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ateşini sakladın ve çalıştın; o hafta kimin senden kaptığını hiçbir zaman bilemeyeceksin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_11_emir_geldi",
+      "act": "Ateş",
+      "date": "27 Şubat 1943",
+      "location": "Ahır avlusu",
+      "imageKey": "typhus_barn",
+      "body": "Emir geldi: kafile Neretva'ya inecek ve karşıya geçecek. Köprüler havaya uçuruldu, geçit tek yerde ve dar. Yürüyebilen herkes yürüyecek, yürüyemeyenler taşınacak, taşınamayanlar için karar aşağıda verilecek. Rade Bogdan, kimin hangi sıraya gireceğini gösteren listeyi istiyor. Milena'nın defteri o listenin ta kendisi ve sıra numarası koymak da ona düşüyor.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_11_a",
+          "text": "Sırayı en ağır yaralılara ver.",
+          "trace": "Geçiş sırasını en ağır yaralılara verdin.",
+          "nextNodeId": "ner_12_kanyon_kenari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "worst_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worst_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "En ağırlar öne alındı; geçit yavaşladı ve arkadakiler karanlıkta beklemek zorunda kaldı."
+            }
+          ]
+        },
+        {
+          "id": "tif_11_b",
+          "text": "Sırayı yürüyebilenlere ver.",
+          "trace": "Geçiş sırasını yürüyebilenlere verdin.",
+          "nextNodeId": "ner_12_geri_kalanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "walkers_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_walkers_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Yürüyebilenler önce geçti; geçit hızlı işledi ve sedyeler en sona kaldı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_12_kanyon_kenari",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Kanyon kenarı",
+      "imageKey": "river_gorge",
+      "body": "Neretva aşağıda ince bir şerit gibi görünüyor ve ses buraya kadar geliyor. Kanyona inen patika zikzaklı, dar ve buzlu; sedye ancak yan yatırılarak dönüyor. Stevan, kağnıyı yukarıda bırakmak zorunda. Yukarıda bırakılan her şey düşmana kalır. Kağnıyı parçalayıp sedye sırığı çıkarmak yarım gün alır; karşılığında aşağıda dört sedye daha olur.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_repair",
+          "text": "İlk sabah onardığın dingil, kağnıyla birlikte burada kalıyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_nello",
+          "text": "Kızaktaki adam patikaya sığmıyor; onu buradan taşımanın yolu yok.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_12_a",
+          "text": "Kağnıyı parçala, sedye sırığı yap.",
+          "trace": "Kağnıyı parçalayıp dört sedye sırığı çıkardın.",
+          "nextNodeId": "ner_13_koprunun_onu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_broken",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_broken",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kağnıdan çıkan sırıklarla dört sedye daha kuruldu; Stevan parçalamayı kendi eliyle yaptı."
+            }
+          ]
+        },
+        {
+          "id": "ner_12_b",
+          "text": "Kağnıyı bırak, hemen in.",
+          "trace": "Kağnıyı yukarıda bırakıp kanyona hemen indin.",
+          "nextNodeId": "ner_13_kiyi_bekleyisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kağnı sırtın üstünde kaldı; kafile yarım gün kazandı ve dört sedye eksik indi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_12_geri_kalanlar",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Kanyon kenarı",
+      "imageKey": "river_gorge",
+      "body": "Yürüyebilenler indi. Yukarıda kırk yedi kişi kaldı ve sedye sayısı on dokuz. Rade Bogdan, aradaki farkın yukarıda bırakılacağını ve bunun bir emir olduğunu söylüyor. Milena defterde o kırk yedi adı okuyabiliyor. Sedyeleri iki kez aşağı indirip yukarı çıkarmak mümkün, fakat bu patikanın gündüz vakti açık kalması demek. Karar yine listeyi tutanın.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_list",
+          "text": "Defteri tuttuğun için bu kırk yedi adın hepsini okuyabiliyorsun. Kolaylık değil bu.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_walk",
+          "text": "Yürüyebilenleri öne aldığın için aşağıda seni bekleyen kalabalık şimdiden karşıya geçti.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_walkers_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_12_c",
+          "text": "Sedyeleri iki sefer kullan.",
+          "trace": "Sedyeleri iki sefer kullanarak yukarıdaki herkesi indirmeye çalıştın.",
+          "nextNodeId": "ner_13_koprunun_onu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "two_trips",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_two_trips",
+              "op": "set",
+              "boolValue": true,
+              "text": "İki sefer yapıldı ve kırk yedi kişinin otuz biri indi; geçit gündüz açık kaldı."
+            }
+          ]
+        },
+        {
+          "id": "ner_12_d",
+          "text": "Emri uygula, tek sefer.",
+          "trace": "Emre uyup tek sefer yaptın ve geri kalanı yukarıda bıraktın.",
+          "nextNodeId": "ner_13_kiyi_bekleyisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "one_trip",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_one_trip",
+              "op": "set",
+              "boolValue": true,
+              "text": "On dokuz kişi indi; yukarıda kalan yirmi sekiz adı deftere kendi elinle çizdin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_13_koprunun_onu",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Yıkık köprü",
+      "imageKey": "broken_bridge",
+      "body": "Köprünün orta açıklığı suya sarkmış. Üzerine iki kiriş atılmış, kirişlerin üstüne enine tahta çakılmış; genişliği bir omuz kadar. Tek sıra geçiliyor ve sedye ancak dik tutularak. Aşağıda su, yukarıda açık gökyüzü var. Sıradaki kadın Milena'dan defteri isteyip kendi adını arıyor. Sırada olmayanı geçirmek, sırada olan birini geride bırakmak demek.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_cart",
+          "text": "Kağnıdan çıkan sırıklarla yapılan sedyelerden biri şu anda geçitte.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_broken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_two",
+          "text": "İkinci seferle inenler sıranın en arkasında; gündüz oldu bile.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_two_trips",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_13_a",
+          "text": "Listeye sadık kal.",
+          "trace": "Geçitte listeye sadık kaldın.",
+          "nextNodeId": "ner_14_ilk_gecis",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "held_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "Listeye uydun; sıra düzenli işledi ve sıraya yazılmayanlar kıyıda kaldı."
+            }
+          ]
+        },
+        {
+          "id": "ner_13_b",
+          "text": "Kadını sıraya al.",
+          "trace": "Listede olmayan kadını sıraya aldın.",
+          "nextNodeId": "ner_14_sedye_sirasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "broke_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_broke_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kadını sıraya aldın; onun yerine yazılı olan biri o gün geçemedi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_13_kiyi_bekleyisi",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Sol yaka",
+      "imageKey": "broken_bridge",
+      "body": "Geçitte sıra var ve sıra ilerlemiyor. Karşıda bir tıkanma olmuş; kimse ne olduğunu bilmiyor. Bekleyenlerin arasında iki sedye taşıyıcısı sırıkları bırakıp gitmeyi konuşuyor. Milena onların gitmesine engel olamaz, ama iki sedye taşıyıcısı iki sedye demek. Sıranın başına gidip nedenini sormak, yerini kaybetmek demek; kaybedilen yer bir daha alınmıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_left",
+          "text": "Yukarıda bıraktığın kağnının yerinde şimdi başka bir kafile bekliyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_one",
+          "text": "Tek seferde inenler geçti; yukarıdakiler için artık bir sıra yok.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_one_trip",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_13_c",
+          "text": "Sıranın başına git, nedenini öğren.",
+          "trace": "Yerini bırakıp tıkanmanın nedenini öğrenmeye gittin.",
+          "nextNodeId": "ner_14_ilk_gecis",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "went_forward",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_went_forward",
+              "op": "set",
+              "boolValue": true,
+              "text": "Tıkanmanın nedenini buldun ve geçit yeniden işledi; yerin en arkaya düştü."
+            }
+          ]
+        },
+        {
+          "id": "ner_13_d",
+          "text": "Yerini koru, taşıyıcıları tut.",
+          "trace": "Yerini koruyup taşıyıcıları sırada tuttun.",
+          "nextNodeId": "ner_14_sedye_sirasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "held_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_place",
+              "op": "set",
+              "boolValue": true,
+              "text": "Taşıyıcılar kaldı ve iki sedye karşıya geçti; tıkanma iki saat sürdü."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_14_ilk_gecis",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Geçit",
+      "imageKey": "broken_bridge",
+      "body": "Milena'nın sırası geldi. Elinde defter, arkasında bir sedye var. Tahtalar ıslak ve dar; iki elini birden kullanamayan geçemiyor. Defteri koltuk altına sıkıştırıp iki eliyle sedyeyi tutabilir ya da defteri bir taşıyıcıya verip kendi geçişini güvene alabilir. Defteri veren, karşıya vardığında onu bir daha bulabileceğini garanti edemez.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_hold",
+          "text": "Listeye uyduğun için sıran tam geldiğinde geldi, ne erken ne geç.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_fwd",
+          "text": "Tıkanmayı sen açtığın için bu tahtaların üstünde şimdi yürünebiliyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_went_forward",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_14_a",
+          "text": "Defteri koltuğunun altına sıkıştır, sedyeyi tut.",
+          "trace": "Defteri koltuğunun altına sıkıştırıp sedyeyi iki elinle tuttun.",
+          "nextNodeId": "ner_15_ortada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "book_kept",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_book_kept",
+              "op": "set",
+              "boolValue": true,
+              "text": "Defter koltuğunun altında kaldı ve sedye düşmedi; iki elin de doluydu."
+            }
+          ]
+        },
+        {
+          "id": "ner_14_b",
+          "text": "Defteri bir taşıyıcıya ver.",
+          "trace": "Defteri bir taşıyıcıya verip geçişini güvene aldın.",
+          "nextNodeId": "ner_15_kayan_tahta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "book_handed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_book_handed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Defteri verdin; karşıya iki elin boş vardın ve defteri bir daha görmedin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_14_sedye_sirasi",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Sedye sırası",
+      "imageKey": "broken_bridge",
+      "body": "Sedyeler tek tek geçiyor ve her geçiş iki dakika sürüyor. Sıradaki sedyede Nello yatıyor; adı listede yok, kimse onu geçirmek istemiyor. Arkasındaki sedyede kafilenin kendi yaralısı var. Milena'nın elinde defter var ve sırayı defter belirliyor. Geçidin karşı ucunda bekleyen adam, hangi sedyeyi alacağını Milena'nın işaretine bakarak seçecek.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_broke",
+          "text": "Listeyi bir kez esnettin; sıradakiler bunu gördü ve şimdi hepsi soruyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_broke_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_place",
+          "text": "Tuttuğun taşıyıcılar hâlâ yanında; sedyeler bu yüzden hâlâ geçiyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_place",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_14_c",
+          "text": "Kendi yaralınızı geçir.",
+          "trace": "Sedye sırasında kafilenin kendi yaralısını öne aldın.",
+          "nextNodeId": "ner_15_ortada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "own_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_own_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kendi yaralınız geçti; Nello'nun sedyesi kıyıda kaldı ve sıra bir daha ona gelmedi."
+            }
+          ]
+        },
+        {
+          "id": "ner_14_d",
+          "text": "Nello'nun sedyesini işaret et.",
+          "trace": "Listede olmayan esirin sedyesini işaret ettin.",
+          "nextNodeId": "ner_15_kayan_tahta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "nello_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello karşıya geçti; arkasındaki sedye o gün geçemedi ve gece kıyıda kaldı."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_15_ortada",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Geçidin ortası",
+      "imageKey": "broken_bridge",
+      "body": "Geçidin ortasında tahta kaydı. Öndeki taşıyıcı dizinin üstüne düştü ve sedye yana yattı. Sedyedeki adam tutunamıyor; ağırlığı suya doğru gidiyor. Milena sedyeyi bırakırsa kendisi ayakta kalır. Tutarsa ya ikisi de kirişin üstünde kalır ya da ikisi birden suya gider. Bu hesabın yapılacak vakti yok; elinin ne yapacağına bedeni karar veriyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_book",
+          "text": "Koltuğunun altındaki defter, tam bu anda iki elini de serbest bıraktı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_book_kept",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_own",
+          "text": "Öne aldığın yaralı bu sedyede yatıyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_own_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_15_a",
+          "text": "Sedyeyi tut.",
+          "trace": "Kayan tahtada sedyeyi bırakmadın.",
+          "nextNodeId": "ner_16_karsi_yaka",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "held_stretcher",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_stretcher",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sedyeyi bıraktığın an ikisi de suya giderdi; bırakmadın ve omzun yerinden çıktı."
+            }
+          ],
+          "omission": "Kayan tahtada sedyeyi tutmadın."
+        },
+        {
+          "id": "ner_15_b",
+          "text": "Bırak, ayakta kal.",
+          "trace": "Sedyeyi bırakıp kirişin üstünde ayakta kaldın.",
+          "nextNodeId": "ner_16_don_geri",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "let_go",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_let_go",
+              "op": "set",
+              "boolValue": true,
+              "text": "Bıraktın ve ayakta kaldın; adam suya düştü, sesi bir kez duyuldu."
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "bridge_plank",
+        "kind": "plank",
+        "chooses": true,
+        "caption": "Tahtalar ıslak. Önde bir taşıyıcı, arkada sen; sedye ikinizin arasında.",
+        "results": [
+          "il_plank_hands_held",
+          "il_plank_hands_open"
+        ]
+      }
+    },
+    {
+      "id": "ner_15_kayan_tahta",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Kirişin üstü",
+      "imageKey": "broken_bridge",
+      "body": "Karşı yakaya on adım kaldı. Arkadan bir ses geliyor: kıyıda kalanlar sıra beklemeyi bırakıp geçide dolmuş. Kiriş bu ağırlığı taşımaz. Karşıdaki adam geçidi kapatmak ve kalanları kıyıda tutmak için bağırıyor. Milena karşıya geçip geçidi kapatmaya yardım edebilir ya da geri dönüp sırayı düzeltmeye çalışabilir. Geri dönen bu geçidi bir daha aynı gün geçemez.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_hand",
+          "text": "Defteri verdiğin taşıyıcı çoktan karşıya geçti; adı bilmediğin biri.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_book_handed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_nfirst",
+          "text": "Nello'yu öne aldığın için sıradakiler artık sırayı tanımıyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_nello_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_15_c",
+          "text": "Karşıya geç, geçidi kapat.",
+          "trace": "Karşıya geçip geçidin kapatılmasına yardım ettin.",
+          "nextNodeId": "ner_16_karsi_yaka",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "closed_crossing",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_closed_crossing",
+              "op": "set",
+              "boolValue": true,
+              "text": "Geçit kapandı ve kiriş dayandı; kıyıda kalanlar bir gün daha bekledi."
+            }
+          ]
+        },
+        {
+          "id": "ner_15_d",
+          "text": "Geri dön, sırayı düzelt.",
+          "trace": "On adım kala geri dönüp sırayı düzeltmeye çalıştın.",
+          "nextNodeId": "ner_16_son_kafile",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "turned_back",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_turned_back",
+              "op": "set",
+              "boolValue": true,
+              "text": "Geri döndün ve sıra düzeldi; o gün karşıya geçmedin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_karsi_yaka",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Karşı yaka",
+      "imageKey": "broken_bridge",
+      "body": "Karşı yakada kafile yeniden toplanıyor. Kimse kaç kişi olduğunu bilmiyor; sayacak kimse de yok. Milena'nın önünde iki iş var: adları saymak ve yaralılara bakmak. İkisini birden yapamaz, çünkü kafile iki saat sonra yürüyecek. Saymak, kimin geçtiğini ve kimin geçmediğini kalıcı hâle getirir. Bakmak, şu anda nefes alan birkaç kişinin akşama da nefes almasını sağlayabilir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_held",
+          "text": "Omzun çıktığı için sargıyı tek elle bağlıyorsun.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_stretcher",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_closed",
+          "text": "Kapattığın geçidin arkasında kalanlar hâlâ karşı kıyıda görünüyor.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_closed_crossing",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kept_pantry",
+          "text": "Bir kış yükü kilerde tutmuş, sokağa vermemiştin; kiler mayısa kadar yetmişti. Karşı yakada sayım da bir kiler: kimin için tutulduğu sonra anlaşılır.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kept_pantry",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_plank_held",
+          "text": "Tahta kaydığında ellerin düşünmeden sıktı; karşı yakada avuçlarını açtığında sırığın izi duruyordu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_plank_hands_held",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_a",
+          "text": "Adları say ve yaz.",
+          "trace": "Karşı yakada önce adları sayıp yazdın.",
+          "nextNodeId": "son_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "counted_names",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_counted_names",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sayım tamamlandı; o iki saatte bakılmayan iki kişi akşama çıkmadı."
+            }
+          ]
+        },
+        {
+          "id": "ner_16_b",
+          "text": "Yaralılara bak.",
+          "trace": "Karşı yakada sayım yerine yaralılara baktın.",
+          "nextNodeId": "son_sayilmayanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "tended_wounded",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_tended_wounded",
+              "op": "set",
+              "boolValue": true,
+              "text": "İki saat boyunca yaralılara baktın; kaç kişi geçtiğini kimse bir daha bilemedi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_don_geri",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Sol yaka, gece",
+      "imageKey": "broken_bridge",
+      "body": "Milena karşıya geçmedi. Geçit akşam kapandı ve kıyıda kalanlar bir gecelik kamp kurdu; ateş yok, çünkü ateş görünür. Sabaha kadar bekleyip yeniden sıraya girmek mümkün. Ya da kanyondan yukarı çıkıp kafilenin geride bıraktıklarına dönmek mümkün; orada hâlâ yaşayan insanlar var ve onlara bakacak kimse kalmadı. İkisi aynı yöne gitmiyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_letgo",
+          "text": "Bıraktığın sedyenin sesi hâlâ aklında; bu kıyıda kimse onu sormadı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_let_go",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_flour",
+          "text": "Çiftlikten aldığın unun sonuncusu bu gece dağıtıldı.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_took_flour",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_plank_open",
+          "text": "Tahta kaydığında ellerin açıldı; bunu sen seçmedin, bedenin seçti. Kıyıda ellerine bakıp durdun.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_plank_hands_open",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_c",
+          "text": "Sabahı bekle, yeniden sıraya gir.",
+          "trace": "Kıyıda sabahı bekleyip yeniden sıraya girdin.",
+          "nextNodeId": "son_ikinci_gun",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "waited_morning",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_waited_morning",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sabah geçit yeniden açıldı; gece kıyıda üç kişi dondu."
+            }
+          ]
+        },
+        {
+          "id": "ner_16_d",
+          "text": "Kanyondan yukarı, geride kalanlara dön.",
+          "trace": "Geçidi bırakıp kanyondan yukarı, geride kalanlara döndün.",
+          "nextNodeId": "son_geride_kalanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -5
+            },
+            {
+              "type": "flag",
+              "key": "went_back_up",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_went_back_up",
+              "op": "set",
+              "boolValue": true,
+              "text": "Yukarı döndün; aşağıdaki kafile o sabah yürüdü ve seni bir daha görmedi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_son_kafile",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Sol yaka",
+      "imageKey": "broken_bridge",
+      "body": "Sıra düzeldi ve geçit gece boyunca işledi. Son grup Milena'nınki. Karşıda kafilenin geri kalanı çoktan toplanmış; burada on iki kişi ve dört sedye kaldı. Tahtalar buzlandı; gece geçişi gündüzden iki kat uzun sürüyor. Rade Bogdan karşıdan bağırıyor: ya şimdi, ya hiç. Dört sedyeyi buzda geçirmek, on iki kişinin hepsini riske atmak demek.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_turn",
+          "text": "Geri dönüp düzelttiğin sıra, bu son grubun var olmasının tek nedeni.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_turned_back",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_bur",
+          "text": "Çiftlikte mezar kazarken kullandığın kürek hâlâ sırtında.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_e",
+          "text": "Dört sedyeyi de geçir.",
+          "trace": "Son grupta dört sedyeyi de buzlu geçitten geçirdin.",
+          "nextNodeId": "son_dort_sedye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "all_four",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_all_four",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dört sedye de karşıya vardı; geçiş üç saat sürdü ve iki taşıyıcı suya düştü."
+            }
+          ],
+          "omission": "Son grupta dört sedyeyi de geçirmeyi denemedin."
+        },
+        {
+          "id": "ner_16_f",
+          "text": "Yürüyebilenleri geçir, sedyeleri bırak.",
+          "trace": "Son grupta sedyeleri bırakıp yalnız yürüyebilenleri geçirdin.",
+          "nextNodeId": "son_biten_defter",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -5
+            },
+            {
+              "type": "flag",
+              "key": "left_stretchers",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_left_stretchers",
+              "op": "set",
+              "boolValue": true,
+              "text": "Yürüyebilenler geçti; dört sedye kıyıda kaldı ve sabah orada bulundu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "son_liste",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Karşı yaka",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_liste",
+        "title": "Liste",
+        "paragraphs": [
+          "Milena karşı yakada iki saat boyunca yazdı. Geçenlerin adı, geçemeyenlerin adı, kimin nerede kaldığı. Defter kafileyle birlikte güneye gitti ve savaştan sonra bir sandıkta bulundu; içindeki dört yüz on bir addan iki yüz doksan sekizi başka hiçbir kayıtta geçmiyor.",
+          "Kendisi o iki saatte kimseye bakamadı. İki kişi öldü ve ikisinin de adı defterde yazılı; onları yazan el, onlara bakabilecek tek eldi. Milena bunu ömrü boyunca kimseye anlatmadı, ama defteri de hiç kimseye vermedi.",
+          "Tarih değişmedi. Neretva'nın karşı yakasına geçenlerin sayısı da değişmedi. Değişen tek şey, o sayının bir listesi olması oldu."
+        ],
+        "traceFallbacks": [
+          "• Kafile boyunca defteri sen tuttun.",
+          "• Geçitte sıra senin elinden geçti.",
+          "• Karşı yakada sayımı sen tamamladın.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_sayilmayanlar",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Karşı yaka",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_sayilmayanlar",
+        "title": "Sayılmayanlar",
+        "paragraphs": [
+          "Milena karşı yakadaki iki saati yaralıların başında geçirdi. Dört kişi o akşam hâlâ nefes alıyordu ve bunun nedeni oydu. Kafilenin kaç kişiyle karşıya geçtiğini kimse yazmadı; sonraki yıllarda verilen rakamlar birbirini tutmuyor ve hepsi tahmin.",
+          "Yıllar sonra bir komisyon ona kaç kişi olduklarını sordu. Bilmiyorum, dedi. Adları da bilmiyor musunuz, diye sordular. Adlarını biliyorum, dedi; yalnızca kaç olduklarını bilmiyorum."
+        ],
+        "traceFallbacks": [
+          "• Karşı yakada sayım yerine yaralıları seçtin.",
+          "• Kafilenin geçiş sayısı hiçbir yere yazılmadı.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_ikinci_gun",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Sol yaka",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_ikinci_gun",
+        "title": "İkinci Gün",
+        "paragraphs": [
+          "Geçit sabah yeniden açıldı ve Milena ikinci gün karşıya geçti. Kafilenin büyük kısmı çoktan güneye yürümüştü; kıyıda kalanlar başka bir birliğe bağlandı ve başka bir yoldan gitti. Milena bir daha aynı kafileyi görmedi.",
+          "Gece kıyıda üç kişi dondu. Üçü de yürüyebilenlerdendi; kimse onları geride bırakmadı, sıraları gelmeden sabah oldu. Bunu kimse bir emre bağlayamadı, çünkü ortada bir emir yoktu.",
+          "Tarih değişmedi: Neretva geçildi. Milena'nın kaderi değişti; bir gün geç geçmek onu başka bir yola, başka bir birliğe ve savaşın başka bir kısmına götürdü."
+        ],
+        "traceFallbacks": [
+          "• Geçidi ilk gün geçemedin.",
+          "• Kıyıda geceyi ateşsiz beklediniz.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_geride_kalanlar",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Kanyonun üstü",
+      "imageKey": "river_gorge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_geride_kalanlar",
+        "title": "Geride Kalanlar",
+        "paragraphs": [
+          "Milena karşıya geçmedi. Kanyondan yukarı çıktı ve kafilenin bıraktığı yerde yirmi sekiz kişi buldu; on dokuzu hâlâ yaşıyordu. Onlarla birlikte bir çoban kulübesine çekildi ve on bir gün orada kaldı.",
+          "On bir günün sonunda dokuz kişi kalmıştı. Bir devriye onları buldu; devriyenin hangi taraftan olduğunu Milena hiçbir zaman anlatmadı. Dokuz kişiden yedisi savaşın sonunu gördü.",
+          "Kafile geçti, cephe güneye kaydı, savaşın gidişi değişmedi. Yukarıda kalan yirmi sekiz kişiden yedisinin yaşamış olmasının tek nedeni, birinin geçidin on adım önünde geri dönmesiydi."
+        ],
+        "traceFallbacks": [
+          "• Geçidi bırakıp yukarı döndün.",
+          "• Kafileyle bağın orada koptu.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_dort_sedye",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Karşı yaka",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_dort_sedye",
+        "title": "Dört Sedye",
+        "paragraphs": [
+          "Son grup üç saatte geçti. Dört sedyenin dördü de karşı yakaya vardı. İki taşıyıcı geçemedi; biri sudan çıkarıldı, biri çıkarılamadı. Milena bu iki adı deftere yazarken elinin titremediğini fark etti ve bunu daha sonra hep hatırladı.",
+          "Dört sedyedeki dört kişiden üçü savaşın sonunu gördü. İkisi Milena'nın adını hiç öğrenmedi; karşıya onları başka eller taşıdı, o eller de adlarını söylemedi.",
+          "Tarih değişmedi. Neretva'nın geçilmesi de, geçilme tarihi de değişmedi. Değişen, o gece kaç kişinin karşıya vardığıydı."
+        ],
+        "traceFallbacks": [
+          "• Son grubu buzda sen geçirdin.",
+          "• Dört sedyenin hiçbirini bırakmadın.",
+          "• Bedeli iki taşıyıcı oldu.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_biten_defter",
+      "act": "Geçit",
+      "date": "6/7 Mart 1943",
+      "location": "Karşı yaka",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_biten_defter",
+        "title": "Kapanan Defter",
+        "paragraphs": [
+          "Yürüyebilen sekiz kişi karşıya geçti. Dört sedye kıyıda kaldı. Sabah oraya bakan devriye dört sedyeyi de bulduğunu bildirdi; içlerinde kimsenin yaşamadığını da bildirdi.",
+          "Milena defteri o gün kapattı ve bir daha açmadı. Kafile güneye yürüdü, o da yürüdü, savaş iki yıl daha sürdü ve bu iki yıl boyunca bir kez olsun ad yazmadı.",
+          "Sekiz kişi yaşadı. Dördü ölürken sekizi yaşadı ve bu, o gece kıyıda mümkün olan en iyi sayı da olabilirdi. Milena bunu hiçbir zaman kabul etmedi."
+        ],
+        "traceFallbacks": [
+          "• Son grupta sedyeleri kıyıda bıraktın.",
+          "• Sekiz kişi karşıya geçti.",
+          "• Defteri o gün kapattın.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    }
+  ]
+}

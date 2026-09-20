@@ -10,7 +10,48 @@ namespace OrdinaryFronts
         public string locale;
         public string startNodeId;
         public IntroData intro;
+        public CharacterData[] characters = Array.Empty<CharacterData>();
         public StoryNode[] nodes = Array.Empty<StoryNode>();
+    }
+
+    /// <summary>
+    /// Bir <c>relation</c> anahtarının arkasındaki kişi. İlişki değerleri bugüne kadar
+    /// birikiyor fakat hiçbir yere çıkmıyordu; final raporundaki "İnsanlar" bölümü bu
+    /// tanımı kullanarak onları cümleye çevirir.
+    /// <para>
+    /// Sayı gösterilmez ve çubuk çizilmez: durum çubukları oyundan bilerek kaldırılmıştı,
+    /// ilişkiyi bir puana çevirmek aynı hatayı geri getirirdi. Yalnız iki yön vardır ve
+    /// ikisinin de cümlesi elle yazılır.
+    /// </para>
+    /// </summary>
+    [Serializable]
+    public sealed class CharacterData
+    {
+        public string key;
+        public string name;
+
+        /// <summary>İlişki olumluya kaydığında yazılacak satır.</summary>
+        public string warm;
+
+        /// <summary>İlişki olumsuza kaydığında yazılacak satır.</summary>
+        public string cold;
+
+        /// <summary>
+        /// Bir kişinin rapora girmesi için gereken en küçük kayma. Tek bir küçük jest
+        /// (±2, ±3) kimseyi "yanında" ya da "karşında" yapmaz.
+        /// </summary>
+        public const int Threshold = 5;
+
+        public bool IsComplete
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(key)
+                    && !string.IsNullOrWhiteSpace(name)
+                    && !string.IsNullOrWhiteSpace(warm)
+                    && !string.IsNullOrWhiteSpace(cold);
+            }
+        }
     }
 
     /// <summary>
@@ -78,9 +119,68 @@ namespace OrdinaryFronts
         public ChoiceData[] choices = Array.Empty<ChoiceData>();
         public EndingData ending;
 
+        /// <summary>
+        /// Düğüme girilirken, metin gösterilmeden önce oynanan ara sahne. İsteğe bağlıdır;
+        /// tanımlı değilse düğüm doğrudan kartla açılır.
+        /// </summary>
+        public InterludeData interlude;
+
         public bool IsEnding
         {
             get { return ending != null && !string.IsNullOrWhiteSpace(ending.id); }
+        }
+
+        public bool HasInterlude
+        {
+            get { return interlude != null && interlude.IsDefined; }
+        }
+    }
+
+    /// <summary>
+    /// Ara sahne: metnin anlatamadığını ellerin yaptığı kısa, animasyonlu bir an. Bir puan
+    /// ya da başarı ölçüsü üretmez; oyuncunun o anda ne yaptığını bir iki bayrağa çevirir ve
+    /// sonraki düğümlerin gecikmeli yankıları o bayraklara bakar. Her ara sahne atlanabilir;
+    /// hareket azaltma açıkken hiç oynanmaz.
+    /// </summary>
+    [Serializable]
+    public sealed class InterludeData
+    {
+        /// <summary>Bölüm içinde tekil kimlik; tamamlandığı bilgisi kayda bu adla yazılır.</summary>
+        public string id;
+
+        /// <summary>Sahnenin türü; <see cref="StoryVocabulary.InterludeKindWalk"/> gibi.</summary>
+        public string kind;
+
+        /// <summary>Sahne açılırken bir iki saniye gösterilen yer/durum satırı.</summary>
+        public string caption;
+
+        /// <summary>
+        /// Karar sahnesi: düğüme girilirken değil, oyuncu seçim yapacağı anda oynar ve
+        /// düğümün iki seçiminden birini oyuncunun hareketiyle verir. Bu durumda
+        /// <see cref="results"/> seçim sırasıyla dizilir: ilk sonuç birinci, ikinci sonuç
+        /// ikinci seçime karşılık gelir.
+        /// </summary>
+        public bool chooses;
+
+        /// <summary>
+        /// Sahnenin üretebileceği bayrakların tamamı. Doğrulayıcı bunları bilinen bayrak
+        /// listesine ekler; böylece bir yankı henüz üretilmemiş bir bayrağa bağlanamaz.
+        /// </summary>
+        public string[] results = Array.Empty<string>();
+
+        public bool IsDefined
+        {
+            get { return !string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(kind); }
+        }
+
+        /// <summary>Hiçbir alanı dolu değil: JSON'da alan yoktu, ara sahne de yok.</summary>
+        public bool IsEmpty
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(id) && string.IsNullOrWhiteSpace(kind) && string.IsNullOrWhiteSpace(caption)
+                    && !chooses && (results == null || results.Length == 0);
+            }
         }
     }
 
@@ -91,6 +191,14 @@ namespace OrdinaryFronts
         public string text;
         public string trace;
         public string nextNodeId;
+
+        /// <summary>
+        /// Bu seçim <b>alınmadığında</b> final raporunun "Yapılmayanlar" bölümünde yazılacak
+        /// satır. İsteğe bağlıdır; yalnız ağırlığı olan seçeneklere yazılır. Boş bırakılanlar
+        /// rapora girmez. Rapor böylece yalnız yapılanların değil, bırakılanların da kaydı olur.
+        /// </summary>
+        public string omission;
+
         public ConditionData[] conditions = Array.Empty<ConditionData>();
         public EffectData[] effects = Array.Empty<EffectData>();
     }

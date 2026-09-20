@@ -1,7 +1,7 @@
 # Ordinary Fronts - Tarihsel Notlar
 
 Son kaynak kontrolü: 3 Ağustos 2026  
-Kapsam: Hamburg dikey kesiti, 24/25 Temmuz - Ağustos 1943
+Kapsam: Hamburg dikey kesiti, 24/25 Temmuz - Ağustos 1943. Neretva bölümü için aşağıdaki ayrı başlığa bakınız.
 
 ## Kullanım ilkesi
 
@@ -40,6 +40,64 @@ Anlatı, bombardımandan etkilenen Alman siviller ile Nazi rejimi tarafından zo
 - [Imperial War Museums - *Operation Gomorrah: the Hamburg firestorm raids*](https://www.iwm.org.uk/collections/item/object/1500025902), Gordon Musgrove’un 1981 tarihli çalışmasına ait bibliyografik katalog kaydıdır (IWM katalog no. LBY 81/3300). Katalog kaydı “Battle of Hamburg, July 1943” ve birleşik bombardıman harekâtıyla ilişkilidir; eserin içeriği çevrimiçi olmadığı için oyundaki somut ayrıntıların tek dayanağı olarak kullanılmamıştır.
 - [Deutsches Historisches Museum - Zwangsarbeit](https://www.dhm.de/lemo/kapitel/der-zweite-weltkrieg/industrie-und-wirtschaft/zwangsarbeit) ve [Bundeszentrale für politische Bildung - genel bakış](https://www.bpb.de/themen/nationalsozialismus-zweiter-weltkrieg/ns-zwangsarbeit/222627/ueberblick-die-nationalsozialistische-zwangsarbeit/), zorunlu çalıştırmanın ölçeği, statü farklılıkları, ırksal hiyerarşi ve denetim mekanizması için çapraz kontrol sağlar.
 - [KZ-Gedenkstätte Neuengamme zaman çizelgesi](https://www.kz-gedenkstaette-neuengamme.de/geschichte/zeittafel/), Ağustos 1943’ten itibaren toplama kampı mahkûmlarının bombalanmış şehirlerde son derece tehlikeli enkaz işlerine zorlandığını doğrular. Oyundaki Polonyalı sivil zorunlu işçi bu mahkûm kategorisiyle birleştirilmez.
+
+## Neretva 1943 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin ikinci bölümü (`neretva_1943`), Yugoslav partizanlarının merkez hastane kafilesini ve
+Neretva geçişini konu alır. **Bu bölümün tarihsel çerçevesi henüz yukarıdaki tabloda kullanılan
+biçimde kaynağa bağlanmamıştır.** Aşağıdaki liste, bölümün dayandığı iddiaları ve hangilerinin
+kurgu olduğunu açıkça kaydeder; hiçbiri "doğrulandı" sayılmamalıdır. Uydurma kaynak
+bağlantısı eklemektense iddiaları açıkta bırakmak tercih edilmiştir.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Şubat–Mart 1943'te Bosna'da yürütülen büyük Mihver harekâtı ve partizanların güneye çekilmesi | **Doğrulanmadı** — kaynak taraması yapılmalı |
+| Partizanların merkez hastanesinin binlerce yaralı ve hastayla dağlara çekilmesi | **Doğrulanmadı** — yaralı sayısı oyunda hiçbir yerde kesin rakam olarak verilmez |
+| Kafilede lekeli humma (pjegavi tifus) salgını | **Doğrulanmadı** — salgının kafile içindeki yönetimi tümüyle kurgudur |
+| Prozor'un Şubat 1943'te partizanlarca alınması ve İtalyan esirler | **Doğrulanmadı** — esir Nello ve onunla ilgili her şey kurgudur |
+| Neretva köprülerinin yıkılması ve yıkık köprü üzerine derme çatma bir geçit kurulması | **Doğrulanmadı** — geçidin oyundaki fiziksel ayrıntıları kurgudur |
+| Yaralıların karda sedyeyle taşınması, ilaç ve battaniye kıtlığı | **Doğrulanmadı** — sahnelerdeki somut sayılar dramatik kurgudur |
+
+Bölümün bütün kişileri kurgusaldır: Milena Radić, Stevan Lukić, Dragica, Dr. Vlado Perić,
+komiser Rade Bogdan ve İtalyan er Nello. Hiçbir gerçek komutan, birlik veya belgelenmiş olay
+kişiselleştirilmemiştir. Altı finalin hiçbiri harekâtın sonucunu, geçişin gerçekleşmesini veya
+tarihini değiştirmez; yalnız Milena'nın ve etrafındakilerin kaderi değişir.
+
+> Yapılacak iş: yukarıdaki altı satır için, Hamburg bölümündeki standarda uygun (kurumsal arşiv,
+> müze veya üniversite yayını düzeyinde) kaynaklar bulunmalı ve tablo ana doğrulama tablosuna
+> taşınmalıdır. Bu yapılana kadar bölüm, tarihsel doğruluk iddiası taşıyan bir materyal olarak
+> tanıtılmamalıdır.
+
+## Amsterdam 1945 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin üçüncü bölümü (`amsterdam_1945`), batı Hollanda'daki "Açlık Kışı"nı (Hongerwinter,
+1944–45) ve Amsterdam'dan Friesland'a yapılan bir yiyecek yürüyüşünü konu alır. Neretva bölümü
+gibi bu bölümün çerçevesi de henüz ana doğrulama tablosunun standardında kaynağa bağlanmamıştır.
+Aşağıdaki liste iddiaları ve kurgu sınırını kaydeder.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Eylül 1944 demiryolu grevinin ardından batı Hollanda'ya yiyecek sevkiyatının durdurulması | **Doğrulanmadı** — açılış kartında genel ifadeyle geçer |
+| Ocak 1945'te Amsterdam'da resmî tayının günde yaklaşık 500 kaloriye düşmesi | **Doğrulanmadı** — rakam "yaklaşık" olarak verilir, kesinleştirilmez |
+| Kentlerden kırsala yiyecek yürüyüşleri (hongertochten) ve Afsluitdijk üzerinden Friesland'a gidilmesi | **Doğrulanmadı** — güzergâh (Purmerend–Hoorn–Medemblik–Den Oever–Kornwerderzand–Bolsward) makul ama kaynaklanmadı |
+| Kilise komitelerinin kent çocuklarını kuzeydeki çiftliklere yerleştirmesi (kinderuitzendingen) | **Doğrulanmadı** — oyundaki komite, liste ve aile adları kurgudur |
+| Merkez mutfaklar (Centrale Keuken) ve kart başına kepçe uygulaması | **Doğrulanmadı** — "bugün iki kepçe" ayrıntısı kurgudur |
+| Elektrik kesintisiyle tramvayların durması ve ray aralarındaki ahşap blokların sökülmesi | **Doğrulanmadı** — ay ("ekimden beri") kesinleştirilmemelidir |
+| Kontrol noktalarında dönüş yükünden pay alınması, tütün ve içkiye el konması | **Doğrulanmadı** — kural "kâğıtta yok, nöbetçiye göre değişir" diye bilinçli belirsiz bırakılır |
+| Kış sonu ölümlerinin batı kentlerinde "yirmi bine yakın" olması | **Doğrulanmadı** — finallerde geçer; yaygın tahmin aralığı içinde, kesin sayı verilmez |
+| Mayıs 1945'te Kanada birliklerinin Amsterdam'a girmesi | **Doğrulanmadı** — gün verilmez |
+
+Bölümün bütün kişileri kurgusaldır: Truus Bakker, annesi, Kees, Jan Dekker, Greet Visser, Doktor
+Veen, Wiebe Hoekstra, Tjeerd de Boer, Dominee Rinsma ve Van der Meer ailesi. Hiçbir gerçek kişi,
+birlik, kurum görevlisi veya belgelenmiş tekil olay kişiselleştirilmemiştir. Alman nöbetçiler yalnız
+kimlik kontrolü ve yük payı alan görevliler olarak görünür; savaş suçu, sürgün ya da şiddet sahnesi
+yoktur. Kanal boyundaki boş evler tek cümleyle ve kimin evi olduğu söylenmeden geçer; bu, sürgün
+edilen komşuların varlığını silmemek ile onları dekor yapmamak arasındaki bilinçli sınırdır. Altı
+finalin hiçbiri kışın sonucunu, kurtuluş tarihini veya ölü sayısını değiştirmez.
+
+> Yapılacak iş: yukarıdaki satırlar için Hamburg standardında kaynak bulunmalı ve tablo ana
+> doğrulama tablosuna taşınmalıdır. Bu yapılana kadar bölüm, tarihsel doğruluk iddiası taşıyan
+> bir materyal olarak tanıtılmamalıdır.
 
 ## Kurgu güvenlik sınırları
 

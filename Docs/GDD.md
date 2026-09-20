@@ -6,7 +6,7 @@ Sunum: 2D, Built-In Render Pipeline
 
 ## 1. Yüksek seviye tanım
 
-`Ordinary Fronts`, İkinci Dünya Savaşı’nı askerî zaferlerden değil, sıradan insanların kişisel sorumluluklarından anlatan bölüm tabanlı bir seçim oyunu antolojisidir. Dikey kesit yalnızca Hamburg’u içerir. Oyuncu tarihi değiştirmez; Matthias Krüger’in kimi aradığına, kime güvendiğine, ne taşıdığına, hangi emre uyduğuna ve bu seçimlerin bedelini kiminle paylaştığına karar verir.
+`Ordinary Fronts`, İkinci Dünya Savaşı’nı askerî zaferlerden değil, sıradan insanların kişisel sorumluluklarından anlatan bölüm tabanlı bir seçim oyunu antolojisidir. Antoloji şu an üç bölüm içerir: Hamburg 1943 (bakım elektrikçisi Matthias Krüger), Neretva 1943 (köy ebesi Milena Radić) ve Amsterdam 1945 (ilkokul öğretmeni Truus Bakker). Oyuncu tarihi değiştirmez; kimi aradığına, kime güvendiğine, ne taşıdığına, hangi emre uyduğuna ve bu seçimlerin bedelini kiminle paylaştığına karar verir.
 
 İlk oynayış hedefi 20-30 dakikadır. Bir rota 14-18 anlamlı karardan oluşur. Veri seti en az 28 anlatı düğümü, en az beş erişilebilir final ve en az sekiz gecikmeli sonuç içerir. İlk anlamlı seçim 45 saniye dolmadan; ilk açık karar yankısı en geç dördüncü anlatı düğümünde görünür.
 
@@ -19,11 +19,13 @@ Sunum: 2D, Built-In Render Pipeline
 - Grafik şiddete başvurmadan toz, sıcaklık, sessizlik, belge, kesinti ve kalabalık üzerinden baskı kurmak.
 - Nazi rejimini, askerliği veya savaşı romantikleştirmeden; zorunlu çalışma ve devlet şiddetini görünür tutmak.
 
-## 3. İçerik notu ve etik çerçeve
+## 3. Etik çerçeve
 
-Yeni oyundan önce yalnızca bir kez şu not gösterilir:
+Oyunun içerdiği temalar şunlardır:
 
-> Savaş, bombardıman, zorunlu çalışma ve devlet baskısı temaları içerir. Grafik şiddet içermez.
+> Savaş, bombardıman, zorunlu çalışma ve devlet baskısı. Grafik şiddet içermez.
+
+**Bu uyarı oyun içinde bir ekran olarak gösterilmez.** Erken bir sürümde yeni oyundan önce tek seferlik bir "İçerik Notu" ekranı vardı; kaldırıldı. Uyarının kendisi geçerliliğini korur ve **mağaza sayfasında beyan edilmelidir** — Steam'in olgunluk içeriği anketi bu temaların bildirilmesini zaten gerektirir. Yayına hazırlıkta bu madde atlanmamalıdır.
 
 Tüm ana karakterler kurgusaldır. Alman sivillerin bombardımanda yaşadığı felaket anlatılırken, Nazi rejimi tarafından ırksal ve hukuki olarak hedef alınan kişiler ile yabancı zorunlu işçilerin farklı konumu açık tutulur. Matthias’ın iyi niyeti yapısal zulmü ortadan kaldırmaz. Olek’in rolü oyuncuya ahlak puanı vermek değildir; kendine ait amacı, bilgisi, sınırları ve oyuncunun teklifini reddedebilen kararları vardır.
 
@@ -113,6 +115,8 @@ Sonucu taşıyan durum bilgisi görünmez katmanda korunur (bkz. §9): bayraklar
 
 Bu bir tasarım taahhüdüdür: oynanış ekranına yüzde, kalp, yıldız veya kaynak sayacı eklenmez.
 
+Buna karşılık **ilişkiler artık bir karşılık üretir** (bkz. §11 `İnsanlar`). Bu bir sayaç değildir: oyun sırasında hiçbir yerde görünmez, sayı ya da çubuk olarak gösterilmez ve optimize edilemez. Yalnız final raporunda, belirgin biçimde kaymış kişiler için elle yazılmış birer cümle olarak çıkar. Ölçüm gerekçesi §8'dekiyle aynı yöndedir ama sonucu terstir: iki bölümde toplam `135` ilişki etkisi birikiyor ve hiçbiri okunmuyordu; değerler ya bir karşılık üretmeli ya da veriden çıkmalıydı.
+
 ## 9. Gizli durum ve koşullar
 
 Veri odaklı hikâye en az şu kavramları destekler:
@@ -164,8 +168,11 @@ Her final ekranı şunları içerir:
 
 - Final başlığı.
 - Matthias’ın kişisel sonucunu anlatan 2-4 kısa paragraf.
-- Oyuncunun önemli kararlarından 3-5 maddelik `İzler` listesi.
+- Oyuncunun kararlarını bölüm başlıklarıyla veren `İzler` listesi (rotanın tamamı).
+- Konumu belirgin biçimde değişmiş kişiler için `İnsanlar` listesi.
 - `Yeniden Oyna` ve `Ana Menü` eylemleri.
+
+`İnsanlar` listesi hikâye dosyasındaki `characters` bloğundan gelir: her `relation` anahtarı için bir ad ve iki cümle (`warm` / `cold`). Bir kişinin listeye girmesi için ilişkinin en az `±5` kaymış olması gerekir; tek bir küçük jest kimseyi "yanında" ya da "karşında" yapmaz. Nötr kalanlar hiç görünmez ve sayı asla yazılmaz.
 
 Yıldız, ahlak puanı, başarı yüzdesi veya kanonik final etiketi kullanılmaz. İzler; aile arayışı, belge, sığınak davranışı, Olek’in kararı, tersane ve tahliye gibi somut seçimleri geri çağırır.
 
@@ -173,16 +180,93 @@ Yıldız, ahlak puanı, başarı yüzdesi veya kanonik final etiketi kullanılma
 
 Tekrar oynama motivasyonu gizli içerik koleksiyonundan değil, farklı bedelleri karşılaştırmaktan gelir. Erken seçimlerin birkaç düğüm sonra farklı satır, erişim, ilişki veya rota üretmesi; aynı finale farklı `İzler` ile ulaşılabilmesi; en az beş ayrı son durum kısa demoyu yeniden oynamayı anlamlı kılar.
 
-Ana menüde kilitli antoloji bölümleri veya sahte gelecek içerik gösterilmez. Gelecekteki bölümler ülke, tarih, karakter, görsel paket ve dil verileriyle eklenebilir; Hamburg demosu bunun reklamını yapmaz.
+Ana menü doğrudan bir bölüm başlatmaz; `Savaş Hikâyeleri` ekranı bir Avrupa haritasıdır. Her oynanabilir bölüm, geçtiği yerin gerçek enlem ve boylamında (`catalog.json` içindeki `latitude`/`longitude`) bir işaret olarak durur; işaret seçildiğinde sağdaki arşiv panosu bölümün sahne görselini, tarihini ve tek cümlelik tanıtımını gösterir, hikâye oradan başlatılır. Harita kart ızgarasının yerini aldı, çünkü antolojinin iddiası aynı savaşın farklı yerlerdeki sıradan insanlarını yan yana koymaktır; yerin kendisi bu iddianın görünür hâlidir. Hazırlanmakta olan bölümlerin haritada yeri yoktur: uydurma bir işaret, ad veya tarih yanlış beklenti yaratırdı. Yeni bir bölüm eklemek için kod değişikliği gerekmez; konumlu bir katalog girdisi, iki dilde hikâye dosyası ve sahne görselleri yeterlidir.
 
-## 13. Ekran akışı
+Harita (`map_europe.png`) elle yazılmış kıyı çokgenlerinden üretilir; 11° batı–42° doğu, 35°–65° kuzey aralığını eşdikdörtgen projeksiyonla kaplar (`MapProjection`). Ayrıntı düzeyi bilinçli olarak düşüktür: bir arşiv haritasının kaba kıyı çizgisi, sınır ya da şehir adı olmadan. Sınır çizilmez, çünkü 1943'te hangi sınırın "geçerli" olduğu başlı başına bir iddiadır ve oyunun tavrı bunu söylememektir.
+
+## 13. Arşiv — oyunun kalıcı belleği
+
+Antoloji üç (ve ileride daha çok) bağımsız hikâyeden oluşur. Aynı savaşın farklı uçlarında geçen bu hikâyeler birbirini nedensel olarak etkileyemez: Hamburg'daki bir elektrikçi Bosna'daki bir ebenin ya da Amsterdam'daki bir öğretmenin kaderini değiştiremez. Fakat oyuncu aynı oyuncudur ve aynı türden sorularla karşılaşır — birine uzatılan defter, düşman sayılan birine yardım, rapordan saklanan bir şey. **Arşiv**, bu örüntüyü oyunun kendisine gösteren sistemdir.
+
+Arşiv `ordinary-fronts-archive.json` dosyasında saklanır; oynanış kaydından ayrıdır ve yeni oyunla silinmez. Bozuk ya da eksikse oyun onsuz eksiksiz çalışır. Üç mekanik buradan beslenir:
+
+### 13.1 Kesişmeler
+
+Bir bölümde tamamlanan oynanışın bayrakları, diğer bölümdeki gecikmeli yankıların koşulu olabilir (`archive` türü, `bölüm:bayrak` anahtarı). Hamburg'da sirenler çaldığında şalteri güvene alan oyuncuya, Neretva'nın ilk düğümünde kağnıyı onarma seçeneği geldiğinde oyun şunu söyler: *"Sirenler çaldığında şalteri güvene almak için tersanede kalmıştın. Kağnıyı yola çıkarmak da aynı türden bir iş: önce makine, sonra insanlar."*
+
+Kurallar:
+
+- Kesişme yalnız **tamamlanmış** bir bölüme dayanır; yarım bırakılan oynanış "yaptığın şey" sayılmaz.
+- Kesişme **nedensellik iddia etmez**. Metin her zaman oyuncunun örüntüsünden söz eder, olayların birbirine bağlı olduğunu söylemez.
+- Her iki yönde de yazılır: Neretva Hamburg'u, Hamburg Neretva'yı hatırlar. Oyuncunun hangi sırayla oynadığı fark etmez.
+- Kesişme arşivsiz ortamda **kapalı-güvenlidir**: hiçbiri yanlışlıkla tetiklenmez.
+
+Mevcut içerik: Neretva'da Hamburg'a bağlı 10, Hamburg'da Neretva'ya bağlı 9 kesişme; Amsterdam'da Hamburg ve Neretva'ya bağlı 26, Hamburg ve Neretva'da Amsterdam'a bağlı üçer kesişme. Test, her kesişmenin gerçekten var olan bir bölümün gerçekten üretilen bir bayrağına bağlandığını zorunlu kılar.
+
+### 13.2 Önceki oynanış izi
+
+Bir bölüm yeniden oynanırken, kayıt defteri o düğümde geçen sefer verilen kararı gösterir: *"Önceki oynanışta burada — Brehm'le kalıp ana şalteri güvene al."* Bu bir ipucu değildir; hangi seçeneğin "iyi" olduğuna dair hiçbir işaret taşımaz. Oyuncu kendi kaydıyla yüzleşir. Yalnız defterde görünür, oynanış kartına yazılmaz.
+
+### 13.3 Yapılmayanlar
+
+Seçimler isteğe bağlı bir `omission` metni taşıyabilir: bu seçim **alınmadığında** final raporuna yazılacak satır. Rapor böylece yalnız yapılanların değil, bırakılanların da kaydı olur: *"Yanmış çiftlikteki aileyi toprağa vermedin."* Yalnız ağırlığı olan seçeneklere yazılır (bölüm başına 5-7), raporda en çok dört satır gösterilir.
+
+### 13.4 Ne değildir
+
+Arşiv bir koleksiyon listesi ya da tamamlanma sayacı değildir. Hiçbir ekranda "6 finalden 3'ünü gördün" yazmaz. Ulaşılan finaller saklanır ama gösterilmez; saklanmalarının tek nedeni ileride bir bölümün "bu oyuncu daha önce şu finali gördü" koşulunu yazabilmesidir. §8'deki taahhüt geçerlidir.
+
+## 14. Ara sahneler — metnin anlatamadığını ellerin yapması
+
+Anlatı kartı oyuncuya ne olduğunu söyler; **ara sahne** oyuncuya o anda ne yaptığını yaptırır. Bir düğüme girilirken, metin gösterilmeden önce oynanan kısa (yarım dakika civarı), hareketli ve tek girdili bir andır. Amacı oyunun sözcük dışındaki tek dilini kurmaktır: rüzgâra karşı bir el arabasını itmenin ağırlığı bir paragrafla değil, tuşu basılı tutmanın süresiyle hissedilir.
+
+### Ne değildir
+
+- **Mini oyun değildir.** Puan, süre sınırı, başarı/başarısızlık, tekrar deneme yoktur. Ara sahnede "kaybetmek" mümkün değildir; yalnız farklı yapmak mümkündür.
+- **Refleks testi değildir.** Girdi tek ve basittir (basılı tut / bırak). Hız ya da zamanlama ödüllendirilmez.
+- **Grafı değiştirmez.** Düğümün iki seçimi aynı kalır. Giriş sahnesi onlardan önce gelir ve bağlam katar; karar sahnesi ise o iki seçimi iki hareket olarak sunar ve hangisinin verileceğine oyuncunun eli karar verir. Kural yine "tam iki seçim"dir.
+
+### Ne üretir
+
+Sahne biter ve oyuncunun yaptığı şey **bir iki bayrağa** çevrilir (`results` listesinde ilan edilmiş anahtarlar). Sonraki düğümlerin gecikmeli yankıları bu bayraklara bakar; böylece ara sahne, hikâyenin geri kalanına diğer kararlarla aynı kanaldan sızar. Aynı düğümün metni de yankıyla yapılanı hemen kaydeder ("Rüzgâr her estiğinde arabayı durdurup bekledin…"). Bayraklar oynanış kaydına yazılır ve bölüm tamamlandığında arşive geçer; yani bir ara sahnede yapılan, başka bir bölümde kesişme olabilir.
+
+### Kurallar
+
+1. **Atlanabilir.** Esc her ara sahneyi anında geçer. Geçilen sahne sonuç üretmez; ona bakan yankılar sessiz kalır, metin eksiksiz okunur.
+2. **Hareket azaltma açıkken oynanmaz.** Ayar oyuncunun ara sahne istemediğinin ilanıdır; sahne "oynandı" sayılır ve geçilir.
+3. **Bir kez oynanır.** Tamamlandığı kayda yazılır (`interlude:<id>`); kaydı yükleyen oyuncu aynı sahneyi yeniden görmez.
+4. **Yapıya dokunmaz.** Düğümler, seçimler, karar sayıları aynıdır; ara sahne eklemek ve çıkarmak hikâye grafını değiştirmez. Doğrulayıcı türü bilinmeyen, sonucu ilan edilmemiş, finale konmuş veya kimliği yinelenen ara sahneyi reddeder.
+5. **Görsel dili sahne görselleriyle aynıdır.** Hareketli parçalar (yürüyen figürler, araba, bebek arabası, kilometre taşı) arka planları çizen aynı silüet kodundan üretilir; ara sahne başka bir oyundan gelmiş gibi durmaz.
+
+### İki zamanlama
+
+- **Giriş sahnesi** (`chooses: false`): düğüme girilirken, metinden önce oynar; yalnız bayrak üretir.
+- **Karar sahnesi** (`chooses: true`): oyuncu seçim yapacağı anda oynar. Kartta iki seçenek yine görünür, tuş etiketlerinde "ellerinle karar ver" yazar; herhangi bir tuş sahneyi açar ve seçimi sahnedeki hareket verir. Sonuç listesi seçim sırasıyla dizilir (ilk sonuç birinci seçim). Geçilirse seçim düğmelere döner.
+
+### Ortak çerçeve
+
+Her sahne aynı iskeleti taşır: açılış/kapanış solması; sol üstte koyu etiket üzerinde tarih·yer damgası (oynanış başlığıyla aynı daktilo); ilk saniyelerde açılış satırı; altta tuş ipucu ve "Esc: geç"; oyunun kendi vinyet ve film greni katmanı. Anlık komutlar ("TUT — BIRAK") ekranın ortasında kısa süre görünür. Hareketli parçalar sahne arka planlarını çizen aynı silüet kodundan üretilir (dört karelik yürüyüş döngüleri, el arabası, bebek arabası, kilometre taşı, kafesli lamba, sedye).
+
+### Yavaş eklenir
+
+Her bölümde tek bir sahne var ve her sahne kendi girdisini, kendi sonucunu ve kendi yankılarını getirir; tek başına iyi durmadan ikincisi eklenmez. Sıradaki adaylar: Den Oever kontrol noktasında yükü masaya ya da battaniyenin altına koymak; Hamburg'da jeneratörü çalıştırmak; Neretva'da gece geçişinde fener tutmak.
+
+### Mevcut sahneler
+
+**Sığınak merdiveni, lamba (`hamburg_1943`, `sir_03_siginak_merdiveni`, karar sahnesi).** Elektrik kesik; sağ üstte sahanlık ve sönük acil durum lambası, sola inen taş merdiven, basamaklarda bekleyenler. İki iş aynı anda açık: A/← (ya da sağ fare) basılı tutarak kabloyu bağlamak — ışık kesik kesik güçlenir, iki kez kıvılcım atar, sonunda yanar ve sıra kendi kendine iner; ya da D/→ (sol fare) ile karanlık basamağın kenarında duraksayanın elini tutup indirmek — dördüncü kişi indiğinde gerisi elden ele gelir. Hangisi önce tamamlanırsa düğümün o seçimi verilir. Sonuçlar `il_lamp_hands` / `il_stairs_hands`; yankılar ilk dalgada (kıvılcımın yaktığı el / karanlıkta dört teşekkür) ve sabahta.
+
+**Kayan tahta (`neretva_1943`, `ner_15_ortada`, karar sahnesi).** Yıkık köprünün kirişinde önde taşıyıcı, arkada Milena, arada sedye. Kiriş ıslak: ağırlık yana açılır, oyuncu A/← D/→ ile (ya da fare tuşunu basılı tutup sağa sola götürerek) dengeyi tutar; sendeleme sayılmaz, yalnız gıcırdar. Ortada tahta kayar, öndeki diz çöker, sedye suya yatar ve iki buçuk saniyelik bir an açılır: **tut** (basılı kal) ya da **bırak** (elini çek). Hesap yok; düğümün metnindeki gibi "elinin ne yapacağına bedeni karar veriyor". Sonuçlar `il_plank_hands_held` / `il_plank_hands_open`; yankılar karşı yakada ve geri dönüşte.
+
+**Afsluitdijk, rüzgâr (`amsterdam_1945`, `set_10_afsluitdijk`, giriş sahnesi).**
+
+Yandan görünüş: gök, IJsselmeer, setin şevi, yol. Grup (Greet ve bebek arabası, Kees, arabayı arkadan iten Truus, önde kolu tutan Jan) yerinde yürür, dünya sola akar, kilometre taşları geçer. Oyuncu D / → / boşluk / fare tuşunu basılı tutarak iter. Dört bora gelir (10,7 · 11,1 · 11,4 · 11,8. kilometrelerde; her biri 3,6 saniye): kar şeritleri çoğalır, figürler öne eğilir, hız yarıdan aşağı düşer, rüzgâr sesi yükselir. Oyuncu ya iterek geçer ya bırakıp bekler; ikisi de bir şeye mal olur ve ikisi de yargılanmaz. Sonuç: her borada iten `il_wind_pushed`, herhangi birinde bekleyen `il_wind_waited`. Yankılar: aynı düğümde (Jan'ın hissettiği ağırlık / Kees'in "geçti mi" sorusu), Kornwerderzand'da (sizi geçen on kişi / akşam hissedilen kollar) ve dönüşte set yeniden geçilirken.
+
+## 15. Ekran akışı
 
 ```text
 Ana Menü
-  ├─ Yeni Oyun → tek seferlik içerik notu → açılış kurgusu (atlanabilir) → Sirenler
+  ├─ Yeni Oyun → açılış kurgusu (atlanabilir) → Sirenler
   ├─ Devam Et → son güvenli otomatik kayıt
   ├─ Ayarlar
-  ├─ Emeği Geçenler
   └─ Çıkış
 
 Oynanış → Escape → Duraklat/Ayarlar → Oynanış
@@ -190,7 +274,7 @@ Oynanış → Final → Yeniden Oyna | Ana Menü
 Bozuk kayıt → anlaşılır uyarı → Yeni Oyun | Ana Menü
 ```
 
-`Devam Et`, geçerli kayıt yoksa pasiftir. Ürün adı yalnızca ana menü ve emeği geçenler ekranında görünür; oynanış, duraklatma, ayarlar, yükleme, açılış kurgusu ve final ekranlarında büyük ürün logosu yoktur. Slogan kullanılmaz.
+`Devam Et`, geçerli kayıt yoksa pasiftir. Ürün adı yalnızca ana menüde görünür; oynanış, duraklatma, ayarlar, yükleme, açılış kurgusu ve final ekranlarında büyük ürün logosu yoktur. Slogan kullanılmaz.
 
 ### Açılış kurgusu
 
@@ -198,15 +282,23 @@ Yeni oyun, ilk anlatı düğümünden önce kısa bir açılış kurgusuyla baş
 
 - Kurgu, hikâye verisindeki `intro.beats` dizisinden okunur; kod değişikliği gerektirmeden düzenlenebilir ve yerelleştirilebilir.
 - Her kart bir sahne görseli, kısa bir tarih/yer etiketi ve tek cümlelik anlatı satırı taşır.
-- Toplam tutma süresi `20 saniyenin` altında tutulur; bu, GDD §16'daki "ilk seçim en geç 45 saniyede" kapısını korur ve otomatik testle sınanır.
+- Toplam tutma süresi `20 saniyenin` altında tutulur; bu, GDD §19'daki "ilk seçim en geç 45 saniyede" kapısını korur ve otomatik testle sınanır.
 - Kurgu **her zaman atlanabilir**: herhangi bir tuş veya tıklama doğrudan ilk düğüme geçirir. Atlama, kurguyu başlatan tıklamanın kazara sayılmaması için kısa bir gecikmeyle etkinleşir.
 - `Devam Et` açılış kurgusunu oynatmaz; kurgu yalnızca yeni oyuna aittir.
 - `Hareket azaltma` açıkken yakınlaşma, letterbox animasyonu, daktilo etkisi ve gren döngüsü kapanır; kartlar yalnızca çok kısa bir kararmayla değişir ve metin anında tam görünür.
 - Açılış kurgusu oyunun sonucunu etkilemez, durum değiştirmez ve seçim içermez.
 
-## 14. Kayıt ve ayarlar
+### Kayıt defteri
 
-Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. Kayıt; şema sürümü, bölüm/düğüm, bayraklar, ilişkiler, görülmüş yankılar, izler ve tamamlanma durumunu içerir. Durum çubukları kaldırıldığında şema sürümü `2`'ye yükseltildi; sürüm `1` kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
+Duraklatma ekranından `Kayıt Defteri` açılır. O ana kadar verilmiş kararları, final raporundaki `İzler` ile aynı veriden, bölüm başlıklarıyla gösterir.
+
+Gerekçesi ölçülebilir: bir rota 14-18 karardır ve gecikmeli yankılar oyuncunun saatler önce verdiği bir karara gönderme yapar. Araya bir oturum girdiğinde o bağ kopuyor, yankı anlamsız bir cümleye dönüşüyordu. Defter yeni bir kurgu getirmez; Neretva'da Milena'nın hikâye içinde zaten tuttuğu defterin oynanıştaki karşılığıdır.
+
+Defter salt okunurdur: içinde seçim yapılmaz, hiçbir şey açılmaz, tamamlanma yüzdesi göstermez.
+
+## 16. Kayıt ve ayarlar
+
+Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. Aynı klasörde `ordinary-fronts-archive.json` (bkz. §13) ayrı durur ve yeni oyunla silinmez. Kayıt; şema sürümü, bölüm/düğüm, bayraklar, ilişkiler, görülmüş yankılar, izler ve tamamlanma durumunu içerir. Durum çubukları kaldırıldığında şema sürümü `2`'ye yükseltildi; sürüm `1` kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
 
 Ayarlar kalıcıdır:
 
@@ -218,7 +310,7 @@ Ayarlar kalıcıdır:
 - Metin boyutu: Normal/Büyük.
 - Hareket azaltma.
 
-## 15. Dil ve yerelleştirme
+## 17. Dil ve yerelleştirme
 
 Oyun **varsayılan olarak İngilizce başlar**; ayar dosyası bulunmayan bir kurulumda dil `en-US` olur. Oyuncu dili Ayarlar ekranındaki ilk satırdan değiştirir. Dil adı her zaman kendi dilinde yazılır (`English`, `Türkçe`) ki oyuncu anlamadığı bir dilde açtığında da seçeneği tanıyabilsin; bu yüzden dil satırı listenin en üstündedir.
 
@@ -227,7 +319,10 @@ Yerelleştirme tamamen veri katmanındadır. Yeni bir dil eklemek **kod değişi
 | Dosya | İçerik |
 |---|---|
 | `StreamingAssets/Localization/<locale>.json` | Arayüz metinleri (anahtar → değer) |
-| `StreamingAssets/Story/<locale>/hamburg_1943.json` | Hikâye verisi |
+| `StreamingAssets/Story/<locale>/catalog.json` | Bölüm kataloğu (kartlar) |
+| `StreamingAssets/Story/<locale>/hamburg_1943.json` | Hamburg bölümünün hikâye verisi |
+| `StreamingAssets/Story/<locale>/neretva_1943.json` | Neretva bölümünün hikâye verisi |
+| `StreamingAssets/Story/<locale>/amsterdam_1945.json` | Amsterdam bölümünün hikâye verisi |
 
 Kurallar:
 
@@ -236,13 +331,13 @@ Kurallar:
 - Kayıt dosyası dil bilgisi tutmaz; ilerleme dilden bağımsızdır.
 - Bir dil dosyası yüklenemezse oyun varsayılan dile düşer ve metinsiz kalmaz.
 
-## 15. Görsel ve ses sunumu
+## 18. Görsel ve ses sunumu
 
 Görsel tema `1940’lar belediye arşivi + linol baskı + editoryal gölge tiyatrosu`dur. Ayrıntılı palet, kompozisyon, sahne briefleri ve hareket kuralları [ART_DIRECTION.md](ART_DIRECTION.md) içindedir.
 
 Ses, müzik yerine düşük seviyeli özgün atmosferi öne çıkarır: uzak liman/şehir, sığınak içi düşük frekans, tren peronu, kâğıt geçişi, seçim onayı ve menü geri dönüşü. Siren kullanılırsa kısa, uzak ve düşük seviyededir; kesintisiz döngü yapılmaz.
 
-## 16. İçerik kalite kapıları
+## 19. İçerik kalite kapıları
 
 - En az 28 benzersiz ve erişilebilir anlatı düğümü.
 - Bir rotada 14-18 karar.
@@ -252,6 +347,6 @@ Ses, müzik yerine düşük seviyeli özgün atmosferi öne çıkarır: uzak lim
 - Her karar düğümünde tam iki dolu seçenek ve geçerli sonraki düğüm.
 - Ana yolda dead-end, boş kart, TODO veya sahte buton yok.
 - Beş final de 3-5 somut iz gösterir ve sıralanmaz.
-- Ürün adı yalnız ana menü ve emeği geçenler ekranı; slogan yok.
+- Ürün adı yalnız ana menü; slogan yok.
 - Grafik şiddet, savaş propagandası ve dekoratif Nazi sembolü yok.
 - Tarihsel gerçek, tanıklık ve dramatik bileşim [HISTORICAL_NOTES.md](HISTORICAL_NOTES.md) ile ayrılır.

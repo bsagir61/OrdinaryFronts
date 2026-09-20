@@ -1,0 +1,43 @@
+{
+  "locale": "en-US",
+  "entries": [
+    {
+      "storyId": "hamburg_1943",
+      "title": "Hamburg",
+      "period": "July 1943",
+      "line": "A maintenance electrician between the shipyard, an order and his sister.",
+      "imageKey": "shipyard_evening",
+      "available": true,
+      "latitude": 53.55,
+      "longitude": 9.99
+    },
+    {
+      "storyId": "neretva_1943",
+      "title": "Neretva",
+      "period": "March 1943",
+      "line": "A village midwife keeping the book of a wounded column, and a wrecked bridge.",
+      "imageKey": "broken_bridge",
+      "available": true,
+      "latitude": 43.66,
+      "longitude": 17.76
+    },
+    {
+      "storyId": "amsterdam_1945",
+      "title": "Amsterdam",
+      "period": "January 1945",
+      "line": "A schoolteacher who walks north for food in the hunger winter, and the boy on the handcart.",
+      "imageKey": "afsluitdijk",
+      "available": true,
+      "latitude": 52.37,
+      "longitude": 4.9
+    },
+    {
+      "storyId": "",
+      "title": "",
+      "period": "",
+      "line": "",
+      "imageKey": "",
+      "available": false
+    }
+  ]
+}

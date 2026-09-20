@@ -70,6 +70,7 @@ namespace OrdinaryFronts
                 }
             }
 
+            ValidateInterludes(nodes, knownFlags, issues);
             if (endingCount < 5) issues.Add("Beşten az final var: " + endingCount);
             HashSet<string> reachable = ReachableNodeIds(story, nodes);
             foreach (string id in nodes.Keys) if (!reachable.Contains(id)) issues.Add("Ulaşılamayan düğüm: " + id);
@@ -101,6 +102,7 @@ namespace OrdinaryFronts
             }
 
             ValidateIntro(story.intro, nodes, issues);
+            ValidateCharacters(story, knownRelations, issues);
             return issues;
         }
 
@@ -183,6 +185,17 @@ namespace OrdinaryFronts
                     issues.Add("Bilinmeyen koşul operasyonu: " + owner + " -> " + condition.type + "/" + condition.op);
 
                 string type = StoryVocabulary.Normalize(condition.type);
+                if (StoryVocabulary.IsArchiveType(type))
+                {
+                    // Arşiv koşulu başka bir bölümün bayrağına bakar; bu dosyanın bayrak
+                    // listesiyle denetlenemez, ama anahtar biçimi denetlenir.
+                    string archiveStory, archiveFlag;
+                    if (!StoryVocabulary.TrySplitArchiveKey(condition.key, out archiveStory, out archiveFlag))
+                        issues.Add("Arşiv anahtarı 'bölüm:bayrak' biçiminde olmalı: " + owner + " -> " + condition.key);
+                    else if (archiveStory == null || StoryRepository.SanitizeStoryId(archiveStory) != archiveStory)
+                        issues.Add("Arşiv anahtarındaki bölüm kimliği geçersiz: " + owner + " -> " + condition.key);
+                    continue;
+                }
                 if (StoryVocabulary.IsFlagType(type) && !flags.Contains(condition.key))
                     issues.Add("Üretilmeyen bayrağa bağlı yankı/koşul: " + owner + " -> " + condition.key);
                 if (type == StoryVocabulary.TypeRelation && !relations.Contains(condition.key))
@@ -213,6 +226,65 @@ namespace OrdinaryFronts
                 }
                 if (string.IsNullOrWhiteSpace(beat.imageKey) || !imageKeys.Contains(beat.imageKey))
                     issues.Add("Açılış kartında bilinmeyen görsel anahtarı: " + owner + " -> " + beat.imageKey);
+            }
+        }
+
+        /// <summary>
+        /// Kişi tanımları isteğe bağlıdır, fakat tanımlıysa eksiksiz olmalı ve hikâyede
+        /// fiilen kullanılan bir ilişki anahtarına bağlanmalıdır. Yazım hatası, final
+        /// raporunda o kişiyi sessizce hiç göstermezdi.
+        /// </summary>
+        private static void ValidateCharacters(StoryDatabase story, HashSet<string> knownRelations, List<string> issues)
+        {
+            if (story.characters == null || story.characters.Length == 0) return;
+            HashSet<string> seen = new HashSet<string>();
+            for (int i = 0; i < story.characters.Length; i++)
+            {
+                CharacterData character = story.characters[i];
+                if (character == null || !character.IsComplete)
+                {
+                    issues.Add("Eksik kişi tanımı: #" + i);
+                    continue;
+                }
+                if (!seen.Add(character.key)) issues.Add("Yinelenen kişi anahtarı: " + character.key);
+                if (!knownRelations.Contains(character.key))
+                    issues.Add("Hiçbir seçimde üretilmeyen ilişkiye bağlı kişi: " + character.key);
+            }
+        }
+
+        /// <summary>
+        /// Ara sahneler isteğe bağlıdır; tanımlıysa türü kodda karşılığı olan bir tür, kimliği
+        /// bölüm içinde tekil olmalı ve ürettiği bayraklar bilinen bayraklara katılmalıdır.
+        /// Yazım hatası olan bir tür, oyunda sahnenin sessizce atlanması demek olurdu.
+        /// </summary>
+        private static void ValidateInterludes(Dictionary<string, StoryNode> nodes, HashSet<string> knownFlags, List<string> issues)
+        {
+            HashSet<string> ids = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values)
+            {
+                // JsonUtility, alan JSON'da hiç yoksa bile boş bir nesne üretir; boş nesne
+                // "ara sahne yok" demektir, yarım doldurulmuş nesne ise hata.
+                if (node.interlude == null || node.interlude.IsEmpty) continue;
+                InterludeData interlude = node.interlude;
+                if (!interlude.IsDefined)
+                {
+                    issues.Add("Eksik ara sahne tanımı: " + node.id);
+                    continue;
+                }
+                if (node.IsEnding) issues.Add("Final düğümünde ara sahne: " + node.id);
+                if (!StoryVocabulary.IsKnownInterludeKind(interlude.kind))
+                    issues.Add("Bilinmeyen ara sahne türü: " + node.id + " -> " + interlude.kind);
+                if (!ids.Add(interlude.id)) issues.Add("Yinelenen ara sahne kimliği: " + interlude.id);
+                if (interlude.results == null || interlude.results.Length == 0)
+                    issues.Add("Sonuç üretmeyen ara sahne: " + node.id);
+                else if (interlude.chooses && interlude.results.Length < 2)
+                    issues.Add("Karar sahnesi iki seçime iki sonuç ister: " + node.id);
+                else
+                    for (int i = 0; i < interlude.results.Length; i++)
+                    {
+                        if (string.IsNullOrWhiteSpace(interlude.results[i])) issues.Add("Boş ara sahne sonucu: " + node.id);
+                        else knownFlags.Add(interlude.results[i]);
+                    }
             }
         }
 

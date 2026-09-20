@@ -1,0 +1,2384 @@
+{
+  "schemaVersion": 1,
+  "storyId": "amsterdam_1945",
+  "locale": "tr-TR",
+  "startNodeId": "kuy_01_merkez_mutfak",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "frozen_canal",
+        "kicker": "HOLLANDA",
+        "line": "Eylül 1944'te demiryolu grevinin ardından batı Hollanda'ya yiyecek sevkiyatı durdurulur. Kış erken ve sert gelir.",
+        "holdSeconds": 3.0
+      },
+      {
+        "imageKey": "frozen_canal",
+        "kicker": "AÇLIK KIŞI",
+        "line": "Ocak 1945'te Amsterdam'da resmî tayın günde beş yüz kaloriye kadar düşer. On binlerce kişi yiyecek için kırlara yürür.",
+        "holdSeconds": 3.2
+      },
+      {
+        "imageKey": "polder_road",
+        "kicker": "TRUUS BAKKER",
+        "line": "Truus Bakker bir ilkokul öğretmenidir. Okulu kömürsüzlükten kapalıdır; evde annesi ve dokuz yaşındaki yeğeni Kees vardır.",
+        "holdSeconds": 3.0
+      },
+      {
+        "imageKey": "afsluitdijk",
+        "kicker": "15 OCAK 1945",
+        "line": "Kuzeydeki çiftliklere giden tek yol otuz iki kilometrelik bir settir: Afsluitdijk.",
+        "holdSeconds": 3.0
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "kees",
+      "name": "Kees",
+      "warm": "Yolun sonunda elini senin elinden çıkarmadı.",
+      "cold": "Sorduğunda cevap veriyor; sormadığında konuşmuyor."
+    },
+    {
+      "key": "jan",
+      "name": "Jan Dekker",
+      "warm": "Arabanın ön kolunu artık senden başkasına vermiyor.",
+      "cold": "Bloemgracht'ta kapısını yine açıyor, ama artık içeri çağırmıyor."
+    },
+    {
+      "key": "greet",
+      "name": "Greet Visser",
+      "warm": "Noord'a dönerken adresini bıraktı ve mektup yazdı.",
+      "cold": "Noord'a dönerken vedalaştı; adres bırakmadı."
+    },
+    {
+      "key": "hoekstra",
+      "name": "Wiebe Hoekstra",
+      "warm": "Bolsward'dan mayısta bir çuval geldi; üstünde yalnız adın yazıyordu.",
+      "cold": "Jan'a haber gönderdi; sana göndermedi."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "kuy_01_merkez_mutfak",
+      "act": "Kuyruk",
+      "date": "15 Ocak 1945",
+      "location": "Rozengracht, merkez mutfak",
+      "imageKey": "frozen_canal",
+      "body": "Merkez mutfağın kuyruğu Rozengracht boyunca köşeye kadar uzuyor. Truus Bakker otuz altı yaşında, Jordaan'daki ilkokulda öğretmen; okul aralık ayından beri kapalı, çünkü kömür yok. Elinde üç kişilik kart var: kendisi, annesi ve dokuz yaşındaki yeğeni Kees. Kazanın başındaki kadın bugün kart başına iki kepçe verildiğini söylüyor; nedenini sormaya değmez. Arkadaki genç kadın kucağındaki bebekle ağlıyor: kartı bu sabah çalınmış ve kartsız kepçe yok. Kees'in öksürüğü gece boyunca kesilmedi.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_shared_shelter_food",
+          "text": "Bir sığınakta suyunu ve ekmeğini paylaşmıştın. O gün sıra gündelik bir şeydi; bugün kepçe o kadar gündelik değil.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_took_flour",
+          "text": "Yanmış bir çiftlikte unu alıp yürümüştün, çünkü kafile açtı. Açlığın hesabı burada da aynı hesap; yalnız kuyruk daha uzun.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:took_flour",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_01_a",
+          "text": "Annenin kepçesini kadına ver.",
+          "trace": "Merkez mutfakta annenin payını kartı çalınan kadına verdin.",
+          "nextNodeId": "kuy_02_tramvay_bloklari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "kuy_01_b",
+          "text": "Kepçeleri eve götür; kartı olmayana bir şey verilmez.",
+          "trace": "Merkez mutfakta iki kepçeyi de eve götürdün.",
+          "nextNodeId": "kuy_02_tramvay_bloklari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_ladle",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "Merkez mutfakta kartı çalınan kadına kepçeni vermedin."
+        }
+      ]
+    },
+    {
+      "id": "kuy_02_tramvay_bloklari",
+      "act": "Kuyruk",
+      "date": "15 Ocak 1945",
+      "location": "Marnixstraat, tramvay hattı",
+      "imageKey": "frozen_canal",
+      "body": "Tramvaylar ekimden beri çalışmıyor; elektrik yok. Rayların arasındaki meşe bloklar öğleden sonraları sökülüyor, sobaya en iyi giden odun bu. Komşun Jan Dekker, elli iki yaşında eski bir mavna kaptanı, levyesiyle yanında. Kanal boyundaki boş evlerin döşemeleri de sökülüyor; Truus o evlere girmiyor, kimin evi olduklarını biliyor. Bir belediye polisi yaklaşıyor. \"Bu belediye malı,\" diyor; sesi herkes kadar yorgun, paltosu herkes kadar ince. Jan levyeyi bırakmıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_gave_ladle_street",
+          "text": "Sabah kepçeni verdiğin kadın Marnixstraat'ta bir çuvalla dolaşıyor; seni görünce başını eğdi, konuşmadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_pantry_logged",
+          "text": "Hamburg'da açılmış bir kileri tutanakla teslim etmiştin. Raylar arasındaki odun için tutanak tutan yok.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:pantry_logged",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_02_a",
+          "text": "Bloklardan bir kucak da polise ayır.",
+          "trace": "Tramvay bloklarından bir kucağını polis memuruyla paylaştın.",
+          "nextNodeId": "kuy_03_jan_teklifi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "kuy_02_b",
+          "text": "Blokları bırak, Jan'ı da oradan çek.",
+          "trace": "Polis gelince blokları bırakıp Jan'ı oradan uzaklaştırdın.",
+          "nextNodeId": "kuy_03_jan_teklifi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_blocks",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_03_jan_teklifi",
+      "act": "Kuyruk",
+      "date": "16 Ocak 1945",
+      "location": "Bloemgracht, Jan'ın kapısı",
+      "imageKey": "frozen_canal",
+      "body": "Jan'ın teklifi basit: kuzeye. Afsluitdijk'i geçip Friesland'a, Bolsward yakınında çiftliği olan kuzeni Wiebe Hoekstra'ya. Beş, bilemedin altı gün. Tahta jantlı bir el arabası var; ikinci bir çift kol lazım. Annen yürüyemez. \"Ben idare ederim,\" diyor, \"çocuk burada iki hafta daha dayanamaz.\" Kapıda bir kız duruyor: Greet Visser, on dokuz yaşında, Noord'dan. Konuşulanları duymuş. Bebek arabasında bebek yok, annesinin gümüş kaşıkları var; teyzesi Harlingen'de. Yalnız gitmeye niyetli, ama yalnız gitmek istemiyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_police_coal",
+          "text": "Polis memuru sabah kapıya bir kova kömür tozu bırakmış; not yok.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_carried_first",
+          "text": "Kafilede ilk sabah sedyenin arka ucunu tutmuştun. Jan'ın aradığı da bu: ikinci uç.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_03_a",
+          "text": "Greet'in bebek arabasını el arabasına bağla; birlikte gidersiniz.",
+          "trace": "Greet Visser'i yolculuğa aldın; bebek arabasını el arabasına bağladınız.",
+          "nextNodeId": "kuy_04_ij_kontrol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_joined",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "kuy_03_b",
+          "text": "Greet'e yolu tarif et; arabada yer yok.",
+          "trace": "Greet'e yolu tarif ettin; arabada yer olmadığını söyledin.",
+          "nextNodeId": "kuy_04_ij_kontrol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ],
+          "omission": "Greet'i yola birlikte çıkmaya çağırmadın."
+        }
+      ]
+    },
+    {
+      "id": "kuy_04_ij_kontrol",
+      "act": "Kuyruk",
+      "date": "17 Ocak 1945",
+      "location": "IJ'in kuzey kıyısı, Buiksloterweg",
+      "imageKey": "polder_road",
+      "body": "Feribot IJ'i sabah karanlığında geçti; kuzey kıyıda Alman nöbetçiler şehirden çıkanların kimliklerine bakıyor. Sıra uzun: el arabaları, bebek arabaları, tahta tekerlekli bisikletler. Jan'ın kâğıdı düzgün; elli iki yaş, eski mavnacı, kimse onu iş için götürmez. Greet yanınızda. Kimliğinde Noord'daki adres yazıyor; nöbetçi neden tek başına yola çıktığını soruyor ve Greet'in Almancası yok. Kees Truus'un eteğine tutunmuş, öksürmemeye çalışıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_greet_followed",
+          "text": "Greet feribotta yine yanınızdaydı; kimse bir şey söylemedi, o da açıklamadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_greet_rope",
+          "text": "Bebek arabası el arabasının arkasında; Greet ipi gece boyunca elinden bırakmamış.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_joined",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_conscription_concealed",
+          "text": "Bir istasyonda askerlik zarfını göstermeyip yardım belgesini uzatmıştın. Nöbetçiye ne göstereceğin yine senin elinde.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_04_a",
+          "text": "Greet'i kız kardeşin olarak tanıt.",
+          "trace": "IJ kıyısındaki kontrolde Greet'i kız kardeşin olarak tanıttın.",
+          "nextNodeId": "kuy_05_purmerend",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "kuy_04_b",
+          "text": "Greet cevabını kendisi versin.",
+          "trace": "Kontrolde Greet'in kendi adına konuşmasına izin verdin.",
+          "nextNodeId": "kuy_05_purmerend",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_spoke",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_05_purmerend",
+      "act": "Kuyruk",
+      "date": "17 Ocak 1945",
+      "location": "Purmerend, okulun jimnastik salonu",
+      "imageKey": "polder_road",
+      "body": "Purmerend'de okulun jimnastik salonu geceyi geçirenlerle dolu: iki yüz kişi, aletlerin arasına serilmiş paltolar. Kees'in ateşi akşam yeniden çıktı. Truus'un çantasında on iki aspirin var, yolun tamamı için. Yan tarafta bir çift; bebekleri sıcak ve sessiz. Anne bebeğin sabahtan beri ağlamadığını söylüyor ve bunun iyi bir şey olmadığını biliyor. Salonun sorumlusu doktorun Hoorn'da olduğunu, buraya ancak yarın gelebileceğini söylüyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ladle_babies",
+          "text": "Rozengracht'ta kepçeni verdiğin kadının kucağında da bir bebek vardı. Bebekler bu kış hep aynı sessizlikle ağlıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_morphine_nello",
+          "text": "Kalan morfini bir esire vermiştin, kendi yaralınıza değil. Burada esir yok; bebek var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:morphine_nello",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_05_a",
+          "text": "Aspirinin yarısını bebeğe ver.",
+          "trace": "Purmerend'de aspirinin yarısını hasta bebeğe verdin.",
+          "nextNodeId": "set_06_beemster",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "kuy_05_b",
+          "text": "Aspirini Kees için sakla.",
+          "trace": "Purmerend'de aspirini Kees için sakladın.",
+          "nextNodeId": "set_06_beemster",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_aspirin",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 1
+            }
+          ],
+          "omission": "Purmerend'deki bebeğe aspirinden vermedin."
+        }
+      ]
+    },
+    {
+      "id": "set_06_beemster",
+      "act": "Set",
+      "date": "18 Ocak 1945",
+      "location": "Beemster polderi, Hoorn yolu",
+      "imageKey": "polder_road",
+      "body": "Polder dümdüz ve beyaz; rüzgâr kuzeydoğudan, yüze bıçak gibi. Yol boyunca yüzlerce kişi aynı yöne yürüyor ve kimse konuşmuyor. Bir çiftliğin kapısında bir adam patates satıyor: kilosu şehirdeki fiyatın on katı, para değil eşya istiyor. Truus'un takas malı babasının cep saati ve annesinin keten çarşafları. Jan, Friesland'da kuzeninin karşılıksız vereceğini söylüyor; iki gün sonra. Kees sabahtan beri bir dilim ekmek yedi ve el arabasının kenarında uyuyakaldı.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kept_ladle_rule",
+          "text": "Rozengracht'ta kartı olmayana bir şey vermemiştin. Bu çiftçi de aynı kuralı uyguluyor: eşyası olmayana patates yok.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_cart_repaired",
+          "text": "Kafileyi tek tekerlekli aracıyla yola çıkarmıştın. Jan'ın el arabası bu yolun kağnısı.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_06_a",
+          "text": "Saati beş kilo patatese ver.",
+          "trace": "Beemster'de babanın saatini beş kilo patatese verdin.",
+          "nextNodeId": "set_07_hoorn",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "set_06_b",
+          "text": "Saati sakla; Friesland'a kadar dayan.",
+          "trace": "Beemster'de saati saklayıp Friesland'a kadar dayanmayı seçtin.",
+          "nextNodeId": "set_07_hoorn",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_watch",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_07_hoorn",
+      "act": "Set",
+      "date": "18 Ocak 1945",
+      "location": "Hoorn, Grote Kerk meydanı",
+      "imageKey": "polder_road",
+      "body": "Hoorn'a akşamüstü girdiniz. Kees'in ateşi otuz dokuzun üstünde; el arabasında battaniyeye sarılı, gözleri parlak. Meydanın köşesindeki evde pirinç bir levha: Doktor Veen. Jan yürümeye devam etmekten yana. \"Her kaybettiğimiz gün dönüşte bir gün daha kar demek,\" diyor, \"Den Oever'deki nöbetçiler seti istedikleri gün kapatıyor.\" Greet bir şey demiyor; bebek arabasının tekerleği ses çıkarmaya başladı. Doktorun penceresinde ışık var.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_aspirin_six",
+          "text": "Purmerend'de verdiğin aspirinin yarısı bebekte kaldı; Kees için altı tane var.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_watch_potatoes",
+          "text": "Sabah aldığın patatesler arabanın dibinde; Kees bir tanesini soğuk soğuk yedi.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_birth_halt",
+          "text": "Kafileyi doğum için yarım saat durdurmuştun. Jan'ın \"her gün kar\" hesabı o gün Bogdan'ın hesabıydı.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:birth_halt",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_07_a",
+          "text": "Hoorn'da bir gün dur; Kees'i doktora göster.",
+          "trace": "Hoorn'da bir gün durup Kees'i doktora götürdün.",
+          "nextNodeId": "set_08a_doktor",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "set_07_b",
+          "text": "Yürümeye devam et; Medemblik'e kadar.",
+          "trace": "Hoorn'da durmayıp karanlıkta Medemblik'e yürüdün.",
+          "nextNodeId": "set_08b_medemblik",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Hoorn'da Kees'i doktora göstermedin."
+        }
+      ]
+    },
+    {
+      "id": "set_08a_doktor",
+      "act": "Set",
+      "date": "19 Ocak 1945",
+      "location": "Hoorn, Doktor Veen'in bekleme odası",
+      "imageKey": "polder_road",
+      "body": "Doktor Veen para almıyor. Kees'in göğsünü dinledi, \"bronşit, zatürre değil\" dedi ve bir şişe balık yağı verdi. Bekleme odasında Amsterdam'dan altı çocuk oturuyor, en büyüğü on iki yaşında. Kilise komitesinin Friesland'a göndermek üzere yola çıkardığı gruptan; refakatçileri Purmerend'de hastalanmış ve çocuklar iki gündür burada bekliyor. Kızılhaç'tan bir kadın Truus'un öğretmen olduğunu öğrenmiş: çocukları Den Oever'deki Kızılhaç postasına kadar götürür müsünüz? Kırk beş kilometre; sizin yolunuz.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_keeps_list",
+          "text": "Perić'in defterini tutmayı üstlenmiştin. Altı çocuk da bir liste; adlarını henüz kimse yazmadı.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_08a_a",
+          "text": "Altı çocuğu Den Oever'e kadar yanına al.",
+          "trace": "Hoorn'daki altı Amsterdam çocuğunu Den Oever'e kadar götürmeyi üstlendin.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "set_08a_b",
+          "text": "Reddet; senin elinde bir çocuk var.",
+          "trace": "Hoorn'da Kızılhaç'ın altı çocuğunu almayı reddettin.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "refused_children",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "Hoorn'da bekleyen altı çocuğu Den Oever'e götürmedin."
+        }
+      ]
+    },
+    {
+      "id": "set_08b_medemblik",
+      "act": "Set",
+      "date": "18 Ocak 1945",
+      "location": "Medemblik, bir ahırın sundurması",
+      "imageKey": "polder_road",
+      "body": "Medemblik'e gece yarısından sonra vardınız. Bir çiftçi ahırının sundurmasını açmış; içerisi yolculardan ve buhardan sıcak. Greet'in bebek arabasının tekerleği son iki kilometrede dağıldı; içindeki gümüş kaşıklar, annesinin ketenleri ve iki kilo kuru fasulye sundurmanın samanında duruyor. Jan'ın el arabası zaten dolu: sizin eşyanız, Kees, battaniyeler. Greet oturmuş tekerleğe bakıyor; ağlamıyor. Sabah beşte kalkılacak.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_refused_now_looking",
+          "text": "Amsterdam'da Greet'e arabada yer olmadığını söylemiştin. Yer şimdi de yok; fark şu ki artık ona bakıyorsun.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_cart_broken",
+          "text": "Kağnıyı parçalayıp sedye sırığı çıkarmıştın. Bir tekerlek de parçalanır; onarılır da.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_broken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_08b_a",
+          "text": "Greet'in eşyasını arabaya al; kendi çarşaflarını burada bırak.",
+          "trace": "Medemblik'te Greet'in eşyasına yer açmak için annenin çarşaflarını bıraktın.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_linen",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 4
+            }
+          ]
+        },
+        {
+          "id": "set_08b_b",
+          "text": "Tekerleği çarşaf şeritleri ve telle onar.",
+          "trace": "Medemblik'te Greet'in bebek arabasını çarşaf şeritleriyle onardın.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "fixed_pram",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_09_den_oever",
+      "act": "Set",
+      "date": "19/20 Ocak 1945",
+      "location": "Den Oever, set girişi, kontrol noktası",
+      "imageKey": "afsluitdijk",
+      "body": "Den Oever'de set başlıyor: otuz iki kilometre, iki su arasında dümdüz. Alman nöbetçiler yolcuları sabah ışığıyla bırakıyor; gece sete kimse çıkamıyor. Sıra kontrol noktasında ağır ilerliyor. El arabaları açtırılıyor, tütün ve içki alınıyor, gerisi çoğu zaman bırakılıyor. Jan'ın takas malı tütündü: on iki paket, mavna günlerinden kalma. Nöbetçi paketleri masaya dizdi. Jan konuşmuyor. Sen konuşabilirsin; nöbetçi Hollandaca anlıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_children_delivered",
+          "text": "Altı çocuğu Kızılhaç postasına teslim ettin; en küçüğü ayrılırken Kees'e eldivenini verdi.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_children_passed",
+          "text": "Hoorn'da bıraktığın altı çocuk dün Kızılhaç'ın kamyonuyla gelmiş; senden önce geçmişler.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "refused_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_no_watch_here",
+          "text": "Beemster'de saati verdin; masada nöbetçiye uzatacak parlak bir şey yok.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_tools_preserved",
+          "text": "Tersanede bakım aletlerini korumuştun. Jan'ın tütünü onun aletleri.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_09_a",
+          "text": "Kendi takas malından bir parça uzat; tütün Jan'da kalsın.",
+          "trace": "Den Oever'de Jan'ın tütünü alınmasın diye kendi takas malından verdin.",
+          "nextNodeId": "set_10_afsluitdijk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 4
+            }
+          ]
+        },
+        {
+          "id": "set_09_b",
+          "text": "Araya girme; tütün gider.",
+          "trace": "Den Oever'de Jan'ın tütünü alınırken araya girmedin.",
+          "nextNodeId": "set_10_afsluitdijk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "jan_lost_tobacco",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -3
+            }
+          ],
+          "omission": "Den Oever'de Jan'ın tütünü alınırken araya girmedin."
+        }
+      ]
+    },
+    {
+      "id": "set_10_afsluitdijk",
+      "act": "Set",
+      "date": "20 Ocak 1945",
+      "location": "Afsluitdijk, on ikinci kilometre",
+      "imageKey": "afsluitdijk",
+      "body": "Set üstünde rüzgârdan saklanacak yer yok. Solda IJsselmeer'in buzu, sağda Wadden'in gri suyu, ortada bir yol ve yolda yüzlerce insan. Kees el arabasında, battaniyelerin altında; Jan öndeki kolda, Truus arkadakinde. Greet bebek arabasını itiyor. On ikinci kilometrede yaşlı bir kadın yola oturdu ve kalkmadı; kocası kolunu tutuyor, kaldıramıyor. Noord'dan, Greet'in mahallesinden. Yirmi kilometre daha var ve arabada tek kişilik yer var.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_jan_packet",
+          "text": "Jan tütününü cebinde tutuyor; sete çıkarken bir paketi sana uzattı. Sen içmezsin; aldın.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_jan_counting",
+          "text": "Jan Den Oever'den beri konuşmuyor; arabayı itiyor ve kilometreleri sayıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "jan_lost_tobacco",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_man_on_cart",
+          "text": "Kağnıya sedyedeki adamı yükleyip iki kişiyi yürütmüştün. Set de bir kağnı hesabı: kim biner, kim yürür.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:man_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_pushed_now",
+          "text": "Rüzgâr her estiğinde eğilip yürümeyi sürdürdün; Jan arkadaki kolda senin ağırlığını hissetti ve bir kez bile dönüp bakmadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_waited_now",
+          "text": "Rüzgâr her estiğinde arabayı durdurup bekledin; Kees battaniyenin altından her seferinde \"geçti mi\" diye sordu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_waited",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_10_a",
+          "text": "Kadını arabaya al; Kees yürüsün.",
+          "trace": "Sette yaşlı kadını arabaya alıp Kees'i yürüttün.",
+          "nextNodeId": "set_11a_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "woman_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_10_b",
+          "text": "Kees arabada kalsın.",
+          "trace": "Sette Kees'i arabadan indirmedin; kadın kocasıyla geride kaldı.",
+          "nextNodeId": "set_11b_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Sette yola oturan yaşlı kadını arabaya almadın."
+        }
+      ],
+      "interlude": {
+        "id": "afsluitdijk_wind",
+        "kind": "walk",
+        "caption": "Afsluitdijk, on ikinci kilometre. Rüzgâr kuzeydoğudan; saklanacak yer yok.",
+        "results": [
+          "il_wind_pushed",
+          "il_wind_waited"
+        ]
+      }
+    },
+    {
+      "id": "set_11a_kornwerderzand",
+      "act": "Set",
+      "date": "20 Ocak 1945",
+      "location": "Kornwerderzand, setin Friesland ucu",
+      "imageKey": "afsluitdijk",
+      "body": "Setin ucunda Friesland başlıyor ve orada kadınlar var: süt güğümleri, sıcak süt, kupa kupa. Kimse soru sormuyor. Arabaya aldığın kadın kupasını iki eliyle tutuyor; oğlu Makkum'da çiftçi, size orada yer olduğunu söylüyor: \"Gelin; ödemeyin.\" Jan kuzeninin çiftliğinden vazgeçmiyor: Bolsward, on iki kilometre daha. Kees setin son beş kilometresini yürüdü ve ayakkabısının içi kanlı. Karanlık bir saat sonra basacak.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_wind_passed_by",
+          "text": "Sette rüzgârda her durduğunuzda on kişi sizi geçti; hiçbiri dönüp bakmadı, hiçbiri kınamadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_waited",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_lit_fire",
+          "text": "Karşı yakada ıslananlar için ateş yaktırmıştın. Süt güğümleri Friesland'ın ateşi.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:lit_fire",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_11a_a",
+          "text": "Jan'ın kuzenine, Bolsward'a git.",
+          "trace": "Kornwerderzand'dan Jan'ın kuzeni Hoekstra'nın çiftliğine yürüdün.",
+          "nextNodeId": "set_12a_hoekstra",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_hoekstra",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_11a_b",
+          "text": "Kadının oğlunun çiftliğine, Makkum'a git.",
+          "trace": "Kornwerderzand'dan sette taşıdığın kadının oğlunun çiftliğine gittin.",
+          "nextNodeId": "set_12b_makkum",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_makkum",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_11b_kornwerderzand",
+      "act": "Set",
+      "date": "20 Ocak 1945",
+      "location": "Kornwerderzand, setin Friesland ucu",
+      "imageKey": "afsluitdijk",
+      "body": "Setin ucunda Friesland başlıyor ve orada kadınlar var: süt güğümleri, sıcak süt, kupa kupa. Kimse soru sormuyor. Kilise komitesinden bir adam masada liste tutuyor; Amsterdam'dan gelenlere çiftlik adresi dağıtıyor, en yakını Makkum'da. Jan kuzeninin çiftliğinden vazgeçmiyor: Bolsward, on iki kilometre daha. Kees arabadan indi; bacakları tutmuyor. Sette geride kalan kadını ve kocasını bir daha görmediniz. Karanlık bir saat sonra basacak.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_wind_arms",
+          "text": "Sette rüzgâra karşı bir kez bile durmadın; kollarını akşama kadar hissetmedin, sonra bütün gece hissettin.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_walkers_first",
+          "text": "Geçiş sırasını yürüyebilenlere vermiştin. Sette de yürüyebilen geçti.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:walkers_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_11b_a",
+          "text": "Jan'ın kuzenine, Bolsward'a git.",
+          "trace": "Kornwerderzand'dan Jan'ın kuzeni Hoekstra'nın çiftliğine yürüdün.",
+          "nextNodeId": "set_12a_hoekstra",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_hoekstra",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_11b_b",
+          "text": "Komitenin verdiği çiftliğe, Makkum'a git.",
+          "trace": "Kornwerderzand'dan kilise komitesinin verdiği Makkum'daki çiftliğe gittin.",
+          "nextNodeId": "set_12b_makkum",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_makkum",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_12a_hoekstra",
+      "act": "Set",
+      "date": "21 Ocak 1945",
+      "location": "Hoekstra çiftliği, Bolsward yakını",
+      "imageKey": "frisian_farm",
+      "body": "Wiebe Hoekstra kapıyı Jan'ı görür görmez açtı; iki adam on beş yıldır görüşmemiş, konuşmadılar, kucaklaştılar. Çiftlikte zaten sekiz Amsterdam çocuğu kalıyor, kilise komitesi yerleştirmiş. Hoekstra ödeme kabul etmiyor. Sabah ambarı gösterdi: patates, istediğiniz kadar, ağır ama doyurur; ya da çavdar, peynir ve bir parça domuz yağı, daha hafif, daha değerli; dönüşte kontrol noktasında ilk alınacak şeyler de bunlar. El arabası birini taşır, ikisini değil. Kees ilk kez bir masada oturup üç tabak yedi.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_jan_laughed",
+          "text": "Jan tütünün yarısını Hoekstra'ya bıraktı; masada ilk kez güldü.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_greet_sheets",
+          "text": "Greet, Medemblik'te bıraktığın çarşafların yerine Hoekstra'nın karısından iki çarşaf istedi; senin için.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "left_linen",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_blankets_shared",
+          "text": "Battaniyeleri kesip herkese pay etmiştin. Hoekstra'nın ambarı kesilecek battaniye değil; yine de birini seçmek gerekiyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_12a_a",
+          "text": "Arabayı patatesle doldur.",
+          "trace": "Hoekstra'nın ambarından arabayı patatesle doldurdun.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 4
+            }
+          ]
+        },
+        {
+          "id": "set_12a_b",
+          "text": "Çavdar, peynir ve yağ al; daha hafif.",
+          "trace": "Hoekstra'dan patates yerine çavdar, peynir ve yağ aldın.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_12b_makkum",
+      "act": "Set",
+      "date": "21 Ocak 1945",
+      "location": "Makkum, De Boer çiftliği",
+      "imageKey": "frisian_farm",
+      "body": "Makkum'daki çiftlik Kornwerderzand'da size verilen adres. Çiftçi Tjeerd de Boer kapıyı açtı, adınızı sordu, listeye baktı ve içeri aldı: sıcak, kalabalık, sessiz. Burada her şeyin bir karşılığı var, ama insafla; annenin çarşaflarına ya da elinde ne kaldıysa ona bakıyor. Ambarda seçim aynı: patates, ağır ama doyurur; ya da çavdar, peynir ve bir parça domuz yağı, daha hafif, daha değerli, dönüşte kontrol noktasında ilk alınacak şeyler. Jan avluda duruyor. Kuzeninin çiftliği on iki kilometre ötede ve oraya gitmediniz.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_woman_bread",
+          "text": "Sette taşıdığın kadın oğlunun mutfağında oturuyor; sana bakınca sofradaki ekmeği sana doğru itti.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_slept",
+          "text": "Sette arabada tuttuğun Kees, De Boer'in ahırında bir gün bir gece uyudu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kees_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_registry_first",
+          "text": "Ruth'u ararken önce resmî kayıtlara bakmıştın. Kilise komitesinin listesi de bir kayıt; seni buraya o getirdi.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:registry_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_12b_a",
+          "text": "Arabayı patatesle doldur.",
+          "trace": "De Boer'in ambarından arabayı patatesle doldurdun.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "set_12b_b",
+          "text": "Çavdar, peynir ve yağ al; daha hafif.",
+          "trace": "De Boer'den patates yerine çavdar, peynir ve yağ aldın.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_13_ahir_gecesi",
+      "act": "Set",
+      "date": "21 Ocak 1945",
+      "location": "Çiftlik ahırı, gece",
+      "imageKey": "frisian_farm",
+      "body": "Ahırda inekler sıcak, saman kuru; ilk kez üşümeden uyunacak. Kees uyumuyor. Öğleden sonra köyün papazı Dominee Rinsma çiftliğe uğradı ve Truus'a Amsterdam çocukları için tuttuğu listeyi gösterdi: köyde bir aile daha var, Van der Meer'ler, bir çocuk alabilirler, \"savaş bitene kadar\". Kimse savaşın ne zaman biteceğini bilmiyor. Kees Dominee'nin ne söylediğini duymadı ama bir şey söylendiğini anladı. Şimdi samanda yatmış, karanlığa bakıyor ve soruyor: \"Yarın dönüyor muyuz?\"",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_cod_liver",
+          "text": "Doktor Veen'in balık yağı bitmek üzere; Kees'in öksürüğü de.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_fever_drops",
+          "text": "Hoorn'dan geçip yürüdüğünüz gece Kees'in ateşi düşmemişti; ahırın sıcağında ilk kez düşüyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ruth_departed_alone",
+          "text": "Ruth'u tahliye treniyle yalnız göndermiştin. Bir çocuğu bırakmak, trene bindirmekten uzun sürer.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:ruth_departed_alone",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_evacuated_with_ruth",
+          "text": "Ruth'la birlikte trene binmiştin; kimseyi geride bırakmamıştın. Bu ahırda seçenek o kadar temiz değil.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:evacuated_with_ruth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_13_a",
+          "text": "Kees'e Dominee'nin listesini anlat.",
+          "trace": "Ahırda Kees'e Dominee'nin listesini ve Van der Meer'leri anlattın.",
+          "nextNodeId": "don_14_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "told_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_13_b",
+          "text": "\"Yarın konuşuruz\" de.",
+          "trace": "Ahırda Kees'e listeyi anlatmadın; \"yarın konuşuruz\" dedin.",
+          "nextNodeId": "don_14_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_from_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -1
+            }
+          ],
+          "omission": "Kees'e Friesland'da kalma ihtimalini önceden söylemedin."
+        }
+      ]
+    },
+    {
+      "id": "don_14_kilise",
+      "act": "Dönüş",
+      "date": "22 Ocak 1945",
+      "location": "Köy kilisesinin salonu",
+      "imageKey": "frisian_farm",
+      "body": "Kilise salonunda Dominee Rinsma masasında, listesi önünde. Van der Meer'ler kapıda bekliyor: orta yaşlı bir çift, iki kızları var, inekleri var, ekmekleri var. Mektuplar Kızılhaç yoluyla gidip gelir; ayda bir, belki. Kees Truus'un yanında duruyor. Annenin sesi kulağında: \"Çocuk burada iki hafta daha dayanamaz.\" Amsterdam'da hiçbir şey değişmedi ve kış daha en az üç ay sürer. Jan dışarıda arabayı bağlıyor; sormuyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kees_packed",
+          "text": "Kees dün gece anlattığın her şeyi hatırlıyor; sabah kendi torbasını kendi topladı ve ne için topladığını sormadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_understood",
+          "text": "Kees ne konuşulduğunu masaya bakarak anladı. Sana değil, Dominee'ye bakıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_from_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_dragica_kept",
+          "text": "Dragica'yı hasta tarafa yazmayıp yanında tutmuştun. Bir insanı yanında tutmanın bedelini o zaman da biliyordun.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:dragica_kept",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_dragica_isolated",
+          "text": "Dragica'yı hasta tarafa yazmıştın, çünkü doğrusu buydu. Doğru olan her zaman yanında tutmak değildir.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:dragica_isolated",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_14_a",
+          "text": "Kees'i Van der Meer'lere bırak.",
+          "trace": "Kees'i savaş bitene kadar Friesland'da Van der Meer ailesine bıraktın.",
+          "nextNodeId": "don_15a_veda",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_placed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -3
+            }
+          ]
+        },
+        {
+          "id": "don_14_b",
+          "text": "Kees'i yanına al; birlikte dönün.",
+          "trace": "Kees'i Friesland'da bırakmayıp Amsterdam'a birlikte döndün.",
+          "nextNodeId": "don_15b_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_home",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_15a_veda",
+      "act": "Dönüş",
+      "date": "22 Ocak 1945",
+      "location": "Van der Meer çiftliği, avlu",
+      "imageKey": "frisian_farm",
+      "body": "Van der Meer'lerin avlusunda kar temizlenmiş; kapının yanına Kees için küçük bir tahta sandık konmuş. Truus ona okulun son defterini verdi: her gün bir satır, mektupla gönderilecek. Kees ağlamıyor; ağlamamak için çenesini sıkıyor. Dominee Truus'a bir şey daha söyledi: köy okulunda Amsterdam'dan gelen otuz çocuk var ve onlara ders verecek kimse yok. Kalırsanız yer var, yemek var, bahara kadar. Jan arabayı tek başına da götürebilir; annen yiyeceğini alır. Kimse Truus'a kalmasını söylemiyor. Kimse gitmesini de.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_baby_mother_neighbour",
+          "text": "Purmerend'de aspirin verdiğin bebeğin annesi Van der Meer'lerin komşusuna yerleşmiş; Kees'i tanıdı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_school_pump",
+          "text": "Hamburg'da bir okul mutfağının pompasını onarmıştın. Bir okulun sana ihtiyaç duyduğu ilk gün bugün değil.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:school_pump_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_15a_a",
+          "text": "Jan'la Amsterdam'a dön.",
+          "trace": "Kees'i bırakıp Jan'la birlikte Amsterdam'a döndün.",
+          "nextNodeId": "don_16a_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "returned_with_jan",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "don_15a_b",
+          "text": "Bahara kadar Friesland'da kal; köy okulunda ders ver.",
+          "trace": "Bahara kadar Friesland'da kalıp köy okulunda Amsterdam çocuklarına ders verdin.",
+          "nextNodeId": "son_kis_okulu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_friesland",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_16a_den_oever",
+      "act": "Dönüş",
+      "date": "23 Ocak 1945",
+      "location": "Den Oever, dönüş kontrolü",
+      "imageKey": "afsluitdijk",
+      "body": "Set dönüşte daha uzun; rüzgâr bu kez arkadan, ama araba dolu. Den Oever'de dönenler ayrı sıraya alınıyor. Yükler açtırılıyor ve \"fazlası\" ayrılıyor; kural kâğıtta yok, nöbetçiye göre değişiyor. Önünüzdeki adamın peynirinin tamamı gitti, patatesine dokunmadılar. Greet'in bebek arabasında kendi ketenleri var ve ketenlerin altında yer var. Jan'a bakıyorsun: bunu mavnayla yıllarca yapmış, yükün bir kısmını görünen yere, bir kısmını görünmeyen yere koymuş. Kees'siz arabada beklenmedik kadar çok yer var.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_rye_visible",
+          "text": "Çavdar ve peynir yükün görünür kısmında; önündeki adamın peyniri az önce gitti.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_potatoes_ignored",
+          "text": "Patates çuvalları kimseyi ilgilendirmiyor; ağır oluşlarının karşılığı bu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_same_table",
+          "text": "Gidişte Greet'i kız kardeşin olarak tanıtmıştın. Aynı nöbetçi değil, ama aynı masa.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_conscription_disclosed",
+          "text": "İstasyonda askerlik çağrısını görevliye açıkça sunmuştun. Beyan etmek o gün de bir şeye mal olmuştu.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_16a_a",
+          "text": "Yükün tamamını beyan et.",
+          "trace": "Den Oever'de dönüş yükünün tamamını beyan ettin.",
+          "nextNodeId": "don_17a_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "don_16a_b",
+          "text": "Bir kısmını Greet'in bebek arabasının altına sakla.",
+          "trace": "Den Oever'de yükün bir kısmını Greet'in bebek arabasının altına sakladın.",
+          "nextNodeId": "don_17a_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "hid_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_17a_ev",
+      "act": "Dönüş",
+      "date": "24 Ocak 1945",
+      "location": "Bloemgracht, ev",
+      "imageKey": "canal_night",
+      "body": "Bloemgracht'a akşam karanlığında girdiniz; araba kanal kıyısındaki buzda kaydı, Jan tuttu. Annen kapıyı daha vurmadan açtı, arkanda bakındı ve sormadı. Sokak sizi gördü: dokuz gün önce üç kişi gitmiş, iki kişi ve dolu bir araba dönmüş. Van Dam'ların kızı, Pieter'in annesi, alt kattaki dul. Sokağın ortak sobasında bu akşam da pancar kabuğu kaynıyor. Yük annenle ikinizi mayısa kadar götürür; ya da bu sokağı bir ay.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_policeman_neighbour",
+          "text": "Tramvay bloklarını paylaştığın polis memuru kapının önünde; şimdi bir komşu gibi bakıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_hidden_came_home",
+          "text": "Bebek arabasının altındaki kısım da eve girdi. Greet ipi Noord'a giderken bıraktı; geri almadı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "hid_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_third_left",
+          "text": "Beyan ettiğin yükün üçte biri Den Oever'de kaldı. Kalanı yine de bu sokağın gördüğü en dolu araba.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_relief_shift",
+          "text": "Ruth'la okulun akşam dağıtımını hazırlamıştın. Bu sokağın dağıtımı da bir mutfak masasında yapılıyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:relief_shift_helped",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_17a_a",
+          "text": "Yükün yarısını sokağın ortak mutfağına ver.",
+          "trace": "Eve dönünce yükün yarısını sokağın ortak mutfağına verdin.",
+          "nextNodeId": "son_bos_sandalye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "shared_street",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "don_17a_b",
+          "text": "Yükü kilerde tut; mayısa kadar yetmeli.",
+          "trace": "Eve dönünce yükü kilere kaldırıp sokakla paylaşmadın.",
+          "nextNodeId": "son_bahar_mektubu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_pantry",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
+        }
+      ]
+    },
+    {
+      "id": "don_15b_kornwerderzand",
+      "act": "Dönüş",
+      "date": "22 Ocak 1945",
+      "location": "Kornwerderzand, setin ucu",
+      "imageKey": "afsluitdijk",
+      "body": "Setin Friesland ucuna öğleden sonra vardınız ve Kees'in ateşi yeniden çıktı; bu kez titriyor. Süt dağıtan kadınların yanındaki köy doktoru çocuğa baktı: \"Bu rüzgârda otuz iki kilometre bu çocuğu öldürebilir. Rüzgâr düşene kadar bekleyin; kilise salonunda yer var.\" Jan yüklü arabayla bekleyemez: her gün bir gün daha az yiyecek demek ve annen evde tek başına. Greet Jan'la gidebilir, arabayı iki kişi iter. Set ileride gri, düz ve boş; rüzgâr kuzeydoğudan.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_no_stop_then",
+          "text": "Hoorn'da durmamıştın; o gece de ateşi vardı. Bu kez karşında bir doktor var.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_veen_was_sure",
+          "text": "Hoorn'da bir gün durmuştun; Doktor Veen \"zatürre değil\" demişti. Bu doktor o kadar emin değil.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_return_pushed",
+          "text": "Gidişte seti rüzgâra karşı durmadan geçmiştin. Bugün aynı set, aynı rüzgâr; farklı olan tek şey arabadaki çocuk.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_self_hidden",
+          "text": "Kendi ateşini deftere yazmamıştın, çünkü kafile yürümeliydi. Kees'in ateşini gizleyecek defter yok; Jan'ın arabası var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:self_hidden",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_15b_a",
+          "text": "Bugün geç; Kees arabada, battaniyelerin altında.",
+          "trace": "Kornwerderzand'da beklemeyip Kees'le birlikte seti geçtin.",
+          "nextNodeId": "don_16b_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "crossed_with_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "don_15b_b",
+          "text": "Rüzgâr düşene kadar Kees'le bekle; Jan arabayla gitsin.",
+          "trace": "Kornwerderzand'da Kees'le kalıp Jan'ı arabayla önden gönderdin.",
+          "nextNodeId": "son_cozulme",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "waited_wind",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_16b_den_oever",
+      "act": "Dönüş",
+      "date": "23 Ocak 1945",
+      "location": "Den Oever, dönüş kontrolü",
+      "imageKey": "afsluitdijk",
+      "body": "Den Oever'de dönenler ayrı sıraya alınıyor. Yükler açtırılıyor ve \"fazlası\" ayrılıyor; kural kâğıtta yok, nöbetçiye göre değişiyor. Önünüzdeki adamın peynirinin tamamı gitti, patatesine dokunmadılar. Kees arabada, üç battaniyenin altında; ateşi hâlâ var. Nöbetçiler hasta bir çocuğun battaniyesini kaldırmıyor; Jan bunu gidişte fark etmiş. Kees'in yanında yer var. Greet ipi tutuyor ve sana bakıyor. Kees de sana bakıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_rye_visible_b",
+          "text": "Çavdar ve peynir yükün görünür kısmında; önündeki adamın peyniri az önce gitti.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_potatoes_ignored_b",
+          "text": "Patates çuvalları kimseyi ilgilendirmiyor; ağır oluşlarının karşılığı bu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_same_table_b",
+          "text": "Gidişte Greet'i kız kardeşin olarak tanıtmıştın. Aynı nöbetçi değil, ama aynı masa.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_worker_notebook",
+          "text": "Olek'in isim defterini mühürlü dolaptan almıştın. Bir şeyi saklamakla bir şeyi korumak o gün de aynı şey değildi.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_16b_a",
+          "text": "Yükün tamamını beyan et.",
+          "trace": "Den Oever'de Kees'in battaniyesinin altına bir şey koymadan yükü beyan ettin.",
+          "nextNodeId": "don_17b_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "don_16b_b",
+          "text": "Bir kısmını Kees'in battaniyelerinin altına koy.",
+          "trace": "Den Oever'de yükün bir kısmını Kees'in battaniyelerinin altına sakladın.",
+          "nextNodeId": "don_17b_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "hid_under_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_17b_ev",
+      "act": "Dönüş",
+      "date": "24 Ocak 1945",
+      "location": "Bloemgracht, ev",
+      "imageKey": "canal_night",
+      "body": "Bloemgracht'a akşam karanlığında girdiniz; araba kanal kıyısındaki buzda kaydı, Jan tuttu. Annen kapıyı daha vurmadan açtı ve Kees'i arabadan kendi kollarıyla indirdi. Sokak sizi gördü: dokuz gün önce giden üç kişi ve dolu bir araba. Van Dam'ların kızı, Pieter'in annesi, alt kattaki dul. Sokağın ortak sobasında bu akşam da pancar kabuğu kaynıyor. Yük üçünüzü mayısa kadar götürür; ya da bu sokağı üç hafta.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_policeman_neighbour_b",
+          "text": "Tramvay bloklarını paylaştığın polis memuru kapının önünde; şimdi bir komşu gibi bakıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_carried_sack",
+          "text": "Kees battaniyelerin altındaki çuvalı eve kendisi taşıdı; kimseye ne olduğunu söylemedi.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "hid_under_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_third_left_b",
+          "text": "Den Oever'de bırakılan üçte bir Kees'in ateşinden düşülmedi; nöbetçi çocuğa bakmadı bile.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_relief_shift_b",
+          "text": "Ruth'la okulun akşam dağıtımını hazırlamıştın. Bu sokağın dağıtımı da bir mutfak masasında yapılıyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:relief_shift_helped",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_17b_a",
+          "text": "Yükün yarısını sokağın ortak mutfağına ver.",
+          "trace": "Eve dönünce yükün yarısını sokağın ortak mutfağına verdin.",
+          "nextNodeId": "son_sekiz_kilo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "shared_street",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "don_17b_b",
+          "text": "Yükü kilerde tut; mayısa kadar yetmeli.",
+          "trace": "Eve dönünce yükü kilere kaldırıp sokakla paylaşmadın.",
+          "nextNodeId": "son_kiler",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_pantry",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
+        }
+      ]
+    },
+    {
+      "id": "son_bos_sandalye",
+      "act": "Dönüş",
+      "date": "Kış 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_bos_sandalye",
+        "title": "Boş Sandalye",
+        "paragraphs": [
+          "Sokağın ortak mutfağı o kış üç hafta daha yandı. Bloemgracht'ta kimse Truus Bakker'in arabasından söz etmedi; herkes biliyordu. Van Dam'ların kızı nisanda öldü, Pieter'in annesi mayısı gördü. Bu ikisinden hangisinin o arabayla ilgisi olduğunu kimse söyleyemez.",
+          "Kees'ten ilk mektup mart başında geldi, Kızılhaç zarfında: dört satır, ikisi inek hakkında. Truus mektubu okul defterine yapıştırdı. Mayısta Kanada birlikleri Amsterdam'a girdi; Kees haziranda döndü, üç kilo almıştı ve Frizce iki cümle biliyordu. Mutfak masasındaki sandalyesi hep aynı yerde durmuştu.",
+          "Tarih değişmedi. O kış batıdaki şehirlerde yirmi bine yakın insan açlıktan öldü ve bir el arabası bunu değiştirmedi. Değişen, Bloemgracht'ta bir sokağın o üç haftayı birlikte geçirmiş olmasıydı."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i Friesland'da bıraktın.",
+          "• Yükü sokakla paylaştın.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_bahar_mektubu",
+      "act": "Dönüş",
+      "date": "Kış 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_bahar_mektubu",
+        "title": "Bahar Mektubu",
+        "paragraphs": [
+          "Kiler mayısa kadar yetti; hesap doğruydu. Annen o kışı geçirdi, Truus da. Bloemgracht'ta ortak soba şubatta söndü. Sokak bunun nedenini bir arabaya bağlamadı, ama Truus bir daha o sobanın başında oturmadı.",
+          "Kees'ten mektup mart başında geldi: dört satır, ikisi inek hakkında. Haziranda döndü; üç kilo almıştı. Annesinin ölümünden beri ilk kez birinin evinde çocuk gibi yaşamıştı ve bunu söylemedi. Truus da sormadı.",
+          "Tarih değişmedi. Yirmi bine yakın insan o kış açlıktan öldü ve bir kiler bunu değiştirmedi. Değişen, bir evin dolu, bir sokağın boş kalmasıydı; ve bunun kimin kararı olduğunun bilinmesiydi."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i Friesland'da bıraktın.",
+          "• Yükü kilerde tuttun.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_kis_okulu",
+      "act": "Dönüş",
+      "date": "Kış 1945",
+      "location": "Friesland, köy okulu",
+      "imageKey": "frisian_farm",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_kis_okulu",
+        "title": "Kış Okulu",
+        "paragraphs": [
+          "Truus bahara kadar Friesland'da kaldı. Köy okulunun arka sınıfında otuz Amsterdam çocuğuna ders verdi; kara tahta yoktu, ilahi kitaplarının arka sayfalarına yazdılar. Kees ön sırada oturdu ama Van der Meer'lerde yattı. Truus bunun doğru olduğuna karar vermişti ve bu karar her sabah yeniden verildi.",
+          "Jan arabayı tek başına Amsterdam'a götürdü. Yükün üçte biri Den Oever'de kaldı, gerisi Bloemgracht'a vardı; annen mayısı gördü. Jan'ın mektubu tek cümleydi: \"Vardım, verdim, iyi.\" Truus ve Kees haziranda, boş bir kamyonun arkasında döndüler.",
+          "Tarih değişmedi. O kış Friesland'a giden çocukların çoğu hayatta kaldı; Truus'un sınıfının bunda bir payı yoktu, çocuklar yemek yedikleri için hayatta kaldılar. Değişen, otuz çocuğun o kışı okumayı unutmadan geçirmesiydi."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i Friesland'da bıraktın.",
+          "• Bahara kadar Friesland'da kaldın.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_sekiz_kilo",
+      "act": "Dönüş",
+      "date": "Kış 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_sekiz_kilo",
+        "title": "Sekiz Kilo",
+        "paragraphs": [
+          "Sokağın ortak mutfağı o kış üç hafta daha yandı. Kees ateşini dördüncü gün attı ve mutfağın kapısında oturup gelenleri saydı; öğretmen yeğeni olduğu için saymayı iyi biliyordu. Van Dam'ların kızı nisanda öldü, Pieter'in annesi mayısı gördü. Kimse bu ikisini bir arabaya bağlamadı.",
+          "Mayısta Kanada birlikleri Amsterdam'a girdi. Kees o yaz sekiz kilo aldı; Truus bunu defterin son sayfasına yazdı ve altına başka bir şey yazmadı. Okul eylülde açıldı. Sınıfta on dokuz çocuk vardı; aralıkta yirmi altıydı.",
+          "Tarih değişmedi. Yirmi bine yakın insan o kış açlıktan öldü ve bir el arabası bunu değiştirmedi. Değişen, bir sokağın o üç haftayı birlikte geçirmesi ve bunu kimin arabasıyla geçirdiğini hiç unutmamasıydı."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i yanında getirdin.",
+          "• Yükü sokakla paylaştın.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_kiler",
+      "act": "Dönüş",
+      "date": "Kış 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_kiler",
+        "title": "Kiler",
+        "paragraphs": [
+          "Kiler mayısa kadar yetti; hesap doğruydu. Kees ateşini dördüncü gün attı ve bir daha çıkarmadı. Bloemgracht'ta ortak soba şubatta söndü; sokak bunun nedenini bir arabaya bağlamadı, Truus da açıklamadı. Kapı her çalındığında Kees'e \"aç\" dedi ve kapının ardında kim varsa bir tabak verdi. Bir kiler tabak tabak da biter; ama daha yavaş.",
+          "Mayısta Kanada birlikleri Amsterdam'a girdi. Okul eylülde açıldı. Sınıfta on dokuz çocuk vardı; aralıkta yirmi altıydı. Truus kimin eksik olduğunu biliyordu ve listeyi kimseye göstermedi.",
+          "Tarih değişmedi. Yirmi bine yakın insan o kış açlıktan öldü ve bir kiler bunu değiştirmedi. Değişen, bir evin kışı tok ve kapısı açık geçirmesiydi; ikisi birden mümkünmüş, ama ancak birinin kararıyla."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i yanında getirdin.",
+          "• Yükü kilerde tuttun.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    },
+    {
+      "id": "son_cozulme",
+      "act": "Dönüş",
+      "date": "Şubat 1945",
+      "location": "Kornwerderzand",
+      "imageKey": "afsluitdijk",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_cozulme",
+        "title": "Çözülme",
+        "paragraphs": [
+          "Rüzgâr dokuz gün sonra düştü. Truus ve Kees Kornwerderzand'daki kilise salonunda beklediler; köy doktoru her sabah geldi, süt dağıtan kadınlar her akşam. Kees'in ateşi altıncı gün düştü. Jan ve Greet arabayla ikinci gün yola çıkmışlardı; Den Oever'de yükün üçte biri kaldı, gerisi Bloemgracht'a vardı. Annen kapıyı Jan'a açtı ve çocuğu sordu. Jan \"geliyor\" dedi.",
+          "Şubatın ilk günü seti yürüyerek geçtiler. Kees on iki kilometresini kendi yürüdü, gerisini Truus'un sırtında. Amsterdam'a vardıklarında kiler yarıya inmişti ve sokak arabanın geldiği akşamı hâlâ konuşuyordu. Kees o yaz sekiz kilo aldı.",
+          "Tarih değişmedi. Rüzgâr dokuz gün esti ve o dokuz günde setin üstünde kaç kişinin yürüdüğünü kimse saymadı. Değişen, bir çocuğun o rüzgârı bir salonun içinden dinlemiş olmasıydı."
+        ],
+        "traceFallbacks": [
+          "• Kuzeye yiyecek için yürüdün.",
+          "• Kees'i yanında getirdin.",
+          "• Rüzgâr düşene kadar Kornwerderzand'da bekledin.",
+          "• Bu yolun ayrıntıları kayda geçti."
+        ]
+      }
+    }
+  ]
+}

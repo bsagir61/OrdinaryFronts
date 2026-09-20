@@ -1,20 +1,19 @@
 {
   "locale": "tr-TR",
   "entries": [
-    { "key": "menu.newGame", "value": "Yeni Oyun" },
+    { "key": "menu.newGame", "value": "Savaş Hikâyeleri" },
     { "key": "menu.continue", "value": "Devam Et" },
     { "key": "menu.settings", "value": "Ayarlar" },
-    { "key": "menu.credits", "value": "Emeği Geçenler" },
     { "key": "menu.exit", "value": "Çıkış" },
-    { "key": "menu.context", "value": "HAMBURG · TEMMUZ 1943" },
-    { "key": "menu.inputHint", "value": "Fare veya yön tuşlarıyla gezin · Enter ile onayla" },
-
+    { "key": "storySelect.title", "value": "Savaş Hikâyeleri" },
+    { "key": "storySelect.intro", "value": "Her bölüm, başka bir yerde ve yılda sıradan insanları izler. Tarih değişmez; onu yaşamanın bedeli değişebilir." },
+    { "key": "storySelect.locked", "value": "YAKINDA" },
+    { "key": "storySelect.unknown", "value": "?" },
+    { "key": "storySelect.begin", "value": "Bu hikâyeyi başlat" },
     { "key": "gameplay.pauseHint", "value": "ESC" },
     { "key": "gameplay.noChoice", "value": "—" },
-    { "key": "gameplay.echoPrefix", "value": "Önceki kararın yankısı — " },
-
+    { "key": "gameplay.echoPrefix", "value": "Önceki kararın yankısı" },
     { "key": "intro.skipHint", "value": "Atlamak için herhangi bir tuşa bas" },
-
     { "key": "settings.title", "value": "Ayarlar" },
     { "key": "settings.masterVolume", "value": "ANA SES" },
     { "key": "settings.ambientVolume", "value": "ORTAM SESİ" },
@@ -26,24 +25,20 @@
     { "key": "settings.back", "value": "Geri" },
     { "key": "settings.textSizeNormal", "value": "Normal" },
     { "key": "settings.textSizeLarge", "value": "Büyük" },
-
     { "key": "common.on", "value": "Açık" },
     { "key": "common.off", "value": "Kapalı" },
     { "key": "common.mainMenu", "value": "Ana Menü" },
-
-    { "key": "credits.body", "value": "TASARIM VE GELİŞTİRME\nBerat Sağır\n\nANLATI ÇERÇEVESİ\nBütün karakterler ve kişisel olaylar kurgusaldır. Tarihsel bağlam; Hamburg şehir tarihi kaynakları, müze koleksiyonları ve eğitim materyalleriyle sınanmıştır.\n\nGÖRSEL VE SES\nArşiv kâğıdı, linol baskı ve gölge tiyatrosu yaklaşımıyla bu proje için üretilmiştir. İnternetten alınmış fotoğraf, telifli müzik veya başka bir oyundan içerik kullanılmamıştır.\n\nAYRINTILI KAYNAKLAR\nProje içindeki Docs/HISTORICAL_NOTES.md dosyasındadır." },
-
-    { "key": "contentNote.title", "value": "İçerik Notu" },
-    { "key": "contentNote.body", "value": "Savaş, bombardıman, zorunlu çalışma ve devlet baskısı temaları içerir. Grafik şiddet içermez." },
-    { "key": "contentNote.continue", "value": "Devam Et" },
-
     { "key": "pause.title", "value": "Duraklatıldı" },
     { "key": "pause.resume", "value": "Devam Et" },
-
+    { "key": "pause.journal", "value": "Kayıt Defteri" },
+    { "key": "journal.title", "value": "Kayıt Defteri" },
+    { "key": "journal.empty", "value": "Defter henüz boş. İlk kararını verdiğinde buraya yazılacak." },
+    { "key": "journal.previousRun", "value": "Önceki oynanışta burada" },
+    { "key": "ending.peopleTitle", "value": "İNSANLAR" },
+    { "key": "ending.omissionsTitle", "value": "YAPILMAYANLAR" },
     { "key": "ending.tracesTitle", "value": "İZLER" },
     { "key": "ending.tracesFallback", "value": "• Bu yolun ayrıntıları kayda geçti." },
     { "key": "ending.replay", "value": "Yeniden Oyna" },
-
     { "key": "error.title", "value": "Kayıt / Veri Uyarısı" },
     { "key": "error.generic", "value": "Beklenmeyen bir sorun oluştu." },
     { "key": "error.storyUnavailable", "value": "Hikâye verisi kullanılamıyor." },
@@ -51,9 +46,16 @@
     { "key": "error.newGameFailed", "value": "Yeni oyun başlatılamadı." },
     { "key": "error.choiceFailed", "value": "Seçim uygulanamadı." },
     { "key": "error.storyValidation", "value": "Hikâye doğrulaması başarısız: " },
-
     { "key": "save.none", "value": "Henüz devam edilebilecek bir kayıt yok." },
     { "key": "save.unreadable", "value": "Kayıt dosyası okunamadı. Dosyanız korunuyor; yeni bir oyun başlatabilirsiniz." },
-    { "key": "save.incompatible", "value": "Kayıt bu demo sürümüyle uyumlu değil. Yeni bir oyun başlatabilirsiniz." }
+    { "key": "save.incompatible", "value": "Kayıt bu demo sürümüyle uyumlu değil. Yeni bir oyun başlatabilirsiniz." },
+    { "key": "interlude.pushHint", "value": "İtmek için D, → ya da fare tuşunu basılı tut" },
+    { "key": "interlude.skipHint", "value": "Esc: geç" },
+    { "key": "interlude.choiceHint", "value": "ellerinle karar ver" },
+    { "key": "interlude.lampHint", "value": "Lambayı onarmak için A/← ya da sağ fare basılı  ·  sıradakini indirmek için D/→ ya da sol fare" },
+    { "key": "interlude.lampLit", "value": "Lamba yandı; sıra kendi kendine iniyor." },
+    { "key": "interlude.stairsDone", "value": "Dördüncüyü de indirdin; gerisi elden ele geliyor." },
+    { "key": "interlude.plankHint", "value": "Dengeyi A/← ve D/→ ile tut  ·  fare tuşunu basılı tutup sağa sola da götürebilirsin" },
+    { "key": "interlude.holdOrRelease", "value": "TUT — basılı kal          BIRAK — elini çek" }
   ]
 }

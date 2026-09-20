@@ -31,6 +31,32 @@
       }
     ]
   },
+  "characters": [
+    {
+      "key": "brehm",
+      "name": "Foreman Otto Brehm",
+      "warm": "At every roll call he wrote \"indispensable\" beside your name.",
+      "cold": "One morning he did not defend your name on the list, and never explained it."
+    },
+    {
+      "key": "olek",
+      "name": "Olek Nowak",
+      "warm": "He never told anyone he waited for you at the gate, but he waited.",
+      "cold": "After that night he never asked you for anything again."
+    },
+    {
+      "key": "elsbeth",
+      "name": "Elsbeth",
+      "warm": "In the shelter she kept her place beside you.",
+      "cold": "She goes down to the shelter by a different stairway now."
+    },
+    {
+      "key": "ruth",
+      "name": "Your sister Ruth",
+      "warm": "She waited for you even on the nights she did not know where you were.",
+      "cold": "A silence left over from that summer stays between you."
+    }
+  ],
   "nodes": [
     {
       "id": "sir_01_vardiya_sonu",
@@ -49,9 +75,25 @@
           "nextNodeId": "sir_02_salter_dairesi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "switchgear_secured", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "set", "boolValue": true, "text": "Shutting down the main switch lowered the fire risk in the yard after the first raid." }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "set",
+              "boolValue": true,
+              "text": "Shutting down the main switch lowered the fire risk in the yard after the first raid."
+            }
           ]
         },
         {
@@ -61,9 +103,25 @@
           "nextNodeId": "sir_02_tophane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "left_with_olek", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_left_with_olek", "op": "set", "boolValue": true, "text": "Leaving together with Olek got you into the yard before the service gate closed." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "left_with_olek",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "set",
+              "boolValue": true,
+              "text": "Leaving together with Olek got you into the yard before the service gate closed."
+            }
           ]
         }
       ]
@@ -76,7 +134,32 @@
       "imageKey": "shipyard_evening",
       "body": "When the last lever comes down, the workshop falls quiet. Brehm tucks the inspection book under his arm and heads for the shelter. Olek has come back; he says his identity papers and a small notebook with a friend's address are still in the changing room locker. That row of lockers sits behind a sealed door. Olek does not ask Matthias to decide for him: if the lock is opened, he will take the notebook and go alone down the eastern service road. The sound of approaching aircraft turns into a steady vibration in the metal roof.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_keeps_list",
+          "text": "On a mountain road you kept the book of the wounded; writing names had become your work. The notebook in that locker is full of names too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_no_list",
+          "text": "On a mountain road you once refused a notebook that was held out to you. The one in that locker carries someone's names too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "sir_02_salter_a",
@@ -85,10 +168,27 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "worker_notebook_saved", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_worker_notebook", "op": "set", "boolValue": true, "text": "The notebook of names you saved later became solid ground for tracing missing workers." }
-          ]
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "set",
+              "boolValue": true,
+              "text": "The notebook of names you saved later became solid ground for tracing missing workers."
+            }
+          ],
+          "omission": "You did not take Olek's notebook out of the locker."
         },
         {
           "id": "sir_02_salter_b",
@@ -97,9 +197,25 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "worker_notebook_left", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_worker_notebook_left", "op": "set", "boolValue": true, "text": "Because the notebook stayed in the locker, some names could later only be written from memory." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Because the notebook stayed in the locker, some names could later only be written from memory."
+            }
           ]
         }
       ]
@@ -121,8 +237,18 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "service_route_chosen", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "service_route_chosen",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -132,9 +258,25 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "shelter_entry_helped", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shelter_entry", "op": "set", "boolValue": true, "text": "The people you helped at the stairwell entrance remembered you beside Elsbeth the next morning." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "shelter_entry_helped",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "set",
+              "boolValue": true,
+              "text": "The people you helped at the stairwell entrance remembered you beside Elsbeth the next morning."
+            }
           ]
         }
       ]
@@ -156,9 +298,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "west_door_opened", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_west_door", "op": "set", "boolValue": true, "text": "The workers who got out through the west door passed the morning's missing list to one another." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "west_door_opened",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "set",
+              "boolValue": true,
+              "text": "The workers who got out through the west door passed the morning's missing list to one another."
+            }
           ]
         },
         {
@@ -168,7 +326,12 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "tools_preserved", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -181,7 +344,32 @@
       "imageKey": "shelter_stairs",
       "body": "The stone stairs are packed with people. When the power fails, voices rise from below saying the door will not close; those higher up sit down on the steps in the dark. Elsbeth holds out the cable of the emergency lamp to Matthias. Wiring it will take a few minutes and keep him at the entrance. The other option is to leave the lamp and bring people down hand over hand along the railing. Either way the queue slows. Between the distant rumbles, Matthias tries not to think about which shelter Ruth went to tonight.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_cart_repaired",
+          "text": "When a column set out you mended a cart's axle; you chose repairing over carrying. The cable Elsbeth holds out asks the same question.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_carried_first",
+          "text": "When a column set out you left the cart and took the end of a stretcher. On this stair too there is something to mend and people to bring down.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "sir_03_merdiven_a",
@@ -190,9 +378,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "shelter_light_fixed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shelter_light", "op": "set", "boolValue": true, "text": "The stairwell lamp you repaired helped people move out without crushing one another." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "shelter_light_fixed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "set",
+              "boolValue": true,
+              "text": "The stairwell lamp you repaired helped people move out without crushing one another."
+            }
           ]
         },
         {
@@ -202,10 +406,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "stairs_guided", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "stairs_guided",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
-      ]
+      ],
+      "interlude": {
+        "id": "shelter_lamp",
+        "kind": "lamp",
+        "chooses": true,
+        "caption": "The power is out. Elsbeth is holding out the cable; below, the queue has stopped in the dark.",
+        "results": [
+          "il_lamp_hands",
+          "il_stairs_hands"
+        ]
+      }
     },
     {
       "id": "sir_04_ilk_dalga",
@@ -220,14 +439,48 @@
           "id": "echo_01_switchgear_result",
           "text": "Because you shut down the main switch, no new fire was reported from the workshop beside the yard.",
           "conditions": [
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_02_left_column_result",
           "text": "Leaving the switch room early got you onto the shelter route before the east gate closed.",
           "conditions": [
-            { "type": "echo", "key": "echo_left_with_olek", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_hands",
+          "text": "You spent two minutes on the cable on the stairs; the spark burned your hand twice, and the mark is still on your fingers.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_stairs_hands",
+          "text": "You took four people by the hand on the stairs and brought them down; you saw none of their faces, and all four thanked you once in the dark.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_stairs_hands",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -239,9 +492,21 @@
           "nextNodeId": "ash_05_paylasilan_su",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "shared_shelter_food", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shared_shelter_food", "op": "set", "boolValue": true, "text": "The food you shared in the shelter meant a witness remembered you at the registry in the morning." }
-          ]
+            {
+              "type": "flag",
+              "key": "shared_shelter_food",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "set",
+              "boolValue": true,
+              "text": "The food you shared in the shelter meant a witness remembered you at the registry in the morning."
+            }
+          ],
+          "omission": "You did not share your water and bread in the shelter."
         },
         {
           "id": "sir_04_b",
@@ -250,8 +515,19 @@
           "nextNodeId": "ash_05_saklanan_paket",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "saved_family_supplies", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_saved_family_supplies", "op": "set", "boolValue": true, "text": "The parcel you kept helped both of you stay on your feet once you found Ruth." }
+            {
+              "type": "flag",
+              "key": "saved_family_supplies",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "set",
+              "boolValue": true,
+              "text": "The parcel you kept helped both of you stay on your feet once you found Ruth."
+            }
           ]
         }
       ]
@@ -264,7 +540,44 @@
       "imageKey": "bombed_street",
       "body": "By morning the streets still carry their names, but not their faces. Wet ash sticks to shoes; power lines run silently along the pavement. Elsbeth says a woman from Ruth's district was sent on to the school building, but she cannot confirm the surname. The aid desk lies in the same direction; Ruth's house is two streets the other way. Matthias's flask is empty, and the crowds slow both routes. Registering first could produce information; going straight to the house offers the chance of finding a trace that has not been erased yet.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_buried_dead",
+          "text": "At a farm you once held a column for an hour so that three graves could be dug. This morning there are dead again, and again no time.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_gave_ladle",
+          "text": "At a central kitchen you once gave your mother's ladle to a woman whose card had been stolen. This morning it is water and bread to be shared; the rule is the same.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_morning",
+          "text": "In the morning nobody thought to switch the lamp off; it was still burning.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "ash_05_paylas_a",
@@ -273,7 +586,12 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -283,7 +601,12 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -305,7 +628,12 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -315,7 +643,12 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -333,14 +666,36 @@
           "id": "echo_03_notebook_saved_result",
           "text": "In the notebook Olek saved, Irena's surname and barracks number were both intact.",
           "conditions": [
-            { "type": "echo", "key": "echo_worker_notebook", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_04_notebook_left_result",
           "text": "With the notebook left in the locker, Olek had to reconstruct Irena's barracks number from memory.",
           "conditions": [
-            { "type": "echo", "key": "echo_worker_notebook_left", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kees_placed",
+          "text": "You once left a child with a strange family until the war was over and thought it right. The registry table would have written that in one column: 'placed'.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kees_placed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -352,10 +707,31 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "irena_registered", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_irena_registered", "op": "set", "boolValue": true, "text": "Irena's recorded name later let different aid desks search for the same person." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "set",
+              "boolValue": true,
+              "text": "Irena's recorded name later let different aid desks search for the same person."
+            }
           ]
         },
         {
@@ -365,9 +741,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "ruth_registry_clue", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_olek_carried_names", "op": "set", "boolValue": true, "text": "Olek carried the names to another desk himself, and your paths parted for a while." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_registry_clue",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "set",
+              "boolValue": true,
+              "text": "Olek carried the names to another desk himself, and your paths parted for a while."
+            }
           ]
         }
       ]
@@ -389,9 +781,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "pantry_logged", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_pantry_logged", "op": "set", "boolValue": true, "text": "The handover note you left for the cellar kept the goods from being counted as lost at the next check." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "pantry_logged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "set",
+              "boolValue": true,
+              "text": "The handover note you left for the cellar kept the goods from being counted as lost at the next check."
+            }
           ]
         },
         {
@@ -401,9 +809,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "pantry_unlogged", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "set", "boolValue": true, "text": "The unlogged supplies helped, but the shortfall in the cellar count was later matched to your route." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "pantry_unlogged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "set",
+              "boolValue": true,
+              "text": "The unlogged supplies helped, but the shortfall in the cellar count was later matched to your route."
+            }
           ]
         }
       ]
@@ -421,21 +845,60 @@
           "id": "echo_05_shelter_entry_result",
           "text": "A neighbour you helped at the shelter entrance confirmed that Ruth had gone toward the school.",
           "conditions": [
-            { "type": "echo", "key": "echo_shelter_entry", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_06_west_door_result",
           "text": "A worker who got out through the west door told Olek where Irena was last seen.",
           "conditions": [
-            { "type": "echo", "key": "echo_west_door", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_07_shelter_light_result",
           "text": "Thanks to the lamp you repaired, Elsbeth's name slips came out of the shelter complete.",
           "conditions": [
-            { "type": "echo", "key": "echo_shelter_light", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_taken",
+          "text": "On the Neretva you had a prisoner taken on a sledge; the column ran a day late. Walking beside Olek is that kind of thing.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_left",
+          "text": "On the Neretva you left a prisoner at the barn; the column came down on time. Now Olek is asking you to come with him.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_left",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -447,9 +910,24 @@
           "nextNodeId": "ash_08_okul_avlusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "work_card_kept", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -459,10 +937,27 @@
           "nextNodeId": "ash_08_kayit_deposu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "olek_archive_help", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_olek_archive", "op": "set", "boolValue": true, "text": "The transfer line found in the records depot turned Irena's trail toward the harbour infirmary." }
-          ]
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "olek_archive_help",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "set",
+              "boolValue": true,
+              "text": "The transfer line found in the records depot turned Irena's trail toward the harbour infirmary."
+            }
+          ],
+          "omission": "You did not go to the records depot with Olek."
         }
       ]
     },
@@ -483,7 +978,12 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "school_pump_fixed", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "school_pump_fixed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -493,8 +993,18 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "followed_ruth_route", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "followed_ruth_route",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -516,8 +1026,18 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "irena_note_delivered", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "irena_note_delivered",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -527,8 +1047,18 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "went_to_infirmary", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "went_to_infirmary",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -546,14 +1076,24 @@
           "id": "echo_08_irena_registered_result",
           "text": "Because you had Irena's name recorded, the school desk sent a query note to the harbour infirmary.",
           "conditions": [
-            { "type": "echo", "key": "echo_irena_registered", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_09_olek_names_result",
           "text": "Since Olek carried the names himself, Irena's line opened late and incomplete on the school list.",
           "conditions": [
-            { "type": "echo", "key": "echo_olek_carried_names", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -565,8 +1105,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "relief_shift_helped", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "relief_shift_helped",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -576,9 +1126,24 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "evacuation_queue_checked", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_queue_checked",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -596,7 +1161,12 @@
           "id": "echo_10_archive_result",
           "text": "The transfer line you found in the depot revealed that Irena had been written onto another detail before the infirmary.",
           "conditions": [
-            { "type": "echo", "key": "echo_olek_archive", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -608,8 +1178,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "irena_transfer_found", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "irena_transfer_found",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -619,8 +1199,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "olek_plan_respected", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "olek_plan_respected",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -638,28 +1228,48 @@
           "id": "echo_11_shared_food_result",
           "text": "A woman who remembered the water you shared in the shelter carried Ruth's name to the right school list.",
           "conditions": [
-            { "type": "echo", "key": "echo_shared_shelter_food", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_12_saved_food_result",
           "text": "The parcel of bread you kept gave you both a first calm meal when you met Ruth.",
           "conditions": [
-            { "type": "echo", "key": "echo_saved_family_supplies", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_13_pantry_logged_result",
           "text": "The note you left for the cellar was accepted; the goods you brought to the school were not counted as lost.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_logged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_14_pantry_unlogged_result",
           "text": "The unlogged supplies were used in the kitchen, but Elsbeth had to note your name for the shortfall.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -671,10 +1281,27 @@
           "nextNodeId": "ord_11_jenerator_nobeti",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "relief_generator_repaired", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_relief_generator", "op": "set", "boolValue": true, "text": "The generator you started kept the aid centre's lists and kitchen open through the night." }
-          ]
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_generator_repaired",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "set",
+              "boolValue": true,
+              "text": "The generator you started kept the aid centre's lists and kitchen open through the night."
+            }
+          ],
+          "omission": "You did not repair the relief centre's generator."
         },
         {
           "id": "ash_10_b",
@@ -683,9 +1310,24 @@
           "nextNodeId": "ord_11_istasyon_sirasi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "left_for_station", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "left_for_station",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -703,7 +1345,12 @@
           "id": "echo_15_generator_result",
           "text": "Getting the generator running meant Brehm found you on duty at the aid centre.",
           "conditions": [
-            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -715,8 +1362,18 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "returned_toward_yard", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "returned_toward_yard",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -726,8 +1383,18 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "yard_muster_missed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_muster_missed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -749,7 +1416,12 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "orders_opened_publicly", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "orders_opened_publicly",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -759,9 +1431,24 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": -1 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "orders_taken_to_brehm", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "orders_taken_to_brehm",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -783,9 +1470,25 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "yard_return_signed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_yard_return_signed", "op": "set", "boolValue": true, "text": "The signature in the return book gave Brehm official ground to stand on at the deferral hearing." }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "yard_return_signed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "set",
+              "boolValue": true,
+              "text": "The signature in the return book gave Brehm official ground to stand on at the deferral hearing."
+            }
           ]
         },
         {
@@ -795,8 +1498,18 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "relief_duty_recorded", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -814,14 +1527,48 @@
           "id": "echo_16_card_kept_result",
           "text": "Having kept the shipyard card with you confirmed your identity and worker deferral in the same record.",
           "conditions": [
-            { "type": "flag", "key": "work_card_kept", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_17_notebook_attention",
           "text": "The note about the sealed locker being opened led to a short explanation being asked for alongside your card.",
           "conditions": [
-            { "type": "flag", "key": "worker_notebook_saved", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_hid_typhus",
+          "text": "In a barn you once kept typhus out of the report for a day. At this desk the thing to hide is an envelope.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:hid_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_reported_typhus",
+          "text": "In a barn you once put typhus in the report, knowing the cost. At this desk telling the truth has a cost too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:reported_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -833,9 +1580,21 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "conscription_disclosed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_conscription_disclosed", "op": "set", "boolValue": true, "text": "Presenting the call-up openly made the file look delivered on time rather than missing." }
-          ]
+            {
+              "type": "flag",
+              "key": "conscription_disclosed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Presenting the call-up openly made the file look delivered on time rather than missing."
+            }
+          ],
+          "omission": "You did not hand your call-up over openly at the document desk."
         },
         {
           "id": "ord_12_belge_b",
@@ -844,8 +1603,19 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "conscription_concealed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_conscription_concealed", "op": "set", "boolValue": true, "text": "Keeping the call-up in your bag protected Ruth's place, but the envelope number surfaced on a list later." }
+            {
+              "type": "flag",
+              "key": "conscription_concealed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Keeping the call-up in your bag protected Ruth's place, but the envelope number surfaced on a list later."
+            }
           ]
         }
       ]
@@ -863,28 +1633,48 @@
           "id": "echo_18_switchgear_vouch",
           "text": "Having shut down the switch that first night gave Brehm a concrete work record for the deferral request.",
           "conditions": [
-            { "type": "flag", "key": "switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_19_unlogged_pantry_pressure",
           "text": "The missing record for the cellar added a small but official doubt to your account of aid duty.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_20_return_signature",
           "text": "Because you signed the return book, the yard still counted you as a worker under its responsibility.",
           "conditions": [
-            { "type": "echo", "key": "echo_yard_return_signed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_21_concealed_order",
           "text": "The number of the envelope you did not show at the station reached your file from another list.",
           "conditions": [
-            { "type": "echo", "key": "echo_conscription_concealed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -896,8 +1686,18 @@
           "nextNodeId": "ord_14_tersane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "yard_priority", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "yard_priority",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -907,8 +1707,18 @@
           "nextNodeId": "ord_14_tren_peronu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "evacuation_priority", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_priority",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -926,14 +1736,24 @@
           "id": "echo_22_irena_route_result",
           "text": "Irena's name, recorded earlier, let Olek compare the wrong transfer line against another list.",
           "conditions": [
-            { "type": "flag", "key": "irena_registered", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_23_olek_relation_result",
           "text": "Because of your earlier help Olek shared his plan openly; the decision was still his own.",
           "conditions": [
-            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 5 }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 5
+            }
           ]
         }
       ],
@@ -945,8 +1765,18 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "yard_shift_entered", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_shift_entered",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -956,9 +1786,24 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
-            { "type": "flag", "key": "yard_gate_left", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "yard_gate_left",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -976,14 +1821,24 @@
           "id": "echo_24_evacuation_access_result",
           "text": "Having reached the aid records earlier kept Ruth's provisional number from being struck off.",
           "conditions": [
-            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_25_disclosed_order_result",
           "text": "Because you presented the call-up openly, the inspecting official did not mark the envelope as a hidden document.",
           "conditions": [
-            { "type": "echo", "key": "echo_conscription_disclosed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -995,8 +1850,18 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "family_slot_requested", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_slot_requested",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1006,9 +1871,24 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": -2 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "left_platform_for_yard", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "left_platform_for_yard",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1026,14 +1906,24 @@
           "id": "echo_26_switchgear_physical_result",
           "text": "The main switch you shut down that first night held; Brehm added it to the file as proof of maintenance competence.",
           "conditions": [
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_27_tools_result",
           "text": "The tools you protected in the service tunnel let you measure the cracked cable without waiting for spares.",
           "conditions": [
-            { "type": "flag", "key": "tools_preserved", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1045,8 +1935,18 @@
           "nextNodeId": "ord_16_erteleme_gorusmesi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "essential_worker_signed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_signed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1056,9 +1956,24 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
-            { "type": "flag", "key": "essential_worker_delayed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_delayed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1076,14 +1991,24 @@
           "id": "echo_28_registry_access_result",
           "text": "Your earlier steps through the aid records made it easier to add a family link to Ruth's line.",
           "conditions": [
-            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_29_relief_record_result",
           "text": "Because your aid duty at the school was on record, the clerk could write you a temporary escort justification.",
           "conditions": [
-            { "type": "flag", "key": "relief_duty_recorded", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1095,8 +2020,18 @@
           "nextNodeId": "ord_16_hareket_cagrisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "family_ticket_accepted", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_ticket_accepted",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1106,8 +2041,18 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "ruth_ticket_only", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_ticket_only",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1125,7 +2070,24 @@
           "id": "echo_30_brehm_support_result",
           "text": "The working relationship you kept with Brehm helped the personnel officer keep the temporary deferral on the table.",
           "conditions": [
-            { "type": "relation", "key": "brehm", "op": "atleast", "intValue": 5 }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "atleast",
+              "intValue": 5
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_declared_load",
+          "text": "At Den Oever you declared the whole load and lost a third of it. Telling everything in front of an official will cost something here too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1137,7 +2099,12 @@
           "nextNodeId": "end_gecici_erteleme",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "deferral_accepted", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "deferral_accepted",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1147,8 +2114,18 @@
           "nextNodeId": "end_gozetimli_vardiya",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "reporting_refused", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "reporting_refused",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1170,7 +2147,12 @@
           "nextNodeId": "end_tahliye_yolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "evacuated_with_ruth", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuated_with_ruth",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1180,7 +2162,12 @@
           "nextNodeId": "end_ayri_peronlar",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "ruth_departed_alone", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "ruth_departed_alone",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1198,14 +2185,24 @@
           "id": "echo_31_relief_network_result",
           "text": "Having started the school generator meant Elsbeth could write you a genuine day of aid duty.",
           "conditions": [
-            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_32_olek_record_result",
           "text": "The trust you built with Olek was enough for him to tell you the outcome of Irena's record; he still chose his own route.",
           "conditions": [
-            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 7 }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 7
+            }
           ]
         }
       ],
@@ -1217,7 +2214,12 @@
           "nextNodeId": "end_askerlik_yolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "reported_to_conscription", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "reported_to_conscription",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1227,8 +2229,18 @@
           "nextNodeId": "end_yardim_aginda",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "relief_delay_requested", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_delay_requested",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]

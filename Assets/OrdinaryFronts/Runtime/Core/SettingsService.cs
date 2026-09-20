@@ -17,7 +17,6 @@ namespace OrdinaryFronts
         public bool fullscreen;
         public bool largeText;
         public bool reduceMotion;
-        public bool contentNoteSeen;
 
         public void Clamp()
         {

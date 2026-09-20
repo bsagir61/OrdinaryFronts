@@ -15,10 +15,21 @@ namespace OrdinaryFronts
         public const string MenuNewGame = "menu.newGame";
         public const string MenuContinue = "menu.continue";
         public const string MenuSettings = "menu.settings";
-        public const string MenuCredits = "menu.credits";
         public const string MenuExit = "menu.exit";
-        public const string MenuContext = "menu.context";
-        public const string MenuInputHint = "menu.inputHint";
+
+        public const string StorySelectTitle = "storySelect.title";
+        public const string StorySelectIntro = "storySelect.intro";
+        public const string StorySelectLocked = "storySelect.locked";
+        public const string StorySelectUnknown = "storySelect.unknown";
+        public const string StorySelectBegin = "storySelect.begin";
+        public const string InterludePushHint = "interlude.pushHint";
+        public const string InterludeSkipHint = "interlude.skipHint";
+        public const string InterludeChoiceHint = "interlude.choiceHint";
+        public const string InterludeLampHint = "interlude.lampHint";
+        public const string InterludeLampLit = "interlude.lampLit";
+        public const string InterludeStairsDone = "interlude.stairsDone";
+        public const string InterludePlankHint = "interlude.plankHint";
+        public const string InterludeHoldOrRelease = "interlude.holdOrRelease";
 
         public const string GameplayPauseHint = "gameplay.pauseHint";
         public const string GameplayNoChoice = "gameplay.noChoice";
@@ -42,15 +53,16 @@ namespace OrdinaryFronts
         public const string CommonOff = "common.off";
         public const string CommonMainMenu = "common.mainMenu";
 
-        public const string CreditsBody = "credits.body";
-
-        public const string ContentNoteTitle = "contentNote.title";
-        public const string ContentNoteBody = "contentNote.body";
-        public const string ContentNoteContinue = "contentNote.continue";
-
         public const string PauseTitle = "pause.title";
         public const string PauseResume = "pause.resume";
+        public const string PauseJournal = "pause.journal";
 
+        public const string JournalTitle = "journal.title";
+        public const string JournalEmpty = "journal.empty";
+        public const string JournalPreviousRun = "journal.previousRun";
+
+        public const string EndingPeopleTitle = "ending.peopleTitle";
+        public const string EndingOmissionsTitle = "ending.omissionsTitle";
         public const string EndingTracesTitle = "ending.tracesTitle";
         public const string EndingTracesFallback = "ending.tracesFallback";
         public const string EndingReplay = "ending.replay";
@@ -72,17 +84,19 @@ namespace OrdinaryFronts
         {
             return new[]
             {
-                MenuNewGame, MenuContinue, MenuSettings, MenuCredits, MenuExit, MenuContext, MenuInputHint,
+                MenuNewGame, MenuContinue, MenuSettings, MenuExit,
+                StorySelectTitle, StorySelectIntro, StorySelectLocked, StorySelectUnknown, StorySelectBegin,
+                InterludePushHint, InterludeSkipHint, InterludeChoiceHint,
+                InterludeLampHint, InterludeLampLit, InterludeStairsDone, InterludePlankHint, InterludeHoldOrRelease,
                 GameplayPauseHint, GameplayNoChoice, EchoPrefix,
                 IntroSkipHint,
                 SettingsTitle, SettingsMasterVolume, SettingsAmbientVolume, SettingsEffectsVolume,
                 SettingsFullscreen, SettingsTextSize, SettingsReduceMotion, SettingsLanguage, SettingsBack,
                 SettingsTextSizeNormal, SettingsTextSizeLarge,
                 CommonOn, CommonOff, CommonMainMenu,
-                CreditsBody,
-                ContentNoteTitle, ContentNoteBody, ContentNoteContinue,
-                PauseTitle, PauseResume,
-                EndingTracesTitle, EndingTracesFallback, EndingReplay,
+                PauseTitle, PauseResume, PauseJournal,
+                JournalTitle, JournalEmpty, JournalPreviousRun,
+                EndingPeopleTitle, EndingOmissionsTitle, EndingTracesTitle, EndingTracesFallback, EndingReplay,
                 ErrorTitle, ErrorGeneric, ErrorStoryUnavailable, ErrorInitFailed, ErrorNewGameFailed,
                 ErrorChoiceFailed, ErrorStoryValidation,
                 SaveNone, SaveUnreadable, SaveIncompatible
@@ -205,6 +219,24 @@ namespace OrdinaryFronts
         public bool Has(string key)
         {
             return entries.ContainsKey(key);
+        }
+
+        /// <summary>
+        /// Etkin dilin kurallarına göre büyük harfe çevirir. Kültürden bağımsız büyütme
+        /// Türkçede yanlıştır: "Sirenler" → "SIRENLER" (noktasız I) verir, doğrusu
+        /// "SİRENLER"dir. Bölüm başlıkları ve final raporu bu yüzden buradan geçer.
+        /// </summary>
+        public string ToUpper(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return value;
+            try
+            {
+                return value.ToUpper(System.Globalization.CultureInfo.GetCultureInfo(Locale ?? DefaultLocale));
+            }
+            catch (System.Globalization.CultureNotFoundException)
+            {
+                return value.ToUpperInvariant();
+            }
         }
     }
 }

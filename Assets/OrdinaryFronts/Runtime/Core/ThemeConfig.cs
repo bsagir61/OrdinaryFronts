@@ -18,8 +18,24 @@ namespace OrdinaryFronts
         /// <summary>Açılış kurgusunda çok düşük opaklıkta döndürülen arşiv filmi grenleri.</summary>
         public Sprite[] introGrain = new Sprite[0];
 
+        /// <summary>Bölüm seçim ekranının Avrupa haritası; işaretler bunun üstüne yerleşir.</summary>
+        public Sprite europeMap;
+
+        /// <summary>Harita işaretlerinin yuvarlak diski; halka ve nokta bununla boyanır.</summary>
+        public Sprite mapMarker;
+
         /// <summary>Açılış metninin arkasındaki yumuşak dikey gradyan.</summary>
         public Sprite introTextScrim;
+
+        /// <summary>
+        /// Anlatı katmanı: başlıklar, düğüm gövdesi ve final paragrafları. Serif.
+        /// </summary>
+        public TMPro.TMP_FontAsset serifFont;
+
+        /// <summary>
+        /// Belge katmanı: kayıt defteri, final raporu, etiketler, tarih/konum satırı. Daktilo.
+        /// </summary>
+        public TMPro.TMP_FontAsset monoFont;
 
         [Range(0.18f, 0.35f)] public float transitionDuration = 0.26f;
         /// <summary>Açılış kartları arasındaki geçiş; UI geçişlerinden bilinçli olarak daha yavaştır.</summary>

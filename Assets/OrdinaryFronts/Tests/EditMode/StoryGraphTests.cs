@@ -136,13 +136,51 @@ namespace OrdinaryFronts.Tests.EditMode
         [Test]
         public void Intro_StaysWithinFirstChoiceTimeBudget()
         {
-            // GDD §16 kalite kapısı: ilk seçim en geç 45 saniyede erişilebilir olmalı.
+            // GDD §19 kalite kapısı: ilk seçim en geç 45 saniyede erişilebilir olmalı.
             // Yalnız holdSeconds toplamına bakmak yanıltıcıdır; kart başına geçiş, belirme ve
             // kararma yükü gerçek süreyi belirgin biçimde artırır. Bu yüzden tahmini toplam
             // ekran süresi ölçülür.
             float total = story.intro.EstimatedTotalSeconds;
             Assert.That(total, Is.LessThan(20f), "Açılış kurgusunun tahmini toplam süresi çok uzun: " + total);
             Assert.That(total, Is.GreaterThan(6f), "Açılış kurgusu anlam taşıyamayacak kadar kısa: " + total);
+        }
+
+        /// <summary>
+        /// Final raporu rotanın tamamını kapsamalıdır. Eskiden izler sekiz kayıtla sınırlıydı
+        /// ve rapor bunun da son beşini gösteriyordu: 16 kararlık bir oynanışta oyuncunun
+        /// belirleyici erken kararları rapora hiç ulaşmıyor, geriye yalnız sondaki birbirine
+        /// benzer bürokratik adımlar kalıyordu.
+        /// </summary>
+        [Test]
+        public void EndingReport_CoversEveryActOfTheRoute()
+        {
+            string nodeId = story.startNodeId;
+            GameState state = GameState.Create(story);
+            int decisions = 0;
+
+            while (decisions < 30)
+            {
+                StoryNode node = nodes[nodeId];
+                if (node.IsEnding) break;
+                ChoiceData choice = node.choices[0];
+                state.AddTrace(node.act, choice.trace);
+                nodeId = choice.nextNodeId;
+                decisions++;
+            }
+
+            Assert.That(nodes[nodeId].IsEnding, Is.True, "Rota bir finale ulaşmalı.");
+            Assert.That(decisions, Is.InRange(14, 18));
+            Assert.That(state.traces.Length, Is.EqualTo(decisions),
+                "Rotadaki her karar izini korumalı; kırpma raporu eksiltiyordu.");
+
+            HashSet<string> acts = new HashSet<string>();
+            for (int i = 0; i < state.traces.Length; i++)
+            {
+                Assert.That(state.traces[i].text, Is.Not.Empty);
+                Assert.That(state.traces[i].act, Is.Not.Empty, "İz bölümüyle etiketlenmeli.");
+                acts.Add(state.traces[i].act);
+            }
+            Assert.That(acts.Count, Is.EqualTo(3), "Rapor üç bölümü de kapsamalı: " + string.Join(", ", acts));
         }
 
         [Test]
@@ -178,7 +216,7 @@ namespace OrdinaryFronts.Tests.EditMode
                 original.SetFlag("documents_kept", true);
                 original.SetRelation("olek_trust", 14);
                 original.MarkResultSeen("echo_documents");
-                original.AddTrace("Belgeleri yanında tuttu.");
+                original.AddTrace("Sirenler", "Belgeleri yanında tuttu.");
                 service.Save(original);
 
                 GameState loaded;
@@ -188,7 +226,9 @@ namespace OrdinaryFronts.Tests.EditMode
                 Assert.That(loaded.GetFlag("documents_kept"), Is.True);
                 Assert.That(loaded.GetRelation("olek_trust"), Is.EqualTo(14));
                 Assert.That(loaded.HasSeenResult("echo_documents"), Is.True);
-                Assert.That(loaded.traces, Has.Member("Belgeleri yanında tuttu."));
+                Assert.That(loaded.traces, Has.Length.EqualTo(1));
+                Assert.That(loaded.traces[0].text, Is.EqualTo("Belgeleri yanında tuttu."));
+                Assert.That(loaded.traces[0].act, Is.EqualTo("Sirenler"), "İz, bölümüyle birlikte saklanmalı.");
             }
             finally
             {
@@ -235,7 +275,6 @@ namespace OrdinaryFronts.Tests.EditMode
                     fullscreen = true,
                     largeText = true,
                     reduceMotion = true,
-                    contentNoteSeen = true
                 };
                 service.Save(expected);
                 SettingsData actual = service.Load();
@@ -245,7 +284,6 @@ namespace OrdinaryFronts.Tests.EditMode
                 Assert.That(actual.fullscreen, Is.True);
                 Assert.That(actual.largeText, Is.True);
                 Assert.That(actual.reduceMotion, Is.True);
-                Assert.That(actual.contentNoteSeen, Is.True);
             }
             finally
             {

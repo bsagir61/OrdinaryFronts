@@ -1,0 +1,3134 @@
+{
+  "schemaVersion": 1,
+  "storyId": "neretva_1943",
+  "locale": "en-US",
+  "startNodeId": "kol_01_yola_cikis",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "burned_village",
+        "kicker": "YUGOSLAVIA",
+        "line": "In February 1943 German and Italian forces run their fourth major operation in Bosnia.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "mountain_column",
+        "kicker": "THE COLUMN",
+        "line": "The partisans' central hospital withdraws into the mountains with nearly four thousand wounded.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "typhus_barn",
+        "kicker": "MILENA RADIĆ",
+        "line": "Milena Radić is a village midwife. She is not a soldier; she joined the column because she carried its wounded.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "broken_bridge",
+        "kicker": "6 MARCH 1943",
+        "line": "One crossing lies ahead of the column: the wrecked bridge over the Neretva.",
+        "holdSeconds": 3.2
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "stevan",
+      "name": "Stevan Lukić",
+      "warm": "He kept a place for you beside his cart for the rest of the road.",
+      "cold": "After the farm he spoke to you only when he had to."
+    },
+    {
+      "key": "dragica",
+      "name": "Dragica",
+      "warm": "She shares the front end of the stretcher with no one but you.",
+      "cold": "She chose to carry with someone else and never said why."
+    },
+    {
+      "key": "peric",
+      "name": "Doctor Vlado Perić",
+      "warm": "He left you everything he knew and counted the book yours without asking.",
+      "cold": "In his last days he asked you nothing and told you nothing."
+    },
+    {
+      "key": "bogdan",
+      "name": "Rade Bogdan",
+      "warm": "He gives his orders to you first now; that is habit, not trust.",
+      "cold": "He wrote your name into a report; you never learned what it said."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "kol_01_yola_cikis",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "North of Prozor",
+      "imageKey": "burned_village",
+      "body": "Four walls and the standing chimneys are all that is left of the village. Milena Radić has been the midwife in this valley for eleven years; this morning her bag holds two rolls of bandage, a bottle of spirit and a pair of tweezers. The central hospital's wounded are moving south, and everyone who joins the column takes a load. The axle on Stevan Lukić's cart has split and the load will not move. A few steps away a stretcher has no one at its back end. She cannot reach both.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_lamp_fixed",
+          "text": "You have faced this choice on a shelter stair before: mend the lamp, or bring people down by hand. That night you chose the lamp.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shelter_light_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_stairs_guided",
+          "text": "You have faced this choice on a shelter stair before: mend the lamp, or bring people down by hand. That night you chose the people.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:stairs_guided",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_switchgear",
+          "text": "When the sirens sounded you stayed in the yard to make the main switch safe. Getting the cart on the road is the same kind of work: the machine first, then the people.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_01_a",
+          "text": "Get Stevan's cart back on the road.",
+          "trace": "You helped mend Stevan's split axle as the column set out.",
+          "nextNodeId": "kol_02_kagni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_repaired",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "set",
+              "boolValue": true,
+              "text": "The mended cart became the column's only wheeled transport for those who could not be carried."
+            }
+          ]
+        },
+        {
+          "id": "kol_01_b",
+          "text": "Take the free end of the stretcher.",
+          "trace": "On the first morning you took the back end of the stretcher.",
+          "nextNodeId": "kol_02_sedye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "carried_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Because you carried from the first day, Dragica counted you as one of her own team."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_02_kagni",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The Rama road",
+      "imageKey": "mountain_column",
+      "body": "The cart rolls, but it takes only three. The number of people in the column who cannot walk is far larger. Stevan wants to load the badly wounded and go slowly. Doctor Vlado Perić wants the lightly wounded aboard so the column keeps its pace; a column that falls behind is caught on the mountain road in the dark. They ask Milena, because she judges best how long each of them will last.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ams_woman_on_cart",
+          "text": "On a dike you once put an old woman on the cart and made the boy walk. The three places on the ox-cart are the same question.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_02_a",
+          "text": "Load the badly wounded and go slowly.",
+          "trace": "You put the badly wounded on the cart and slowed the column.",
+          "nextNodeId": "kol_03_kar_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "heavy_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_heavy_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "Loading the badly wounded got three of them through that night, but the column was caught by the dark."
+            }
+          ]
+        },
+        {
+          "id": "kol_02_b",
+          "text": "Load the lightly wounded and keep the pace.",
+          "trace": "You put the lightly wounded on the cart and kept the column's pace.",
+          "nextNodeId": "kol_03_orman_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "light_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_light_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "The pace held and the column crossed the pass before dark; those who could not ride had to walk."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_02_sedye",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The Rama road",
+      "imageKey": "mountain_column",
+      "body": "The man on the stretcher was shot in the stomach at Prozor. Dragica is seventeen and has not let go of the front end for two days. Where the snow rises above the knee a stretcher wants four bearers, and they are three. Dragica wants to go on, resting in turns. Stevan says to leave the stretcher, put the man on the cart and make the two lightly wounded there walk. The wound in the man's stomach will not take the jolting.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "kol_02_c",
+          "text": "Keep carrying, resting in turns.",
+          "trace": "You would not leave the stretcher in the snow and carried on in turns.",
+          "nextNodeId": "kol_03_kar_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "kept_stretcher",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_kept_stretcher",
+              "op": "set",
+              "boolValue": true,
+              "text": "Because you did not put the stretcher down the wound did not open, but all three of you were spent."
+            }
+          ]
+        },
+        {
+          "id": "kol_02_d",
+          "text": "Put the man on the cart.",
+          "trace": "You moved the man to the cart and made two others walk in his place.",
+          "nextNodeId": "kol_03_orman_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "man_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_man_on_cart",
+              "op": "set",
+              "boolValue": true,
+              "text": "The jolting of the cart opened the wound; the man was silent until evening, then he did not speak again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_03_kar_yolu",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The open ridge",
+      "imageKey": "mountain_column",
+      "body": "The top of the ridge is open and the snow is hard. The road is short from here, but in daylight the column is visible for miles. The winding way below the tree line is three hours longer and covered. Rade Bogdan, the commissar at the head of the column, wants the decision made quickly: whoever falls behind meets the evening frost. What Milena has to say is about how many can still walk, and she is the only one who knows.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_cart",
+          "text": "The cart you mended in the morning carried the loads of twenty people up the ridge alone.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_carry",
+          "text": "Dragica left the end of the stretcher to you again; she trusts no one else with it.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_03_a",
+          "text": "Cross the ridge and take the short way.",
+          "trace": "You crossed the open ridge and took the short way.",
+          "nextNodeId": "kol_04_koy_kalintisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "open_ridge",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_open_ridge",
+              "op": "set",
+              "boolValue": true,
+              "text": "The open ridge saved the column three hours; in the afternoon two aircraft passed over the valley."
+            }
+          ]
+        },
+        {
+          "id": "kol_03_b",
+          "text": "Go around below the tree line.",
+          "trace": "You took the column onto the long road below the tree line.",
+          "nextNodeId": "kol_04_dere_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "tree_line",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_tree_line",
+              "op": "set",
+              "boolValue": true,
+              "text": "Going under the trees hid the column, but three of the wounded did not last those three hours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_03_orman_yolu",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The tree line",
+      "imageKey": "mountain_column",
+      "body": "It is dark under the trees and the road is narrow. In the middle of the column a woman is giving birth; no one had allowed for that. Rade Bogdan wants the column to keep moving and the woman put on a stretcher. Milena knows the birth cannot be finished on a moving stretcher. Half an hour's halt leaves the tail of the column in the dark. Going on is also a choice, and no one says out loud what that choice costs.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_cart2",
+          "text": "The cart you mended has turned over twice on the narrow road, and it still rolls.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_carry2",
+          "text": "Those who heard you carried on the first day began treating you as one of the bearers.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_03_c",
+          "text": "Halt the column and finish the birth.",
+          "trace": "You halted the column for half an hour for the birth.",
+          "nextNodeId": "kol_04_koy_kalintisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "birth_halt",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_birth_halt",
+              "op": "set",
+              "boolValue": true,
+              "text": "The half-hour halt left the tail of the column in the dark; the child lived."
+            }
+          ]
+        },
+        {
+          "id": "kol_03_d",
+          "text": "Put the woman on a stretcher and keep moving.",
+          "trace": "You put the woman on a stretcher and kept the column moving.",
+          "nextNodeId": "kol_04_dere_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "birth_moving",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_birth_moving",
+              "op": "set",
+              "boolValue": true,
+              "text": "The column kept moving and the tail was not caught by the dark; the woman bled to death the next morning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_04_koy_kalintisi",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "A burned farm",
+      "imageKey": "burned_village",
+      "body": "There is a burned farm at the side of the road. Under the barn are three sacks of maize flour, and in the cellar a family; they are dead, and the snow has covered them. The column has two days' food left. Rade Bogdan says take the flour and walk. Stevan says leaving without burying them is the worst thing that can be done to what is left of this village. Three graves in frozen ground take an hour.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_ridge",
+          "text": "The time won on the ridge is what made the hour at the farm possible.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_open_ridge",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_birth",
+          "text": "The child born that night is passed from hand to hand along the column; no one has named it.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_birth_halt",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_saved_supplies",
+          "text": "In the shelter you kept the supplies for your own family. Now there are three sacks of flour and a family no one has buried.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_04_a",
+          "text": "Take the flour and walk.",
+          "trace": "You took the flour from the farm and walked on without burying the dead.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "took_flour",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_took_flour",
+              "op": "set",
+              "boolValue": true,
+              "text": "Three sacks of flour kept the column standing four days longer; after that day Stevan spoke to you little."
+            }
+          ]
+        },
+        {
+          "id": "kol_04_b",
+          "text": "Bury the dead first.",
+          "trace": "You held the column until three graves were dug in the frozen ground.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "buried_dead",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_buried_dead",
+              "op": "set",
+              "boolValue": true,
+              "text": "You lost an hour, but those in the column who speak of that day still tell it."
+            }
+          ],
+          "omission": "You did not bury the family at the burned farm."
+        }
+      ]
+    },
+    {
+      "id": "kol_04_dere_gecidi",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The stream crossing",
+      "imageKey": "mountain_column",
+      "body": "The stream is not frozen and the stones are iced. The stretchers will be taken over one at a time; every crossing soaks two people from the waist down. In this weather someone who gets wet cannot walk three hours later. Dragica wants a fire on the far bank so the bearers can change their socks. A fire can be seen from up the valley. Rade Bogdan is against it; he reckons wet feet kill fewer people than aircraft do.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kol_trees",
+          "text": "Coming under the trees hid the column, but you reached the stream three hours late.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_tree_line",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kol_moving",
+          "text": "The stretcher of the woman who gave birth is empty; no one wants to give it to anyone else.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_birth_moving",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_04_c",
+          "text": "Light a fire on the far bank.",
+          "trace": "You had a fire lit on the far bank for the soaked bearers.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "lit_fire",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_lit_fire",
+              "op": "set",
+              "boolValue": true,
+              "text": "Thanks to the fire no one lost a foot; whether the smoke was seen from the valley, no one knows."
+            }
+          ]
+        },
+        {
+          "id": "kol_04_d",
+          "text": "No fire; cross wet.",
+          "trace": "You allowed no fire and the column crossed wet.",
+          "nextNodeId": "kol_05_gece_molasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "no_fire",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_no_fire",
+              "op": "set",
+              "boolValue": true,
+              "text": "No smoke rose and the column was not seen; two bearers' toes went black with frost."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kol_05_gece_molasi",
+      "act": "The Load",
+      "date": "20 February 1943",
+      "location": "The night halt",
+      "imageKey": "mountain_column",
+      "body": "The column has stopped on the sheltered face of a slope. Doctor Perić holds out a notebook to Milena: the names of the wounded, their wounds and where they came from. He has no time for it, and his hands shake. Keeping the book means an hour every evening; it means dropping out of the bearer teams. Not keeping it means that when someone in this column dies, their name is written nowhere. Perić does not press her. He only holds it out.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_notebook_saved",
+          "text": "Under a siren you once took a man's notebook out of a sealed locker. Now someone is holding a notebook out to you.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_notebook_left",
+          "text": "Under a siren you once left a notebook in a locker; there was no time. Now someone is holding one out to you, and there is no time again.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kol_05_a",
+          "text": "Take the notebook.",
+          "trace": "You took on Perić's book of the wounded.",
+          "nextNodeId": "tif_06_ilk_belirti",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "keeps_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "From the evening you took the book, the name of everyone who died in the column was written down somewhere."
+            }
+          ],
+          "omission": "You did not take Perić's book; those who died that week were not written down."
+        },
+        {
+          "id": "kol_05_b",
+          "text": "Refuse it and keep carrying.",
+          "trace": "You refused the book and went on carrying stretchers.",
+          "nextNodeId": "tif_06_kayit_defteri",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "no_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "You did not take the book; the bearers were not one short, and the names were not written."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_06_ilk_belirti",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn yard",
+      "imageKey": "typhus_barn",
+      "body": "For three days Milena has been writing the same thing beside the names in the book: fever, headache, a rash across the trunk. Spotted typhus. No one in the column says it out loud, because if it is said the barn will be cleared and the sick will be left outside. Perić knows. Rade Bogdan does not know yet. Milena has to decide what goes in the evening report, because she is the one keeping the book.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_06_a",
+          "text": "Put the typhus in the report.",
+          "trace": "You put the typhus into the evening report.",
+          "nextNodeId": "tif_07_ayirma",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "reported_typhus",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_reported_typhus",
+              "op": "set",
+              "boolValue": true,
+              "text": "Because you wrote the typhus down the barn was divided, and the sickness did not reach the whole column."
+            }
+          ],
+          "omission": "You did not report the typhus the day you first saw it."
+        },
+        {
+          "id": "tif_06_b",
+          "text": "Wait one more day.",
+          "trace": "You kept the typhus out of the report and waited a day.",
+          "nextNodeId": "tif_07_saklama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "hid_typhus",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_hid_typhus",
+              "op": "set",
+              "boolValue": true,
+              "text": "Waiting a day kept the sick inside the barn; in that day nine more came down with fever."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_06_kayit_defteri",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn yard",
+      "imageKey": "typhus_barn",
+      "body": "Because no one kept Perić's book, no one knows who in the column has been running a fever and for how long. Milena notices it one morning: they have put the same man on two different stretchers on two successive days. Counting the fevered now means going to every person and asking, and that means a day and a half. Not counting means running the barn on a guess about how many inside it are sick.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_06_c",
+          "text": "Go to every one of them and count.",
+          "trace": "For a day and a half you went through the column one by one and counted the fevered.",
+          "nextNodeId": "tif_07_ayirma",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "counted_sick",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_counted_sick",
+              "op": "set",
+              "boolValue": true,
+              "text": "The list you counted became the only document deciding which half of the barn would be separated."
+            }
+          ]
+        },
+        {
+          "id": "tif_06_d",
+          "text": "Run it on a guess; there is no time.",
+          "trace": "You did not count the fevered and ran the barn on a guess.",
+          "nextNodeId": "tif_07_saklama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "guessed_sick",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_guessed_sick",
+              "op": "set",
+              "boolValue": true,
+              "text": "The guess more or less held; eleven people put in the healthy half of the barn were down within a week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_07_ayirma",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "Inside the barn",
+      "imageKey": "typhus_barn",
+      "body": "The barn has been divided in two. No one who goes into the sick half comes out; when the column moves, that half either comes by cart or does not come. Dragica's fever started this morning. She did not say so; Milena saw it in her eyes. Writing her into the sick half means losing another bearer. Not writing her means putting the thirty people on the healthy side at risk.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_07_a",
+          "text": "Write Dragica into the sick half.",
+          "trace": "You wrote Dragica into the sick half.",
+          "nextNodeId": "tif_08_ilac_kutusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "dragica_isolated",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_dragica_isolated",
+              "op": "set",
+              "boolValue": true,
+              "text": "You separated Dragica; no new fever appeared on the healthy side, and she did not speak to you for three days."
+            }
+          ]
+        },
+        {
+          "id": "tif_07_b",
+          "text": "Leave it and keep her beside you.",
+          "trace": "You kept Dragica out of the sick half and beside you.",
+          "nextNodeId": "tif_08_su_kuyrugu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "dragica_kept",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_dragica_kept",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dragica stayed beside you and kept walking; two people on the healthy side went down after her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_07_saklama",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "Inside the barn",
+      "imageKey": "typhus_barn",
+      "body": "There is no division in the barn; the sick and the sound lie on the same straw. When Rade Bogdan learns of it he orders the barn cleared and the sick moved to the open lean-to outside. Outside it is minus ten at night. Perić is in no state to argue; he has not been able to stand for two days. The one who will carry out the order is Milena, because the book and the barn are both hers.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_07_c",
+          "text": "Carry out the order and move the sick outside.",
+          "trace": "On Bogdan's order you moved the sick from the barn to the lean-to.",
+          "nextNodeId": "tif_08_ilac_kutusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "obeyed_clearance",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_obeyed_clearance",
+              "op": "set",
+              "boolValue": true,
+              "text": "You moved the sick out; the spread in the barn stopped, and four died in the lean-to in two nights."
+            }
+          ]
+        },
+        {
+          "id": "tif_07_d",
+          "text": "Refuse, and divide the barn in two.",
+          "trace": "You refused the order and divided the barn from the inside.",
+          "nextNodeId": "tif_08_su_kuyrugu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "defied_clearance",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_defied_clearance",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dividing the barn put no one out in the cold; Bogdan did not forget it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_08_ilac_kutusu",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The dressing station",
+      "imageKey": "typhus_barn",
+      "body": "The column has six ampoules of morphine left and no more coming. There are two claimants: a courier of nineteen whose leg is shattered below the knee and who will live if he lasts four days; and Nello, an Italian private taken prisoner at Prozor, wounded in the chest, with nobody able to say how long he has. Perić cannot decide. Milena has the book, and both names are written in it.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_list",
+          "text": "Without the book you keep, no one would have remembered these two names.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_nolist",
+          "text": "Because no book was kept, no one can say when either of them was wounded.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_08_a",
+          "text": "Give the morphine to the courier.",
+          "trace": "You gave the last morphine to the courier with the shattered leg.",
+          "nextNodeId": "tif_09_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "morphine_courier",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_morphine_courier",
+              "op": "set",
+              "boolValue": true,
+              "text": "The courier lasted his four days and lived without the leg; Nello spent that night screaming."
+            }
+          ]
+        },
+        {
+          "id": "tif_08_b",
+          "text": "Give the morphine to the Italian.",
+          "trace": "You gave the last morphine to Nello, the Italian prisoner.",
+          "nextNodeId": "tif_09_disarida",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "morphine_nello",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_morphine_nello",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello went quiet and lived two more days; the courier lost his leg on the table, screaming."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_08_su_kuyrugu",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "At the well",
+      "imageKey": "typhus_barn",
+      "body": "The only well is fifty paces from the barn and there is one bucket. The sick side and the sound side drink from the same bucket; typhus travels that way too. There is no second bucket, but Stevan can give up the cart's water barrel; then the cart cannot carry water on the road and the column goes dry as far as the Neretva. Making water from snow wants fuel, and there is no fuel.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_list2",
+          "text": "Because you keep no book, no one knows who has been carrying water from the well either.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_count",
+          "text": "The list you counted decided which side went to the well first.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_counted_sick",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_08_c",
+          "text": "Take the barrel and split it into two vessels.",
+          "trace": "You took the cart's water barrel and separated the sick side from the sound.",
+          "nextNodeId": "tif_09_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "split_water",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_split_water",
+              "op": "set",
+              "boolValue": true,
+              "text": "Two vessels kept the water apart; the column set out dry and licked snow all the way to the Neretva."
+            }
+          ]
+        },
+        {
+          "id": "tif_08_d",
+          "text": "Leave the barrel and manage with one bucket.",
+          "trace": "You left the barrel on the cart and managed with one bucket.",
+          "nextNodeId": "tif_09_disarida",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "one_bucket",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_one_bucket",
+              "op": "set",
+              "boolValue": true,
+              "text": "The cart kept its water; because of the single bucket half of those who were not sick were down within a week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_09_ahir_gecesi",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn at night",
+      "imageKey": "typhus_barn",
+      "body": "Perić's fever has reached forty. The column's only doctor is lying on the sick side, and it would be a surprise if he saw the morning. To go in to him is to put your hands and face in the same air. To stay out is for no one to know which drug is where, or the catch on the surgical bag. Nobody else knows it, and he can only tell it while he can still speak.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_09_a",
+          "text": "Go in and write down everything he knows.",
+          "trace": "You went into the sick half and wrote down everything Perić knew.",
+          "nextNodeId": "tif_10_alman_yarali",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "flag",
+              "key": "took_notes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_took_notes",
+              "op": "set",
+              "boolValue": true,
+              "text": "What Perić told you went onto the last pages of the book; he died that midnight."
+            }
+          ],
+          "omission": "You did not go in to Perić; what he knew went with him."
+        },
+        {
+          "id": "tif_09_b",
+          "text": "Stay out; the column needs you.",
+          "trace": "You stayed out of the sick half and kept yourself for the column.",
+          "nextNodeId": "tif_10_kendi_atesin",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "stayed_out",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_stayed_out",
+              "op": "set",
+              "boolValue": true,
+              "text": "You did not go in and you did not fall ill; what Perić knew went with him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_09_disarida",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The lean-to",
+      "imageKey": "typhus_barn",
+      "body": "Fourteen people are lying in the lean-to and there are two blankets. Milena gave the blankets to the two worst; both came through to morning, and one of the others did not. Tonight she has to make the same arithmetic again. Stevan suggests cutting the blankets into fourteen pieces; none of them would warm anyone, but everyone would get something. That is not arithmetic. It is a choice.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_water",
+          "text": "The water you separated went to the lean-to from its own vessel.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_split_water",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_bucket",
+          "text": "The single bucket reaches the lean-to last; by their turn you can see the bottom of it.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_one_bucket",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_shared_food",
+          "text": "In the shelter you shared your water and bread. Tonight there are two blankets to share, and fourteen people.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_shared_street",
+          "text": "One winter you gave half a full cart to the street's shared kitchen. Two blankets are a load too; they can be divided or not.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_09_c",
+          "text": "Give the blankets to the two worst.",
+          "trace": "You gave the blankets again to the two worst cases.",
+          "nextNodeId": "tif_10_alman_yarali",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "blankets_two",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_blankets_two",
+              "op": "set",
+              "boolValue": true,
+              "text": "Two came through to morning; the rest of the lean-to watched you in silence."
+            }
+          ]
+        },
+        {
+          "id": "tif_09_d",
+          "text": "Cut the blankets and share them out.",
+          "trace": "You cut the blankets and shared them among everyone in the lean-to.",
+          "nextNodeId": "tif_10_kendi_atesin",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "blankets_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_blankets_shared",
+              "op": "set",
+              "boolValue": true,
+              "text": "Everyone got a piece; three died in the lean-to that night, and two of them were the worst cases."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_10_alman_yarali",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn yard",
+      "imageKey": "typhus_barn",
+      "body": "Nello's case is clear: he cannot be moved. The column goes down to the Neretva in two days and there are no stretchers for prisoners. Rade Bogdan says leave him; a column that cannot carry its own wounded cannot defend carrying an enemy soldier. Stevan says he could take the man on a sledge lashed behind the cart. The sledge cuts the cart's pace by a third.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_notes",
+          "text": "What Perić dictated to you is why the man on the sledge was bandaged right.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_took_notes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_morph",
+          "text": "If you had not given him the morphine, you would not be making this decision today.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_morphine_nello",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_olek_help",
+          "text": "In Hamburg you walked to the records depot beside a Polish forced labourer. This time the man in front of you wears an enemy uniform.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:olek_archive_help",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_10_a",
+          "text": "Take Nello on the sledge.",
+          "trace": "You had the Italian prisoner taken on the sledge behind the cart.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "nello_taken",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_taken",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello came down on the sledge; the cart slowed and the tail of the column arrived a day behind."
+            }
+          ],
+          "omission": "You did not take Nello on the sledge."
+        },
+        {
+          "id": "tif_10_b",
+          "text": "Leave Nello behind.",
+          "trace": "You left the Italian prisoner at the barn.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "nello_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello stayed at the barn; the column came down on time and his name stayed open in the book."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_10_kendi_atesin",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn yard",
+      "imageKey": "typhus_barn",
+      "body": "Milena's own fever has started. She can still walk, but she knows the ache in her head; she has written that same line in the book a hundred times. To write herself into the sick half is for the column to lose the last sound medical hand it has. Not to write it is for every stretcher she holds and every wound she binds to become a road for the infection. No one has noticed. The only person who had to notice is herself.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_tif_out",
+          "text": "You had not gone in to Perić; the fever did not come from there, though where it came from is not clear either.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_stayed_out",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_tif_blank",
+          "text": "One of the blanket pieces you cut is now over your own shoulder.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_concealed",
+          "text": "At a document desk you once kept your call-up in your bag. Now the thing to hide is your own fever.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_disclosed",
+          "text": "At a document desk you once handed your call-up over openly. Will you write down your fever the same way?",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "tif_10_c",
+          "text": "Write yourself into the sick half.",
+          "trace": "You wrote your own fever in the book and moved to the sick half.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "self_reported",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_self_reported",
+              "op": "set",
+              "boolValue": true,
+              "text": "You wrote yourself down; you lay three days, and when you rose half the column had gone down to the Neretva."
+            }
+          ]
+        },
+        {
+          "id": "tif_10_d",
+          "text": "Say nothing and stay on your feet.",
+          "trace": "You told no one about your fever and went on working.",
+          "nextNodeId": "tif_11_emir_geldi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "self_hidden",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_self_hidden",
+              "op": "set",
+              "boolValue": true,
+              "text": "You hid your fever and worked; you will never know who caught it from you that week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tif_11_emir_geldi",
+      "act": "The Fever",
+      "date": "27 February 1943",
+      "location": "The barn yard",
+      "imageKey": "typhus_barn",
+      "body": "The order has come: the column goes down to the Neretva and crosses. The bridges were blown; the crossing is at one place and it is narrow. Everyone who can walk will walk, those who cannot will be carried, and for those who cannot be carried the decision will be made down below. Rade Bogdan wants the list showing who goes in which order. Milena's book is that list, and putting the numbers against the names falls to her too.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "tif_11_a",
+          "text": "Put the worst wounded first.",
+          "trace": "You gave the crossing order to the worst wounded first.",
+          "nextNodeId": "ner_12_kanyon_kenari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "worst_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worst_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "The worst went first; the crossing slowed and those behind had to wait in the dark."
+            }
+          ]
+        },
+        {
+          "id": "tif_11_b",
+          "text": "Put those who can walk first.",
+          "trace": "You gave the crossing order to those who could walk.",
+          "nextNodeId": "ner_12_geri_kalanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "walkers_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_walkers_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Those who could walk crossed first; the crossing ran fast and the stretchers were left to the end."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_12_kanyon_kenari",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The canyon rim",
+      "imageKey": "river_gorge",
+      "body": "The Neretva looks like a thin ribbon down below and the sound of it carries this far. The path down into the canyon is a zigzag, narrow and iced; a stretcher only turns the corners on its side. Stevan will have to leave the cart at the top. Everything left at the top goes to the enemy. Breaking the cart up for stretcher poles takes half a day, but it means four more stretchers down below.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_repair",
+          "text": "The axle you mended on the first morning stays here with the cart.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_nello",
+          "text": "The man on the sledge does not fit the path; there is no way to carry him down from here.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_12_a",
+          "text": "Break the cart up for stretcher poles.",
+          "trace": "You broke the cart up and got four stretcher poles out of it.",
+          "nextNodeId": "ner_13_koprunun_onu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_broken",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_broken",
+              "op": "set",
+              "boolValue": true,
+              "text": "Four more stretchers were built from the cart's timber; Stevan broke it up with his own hands."
+            }
+          ]
+        },
+        {
+          "id": "ner_12_b",
+          "text": "Leave the cart and go down now.",
+          "trace": "You left the cart at the top and went straight down into the canyon.",
+          "nextNodeId": "ner_13_kiyi_bekleyisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "cart_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_cart_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "The cart stayed on the ridge; the column gained half a day and went down four stretchers short."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_12_geri_kalanlar",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The canyon rim",
+      "imageKey": "river_gorge",
+      "body": "Those who could walk have gone down. Forty-seven people remain at the top and there are nineteen stretchers. Rade Bogdan says the difference stays up here and that this is an order. Milena can read all forty-seven names in the book. It is possible to work the stretchers in two trips, but that means the crossing stays open in daylight. The decision again belongs to whoever holds the list.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_list",
+          "text": "Because you kept the book you can read all forty-seven names. That is not a mercy.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_walk",
+          "text": "Because you sent the walkers first, the crowd waiting below has already crossed.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_walkers_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_12_c",
+          "text": "Work the stretchers in two trips.",
+          "trace": "You worked the stretchers in two trips to bring everyone down.",
+          "nextNodeId": "ner_13_koprunun_onu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "two_trips",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_two_trips",
+              "op": "set",
+              "boolValue": true,
+              "text": "Two trips were made and thirty-one of the forty-seven came down; the crossing stayed open in daylight."
+            }
+          ]
+        },
+        {
+          "id": "ner_12_d",
+          "text": "Carry out the order: one trip.",
+          "trace": "You obeyed the order, made one trip and left the rest at the top.",
+          "nextNodeId": "ner_13_kiyi_bekleyisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "one_trip",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_one_trip",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nineteen came down; you struck through the twenty-eight names left at the top with your own hand."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_13_koprunun_onu",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The broken bridge",
+      "imageKey": "broken_bridge",
+      "body": "The middle span of the bridge sags into the water. Two beams have been thrown across it and boards nailed over the beams; the width of it is one shoulder. It is crossed in single file, and a stretcher only if it is held upright. Below is the water and above is open sky. The woman next in line asks Milena for the book and looks for her own name. Letting through someone who is not on the list means leaving behind someone who is.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_cart",
+          "text": "One of the stretchers built from the cart's timber is on the crossing right now.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_broken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_two",
+          "text": "Those who came down on the second trip are at the very back of the queue; daylight has already come.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_two_trips",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_13_a",
+          "text": "Hold to the list.",
+          "trace": "You held to the list at the crossing.",
+          "nextNodeId": "ner_14_ilk_gecis",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "held_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "You kept to the list; the queue ran in order and those not written on it stayed on the bank."
+            }
+          ]
+        },
+        {
+          "id": "ner_13_b",
+          "text": "Put the woman in the queue.",
+          "trace": "You put the woman who was not on the list into the queue.",
+          "nextNodeId": "ner_14_sedye_sirasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "broke_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_broke_list",
+              "op": "set",
+              "boolValue": true,
+              "text": "You put her in the queue; someone who was written for that place did not cross that day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_13_kiyi_bekleyisi",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The near bank",
+      "imageKey": "broken_bridge",
+      "body": "There is a queue at the crossing and the queue is not moving. Something is blocked on the far side and no one knows what. Among those waiting, two stretcher bearers are talking about setting down the poles and going. Milena cannot stop them, but two bearers are two stretchers. Going to the head of the queue to ask why means losing your place, and a lost place is not got back.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_left",
+          "text": "Another column is now waiting where you left the cart at the top.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_cart_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_one",
+          "text": "Those who came down in one trip have crossed; for the ones at the top there is no queue any more.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_one_trip",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_13_c",
+          "text": "Go to the head of the queue and find out why.",
+          "trace": "You gave up your place to find out what was blocking the crossing.",
+          "nextNodeId": "ner_14_ilk_gecis",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "went_forward",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_went_forward",
+              "op": "set",
+              "boolValue": true,
+              "text": "You found what was blocking it and the crossing ran again; your place fell to the back."
+            }
+          ]
+        },
+        {
+          "id": "ner_13_d",
+          "text": "Keep your place and hold the bearers.",
+          "trace": "You kept your place and held the bearers in the queue.",
+          "nextNodeId": "ner_14_sedye_sirasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "held_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_place",
+              "op": "set",
+              "boolValue": true,
+              "text": "The bearers stayed and two stretchers crossed; the blockage lasted two hours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_14_ilk_gecis",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The crossing",
+      "imageKey": "broken_bridge",
+      "body": "It is Milena's turn. The book is in her hand and a stretcher is behind her. The boards are wet and narrow; anyone who cannot use both hands does not get across. She can wedge the book under her arm and hold the stretcher with both hands, or hand the book to a bearer and make her own crossing safe. Whoever hands the book over cannot promise to find it again on the other side.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_hold",
+          "text": "Because you kept to the list your turn came exactly when it came, neither early nor late.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_fwd",
+          "text": "It is because you cleared the blockage that these boards can be walked at all.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_went_forward",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_14_a",
+          "text": "Wedge the book under your arm and hold the stretcher.",
+          "trace": "You wedged the book under your arm and held the stretcher with both hands.",
+          "nextNodeId": "ner_15_ortada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "book_kept",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_book_kept",
+              "op": "set",
+              "boolValue": true,
+              "text": "The book stayed under your arm and the stretcher did not fall; both your hands were full."
+            }
+          ]
+        },
+        {
+          "id": "ner_14_b",
+          "text": "Hand the book to a bearer.",
+          "trace": "You handed the book to a bearer and made your own crossing safe.",
+          "nextNodeId": "ner_15_kayan_tahta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "book_handed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_book_handed",
+              "op": "set",
+              "boolValue": true,
+              "text": "You handed the book over; you reached the far side with both hands free and never saw the book again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_14_sedye_sirasi",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The stretcher queue",
+      "imageKey": "broken_bridge",
+      "body": "The stretchers cross one at a time and each crossing takes two minutes. Nello is on the next stretcher; his name is not on the list and no one wants to send him over. On the stretcher behind him is one of the column's own wounded. Milena has the book and the book sets the order. The man waiting at the far end of the crossing will take whichever stretcher Milena signals for.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_broke",
+          "text": "You bent the list once; the queue saw it, and now every one of them asks.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_broke_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_place",
+          "text": "The bearers you held are still with you; that is why the stretchers are still crossing.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_place",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_14_c",
+          "text": "Send your own wounded across.",
+          "trace": "In the stretcher queue you sent the column's own wounded first.",
+          "nextNodeId": "ner_15_ortada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "own_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_own_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Your own wounded crossed; Nello's stretcher stayed on the bank and his turn never came again."
+            }
+          ]
+        },
+        {
+          "id": "ner_14_d",
+          "text": "Signal for Nello's stretcher.",
+          "trace": "You signalled for the prisoner's stretcher, though he was not on the list.",
+          "nextNodeId": "ner_15_kayan_tahta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "nello_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_nello_first",
+              "op": "set",
+              "boolValue": true,
+              "text": "Nello crossed; the stretcher behind him did not cross that day and spent the night on the bank."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_15_ortada",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The middle of the crossing",
+      "imageKey": "broken_bridge",
+      "body": "In the middle of the crossing a board slipped. The bearer in front went down on his knee and the stretcher tipped. The man on it cannot hold on; his weight is going towards the water. If Milena lets the stretcher go she stays on her feet. If she holds it either both of them stay on the beam or neither of them does. There is no time to work this out; her body is deciding what her hands will do.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_book",
+          "text": "The book under your arm is exactly what left both your hands free at this moment.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_book_kept",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_own",
+          "text": "The wounded man you sent first is the one on this stretcher.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_own_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_15_a",
+          "text": "Hold the stretcher.",
+          "trace": "You did not let go of the stretcher when the board slipped.",
+          "nextNodeId": "ner_16_karsi_yaka",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "held_stretcher",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_held_stretcher",
+              "op": "set",
+              "boolValue": true,
+              "text": "The moment you let go both would have gone into the water; you did not, and your shoulder came out of its socket."
+            }
+          ],
+          "omission": "You did not hold the stretcher when the board slipped."
+        },
+        {
+          "id": "ner_15_b",
+          "text": "Let go and stay on your feet.",
+          "trace": "You let the stretcher go and stayed standing on the beam.",
+          "nextNodeId": "ner_16_don_geri",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "flag",
+              "key": "let_go",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_let_go",
+              "op": "set",
+              "boolValue": true,
+              "text": "You let go and stayed standing; the man went into the water and was heard once."
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "bridge_plank",
+        "kind": "plank",
+        "chooses": true,
+        "caption": "The boards are wet. A bearer in front, you behind; the stretcher between you.",
+        "results": [
+          "il_plank_hands_held",
+          "il_plank_hands_open"
+        ]
+      }
+    },
+    {
+      "id": "ner_15_kayan_tahta",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "On the beam",
+      "imageKey": "broken_bridge",
+      "body": "There are ten paces left to the far bank. A noise comes from behind: those left on the bank have stopped waiting their turn and crowded onto the crossing. The beam will not take that weight. The man on the far side is shouting to close the crossing and hold the rest on the bank. Milena can cross and help close it, or turn back and try to put the queue in order. Whoever turns back does not cross again the same day.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_hand",
+          "text": "The bearer you gave the book to crossed long ago; you do not know his name.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_book_handed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_nfirst",
+          "text": "Because you sent Nello first, the queue no longer recognises the queue.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_nello_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_15_c",
+          "text": "Cross over and help close the crossing.",
+          "trace": "You crossed over and helped close the crossing.",
+          "nextNodeId": "ner_16_karsi_yaka",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "closed_crossing",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_closed_crossing",
+              "op": "set",
+              "boolValue": true,
+              "text": "The crossing was closed and the beam held; those on the bank waited another day."
+            }
+          ]
+        },
+        {
+          "id": "ner_15_d",
+          "text": "Turn back and put the queue in order.",
+          "trace": "Ten paces from the far bank you turned back to put the queue in order.",
+          "nextNodeId": "ner_16_son_kafile",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "turned_back",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_turned_back",
+              "op": "set",
+              "boolValue": true,
+              "text": "You turned back and the queue came right; you did not cross that day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_karsi_yaka",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The far bank",
+      "imageKey": "broken_bridge",
+      "body": "On the far bank the column is gathering again. No one knows how many they are; there is no one to count. Two tasks stand in front of Milena: to count the names and to tend the wounded. She cannot do both, because the column marches in two hours. Counting makes permanent who crossed and who did not. Tending may keep a few people who are breathing now breathing this evening as well.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_held",
+          "text": "Because of your shoulder you are tying the bandages with one hand.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_held_stretcher",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_closed",
+          "text": "Those left behind the crossing you closed are still visible on the other bank.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_closed_crossing",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kept_pantry",
+          "text": "One winter you kept the load in the pantry and gave none to the street; the pantry lasted until May. The count on the far bank is a pantry too: who it was kept for becomes clear later.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kept_pantry",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_plank_held",
+          "text": "When the board slipped your hands closed without thinking; when you opened them on the far bank the mark of the pole was still there.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_plank_hands_held",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_a",
+          "text": "Count the names and write them.",
+          "trace": "On the far bank you counted and wrote the names first.",
+          "nextNodeId": "son_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "counted_names",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_counted_names",
+              "op": "set",
+              "boolValue": true,
+              "text": "The count was finished; two people who went untended in those two hours did not see the evening."
+            }
+          ]
+        },
+        {
+          "id": "ner_16_b",
+          "text": "Tend the wounded.",
+          "trace": "On the far bank you tended the wounded instead of counting.",
+          "nextNodeId": "son_sayilmayanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "tended_wounded",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_tended_wounded",
+              "op": "set",
+              "boolValue": true,
+              "text": "You tended the wounded for two hours; no one ever knew again how many had crossed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_don_geri",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The near bank at night",
+      "imageKey": "broken_bridge",
+      "body": "Milena did not cross. The crossing closed at dusk and those on the bank made a camp for the night; no fire, because a fire is visible. It is possible to wait until morning and take a place in the queue again. It is also possible to climb back up the canyon to what the column left behind; there are still living people up there and no one left to look after them. The two do not lead the same way.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_letgo",
+          "text": "The sound of the stretcher you let go is still in your head; no one on this bank has asked about it.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_let_go",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_flour",
+          "text": "The last of the flour you took from the farm was shared out tonight.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_took_flour",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_plank_open",
+          "text": "When the board slipped your hands opened; you did not choose that, your body did. On the bank you kept looking at your hands.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_plank_hands_open",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_c",
+          "text": "Wait for morning and rejoin the queue.",
+          "trace": "You waited on the bank for morning and rejoined the queue.",
+          "nextNodeId": "son_ikinci_gun",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "waited_morning",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_waited_morning",
+              "op": "set",
+              "boolValue": true,
+              "text": "The crossing opened again in the morning; three people froze on the bank that night."
+            }
+          ]
+        },
+        {
+          "id": "ner_16_d",
+          "text": "Climb back up to those left behind.",
+          "trace": "You left the crossing and climbed back up to those left behind.",
+          "nextNodeId": "son_geride_kalanlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "stevan",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": -5
+            },
+            {
+              "type": "flag",
+              "key": "went_back_up",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_went_back_up",
+              "op": "set",
+              "boolValue": true,
+              "text": "You climbed back up; the column below marched that morning and did not see you again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ner_16_son_kafile",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The near bank",
+      "imageKey": "broken_bridge",
+      "body": "The queue came right and the crossing worked through the night. The last party is Milena's. Across the water the column has long since gathered; here there are twelve people and four stretchers. The boards have iced; a night crossing takes twice as long as a day one. Rade Bogdan is shouting from the far side: now or never. Taking four stretchers over the ice means putting all twelve at risk.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ner_turn",
+          "text": "The queue you turned back to fix is the only reason this last party exists at all.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_turned_back",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ner_bur",
+          "text": "The spade you dug the graves with at the farm is still on your back.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ner_16_e",
+          "text": "Take all four stretchers across.",
+          "trace": "In the last party you took all four stretchers over the iced crossing.",
+          "nextNodeId": "son_dort_sedye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "peric",
+              "op": "add",
+              "intValue": 5
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "all_four",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_all_four",
+              "op": "set",
+              "boolValue": true,
+              "text": "All four stretchers reached the far side; the crossing took three hours and two bearers went into the water."
+            }
+          ],
+          "omission": "You did not try to bring all four stretchers across in the last party."
+        },
+        {
+          "id": "ner_16_f",
+          "text": "Take the walkers; leave the stretchers.",
+          "trace": "In the last party you left the stretchers and took only those who could walk.",
+          "nextNodeId": "son_biten_defter",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "bogdan",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "dragica",
+              "op": "add",
+              "intValue": -5
+            },
+            {
+              "type": "flag",
+              "key": "left_stretchers",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_left_stretchers",
+              "op": "set",
+              "boolValue": true,
+              "text": "Those who could walk crossed; four stretchers stayed on the bank and were found there in the morning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "son_liste",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The far bank",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_liste",
+        "title": "The List",
+        "paragraphs": [
+          "On the far bank Milena wrote for two hours. The names of those who crossed, the names of those who did not, and where each of them was left. The book went south with the column and was found in a crate after the war; of the four hundred and eleven names in it, two hundred and ninety-eight appear in no other record.",
+          "She could tend no one during those two hours. Two people died and both their names are in the book; the hand that wrote them was the only hand that could have tended them. Milena never told anyone this, and she never gave the book to anyone either.",
+          "History did not change. Neither did the number of those who reached the far bank of the Neretva. The only thing that changed is that the number had a list."
+        ],
+        "traceFallbacks": [
+          "• You kept the book the whole way.",
+          "• The order at the crossing passed through your hands.",
+          "• You finished the count on the far bank.",
+          "• The details of this path went on the record."
+        ]
+      }
+    },
+    {
+      "id": "son_sayilmayanlar",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The far bank",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_sayilmayanlar",
+        "title": "The Uncounted",
+        "paragraphs": [
+          "Milena spent those two hours on the far bank at the side of the wounded. Four people were still breathing that evening and she was the reason. No one wrote down how many the column crossed with; the figures given in later years do not agree with each other, and all of them are estimates.",
+          "Years later a commission asked her how many they had been. I do not know, she said. Do you not know the names either, they asked. I know the names, she said; I only do not know how many there are."
+        ],
+        "traceFallbacks": [
+          "• On the far bank you chose the wounded over the count.",
+          "• The column's crossing figure was written nowhere.",
+          "• The details of this path went on the record."
+        ]
+      }
+    },
+    {
+      "id": "son_ikinci_gun",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The near bank",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_ikinci_gun",
+        "title": "The Second Day",
+        "paragraphs": [
+          "The crossing opened again in the morning and Milena went over on the second day. Most of the column had already marched south; those left on the bank were attached to another unit and went by another road. Milena never saw that column again.",
+          "Three people froze on the bank that night. All three were among those who could walk; no one left them behind, morning simply came before their turn did. No one could attribute it to an order, because there had been no order.",
+          "History did not change: the Neretva was crossed. Milena's own fate did: crossing a day late took her onto another road, into another unit and into another part of the war."
+        ],
+        "traceFallbacks": [
+          "• You did not cross on the first day.",
+          "• You waited out the night on the bank without a fire.",
+          "• The details of this path went on the record."
+        ]
+      }
+    },
+    {
+      "id": "son_geride_kalanlar",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "Above the canyon",
+      "imageKey": "river_gorge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_geride_kalanlar",
+        "title": "Those Left Behind",
+        "paragraphs": [
+          "Milena did not cross. She climbed back up the canyon and found twenty-eight people where the column had left them; nineteen were still alive. She withdrew with them to a shepherd's hut and stayed there eleven days.",
+          "At the end of eleven days there were nine. A patrol found them; Milena never said which side the patrol belonged to. Seven of the nine lived to see the end of the war.",
+          "The column crossed, the front moved south, the course of the war did not change. The only reason seven of the twenty-eight left at the top were alive is that someone turned back ten paces from the crossing."
+        ],
+        "traceFallbacks": [
+          "• You left the crossing and climbed back up.",
+          "• Your link with the column ended there.",
+          "• The details of this path went on the record."
+        ]
+      }
+    },
+    {
+      "id": "son_dort_sedye",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The far bank",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_dort_sedye",
+        "title": "Four Stretchers",
+        "paragraphs": [
+          "The last party took three hours. All four stretchers reached the far bank. Two bearers did not; one was pulled out of the water and one was not. Milena noticed that her hand did not shake as she wrote those two names in the book, and she remembered that afterwards, always.",
+          "Of the four people on those four stretchers, three lived to see the end of the war. Two of them never learned Milena's name; other people had carried them, and those people had not given their names either.",
+          "History did not change. Neither the crossing of the Neretva nor the date of it changed. What changed was how many people reached the far side that night."
+        ],
+        "traceFallbacks": [
+          "• You took the last party over the ice.",
+          "• You left none of the four stretchers.",
+          "• The cost was two bearers.",
+          "• The details of this path went on the record."
+        ]
+      }
+    },
+    {
+      "id": "son_biten_defter",
+      "act": "The Crossing",
+      "date": "6/7 March 1943",
+      "location": "The far bank",
+      "imageKey": "broken_bridge",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_biten_defter",
+        "title": "The Closed Book",
+        "paragraphs": [
+          "The eight who could walk crossed. Four stretchers stayed on the bank. The patrol that looked there in the morning reported finding all four; it also reported that no one in them was alive.",
+          "Milena closed the book that day and never opened it again. The column marched south, she marched with it, the war lasted two more years, and in those two years she did not write down a single name.",
+          "Eight people lived. Eight lived while four died, and that may well have been the best number possible on the bank that night. Milena never accepted it."
+        ],
+        "traceFallbacks": [
+          "• In the last party you left the stretchers on the bank.",
+          "• Eight people crossed.",
+          "• You closed the book that day.",
+          "• The details of this path went on the record."
+        ]
+      }
+    }
+  ]
+}
