@@ -524,6 +524,22 @@ namespace OrdinaryFronts.Editor
                 float swell = 0.7f + 0.3f * Mathf.Sin(t * Mathf.PI * 2f * 0.23f);
                 return ((float)random.NextDouble() * 2f - 1f) * 0.014f * swell * fade;
             }, 1943_05);
+            // Mühür: kısa, boğuk bir darbe ve kâğıt hışırtısı.
+            WriteWave(AudioRoot + "/stamp_thud.wav", 0.42f, (i, t, random) =>
+            {
+                float body = Mathf.Sin(t * Mathf.PI * 2f * (95f - t * 80f)) * Mathf.Exp(-t * 22f) * 0.34f;
+                float paper = ((float)random.NextDouble() * 2f - 1f) * Mathf.Exp(-t * 30f) * 0.12f;
+                return body + paper;
+            }, 1945_11);
+            // Perde tonu: iki alçak, uzun sönen kısmi ton; bir piyano telinin uzaktan duyulması gibi.
+            WriteWave(AudioRoot + "/act_tone.wav", 2.6f, (i, t, random) =>
+            {
+                float attack = Mathf.Clamp01(t / 0.02f);
+                float decay = Mathf.Exp(-t * 1.6f);
+                float tone = Mathf.Sin(t * Mathf.PI * 2f * 110f) * 0.10f + Mathf.Sin(t * Mathf.PI * 2f * 165f) * 0.045f
+                    + Mathf.Sin(t * Mathf.PI * 2f * 220.6f) * 0.02f * Mathf.Exp(-t * 3f);
+                return tone * attack * decay;
+            }, 1945_12);
         }
 
         private static float LoopFade(float time, float duration)

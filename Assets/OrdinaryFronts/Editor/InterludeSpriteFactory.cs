@@ -22,7 +22,7 @@ namespace OrdinaryFronts.Editor
             "il_man_0", "il_man_1", "il_man_2", "il_man_3",
             "il_child_0", "il_child_1", "il_child_2", "il_child_3",
             "il_greet_0", "il_greet_1", "il_greet_2", "il_greet_3",
-            "il_cart", "il_pram", "il_post", "il_streak", "il_puff", "il_lamp", "il_stretcher"
+            "il_cart", "il_pram", "il_post", "il_streak", "il_puff", "il_lamp", "il_stretcher", "il_ring"
         };
 
         private static readonly float[] Gaits = { 1f, 0.3f, -0.9f, 0.3f };
@@ -34,10 +34,10 @@ namespace OrdinaryFronts.Editor
             lightTone = Blend(Mustard, Paper, 0.35f);
             System.Random rng = new System.Random(19450120 + key.GetHashCode() % 977);
 
-            if (key.StartsWith("il_woman_")) return Figure(rng, HungerWinterSceneFactory.Kind.Woman, HungerWinterSceneFactory.Carry.Pull, 1, Gaits[Frame(key)], 300f);
-            if (key.StartsWith("il_man_")) return Figure(rng, HungerWinterSceneFactory.Kind.Man, HungerWinterSceneFactory.Carry.Pull, 3, Gaits[Frame(key)], 318f);
+            if (key.StartsWith("il_woman_")) return Figure(rng, HungerWinterSceneFactory.Kind.Woman, HungerWinterSceneFactory.Carry.Push, 1, Gaits[Frame(key)], 300f);
+            if (key.StartsWith("il_man_")) return Figure(rng, HungerWinterSceneFactory.Kind.Man, HungerWinterSceneFactory.Carry.Pull, 4, Gaits[Frame(key)], 318f);
             if (key.StartsWith("il_child_")) return Figure(rng, HungerWinterSceneFactory.Kind.Child, HungerWinterSceneFactory.Carry.Walk, 2, Gaits[Frame(key)], 190f);
-            if (key.StartsWith("il_greet_")) return Figure(rng, HungerWinterSceneFactory.Kind.Woman, HungerWinterSceneFactory.Carry.Pull, 2, Gaits[Frame(key)], 286f);
+            if (key.StartsWith("il_greet_")) return Figure(rng, HungerWinterSceneFactory.Kind.Woman, HungerWinterSceneFactory.Carry.Push, 2, Gaits[Frame(key)], 286f);
             switch (key)
             {
                 case "il_cart": return CartSprite(rng);
@@ -46,6 +46,7 @@ namespace OrdinaryFronts.Editor
                 case "il_streak": return Streak(160, 6);
                 case "il_lamp": return Lamp(rng);
                 case "il_stretcher": return Stretcher(rng);
+                case "il_ring": return RingSprite(128, 9f);
                 default: return Puff(56);
             }
         }
@@ -123,6 +124,23 @@ namespace OrdinaryFronts.Editor
                 int x = rng.Next(44, 316);
                 Stroke(b, x, 44, x + rng.Next(-3, 4), 52 + rng.Next(4, 22), Blend(Soot, Paper, 0.12f), 1, 0.25f);
             }
+            return ToTexture(b);
+        }
+
+        /// <summary>Kenarı yumuşatılmış beyaz halka; zamanlama ve ilerleme göstergeleri için.</summary>
+        private static Texture2D RingSprite(int size, float thickness)
+        {
+            Board b = new Board(size, size);
+            float c = (size - 1) * 0.5f;
+            float outer = size * 0.5f - 1.5f;
+            float inner = outer - thickness;
+            for (int y = 0; y < size; y++)
+                for (int x = 0; x < size; x++)
+                {
+                    float d = Mathf.Sqrt((x - c) * (x - c) + (y - c) * (y - c));
+                    float a = Mathf.Clamp01(outer - d + 0.5f) * Mathf.Clamp01(d - inner + 0.5f);
+                    b.Set(x, y, new Color32(255, 255, 255, (byte)Mathf.RoundToInt(a * 255f)));
+                }
             return ToTexture(b);
         }
 

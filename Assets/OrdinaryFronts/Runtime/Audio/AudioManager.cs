@@ -13,6 +13,8 @@ namespace OrdinaryFronts
         [SerializeField] private AudioClip sparkClip;
         [SerializeField] private AudioClip creakClip;
         [SerializeField] private AudioClip riverAmbience;
+        [SerializeField] private AudioClip stampClip;
+        [SerializeField] private AudioClip actToneClip;
         [SerializeField] private AudioClip cityAmbience;
         [SerializeField] private AudioClip shelterAmbience;
         [SerializeField] private AudioClip trainAmbience;
@@ -60,6 +62,15 @@ namespace OrdinaryFronts
             riverAmbience = river;
         }
 
+        /// <summary>1.1 sunum sesleri: final mührünün tıkı ve perde kartının alçak tonu.</summary>
+        public void ConfigurePresentationClips(AudioClip stamp, AudioClip actTone)
+        {
+            stampClip = stamp;
+            actToneClip = actTone;
+        }
+
+        public void PlayStamp() { PlayOneShot(stampClip); }
+        public void PlayActTone() { PlayOneShot(actToneClip); }
         public void PlayGust() { PlayOneShot(gustClip); }
         public void PlaySpark() { PlayOneShot(sparkClip); }
         public void PlayCreak() { PlayOneShot(creakClip); }

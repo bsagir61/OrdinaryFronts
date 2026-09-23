@@ -210,6 +210,7 @@ namespace OrdinaryFronts
         private void Update()
         {
             UpdateParallax();
+            UpdatePresentation();
             if (introActive)
             {
                 UpdateIntroGrain();
@@ -224,6 +225,7 @@ namespace OrdinaryFronts
                 if (Input.GetKeyDown(KeyCode.Escape)) interludeSkipRequested = true;
                 return;
             }
+            if (ConsumePresentationInput()) return;
             if (Input.GetKeyDown(KeyCode.Escape)) HandleEscape();
             if (transitionBusy || router.Current != AppScreen.Gameplay) return;
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) SelectChoice(0);
@@ -272,6 +274,9 @@ namespace OrdinaryFronts
 
         private void BuildInterface()
         {
+            // Süren sunum rutinleri eski arayüzün nesnelerine bakar; yeniden kurulumdan önce durur.
+            StopBodyReveal();
+            actCardActive = false;
             Transform previous = rootCanvas.transform.Find("Runtime Interface");
             if (previous != null)
             {
@@ -292,9 +297,11 @@ namespace OrdinaryFronts
             AspectRatioFitter backgroundFitter = background.AddComponent<AspectRatioFitter>();
             backgroundFitter.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
             backgroundFitter.aspectRatio = 16f / 9f;
+            BuildBackgroundCrossfade(background);
 
             Image wash = AddImage(CreateRect("Ink Wash", runtimeRoot.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero), new Color(theme.sootNavy.r, theme.sootNavy.g, theme.sootNavy.b, 0.34f));
             wash.raycastTarget = false;
+            BuildAtmosphere(runtimeRoot.transform);
             Image vignette = AddImage(CreateRect("Vignette", runtimeRoot.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero), Color.white, theme.vignette);
             vignette.raycastTarget = false;
 
@@ -314,13 +321,25 @@ namespace OrdinaryFronts
         {
             GameObject screen = CreateScreen("Main Menu", parent);
             router.Register(AppScreen.MainMenu, screen);
-            AddImage(CreateRect("Archive Block", screen.transform, new Vector2(0.055f, 0.09f), new Vector2(0.42f, 0.92f), Vector2.zero, Vector2.zero), new Color(theme.sootNavy.r, theme.sootNavy.g, theme.sootNavy.b, 0.88f));
+            AddImage(CreateRect("Archive Block", screen.transform, new Vector2(0.055f, 0.09f), new Vector2(0.42f, 0.92f), Vector2.zero, Vector2.zero), new Color(theme.sootNavy.r, theme.sootNavy.g, theme.sootNavy.b, 0.80f));
             AddImage(CreateRect("Rust Rule", screen.transform, new Vector2(0.055f, 0.895f), new Vector2(0.42f, 0.905f), Vector2.zero, Vector2.zero), theme.rust);
             TMP_Text title = CreateText("Product Title", screen.transform, brand.ProductName, 74f, FontStyles.Bold, theme.agedPaper,
                 new Vector2(0.08f, 0.68f), new Vector2(0.385f, 0.87f), Vector2.zero, Vector2.zero, TextAlignmentOptions.BottomLeft);
             title.enableAutoSizing = true;
             title.fontSizeMin = 54f;
             title.fontSizeMax = 82f;
+            // Alt başlık: antolojinin türü ve kataloğun kapsadığı yıllar; bölüm eklendikçe kendiliğinden genişler.
+            string years = AnthologyYears();
+            string tagline = T(UiKey.MenuTagline) + (string.IsNullOrEmpty(years) ? string.Empty : "   ·   " + years);
+            TMP_Text taglineText = (TMP_Text)AsDocument(CreateText("Tagline", screen.transform,
+                localization == null ? tagline : localization.ToUpper(tagline), 17f, FontStyles.Bold, theme.mustard,
+                new Vector2(0.08f, 0.615f), new Vector2(0.395f, 0.665f), Vector2.zero, Vector2.zero, TextAlignmentOptions.TopLeft));
+            taglineText.characterSpacing = 4f;
+            TMP_Text versionText = (TMP_Text)AsDocument(CreateText("Version", screen.transform, "v" + brand.Version, 14f, FontStyles.Normal,
+                new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.45f),
+                new Vector2(0.08f, 0.10f), new Vector2(0.385f, 0.14f), Vector2.zero, Vector2.zero, TextAlignmentOptions.BottomLeft));
+            versionText.characterSpacing = 3f;
+            BuildMenuDiorama(screen.transform);
             // Tek bir şehre ve yıla bağlı bağlam satırı kaldırıldı: oyun bir antoloji ve
             // dönem bilgisi artık bölüm kartında duruyor.
             Button newButton = CreateButton("New Game", screen.transform, T(UiKey.MenuNewGame), ShowStorySelect,
@@ -475,6 +494,7 @@ namespace OrdinaryFronts
                 new Vector2(0.513f, 0.05f), new Vector2(0.96f, 0.36f), out choiceKeyLabels[1], out choiceLabels[1]);
             scalableBodyTexts.Add(choiceLabels[0]);
             scalableBodyTexts.Add(choiceLabels[1]);
+            BuildActCard(screen.transform);
         }
 
         /// <summary>
@@ -939,7 +959,10 @@ namespace OrdinaryFronts
             router.Register(AppScreen.Ending, screen);
             GameObject panel = CreatePaperPanel("Ending Panel", screen.transform, new Vector2(0.12f, 0.06f), new Vector2(0.88f, 0.94f));
             endingTitleText = CreateText("Ending Title", panel.transform, string.Empty, 50f, FontStyles.Bold, theme.ink,
-                new Vector2(0.07f, 0.82f), new Vector2(0.93f, 0.94f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
+                new Vector2(0.07f, 0.81f), new Vector2(0.70f, 0.925f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Left);
+            endingTitleText.enableAutoSizing = true;
+            endingTitleText.fontSizeMin = 34f;
+            endingTitleText.fontSizeMax = 50f;
             // Rapor artık üç bölümü de kapsadığı için sol sütuna alındı; final paragrafları
             // sağda kalır. Tek sütunda alt alta dizmek raporu ya kırpıyor ya da okunmayacak
             // kadar küçültüyordu.
@@ -963,6 +986,7 @@ namespace OrdinaryFronts
                 new Vector2(0.07f, 0.035f), new Vector2(0.43f, 0.12f));
             CreateButton("Main Menu", panel.transform, T(UiKey.CommonMainMenu), () => ShowMainMenu(true),
                 new Vector2(0.57f, 0.035f), new Vector2(0.93f, 0.12f));
+            BuildEndingStamp(panel.transform);
         }
 
         private void BuildError(Transform parent)
@@ -1129,6 +1153,8 @@ namespace OrdinaryFronts
             introTextGroup.alpha = 0f;
             transitionBusy = false;
             introRoutine = null;
+            // Açılış kurgusu bölümün ilk perdesine kartla devreder.
+            pendingActCard = true;
             RenderNode(firstNode, true);
         }
 
@@ -1285,6 +1311,13 @@ namespace OrdinaryFronts
                 yield break;
             }
             router.Show(AppScreen.Gameplay);
+            // Perde değiştiyse yeni perdenin kartı, anlatı kartından önce.
+            if (outcome.source != null && outcome.source.act != outcome.destination.act)
+            {
+                storyCardGroup.alpha = 0f;
+                yield return PlayActCard(outcome.destination);
+            }
+            StartBodyReveal();
             storyCardGroup.alpha = duration > 0f ? 0f : 1f;
             if (duration > 0f)
             {
@@ -1320,11 +1353,18 @@ namespace OrdinaryFronts
             RenderNodeContent(node);
             router.Show(AppScreen.Gameplay);
             if (cardRoutine != null) StopCoroutine(cardRoutine);
+            if (pendingActCard)
+            {
+                pendingActCard = false;
+                cardRoutine = StartCoroutine(ActCardThenShowCard(node, animate));
+                return;
+            }
             cardRoutine = StartCoroutine(ShowCard(animate));
         }
 
         private void RenderNodeContent(StoryNode node)
         {
+            StopBodyReveal();
             SetBackground(node.imageKey);
             audioManager.PlayAmbienceFor(node.imageKey);
             audioManager.PlayPaper();
@@ -1360,6 +1400,7 @@ namespace OrdinaryFronts
 
         private IEnumerator ShowCard(bool animate)
         {
+            if (animate) StartBodyReveal();
             transitionBusy = animate && !settings.reduceMotion;
             Vector2 origin = storyCardRect.anchoredPosition;
             float duration = settings.reduceMotion || !animate ? 0f : theme.transitionDuration;
@@ -1392,7 +1433,9 @@ namespace OrdinaryFronts
             endingTitleText.text = ending.title;
             endingBodyText.text = string.Join("\n\n", ending.paragraphs ?? Array.Empty<string>());
             endingTracesText.text = FormatEndingReport(storyController.BuildEndingTraces(ending)) + FormatOmissionsReport() + FormatPeopleReport();
+            StopBodyReveal();
             router.Show(AppScreen.Ending);
+            PrepareEndingPresentation();
             SelectFirstButton(router.Get(AppScreen.Ending));
         }
 
@@ -1496,7 +1539,7 @@ namespace OrdinaryFronts
         {
             transitionBusy = false;
             if (playBack) audioManager.PlayBack();
-            SetBackground("harbor_dawn");
+            StartMenuDiorama();
             audioManager.PlayAmbienceFor("harbor_dawn");
             RefreshContinueButton();
             router.Show(AppScreen.MainMenu);
@@ -1689,10 +1732,13 @@ namespace OrdinaryFronts
         /// </summary>
         private void SetBackground(string key)
         {
+            Sprite previous = backgroundArt.sprite;
             if (!string.IsNullOrEmpty(key)) currentBackgroundKey = key;
             Sprite sprite;
             if (!string.IsNullOrEmpty(key) && artIndex.TryGetValue(key, out sprite)) backgroundArt.sprite = sprite;
             backgroundArt.color = backgroundArt.sprite == null ? theme.sootNavy : Color.white;
+            if (previous != null && previous != backgroundArt.sprite) BeginBackgroundCrossfade(previous);
+            RequestAtmosphere(currentBackgroundKey);
         }
 
         private void UpdateParallax()
@@ -1701,11 +1747,14 @@ namespace OrdinaryFronts
             if (settings == null || settings.reduceMotion)
             {
                 backgroundRect.anchoredPosition = Vector2.Lerp(backgroundRect.anchoredPosition, Vector2.zero, Time.unscaledDeltaTime * 10f);
+                backgroundRect.localScale = Vector3.one;
                 return;
             }
             Vector2 normalized = new Vector2(Input.mousePosition.x / Mathf.Max(1f, Screen.width) - 0.5f, Input.mousePosition.y / Mathf.Max(1f, Screen.height) - 0.5f);
-            Vector2 target = normalized * -18f;
+            // Fare paralaksı ve yavaş kamera toplanır; kenar payı (28 px + ölçek) ikisini birden karşılar.
+            Vector2 target = normalized * -18f + KenBurnsDrift;
             backgroundRect.anchoredPosition = Vector2.Lerp(backgroundRect.anchoredPosition, target, Time.unscaledDeltaTime * 1.8f);
+            backgroundRect.localScale = Vector3.one * KenBurnsScale;
         }
 
         private void ExitApplication()
@@ -1808,6 +1857,7 @@ namespace OrdinaryFronts
                 yield return CaptureEndingForQa();
                 yield return CaptureArchiveForQa();
                 yield return CaptureInterludeForQa();
+                yield return CaptureActCardForQa();
             }
             if (smokeFailure != null)
                 Debug.LogError("ORDINARY_FRONTS_PLAYER_SMOKE_FAILED: " + smokeFailure);
@@ -1950,9 +2000,16 @@ namespace OrdinaryFronts
                     interludeForcePush = true;
                     StartCoroutine(RunInterlude(node));
                     float waited = 0f;
-                    while (waited < 6.4f && interludeActive)
+                    bool introCaptured = false;
+                    while (waited < 8.4f && interludeActive)
                     {
                         waited += Time.unscaledDeltaTime;
+                        if (!introCaptured && waited >= 1.9f)
+                        {
+                            introCaptured = true;
+                            Canvas.ForceUpdateCanvases();
+                            CaptureInterfaceOffscreen(Path.Combine(commandLineCaptureDirectory, "interlude_" + node.interlude.id + "_intro_" + Screen.width + "x" + Screen.height + ".png"));
+                        }
                         yield return null;
                     }
                     Canvas.ForceUpdateCanvases();
@@ -1971,6 +2028,31 @@ namespace OrdinaryFronts
             activeStoryId = original;
             LoadStoryForLocale(settings.locale);
             yield return null;
+        }
+
+        /// <summary>İkinci perdenin kartını bir bölümün ortasında yakalar: kart en dolu hâlindeyken.</summary>
+        private IEnumerator CaptureActCardForQa()
+        {
+            StartNewGameForTests();
+            yield return null;
+            StoryNode start = storyController.CurrentNode;
+            int guard = 0;
+            while (storyController.CurrentNode != null && !storyController.CurrentNode.IsEnding
+                && storyController.CurrentNode.act == start.act && guard < 20)
+            {
+                ChooseForTests(0);
+                guard++;
+                yield return null;
+            }
+            StoryNode node = storyController.CurrentNode;
+            if (node == null || node.IsEnding) yield break;
+            Coroutine card = StartCoroutine(PlayActCard(node));
+            for (float wait = 0f; wait < 1.3f; wait += Time.unscaledDeltaTime) yield return null;
+            Canvas.ForceUpdateCanvases();
+            CaptureInterfaceOffscreen(Path.Combine(commandLineCaptureDirectory, "actcard_" + Screen.width + "x" + Screen.height + ".png"));
+            actCardSkip = true;
+            yield return card;
+            storyCardGroup.alpha = 1f;
         }
 
         /// <summary>Başlangıçtan hedefe en kısa seçim dizisi (genişlik öncelikli arama); yol yoksa null.</summary>
@@ -2051,7 +2133,8 @@ namespace OrdinaryFronts
                 yield return null;
             }
             Canvas.ForceUpdateCanvases();
-            yield return null;
+            // Mühür kısa bir gecikmeyle iner; yakalama onu da görmeli.
+            for (float wait = 0f; wait < 1.6f; wait += Time.unscaledDeltaTime) yield return null;
             if (router.Current == AppScreen.Ending)
             {
                 CaptureInterfaceOffscreen(Path.Combine(commandLineCaptureDirectory,
@@ -2095,6 +2178,7 @@ namespace OrdinaryFronts
 
         private void CaptureInterfaceOffscreen(string path)
         {
+            SettlePresentationForQa();
             Camera captureCamera = Camera.main;
             if (captureCamera == null) throw new InvalidOperationException("Offscreen QA için Main Camera bulunamadı.");
             int width = Mathf.Max(640, Screen.width);

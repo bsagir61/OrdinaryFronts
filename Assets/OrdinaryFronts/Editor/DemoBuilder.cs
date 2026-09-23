@@ -378,6 +378,7 @@ namespace OrdinaryFronts.Editor
                 LoadClip("train_platform_ambience.wav"));
             audio.ConfigureInterludeClips(LoadClip("wind_dike_ambience.wav"), LoadClip("wind_gust.wav"),
                 LoadClip("spark_crackle.wav"), LoadClip("plank_creak.wav"), LoadClip("river_ambience.wav"));
+            audio.ConfigurePresentationClips(LoadClip("stamp_thud.wav"), LoadClip("act_tone.wav"));
             EditorUtility.SetDirty(controller);
             EditorUtility.SetDirty(audio);
 

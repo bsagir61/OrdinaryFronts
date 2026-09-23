@@ -22,14 +22,39 @@ namespace OrdinaryFronts
         public const string StorySelectLocked = "storySelect.locked";
         public const string StorySelectUnknown = "storySelect.unknown";
         public const string StorySelectBegin = "storySelect.begin";
-        public const string InterludePushHint = "interlude.pushHint";
+        public const string ActLabel = "act.label";
+        public const string MenuTagline = "menu.tagline";
+        public const string EndingStamp = "ending.stamp";
         public const string InterludeSkipHint = "interlude.skipHint";
+        public const string IlChooseHint = "il.chooseHint";
+        public const string IlWalkTitle = "il.walk.title";
+        public const string IlWalkHow = "il.walk.how";
+        public const string IlWalkHint = "il.walk.hint";
+        public const string IlGustWarn = "il.gustWarn";
+        public const string IlGust = "il.gust";
+        public const string IlWalkPushed = "il.walk.pushed";
+        public const string IlWalkWaited = "il.walk.waited";
+        public const string IlLampTitle = "il.lamp.title";
+        public const string IlLampHow = "il.lamp.how";
+        public const string IlWireHint = "il.wireHint";
+        public const string IlSparkWarn = "il.sparkWarn";
+        public const string IlSparkJolt = "il.sparkJolt";
+        public const string IlSparkPassed = "il.sparkPassed";
+        public const string IlGuideHint = "il.guideHint";
+        public const string IlCaught = "il.caught";
+        public const string IlEarly = "il.early";
+        public const string IlLate = "il.late";
+        public const string IlPlankTitle = "il.plank.title";
+        public const string IlPlankHow = "il.plank.how";
+        public const string IlBalanceHint = "il.balanceHint";
+        public const string IlStumble = "il.stumble";
+        public const string IlSlip = "il.slip";
+        public const string IlHoldHint = "il.holdHint";
+        public const string IlHeld = "il.held";
+        public const string IlLetGo = "il.letGo";
         public const string InterludeChoiceHint = "interlude.choiceHint";
-        public const string InterludeLampHint = "interlude.lampHint";
         public const string InterludeLampLit = "interlude.lampLit";
         public const string InterludeStairsDone = "interlude.stairsDone";
-        public const string InterludePlankHint = "interlude.plankHint";
-        public const string InterludeHoldOrRelease = "interlude.holdOrRelease";
 
         public const string GameplayPauseHint = "gameplay.pauseHint";
         public const string GameplayNoChoice = "gameplay.noChoice";
@@ -86,8 +111,9 @@ namespace OrdinaryFronts
             {
                 MenuNewGame, MenuContinue, MenuSettings, MenuExit,
                 StorySelectTitle, StorySelectIntro, StorySelectLocked, StorySelectUnknown, StorySelectBegin,
-                InterludePushHint, InterludeSkipHint, InterludeChoiceHint,
-                InterludeLampHint, InterludeLampLit, InterludeStairsDone, InterludePlankHint, InterludeHoldOrRelease,
+                IlChooseHint, IlWalkTitle, IlWalkHow, IlWalkHint, IlGustWarn, IlGust, IlWalkPushed, IlWalkWaited, IlLampTitle, IlLampHow, IlWireHint, IlSparkWarn, IlSparkJolt, IlSparkPassed, IlGuideHint, IlCaught, IlEarly, IlLate, IlPlankTitle, IlPlankHow, IlBalanceHint, IlStumble, IlSlip, IlHoldHint, IlHeld, IlLetGo,
+                InterludeSkipHint, InterludeChoiceHint, ActLabel, MenuTagline, EndingStamp,
+                InterludeLampLit, InterludeStairsDone,
                 GameplayPauseHint, GameplayNoChoice, EchoPrefix,
                 IntroSkipHint,
                 SettingsTitle, SettingsMasterVolume, SettingsAmbientVolume, SettingsEffectsVolume,

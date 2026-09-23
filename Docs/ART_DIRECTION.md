@@ -204,6 +204,28 @@ Deterministik Editor üretimi kullanılırsa:
 - Sıkıştırma, kâğıt dokusunda blok artefaktı üretmeyecek kaliteyle ayarlanır.
 - Sprite sınırları ve 9-slice kenarları yeniden üretim sonrası otomatik doğrulanır.
 
+## 10b. Atmosfer ve sunum (1.1)
+
+Atmosfer katmanı görselin üstüne, anlatı kartının altına çizilir; parçacıklar arayüz sprite'larından (`il_puff`, `il_streak`) üretilir ve paletten renk alır. Sahne başına hava:
+
+| Sahne | Hava | Renk ayarı |
+|---|---|---|
+| `bombed_street` | Kül (düşen, savrulan) + kıvılcım (yükselen, titreyen) | pas, %7 |
+| `burned_village` | Kül + seyrek kar | pas, %5 |
+| `aid_registry` | Toz + seyrek kül | hardal, %5 |
+| `shelter_stairs`, `typhus_barn` | Işıkta asılı toz | hardal, %6 |
+| `train_platform` | Sis + yükselen buhar | kâğıt, %4 |
+| `harbor_dawn`, `shipyard_evening` | Sis | kâğıt, %3,5 |
+| `river_gorge`, `broken_bridge` | Yağmur + sis | petrol, %10 |
+| `mountain_column`, `polder_road` | Rüzgârlı kar + rüzgâr şeritleri | petrol, %7 |
+| `afsluitdijk` | Yoğun kar + rüzgâr şeritleri | petrol, %8 |
+| `frozen_canal`, `frisian_farm` | Hafif kar | petrol, %6 |
+| `canal_night` | Seyrek kar | is lacivert, %10 |
+
+Kurallar: hiçbir parçacık metnin üstüne çıkmaz (kart katmanı atmosferin üstündedir); renk ayarı %10'u geçmez; hareket azaltma açıkken parçacıklar kapanır, renk ayarı kalır. Yeni bir sahne eklendiğinde bu tabloya bir satır eklenir; eklenmezse sahne havasız ve ayarsız görünür.
+
+Perde kartı: is lacivert örtü (%80) + vinyet; üstte daktilo, hardal, geniş aralıklı "PERDE II"; ortada serif, kâğıt rengi perde adı (açılırken harf aralığı daralır); altında uzayan pas çizgi; en altta daktilo tarih · yer. Final mührü: pas rengi çift çerçeve, daktilo "DOSYA KAPANDI", −8° eğik, kâğıda oturduktan sonra %80 opaklık.
+
 ## 11. Sesle görsel eşleşme
 
 - Kâğıt geçişi, kart hareketinin başladığı anda çok düşük seviyede çalar.

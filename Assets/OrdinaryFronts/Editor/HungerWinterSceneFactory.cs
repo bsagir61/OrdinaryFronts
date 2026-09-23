@@ -36,7 +36,7 @@ namespace OrdinaryFronts.Editor
         internal enum Kind { Man, Woman, Child, HatMan }
 
         /// <summary>Taşınan yük ya da kol duruşu.</summary>
-        internal enum Carry { None, Pot, Bag, Pull, Walk, HoldHand }
+        internal enum Carry { None, Pot, Bag, Pull, Walk, HoldHand, Push }
 
         internal static Texture2D Render(int scene)
         {
@@ -578,114 +578,239 @@ namespace OrdinaryFronts.Editor
             PersonShape(b, x, footY, h, tone, kind, carry, variant, gait);
         }
 
+        /// <summary>
+        /// Sivil insan silüeti. Önceki figür dikdörtgen bir gövde, çubuk kollar ve başın
+        /// üstünde abajur gibi duran bir başörtüsünden ibaretti; bir insandan çok bir işarete
+        /// benziyordu. Bu çizim gerçek oranlardan kurulur:
+        /// <list type="bullet">
+        /// <item>Baş boyun yaklaşık 1/7,5'i; yüz yönünde küçük bir burun-çene çıkıntısı, kısa bir boyun.</item>
+        /// <item>Yuvarlak, düşük omuzlar; bele doğru daralan, etekte hafif açılan palto (kadında
+        /// kemerli ve baldıra kadar, erkekte diz hizasında).</item>
+        /// <item>Dirsekten bükülen, eli olan kollar; poza göre sallanır, iter, çeker ya da taşır.</item>
+        /// <item>Bacaklar ve ayakkabı; kadında ince çorap ve küçük topuk, erkekte pantolon.</item>
+        /// <item>Başlık başı sarar, üstüne oturmaz: kadında çenenin altından bağlanıp ense
+        /// arkasında düğümlenen başörtüsü, erkekte kasket, "HatMan"da fötr şapka, çocukta ponponlu
+        /// örgü bere.</item>
+        /// </list>
+        /// Figür <c>variant</c>'a göre sağa ya da sola bakar (kalıntı üç ise sola).
+        /// </summary>
         /// <param name="gait">Adım açıklığı çarpanı; yürüyüş karelerinde -1..1 arasında değişir, eksi değer öteki bacağı öne alır.</param>
         internal static void PersonShape(Board b, int x, int footY, float h, Color32 tone, Kind kind, Carry carry, int variant, float gait = 1f)
         {
             bool woman = kind == Kind.Woman;
             bool child = kind == Kind.Child;
-            float headR = h * (child ? 0.058f : 0.050f);
-            float headY = footY + h * 0.93f;
-            float shoulderY = footY + h * 0.82f;
-            float shoulderHalf = h * (woman ? 0.098f : child ? 0.092f : 0.110f);
-            float hemY = footY + h * (woman ? 0.11f : 0.42f);
-            float hemHalf = shoulderHalf * (woman ? 1.32f : 1.10f);
-            int lean = variant % 3 == 0 ? -1 : 1;
+            int f = variant % 3 == 0 ? -1 : 1;
 
-            // Baş ve başlık.
-            FillEllipse(b, x, (int)headY, (int)headR, (int)(headR * 1.12f), tone);
+            float headR = h * (child ? 0.072f : 0.060f);
+            float headCY = footY + h * (child ? 0.905f : 0.925f);
+            float neckBase = footY + h * (child ? 0.800f : 0.862f);
+            float shoulderY = footY + h * (child ? 0.735f : 0.790f);
+            float waistY = footY + h * (child ? 0.560f : 0.600f);
+            float hemY = footY + h * (woman ? 0.240f : child ? 0.380f : 0.320f);
+            float neckHalf = h * 0.024f;
+            float shoulderHalf = h * (woman ? 0.090f : child ? 0.094f : 0.110f);
+            float waistHalf = h * (woman ? 0.062f : child ? 0.082f : 0.083f);
+            float hemHalf = h * (woman ? 0.114f : child ? 0.096f : 0.100f);
+
+            // Yük taşıyan, iten ya da çeken figür öne eğilir; eğim ayaktan başa doğru artar.
+            float lean = carry == Carry.Push || carry == Carry.Pull ? 0.07f * f : 0f;
+            float Sx(float y) { return x + lean * (y - footY); }
+
+            // --- palto: etekten omuza, omuzdan boyuna yuvarlanan profil
+            for (int yi = (int)hemY; yi <= (int)neckBase; yi++)
+            {
+                float y = yi;
+                float half;
+                if (y <= waistY)
+                {
+                    float t = Mathf.InverseLerp(hemY, waistY, y);
+                    half = Mathf.Lerp(hemHalf, waistHalf, Mathf.SmoothStep(0f, 1f, t));
+                }
+                else if (y <= shoulderY)
+                {
+                    float t = Mathf.InverseLerp(waistY, shoulderY, y);
+                    half = Mathf.Lerp(waistHalf, shoulderHalf, Mathf.Pow(t, 0.65f));
+                }
+                else
+                {
+                    float t = Mathf.InverseLerp(shoulderY, neckBase, y);
+                    half = neckHalf + (shoulderHalf - neckHalf) * Mathf.Sqrt(Mathf.Max(0f, 1f - t * t));
+                }
+                int cx = Mathf.RoundToInt(Sx(y));
+                // Etek ucu yürürken hafif savrulur.
+                if (y < waistY) cx += (int)(f * gait * h * 0.006f * (1f - Mathf.InverseLerp(hemY, waistY, y)));
+                for (int dx = -(int)half; dx <= (int)half; dx++) b.Set(cx + dx, yi, tone);
+            }
+            // Kadın paltosunda kemer: belde hafif bir boğum.
+            if (woman) FillEllipse(b, Mathf.RoundToInt(Sx(waistY)), (int)waistY, (int)(waistHalf + h * 0.006f), Mathf.Max(1, (int)(h * 0.008f)), tone);
+
+            // --- boyun ve baş
+            float headX = Sx(headCY);
+            FillRectI(b, (int)(Sx(neckBase) - neckHalf * 0.8f), (int)(neckBase - h * 0.01f), (int)(Sx(neckBase) + neckHalf * 0.8f) + 1, (int)(headCY - headR * 0.5f), tone);
+            FillEllipse(b, (int)headX, (int)headCY, Mathf.Max(1, (int)(headR * 0.88f)), Mathf.Max(1, (int)(headR * 1.02f)), tone);
+            // Burun ve çene: yüz yönünde küçük bir çıkıntı; silüete yön verir.
+            FillEllipse(b, (int)(headX + f * headR * 0.72f), (int)(headCY - headR * 0.18f), Mathf.Max(1, (int)(headR * 0.26f)), Mathf.Max(1, (int)(headR * 0.30f)), tone);
+            FillEllipse(b, (int)(headX + f * headR * 0.45f), (int)(headCY - headR * 0.62f), Mathf.Max(1, (int)(headR * 0.34f)), Mathf.Max(1, (int)(headR * 0.26f)), tone);
+
+            // --- başlık
             switch (kind)
             {
-                case Kind.Man:
-                case Kind.Child:
-                    for (int dy = 0; dy < Mathf.Max(1, (int)(headR * 0.45f)); dy++)
-                        for (int dx = -(int)(headR * 1.05f); dx <= (int)(headR * 1.05f); dx++)
-                            b.Set(x + dx, (int)(headY + headR * 0.85f) + dy, tone);
-                    for (int dx = 0; dx <= (int)(headR * 1.45f); dx++)
-                        for (int dy = 0; dy < Mathf.Max(1, (int)(headR * 0.22f)); dy++)
-                            b.Set(x + lean * dx, (int)(headY + headR * 0.80f) + dy, tone);
-                    break;
-                case Kind.HatMan:
-                    for (int dy = 0; dy < Mathf.Max(1, (int)(headR * 0.25f)); dy++)
-                        for (int dx = -(int)(headR * 1.8f); dx <= (int)(headR * 1.8f); dx++)
-                            b.Set(x + dx, (int)(headY + headR * 0.75f) + dy, tone);
-                    for (int dy = 0; dy < (int)(headR * 1.1f); dy++)
-                        for (int dx = -(int)(headR * 0.95f); dx <= (int)(headR * 0.95f); dx++)
-                            b.Set(x + dx, (int)(headY + headR * 0.75f) + dy, tone);
-                    break;
                 case Kind.Woman:
-                    for (int dy = 0; dy < (int)(headR * 2.4f); dy++)
+                {
+                    // Başörtüsü: başı saran yuvarlak kütle, yüzü açıkta bırakır; çenenin altından
+                    // omuzlara iner ve ensede küçük bir düğümle biter.
+                    FillEllipse(b, (int)(headX - f * headR * 0.12f), (int)(headCY + headR * 0.10f), Mathf.Max(1, (int)(headR * 1.02f)), Mathf.Max(1, (int)(headR * 1.12f)), tone);
+                    FillTriangle(b,
+                        new Vector2(headX - f * headR * 0.95f, headCY - headR * 0.2f),
+                        new Vector2(headX + f * headR * 0.25f, headCY - headR * 0.95f),
+                        new Vector2(Sx(neckBase) - f * headR * 0.9f, neckBase - h * 0.01f), tone);
+                    FillEllipse(b, (int)(headX - f * headR * 1.05f), (int)(headCY - headR * 0.75f), Mathf.Max(1, (int)(headR * 0.30f)), Mathf.Max(1, (int)(headR * 0.24f)), tone);
+                    FillTriangle(b,
+                        new Vector2(headX - f * headR * 1.05f, headCY - headR * 0.85f),
+                        new Vector2(headX - f * headR * 1.55f, headCY - headR * 1.45f),
+                        new Vector2(headX - f * headR * 1.25f, headCY - headR * 1.55f), tone);
+                    break;
+                }
+                case Kind.Man:
+                {
+                    // Kasket: başın üstünde yassı, öne kayık bir tepe ve kısa siper.
+                    FillEllipse(b, (int)(headX + f * headR * 0.12f), (int)(headCY + headR * 0.62f), Mathf.Max(1, (int)(headR * 1.02f)), Mathf.Max(1, (int)(headR * 0.46f)), tone);
+                    FillEllipse(b, (int)(headX + f * headR * 0.95f), (int)(headCY + headR * 0.42f), Mathf.Max(1, (int)(headR * 0.55f)), Mathf.Max(1, (int)(headR * 0.13f)), tone);
+                    break;
+                }
+                case Kind.HatMan:
+                {
+                    // Fötr: geniş, ince kenar ve üstte hafif daralan tepe.
+                    FillEllipse(b, (int)headX, (int)(headCY + headR * 0.52f), Mathf.Max(1, (int)(headR * 1.65f)), Mathf.Max(1, (int)(headR * 0.16f)), tone);
+                    for (int yi = (int)(headCY + headR * 0.52f); yi <= (int)(headCY + headR * 1.45f); yi++)
                     {
-                        float t = dy / (headR * 2.4f);
-                        int half = (int)(headR * (0.95f + 0.55f * t * t));
-                        int y = (int)(headY + headR * 1.2f) - dy;
-                        for (int dx = -half; dx <= half; dx++) b.Set(x + dx, y, tone);
+                        float t = Mathf.InverseLerp(headCY + headR * 0.52f, headCY + headR * 1.45f, yi);
+                        int half = (int)(headR * Mathf.Lerp(0.95f, 0.78f, t));
+                        for (int dx = -half; dx <= half; dx++) b.Set((int)headX + dx, yi, tone);
                     }
                     break;
-            }
-            FillRectI(b, x - (int)(h * 0.02f), (int)(shoulderY - h * 0.01f), x + (int)(h * 0.02f) + 1, (int)(headY - headR * 0.5f), tone);
-            FillEllipse(b, x, (int)(shoulderY + h * 0.03f), (int)(h * 0.055f), (int)(h * 0.028f), tone);
-
-            FillEllipse(b, x, (int)shoulderY, (int)shoulderHalf, (int)(h * 0.035f), tone);
-            for (int y = (int)hemY; y <= (int)shoulderY; y++)
-            {
-                float t = (shoulderY - y) / Mathf.Max(1f, shoulderY - hemY);
-                float half = Mathf.Lerp(hemHalf, shoulderHalf, Mathf.Pow(t, 0.8f));
-                int skew = (int)(lean * h * 0.006f * (1f - t));
-                for (int dx = -(int)half; dx <= (int)half; dx++) b.Set(x + dx + skew, y, tone);
-            }
-
-            float legW = h * 0.024f;
-            float legGap = h * 0.022f;
-            float stride = (carry == Carry.Walk || carry == Carry.Pull ? h * 0.05f : h * 0.006f) * gait;
-            for (int dy = 0; dy < (int)(hemY - footY); dy++)
-            {
-                float t = dy / Mathf.Max(1f, hemY - footY);
-                int lx = x - (int)(legGap + legW) - (int)(stride * (woman ? 0.6f : 1f - t));
-                int rx = x + (int)(legGap + legW) + (int)(stride * (woman ? 0f : (1f - t) * 0.4f));
-                for (int k = -(int)legW; k <= (int)legW; k++)
+                }
+                case Kind.Child:
                 {
-                    b.Set(lx + k, footY + dy, tone);
-                    b.Set(rx + k, footY + dy, tone);
+                    // Örgü bere ve ponpon.
+                    FillEllipse(b, (int)headX, (int)(headCY + headR * 0.40f), Mathf.Max(1, (int)(headR * 1.0f)), Mathf.Max(1, (int)(headR * 0.72f)), tone);
+                    FillEllipse(b, (int)(headX - f * headR * 0.1f), (int)(headCY + headR * 1.18f), Mathf.Max(1, (int)(headR * 0.28f)), Mathf.Max(1, (int)(headR * 0.28f)), tone);
+                    break;
                 }
             }
-            int bootH = Mathf.Max(1, (int)(h * 0.03f));
-            int bootL = (int)(h * 0.05f);
-            FillRectI(b, x - (int)(legGap + legW * 2) - (int)stride - bootL / 2, footY, x - (int)legGap - (int)stride + bootL / 2, footY + bootH, tone);
-            FillRectI(b, x + (int)legGap - bootL / 2 + (int)(stride * 0.4f), footY, x + (int)(legGap + legW * 2) + bootL / 2 + (int)(stride * 0.4f), footY + bootH, tone);
 
-            int armW = Mathf.Max(1, (int)(h * 0.020f));
-            int armTopY = (int)(shoulderY - h * 0.02f);
-            int handY = (int)(footY + h * 0.46f);
-            int armOut = (int)(shoulderHalf * 0.85f);
-            switch (carry)
+            // --- bacaklar ve ayakkabı
+            float legW = h * (woman ? 0.016f : child ? 0.021f : 0.021f);
+            float legGap = h * (woman ? 0.026f : child ? 0.030f : 0.032f);
+            bool walking = carry == Carry.Walk || carry == Carry.Pull || carry == Carry.Push;
+            float stride = (walking ? h * 0.06f : h * 0.008f) * gait;
+            float hipY = hemY + h * 0.02f;
+            for (int side = -1; side <= 1; side += 2)
             {
-                case Carry.Pot:
-                {
-                    int potY = (int)(footY + h * 0.52f);
-                    Limb(b, x - armOut, armTopY, x - (int)(h * 0.05f), potY + (int)(h * 0.04f), armW, tone);
-                    Limb(b, x + armOut, armTopY, x + (int)(h * 0.05f), potY + (int)(h * 0.04f), armW, tone);
-                    FillRectI(b, x - (int)(h * 0.075f), potY - (int)(h * 0.07f), x + (int)(h * 0.075f), potY + (int)(h * 0.02f), tone);
-                    Stroke(b, x - (int)(h * 0.09f), potY - (int)(h * 0.01f), x + (int)(h * 0.09f), potY - (int)(h * 0.01f), tone, Mathf.Max(1, (int)(h * 0.012f)), 1f);
-                    break;
-                }
-                case Carry.Bag:
-                    Limb(b, x - armOut, armTopY, x - (int)(shoulderHalf * 1.05f), handY, armW, tone);
-                    Limb(b, x + armOut, armTopY, x + (int)(shoulderHalf * 1.05f), handY, armW, tone);
-                    FillRectI(b, x + (int)(shoulderHalf * 0.75f), handY - (int)(h * 0.11f), x + (int)(shoulderHalf * 1.45f), handY + (int)(h * 0.01f), tone);
-                    break;
-                case Carry.Pull:
-                    Limb(b, x - armOut, armTopY, x - (int)(h * 0.19f), (int)(footY + h * 0.56f), armW, tone);
-                    Limb(b, x + armOut, armTopY, x + (int)(shoulderHalf * 0.9f), handY, armW, tone);
-                    break;
-                case Carry.HoldHand:
-                    Limb(b, x - armOut, armTopY, x - (int)(shoulderHalf * 1.0f), handY, armW, tone);
-                    Limb(b, x + armOut, armTopY, x + (int)(shoulderHalf * 1.9f), (int)(footY + h * 0.40f), armW, tone);
-                    break;
-                default:
-                    Limb(b, x - armOut, armTopY, x - (int)(shoulderHalf * 1.02f), handY, armW, tone);
-                    Limb(b, x + armOut, armTopY, x + (int)(shoulderHalf * 1.02f), handY, armW, tone);
-                    break;
+                // Öndeki bacak (yöne göre) adımda öne, arkadaki geriye gider.
+                bool front = side == f;
+                float footX = x + side * legGap * 0.6f + (front ? 1f : -1f) * f * stride;
+                float hipX = Sx(hipY) + side * legGap;
+                Limb(b, (int)hipX, (int)hipY, (int)footX, (int)(footY + h * 0.02f), Mathf.Max(1, (int)legW), tone);
+                // Ayakkabı: ayak ucu yüz yönüne bakar.
+                float shoeLen = h * (woman ? 0.045f : 0.055f);
+                FillEllipse(b, (int)(footX + f * shoeLen * 0.35f), (int)(footY + h * 0.012f), Mathf.Max(1, (int)(shoeLen * 0.62f)), Mathf.Max(1, (int)(h * 0.013f)), tone);
+                if (woman) FillRectI(b, (int)(footX - f * shoeLen * 0.25f) - 1, footY, (int)(footX - f * shoeLen * 0.25f) + 2, (int)(footY + h * 0.02f), tone);
             }
+
+            // --- kollar: omuzdan dirseğe, dirsekten ele
+            float upperW = h * 0.021f;
+            float lowerW = h * 0.017f;
+            float handR = h * 0.021f;
+            float armTop = shoulderY - h * 0.012f;
+            float swing = (walking ? h * 0.045f : h * 0.008f) * gait;
+            for (int side = -1; side <= 1; side += 2)
+            {
+                bool frontArm = side == f;
+                Vector2 shoulder = new Vector2(Sx(armTop) + side * shoulderHalf * 0.82f, armTop);
+                Vector2 elbow, hand;
+                switch (carry)
+                {
+                    case Carry.Push:
+                        // İki el önde, bel hizasında bir kulpu itiyor.
+                        elbow = new Vector2(Sx(armTop) + f * h * 0.10f + side * h * 0.01f, armTop - h * 0.12f);
+                        hand = new Vector2(x + f * h * (frontArm ? 0.21f : 0.19f) + lean * h * 0.55f, footY + h * 0.56f);
+                        break;
+                    case Carry.Pull:
+                        if (!frontArm)
+                        {
+                            // Arkadaki kol geriye uzanmış, arabanın kolunu çekiyor.
+                            elbow = new Vector2(shoulder.x - f * h * 0.07f, armTop - h * 0.12f);
+                            hand = new Vector2(x - f * h * 0.19f, footY + h * 0.54f);
+                        }
+                        else
+                        {
+                            elbow = new Vector2(shoulder.x + f * h * 0.03f - swing * 0.5f, armTop - h * 0.15f);
+                            hand = new Vector2(elbow.x + f * h * 0.03f - swing * 0.5f, elbow.y - h * 0.13f);
+                        }
+                        break;
+                    case Carry.Pot:
+                        // Kap iki elle göğüs önünde.
+                        elbow = new Vector2(shoulder.x + f * h * 0.02f, armTop - h * 0.16f);
+                        hand = new Vector2(Sx(waistY) + f * h * 0.09f + side * h * 0.035f, waistY + h * 0.03f);
+                        break;
+                    case Carry.HoldHand:
+                        if (frontArm)
+                        {
+                            // Öndeki el aşağı ve öne uzanmış, yanındaki çocuğun elini tutuyor.
+                            elbow = new Vector2(shoulder.x + f * h * 0.05f, armTop - h * 0.15f);
+                            hand = new Vector2(x + f * h * 0.17f, footY + h * 0.42f);
+                        }
+                        else
+                        {
+                            elbow = new Vector2(shoulder.x - f * h * 0.01f, armTop - h * 0.15f);
+                            hand = new Vector2(elbow.x + f * h * 0.01f, elbow.y - h * 0.14f);
+                        }
+                        break;
+                    default:
+                    {
+                        // Serbest kol: yanda sarkar, yürürken bacakların tersine sallanır.
+                        float s = (frontArm ? -1f : 1f) * f * swing;
+                        elbow = new Vector2(shoulder.x + side * h * 0.008f + s * 0.4f, armTop - h * 0.15f);
+                        hand = new Vector2(elbow.x + f * h * 0.012f + s, elbow.y - h * 0.14f);
+                        break;
+                    }
+                }
+                Limb(b, (int)shoulder.x, (int)shoulder.y, (int)elbow.x, (int)elbow.y, Mathf.Max(1, (int)upperW), tone);
+                Limb(b, (int)elbow.x, (int)elbow.y, (int)hand.x, (int)hand.y, Mathf.Max(1, (int)lowerW), tone);
+                FillEllipse(b, (int)hand.x, (int)hand.y, Mathf.Max(1, (int)handR), Mathf.Max(1, (int)(handR * 1.1f)), tone);
+
+                // Taşınan eşyalar.
+                if (carry == Carry.Bag && frontArm)
+                    FillRectI(b, (int)(hand.x - h * 0.035f), (int)(hand.y - h * 0.11f), (int)(hand.x + h * 0.035f), (int)(hand.y - h * 0.01f), tone);
+            }
+            if (carry == Carry.Pot)
+            {
+                float potX = Sx(waistY) + f * h * 0.09f;
+                float potY = waistY + h * 0.01f;
+                FillRectI(b, (int)(potX - h * 0.055f), (int)(potY - h * 0.075f), (int)(potX + h * 0.055f), (int)(potY + h * 0.005f), tone);
+                FillRectI(b, (int)(potX - h * 0.068f), (int)(potY), (int)(potX + h * 0.068f), (int)(potY + h * 0.012f), tone);
+            }
+        }
+
+        /// <summary>Üç köşesi verilen dolu üçgen (yarım düzlem sınaması).</summary>
+        internal static void FillTriangle(Board b, Vector2 a, Vector2 c1, Vector2 c2, Color32 tone)
+        {
+            int minX = Mathf.FloorToInt(Mathf.Min(a.x, Mathf.Min(c1.x, c2.x)));
+            int maxX = Mathf.CeilToInt(Mathf.Max(a.x, Mathf.Max(c1.x, c2.x)));
+            int minY = Mathf.FloorToInt(Mathf.Min(a.y, Mathf.Min(c1.y, c2.y)));
+            int maxY = Mathf.CeilToInt(Mathf.Max(a.y, Mathf.Max(c1.y, c2.y)));
+            float Edge(Vector2 p, Vector2 q, float px, float py) { return (q.x - p.x) * (py - p.y) - (q.y - p.y) * (px - p.x); }
+            float area = Edge(a, c1, c2.x, c2.y);
+            if (Mathf.Abs(area) < 0.001f) return;
+            for (int y = minY; y <= maxY; y++)
+                for (int x = minX; x <= maxX; x++)
+                {
+                    float w0 = Edge(c1, c2, x, y) / area;
+                    float w1 = Edge(c2, a, x, y) / area;
+                    float w2 = Edge(a, c1, x, y) / area;
+                    if (w0 >= 0f && w1 >= 0f && w2 >= 0f) b.Set(x, y, tone);
+                }
         }
 
         /// <summary>

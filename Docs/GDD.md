@@ -242,23 +242,22 @@ Sahne biter ve oyuncunun yaptığı şey **bir iki bayrağa** çevrilir (`result
 - **Giriş sahnesi** (`chooses: false`): düğüme girilirken, metinden önce oynar; yalnız bayrak üretir.
 - **Karar sahnesi** (`chooses: true`): oyuncu seçim yapacağı anda oynar. Kartta iki seçenek yine görünür, tuş etiketlerinde "ellerinle karar ver" yazar; herhangi bir tuş sahneyi açar ve seçimi sahnedeki hareket verir. Sonuç listesi seçim sırasıyla dizilir (ilk sonuç birinci seçim). Geçilirse seçim düğmelere döner.
 
-### Ortak çerçeve
+### Ortak çerçeve (1.1.1'de yeniden kuruldu)
 
-Her sahne aynı iskeleti taşır: açılış/kapanış solması; sol üstte koyu etiket üzerinde tarih·yer damgası (oynanış başlığıyla aynı daktilo); ilk saniyelerde açılış satırı; altta tuş ipucu ve "Esc: geç"; oyunun kendi vinyet ve film greni katmanı. Anlık komutlar ("TUT — BIRAK") ekranın ortasında kısa süre görünür. Hareketli parçalar sahne arka planlarını çizen aynı silüet kodundan üretilir (dört karelik yürüyüş döngüleri, el arabası, bebek arabası, kilometre taşı, kafesli lamba, sedye).
-
-### Yavaş eklenir
-
-Her bölümde tek bir sahne var ve her sahne kendi girdisini, kendi sonucunu ve kendi yankılarını getirir; tek başına iyi durmadan ikincisi eklenmez. Sıradaki adaylar: Den Oever kontrol noktasında yükü masaya ya da battaniyenin altına koymak; Hamburg'da jeneratörü çalıştırmak; Neretva'da gece geçişinde fener tutmak.
+- **Tek kontrol dili, oynanışla aynı:** A/← sol seçenek, D/→ sağ seçenek; BOŞLUK ya da sol tık "elinle yap" (it, bağla, tut). Sağ fare ve fare ekseni yok.
+- **Girdi kilidi:** sahne açıldığında basılı olan tuş (seçimi açan D, kartı geçen boşluk) sahneye sızmaz; bütün tuşlar bir kez bırakılana kadar girdi yok sayılır.
+- **Talimat kartı:** başlık, tek cümlelik "nasıl" ve tuş kapakları. Sahne oyuncu ilk hareketi yapana kadar bekler; hiçbir şey oyuncu hazır olmadan başlamaz. Karar sahnelerinde kart düğümün iki seçeneğini, kartla aynı metinle, A ve D kapaklarının yanında gösterir.
+- **Okunur durum:** yalnız o oyunun ihtiyacı olan tek bir gösterge (yol cetveli, ağırlık işareti, ilerleme ya da zamanlama halkası). Puan, can, süre sayacı yok.
+- **Anlık komutlar ve sonuç:** ortada kısa, büyük yazı ("BIRAK!", "Tuttun. 2 / 4"); sahne bitince yapılanın tek satırlık karşılığı bir an ekranda kalır.
+- **Kaybetmek yok:** yanlış zamanlama yalnız yeniden denemektir; iş ne kadar sürerse sürsün yapılır.
 
 ### Mevcut sahneler
 
-**Sığınak merdiveni, lamba (`hamburg_1943`, `sir_03_siginak_merdiveni`, karar sahnesi).** Elektrik kesik; sağ üstte sahanlık ve sönük acil durum lambası, sola inen taş merdiven, basamaklarda bekleyenler. İki iş aynı anda açık: A/← (ya da sağ fare) basılı tutarak kabloyu bağlamak — ışık kesik kesik güçlenir, iki kez kıvılcım atar, sonunda yanar ve sıra kendi kendine iner; ya da D/→ (sol fare) ile karanlık basamağın kenarında duraksayanın elini tutup indirmek — dördüncü kişi indiğinde gerisi elden ele gelir. Hangisi önce tamamlanırsa düğümün o seçimi verilir. Sonuçlar `il_lamp_hands` / `il_stairs_hands`; yankılar ilk dalgada (kıvılcımın yaktığı el / karanlıkta dört teşekkür) ve sabahta.
+**Karanlık merdiven (`hamburg_1943`, `sir_03_siginak_merdiveni`, karar sahnesi).** Talimat kartı iki seçeneği gösterir; A lambaya, D sıraya döner ve seçim geri alınmaz (metindeki gibi ikisi birden yapılamaz). *Lamba:* BOŞLUK/sol tık basılı tutarak kabloyu bağla; lambanın çevresindeki halka dolar. Üç kez kıvılcım uyarısı gelir (ampul beyaz çakar, "BIRAK!"): o an elini çekersen kıvılcım geçer, tutmaya devam edersen elin yanar ve ilerleme biraz geri gider. Bitince lamba yanar ve sıra kendi iner. *Sıra:* kenardaki kişinin uzanan elinin üstünde daralan bir halka ve sabit bir hedef halka belirir; halka hedefe oturduğunda BOŞLUK/sol tık ile elini tutarsın. Dördüncüden sonra gerisi elden ele gelir. Sonuçlar `il_lamp_hands` / `il_stairs_hands`.
 
-**Kayan tahta (`neretva_1943`, `ner_15_ortada`, karar sahnesi).** Yıkık köprünün kirişinde önde taşıyıcı, arkada Milena, arada sedye. Kiriş ıslak: ağırlık yana açılır, oyuncu A/← D/→ ile (ya da fare tuşunu basılı tutup sağa sola götürerek) dengeyi tutar; sendeleme sayılmaz, yalnız gıcırdar. Ortada tahta kayar, öndeki diz çöker, sedye suya yatar ve iki buçuk saniyelik bir an açılır: **tut** (basılı kal) ya da **bırak** (elini çek). Hesap yok; düğümün metnindeki gibi "elinin ne yapacağına bedeni karar veriyor". Sonuçlar `il_plank_hands_held` / `il_plank_hands_open`; yankılar karşı yakada ve geri dönüşte.
+**Islak kiriş (`neretva_1943`, `ner_15_ortada`, karar sahnesi).** Grubun üstündeki işaret ağırlığın kendisidir; ıslak kiriş onu yana iter. Sağa kayarsa A/←, sola kayarsa D/→. Kenara varırsa sendelersin (kısa duraklama, gıcırtı). Ortada gevşek tahta kayar: zaman yavaşlar, öndeki diz çöker, sedye suya yatar, "TAHTA KAYDI". Kaymadan *sonra* basılıp basılı tutulan BOŞLUK/sol tık "tut" sayılır (toplam 1,1 saniye); hiçbir şey yapmazsan elin açılır. Denge için basılı olan tuş karar sayılmaz. Sonuçlar `il_plank_hands_held` / `il_plank_hands_open`.
 
-**Afsluitdijk, rüzgâr (`amsterdam_1945`, `set_10_afsluitdijk`, giriş sahnesi).**
-
-Yandan görünüş: gök, IJsselmeer, setin şevi, yol. Grup (Greet ve bebek arabası, Kees, arabayı arkadan iten Truus, önde kolu tutan Jan) yerinde yürür, dünya sola akar, kilometre taşları geçer. Oyuncu D / → / boşluk / fare tuşunu basılı tutarak iter. Dört bora gelir (10,7 · 11,1 · 11,4 · 11,8. kilometrelerde; her biri 3,6 saniye): kar şeritleri çoğalır, figürler öne eğilir, hız yarıdan aşağı düşer, rüzgâr sesi yükselir. Oyuncu ya iterek geçer ya bırakıp bekler; ikisi de bir şeye mal olur ve ikisi de yargılanmaz. Sonuç: her borada iten `il_wind_pushed`, herhangi birinde bekleyen `il_wind_waited`. Yankılar: aynı düğümde (Jan'ın hissettiği ağırlık / Kees'in "geçti mi" sorusu), Kornwerderzand'da (sizi geçen on kişi / akşam hissedilen kollar) ve dönüşte set yeniden geçilirken.
+**Afsluitdijk, rüzgâr (`amsterdam_1945`, `set_10_afsluitdijk`, giriş sahnesi).** BOŞLUK/D/sol tık basılı tutuldukça grup yürür. Alttaki cetvel yolun kalanını ve üç boranın yerini gösterir. Boradan hemen önce "Bora geliyor" ve ekranı süpüren rüzgâr dalgası; bora sırasında ya eğilip itersin (yavaş, sarsıntılı) ya bırakırsın ve grup sırtını rüzgâra verip çömelir. Herhangi bir borada bir saniyeden uzun bekleyen `il_wind_waited`, hep iten `il_wind_pushed`. Yaklaşık 25 saniye.
 
 ## 15. Ekran akışı
 
@@ -336,6 +335,17 @@ Kurallar:
 Görsel tema `1940’lar belediye arşivi + linol baskı + editoryal gölge tiyatrosu`dur. Ayrıntılı palet, kompozisyon, sahne briefleri ve hareket kuralları [ART_DIRECTION.md](ART_DIRECTION.md) içindedir.
 
 Ses, müzik yerine düşük seviyeli özgün atmosferi öne çıkarır: uzak liman/şehir, sığınak içi düşük frekans, tren peronu, kâğıt geçişi, seçim onayı ve menü geri dönüşü. Siren kullanılırsa kısa, uzak ve düşük seviyededir; kesintisiz döngü yapılmaz.
+
+### Sunum katmanı (1.1)
+
+1.1 sürümü hikâyeye, karara ve kayda dokunmadan oyunun nasıl göründüğünü değiştirir. Kural: sunum anlatının önüne geçmez, hiçbir şey oyuncuyu bekletmez, her hareket bir tuşla tamamlanır ve **hareket azaltma** açıkken hepsi durur.
+
+- **Arka plan geçişi ve yavaş kamera.** Sahne görseli değiştiğinde eskisi yenisinin üstünde ~1 saniyede söner; kesme yoktur. Görsel sürekli, çok yavaş bir nefes içindedir (%0,6–5 ölçek, birkaç piksellik kayma); fare paralaksıyla toplanır.
+- **Atmosfer.** Her sahnenin kendi havası vardır ve bu hava görseli değil yeri anlatır: Hamburg sokağında kül ve yükselen kıvılcım, sığınakta ve ahırda ışıkta asılı toz, Neretva köprüsünde yağmur ve sis, dağda ve polderde rüzgârlı kar, Afsluitdijk'te yoğun kar ve rüzgâr şeritleri, peronda buhar, limanda sis. Üstüne sahneye özgü düşük opaklıkta bir renk ayarı gelir; üretilmiş ve elle çizilmiş görseller aynı ışık altında durur.
+- **Perde kartları.** Bölüm başında (açılış kurgusunun ardından) ve perde değiştiğinde tam ekran bir başlık: "PERDE II", perdenin adı, pas çizgisi, tarih ve yer; alçak bir tonla. İki buçuk saniye sürer, herhangi bir tuş geçer. Oyuncuya bölümün hangi evresinde olduğunu sayı ya da ilerleme çubuğu olmadan söyler.
+- **Mürekkep açılışı.** Anlatı metni soldan sağa yumuşak bir cepheyle belirir (uzunluğa göre 0,5–1,5 sn). İlk tuş metni tamamlar ve seçim sayılmaz; fareyle bir seçeneğe tıklamak doğrudan seçer.
+- **Canlı ana menü.** Bölümlerin görselleri kendi havalarıyla dokuz saniyede bir yer değiştirir; sağ altta künye ("HAMBURG · TEMMUZ 1943"). Başlığın altında antolojinin türü ve katalogdan hesaplanan yıl aralığı, altta sürüm.
+- **Mühürlü final.** Final ekranı bir dosya gibi kapanır: üstte bölüm künyesi, sağ üstte kısa bir gecikmeyle inen "DOSYA KAPANDI" mührü.
 
 ## 19. İçerik kalite kapıları
 

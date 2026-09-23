@@ -136,7 +136,7 @@ Aşağıdaki değerler `BrandConfig` varlığından gelir ve `BuildAll` tarafın
 | Şirket | `Berat Sağır` | Kayıt yolunun parçası. Yayından sonra değişirse mevcut kayıtlar erişilemez olur. |
 | Uygulama adı | `Ordinary Fronts Demo` | Pencere başlığı ve kayıt klasörü. Demo, tam sürümden ayrı bir uygulama olduğu için ek kasıtlıdır. |
 | Oyun içi ad | `Ordinary Fronts` | Yalnız ana menüde görünür. |
-| Sürüm | `1.0.0` | |
+| Sürüm | `1.1.1` | Sürüm notları: `CHANGELOG.md` |
 
 Uygulama ikonu `Assets/OrdinaryFronts/Art/Generated/Icon/` altında her boyut için ayrı üretilir (`BuildAll`). `PlayerSettings` bellekte üretilmiş dokuları kabul etmediği için ikonlar asset olarak yazılır; aksi hâlde slotlar sessizce boş kalır.
 

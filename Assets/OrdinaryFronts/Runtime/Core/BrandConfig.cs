@@ -8,7 +8,7 @@ namespace OrdinaryFronts
         [SerializeField] private string productName = "Ordinary Fronts";
         [SerializeField] private string applicationName = "Ordinary Fronts Demo";
         [SerializeField] private string companyName = "Berat Sağır";
-        [SerializeField] private string version = "1.0.0";
+        [SerializeField] private string version = "1.1.1";
 
         /// <summary>Oyun içinde gösterilen ad. Yalnız ana menüde görünür.</summary>
         public string ProductName { get { return productName; } }
@@ -34,7 +34,7 @@ namespace OrdinaryFronts
             productName = "Ordinary Fronts";
             applicationName = "Ordinary Fronts Demo";
             companyName = "Berat Sağır";
-            version = "1.0.0";
+            version = "1.1.1";
         }
     }
 }
