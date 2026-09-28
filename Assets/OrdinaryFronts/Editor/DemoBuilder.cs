@@ -53,6 +53,7 @@ namespace OrdinaryFronts.Editor
                 BuildMainScene(brand, theme);
                 ConfigureBuildSettings();
                 ConfigurePlayer(brand);
+                InputAxesInstaller.EnsureGamepadAxes();
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
                 Debug.Log("ORDINARY_FRONTS_BUILD_ALL_SUCCESS: Main scene, generated assets, config assets and build settings are ready.");
@@ -393,15 +394,23 @@ namespace OrdinaryFronts.Editor
             string[] keys =
             {
                 "shipyard_evening", "shelter_stairs", "bombed_street", "aid_registry", "train_platform", "harbor_dawn",
-                "mountain_column", "burned_village", "typhus_barn", "river_gorge", "broken_bridge",
                 "frozen_canal", "polder_road", "afsluitdijk", "frisian_farm", "canal_night"
             };
             string[] files =
             {
                 "bg_shipyard_evening.png", "bg_shelter_stairs.png", "bg_bombed_street.png", "bg_aid_registry.png", "bg_train_platform.png", "bg_harbor_dawn.png",
-                "bg_mountain_column.png", "bg_burned_village.png", "bg_typhus_barn.png", "bg_river_gorge.png", "bg_broken_bridge.png",
                 "bg_frozen_canal.png", "bg_polder_road.png", "bg_afsluitdijk.png", "bg_frisian_farm.png", "bg_canal_night.png"
             };
+            // Neretva sahneleri ressamın anahtar listesinden eklenir; iki liste ayrışamaz.
+            List<string> allKeys = new List<string>(keys);
+            List<string> allFiles = new List<string>(files);
+            for (int i = 0; i < PaintedSceneFactory.Keys.Length; i++)
+            {
+                allKeys.Add(PaintedSceneFactory.Keys[i]);
+                allFiles.Add(PaintedSceneFactory.FileName(i));
+            }
+            keys = allKeys.ToArray();
+            files = allFiles.ToArray();
             string[] interludeKeys = InterludeSpriteFactory.Keys;
             SceneArtEntry[] entries = new SceneArtEntry[keys.Length + interludeKeys.Length];
             for (int i = 0; i < keys.Length; i++)

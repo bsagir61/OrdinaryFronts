@@ -276,3 +276,31 @@ Kâğıt üzerindeki metin renkleri de bu ayrımı destekler ve paletten türeti
 Daha önce bu katmanda petrol mavisi kullanılıyordu; kâğıt zeminde soğuk kalıyor ve sahne illüstrasyonlarının sıcak tonuyla çakışıyordu. Başlıklar renkle değil, küçük punto + büyük harf + harf aralığı ile ayrışır.
 
 Her iki yazı tipi de SIL Open Font License altındadır ve Türkçenin tamamını (`ş ğ ı İ`) ve karakter adlarındaki `ć` harfini kapsar. Ok işaretleri (`← →`) hiçbirinde yoktur; onlar yedek font zincirinden gelir.
+
+## Neretva görsel yenilemesi (1.4)
+
+Neretva bölümünün sahneleri `PaintedSceneFactory` ile çizilir (1.5'ten beri Karelya sahnelerini de çizen ortak ressam). Eski üretici beş sahneyle yirmi dokuz düğümü taşıyordu; düz bloklar, gökte arayüz hatasına benzeyen kesik çizgiler ve yırtık bir çerçeve kullanıyordu. Yenisi on dört sahne çizer ve her düğüm kendi yerinde geçer.
+
+| Sahne | Düğümler |
+|---|---|
+| `burned_village` — Prozor'un kuzeyi, şafak | açılış |
+| `mountain_column` — Rama yolu, yamacı kesen kafile | kağnı, sedye |
+| `snow_ridge` — açık sırt, rüzgâr | kısa yol |
+| `pine_forest` — ağaç sınırı, alacakaranlık, fener | orman yolu |
+| `burned_farm` — yanmış çiftlik, ambar, iki kürek | çiftlik |
+| `stream_ford` — dere geçidi, suyun içinde sedye | dere |
+| `night_camp` — ateşsiz gece molası, tek fener | defter |
+| `typhus_barn` — ahır avlusu, ışıklı kapı | ilk belirti, esir, emir |
+| `barn_interior` — ahırın içi, ikiye bölen battaniye | ayırma, morfin, doktorun gecesi |
+| `barn_night` — gece kuyu başı ve sundurma | su kuyruğu, battaniyeler |
+| `river_gorge` — kanyon kenarı, zikzak patika | kanyon, geride kalanlar |
+| `broken_bridge` — kanyonun içinden yıkık köprü | geçit |
+| `bank_night` — gece sol yaka | kıyı bekleyişi, ikinci gün |
+| `far_bank` — şafakta karşı yaka | karşı yaka ve finaller |
+
+**Teknik.** Sahneler iki kat çözünürlükte çizilip küçültülür (kenar yumuşatma). Dağlar gürültüden türeyen keskin profillerdir ve baskın zirveler taşır; yamaç, zirveden inen kaburgalar ile aralarındaki oluklardan kurulur. Işık bu iki boyutlu alanın eğiminden gelir ve **lino baskı gibi dört düz tona** ayrılır; kar önce oluklara ve zirveye yakın yerlere yağar, alt yamaçları ağaç çizgisiyle kesilen bir orman bandı kaplar. Kar alanlarında eğim gölgesi yalnız kenarda uygulanır (bütün sütuna uygulandığında dikey şeritler çıkıyordu). Bitirme: kâğıt dokusu, ince gren, yumuşak köşe kararması; yırtık çerçeve yoktur.
+
+**İnsanlar.** Ayakta duranlar Amsterdam bölümünün sivil silüetini kullanır. Sedye taşıyan çift, battaniyeye sarılı oturan, battaniye altında uyuyan ve diz çöken figürler bu dosyada çizilir. Hiçbir sahnede silah, yara ya da ölü beden yoktur; yaralılar battaniye altındaki kütlelerdir.
+
+**Önizleme.** `PaintedSceneFactory.Preview` sahneleri oyun varlıklarına dokunmadan `Logs/ScenePreview` altına yazar (`-scenes a,b` ile yalnız seçilenler).
+

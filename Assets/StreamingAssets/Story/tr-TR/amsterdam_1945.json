@@ -57,6 +57,561 @@
       "cold": "Jan'a haber gönderdi; sana göndermedi."
     }
   ],
+  "acts": [
+    {
+      "name": "Kuyruk",
+      "question": "Herkesin aç olduğu yerde pay kimin hakkıdır?"
+    },
+    {
+      "name": "Set",
+      "question": "Bir yabancıya verdiğin, kendi çocuğunun payından mı eksilir?"
+    },
+    {
+      "name": "Dönüş",
+      "question": "Sevdiğini yanında tutmak mı sevgidir, yoksa bırakmak mı?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Amsterdam · Mayıs 1985",
+    "setting": "Kırk yıl sonra. Kurtuluşun yıldönümünde Jordaan'daki okulda bir sınıf, eski öğretmenleri Truus Bakker'i dinlemek için bekliyor. Truus yetmiş altı yaşında. Sıralarda otuz çocuk var. Öğretmen masasında öğle yemeğinden kalmış yarım bir sandviç duruyor; kimse ona bakmıyor.",
+    "question": "“Juf Bakker, o kış siz ne yaptınız?”",
+    "tellDone": "Yaptıklarını anlat.",
+    "tellUndone": "Yapmadıklarını anlat.",
+    "done": [
+      {
+        "text": "Mutfak kuyruğunda annemin kepçesini kartı çalınmış bir kadına verdim. Annem o akşam aç yattı ve nedenini bilmedi. İyiliğin bedelini bazen başkası öder; bunu o kış öğrendim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Mutfak kuyruğunda iki kepçeyi de eve götürdüm. Annem o akşam yedi, Kees yedi. Bu cümlede kimin eksik olduğunu siz de duyuyorsunuz.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tramvay raylarından söktüğümüz odunun bir kucağını bir polise verdim. Onun da çocukları üşüyordu. Üniformanın altında da bir kış vardı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "police_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yola tanımadığımız bir kızı aldık, on dokuz yaşında. Arabada yer yoktu; yer açıldı. Yer çoğu zaman böyle açılır: biri biraz sıkışır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_joined",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Nöbetçiye Greet'i kız kardeşim diye tanıttım. Yalandı. Hayatımda söylediğim en doğru yalandı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "vouched_greet",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Purmerend'de aspirinin yarısını tanımadığım bir bebeğe verdim. Kees'in ateşi vardı. Bir çocuğun payından ötekine vermenin hesabını hâlâ yapamıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamın saatini beş kilo patatese verdim. Saat zaten bozuktu derim; yalan. Çalışıyordu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "traded_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Hoorn'da bir gün durup Kees'i doktora götürdüm. Jan'ın yüzü asıldı. Bir çocuğun öksürüğü bir yolculuğun hesabını bozar. Bozmalı da.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stopped_hoorn",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Hoorn'da altı çocuğu yanıma alıp Den Oever'e kadar götürdüm. Onları bir listeye teslim ettim. En küçüğü ayrılırken Kees'e eldivenini verdi. O eldiven hâlâ bende.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Medemblik'te annemin çarşaflarını bıraktım, Greet'in eşyasına yer açılsın diye. Annem çarşafları hiç sormadı. Belki biliyordu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_linen",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Den Oever'de Jan'ın tütünü alınmasın diye kendi eşyamdan verdim. Jan'la kırk yıl konuştuk; bundan hiç söz etmedik.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "paid_for_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sette yola oturan yaşlı bir kadını arabaya aldım; Kees yürüdü. Ayakkabısının içi kanlıydı. Kees bunu bana hiç hatırlatmadı. Ben hatırladım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sette Kees'i arabadan indirmedim. Yaşlı bir kadın yola oturmuştu; onu geride bıraktık. Çocuğumu seçtim; herkes anlar. Anlaşılmak başka, affedilmek başka.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'e Friesland'da kalabileceğini önceden söyledim. Dokuz yaşındaydı. Çocuğa gerçeği söylemek bir saygıdır. Bedelini de çocuk öder, gece, samanda.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'i Friesland'da bir aileye bıraktım. Doğru karardı. Doğru kararlar da insanın içinde bir boşluk bırakır; benimki bir sandalye büyüklüğündeydi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'i bırakmadım, birlikte döndük. Onu açlığa, kendi yanıma geri götürdüm. Sevgi bazen bencilliğin en sıcak adıdır, bazen değildir. Hangisiydi, bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bahara kadar Friesland'da kalıp otuz çocuğa ders verdim. Annem Amsterdam'da, Jan'ın götürdüğü yükle kışı geçirdi. Ben orada değildim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktor bekleyin dedi, beklemedim; Kees'i o rüzgârda setten geçirdim. Yaşadı. Bunu benim sayemde değil, onun sayesinde söylüyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dönüşte yükün tamamını beyan ettim; üçte biri kaldı. Dürüstlüğün bir fiyatı vardı ve onu sokağın yiyeceğiyle ödedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dönüşte yükün bir kısmını Greet'in bebek arabasının altına sakladım. İşe yaradı. Öğretmendim; çocuklara saklamamayı öğretirdim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükün bir kısmını hasta bir çocuğun battaniyesinin altına sakladım: Kees'in. İşe yaradı. Bunu anlatırken hâlâ yüzüm kızarıyor.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Eve dönünce yükün yarısını sokağın ortak mutfağına verdim. Soba üç hafta daha yandı. O üç haftada kimin yaşadığını bilmiyorum. Bilmemek iyi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükü kilerde tuttum. Annem mayısı gördü. Hesap doğruydu. Doğru bir hesap da insanı yalnız bırakabilir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kornwerderzand'da rüzgâr düşene kadar Kees'le bekledim. Dokuz gün. Jan yükü tek başına götürdü; ben bir salonda bir çocuğun ateşini ölçtüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "Kartı çalınan kadına kepçemi vermedim. Kucağında bebek vardı. Kuralı ben koymadım; ama kurala sığındım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin payını eve götürmedim. Ona sormadım. O akşam annemi korumadım ve bunu ona hiç söylemedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tramvay raylarında polise tek bir blok vermedim, Jan'ı da oradan çektim. Onun da evi soğuktu. Bunu sonra anladım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_blocks",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Greet'i yola çağırmadım; arabada yer yok dedim. Yer vardı, sonradan açıldı. Yer hep sonradan açılır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kontrolde Greet için konuşmadım; kendi adına konuşsun dedim. Almancası yoktu. Saygı mıydı, korku mu? O sabah ikisi aynı sesle susuyordu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_spoke",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Purmerend'deki bebeğe aspirin vermedim, Kees için sakladım. Bebeğin adını bilmiyorum. Annesinin yüzünü biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamın saatini vermedim; dayanırız dedim. Kees o gün bir dilim ekmekle yürüdü. Saat hâlâ çekmecemde. Çalışmıyor.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Hoorn'da durmadım, Kees'i doktora götürmedim. Jan haklıydı, set kapanabilirdi. Kees ateşle yürüdü. Haklı olmak ateşi düşürmez.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pushed_on",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Hoorn'daki altı çocuğu almadım. Elimde zaten bir çocuk var, dedim. Doğruydu. Öğretmendim; o gün öğretmen değildim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "refused_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Den Oever'de Jan'ın tütünü alınırken araya girmedim. Jan konuşmadı, sete kadar kilometreleri saydı. Ben de saydım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "jan_lost_tobacco",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sette yola oturan kadını arabaya almadım. Kocası kolunu tutuyordu. Onları bir daha görmedik. Onları her rüzgârda görüyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sette Kees'i arabada tutmadım, yürüttüm. Bir yabancı için kendi çocuğumu yürüttüm. Kees bunu duyunca şaşıracak; o hatırlamıyor.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'e ne konuşulduğunu söylemedim; yarın konuşuruz dedim. Ertesi gün bir masada, bir papazın önünde öğrendi. O sabahı ondan çaldım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_from_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'i eve getirmedim. Haziranda döndüğünde bir hafta boyunca bana 'teyze' değil, 'Juf' dedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kees'i Friesland'da bırakmadım. Van der Meer'lerin ekmeği vardı, ineği vardı. Ben onu açlığa, kendi yanıma geri götürdüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Friesland'da kalıp o otuz çocuğa ders vermedim; eve döndüm. Kimse kalmamı istemedi, kimse gitmemi de. Karar yalnızca benimdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "returned_with_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin yanına dönmedim. Yükü Jan götürdü, kapıyı Jan çaldı. Annem kışı bensiz geçirdi ve bunu bana hiç söylemedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktor rüzgâr düşene kadar bekleyin dedi. Beklemedim. Kees yaşadı; ama o gün onun yerine rüzgâr değil, ben karar verdim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükü saklamadım. Jan bunu yıllarca yapmıştı, bana nasıl yapılacağını gösterdi. Beyan ettim; üçte biri gitti. O üçte bir sokağın payıydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükün tamamını beyan etmedim. Saklamak bana hiç öğretmen işi gibi gelmedi. Ama annem mayısı gördü.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükün tamamını beyan etmedim. Hasta bir çocuğun battaniyesini kaldırmayacaklarını biliyordum ve bunu kullandım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükü sokakla paylaşmadım. Ortak soba şubatta söndü. Bir daha o sobanın başına oturmadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yükü kilerde tutmadım. Annemi mayısa kadar doyuracak olan yarıyı sokağa verdim. Annem bir kez bile şikâyet etmedi. En ağırı buydu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Jan'la birlikte seti geçmedim; Kees'le kaldım. Jan yükü tek başına itti. Otuz iki kilometre. Ona hiç teşekkür etmedim; teşekkür küçük kalırdı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Bir çocuk parmak kaldırıyor: “Açlık nasıl bir şeydi?” Truus masadaki yarım sandviçe bakıyor. “Bunu kimse çöpe atmazdı,” diyor. Sınıf gülüyor. Truus gülmüyor.",
+    "closeUndone": "Sınıf sessiz. “Size yaptıklarımı anlatsaydım bir kahraman dinlemiş olurdunuz,” diyor Truus. “O kış kahraman yoktu. Aç insanlar ve verdikleri kararlar vardı.”"
+  },
   "nodes": [
     {
       "id": "kuy_01_merkez_mutfak",
@@ -106,7 +661,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "Merkez mutfakta kartı çalınan kadına kepçeni vermedin."
         },
         {
           "id": "kuy_01_b",
@@ -121,8 +677,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "Merkez mutfakta kartı çalınan kadına kepçeni vermedin."
+          ]
         }
       ]
     },
@@ -237,6 +792,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_children",
+          "text": "Bir yolda komşunun çocuklarını kızağına alıp babanı yürütmüştün. Jan'ın arabasında da bir kişilik yer var ve kapıda biri duruyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -259,7 +826,8 @@
               "op": "add",
               "intValue": 3
             }
-          ]
+          ],
+          "omission": "Greet'i yola birlikte çıkmaya çağırmadın."
         },
         {
           "id": "kuy_03_b",
@@ -286,8 +854,7 @@
               "op": "add",
               "intValue": 1
             }
-          ],
-          "omission": "Greet'i yola birlikte çıkmaya çağırmadın."
+          ]
         }
       ]
     },
@@ -430,7 +997,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "Purmerend'deki bebeğe aspirinden vermedin."
         },
         {
           "id": "kuy_05_b",
@@ -451,8 +1019,7 @@
               "op": "add",
               "intValue": 1
             }
-          ],
-          "omission": "Purmerend'deki bebeğe aspirinden vermedin."
+          ]
         }
       ]
     },
@@ -613,7 +1180,8 @@
               "op": "add",
               "intValue": -2
             }
-          ]
+          ],
+          "omission": "Hoorn'da Kees'i doktora göstermedin."
         },
         {
           "id": "set_07_b",
@@ -640,8 +1208,7 @@
               "op": "add",
               "intValue": -2
             }
-          ],
-          "omission": "Hoorn'da Kees'i doktora göstermedin."
+          ]
         }
       ]
     },
@@ -693,7 +1260,8 @@
               "op": "add",
               "intValue": -1
             }
-          ]
+          ],
+          "omission": "Hoorn'da bekleyen altı çocuğu Den Oever'e götürmedin."
         },
         {
           "id": "set_08a_b",
@@ -708,8 +1276,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "Hoorn'da bekleyen altı çocuğu Den Oever'e götürmedin."
+          ]
         }
       ]
     },
@@ -876,7 +1443,8 @@
               "op": "add",
               "intValue": 4
             }
-          ]
+          ],
+          "omission": "Den Oever'de Jan'ın tütünü alınırken araya girmedin."
         },
         {
           "id": "set_09_b",
@@ -897,8 +1465,7 @@
               "op": "add",
               "intValue": -3
             }
-          ],
-          "omission": "Den Oever'de Jan'ın tütünü alınırken araya girmedin."
+          ]
         }
       ]
     },
@@ -1004,7 +1571,8 @@
               "op": "add",
               "intValue": 2
             }
-          ]
+          ],
+          "omission": "Sette yola oturan yaşlı kadını arabaya almadın."
         },
         {
           "id": "set_10_b",
@@ -1031,8 +1599,7 @@
               "op": "add",
               "intValue": -2
             }
-          ],
-          "omission": "Sette yola oturan yaşlı kadını arabaya almadın."
+          ]
         }
       ],
       "interlude": {
@@ -1471,6 +2038,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_earth",
+          "text": "Annenin mezarından bir kavanoz toprak almıştın, çünkü mezarı yanında götüremezdin. Bir çocuğu bir yerde bırakmak daha zor: çocuk arkandan bakar.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_earth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -1493,7 +2072,8 @@
               "op": "add",
               "intValue": 2
             }
-          ]
+          ],
+          "omission": "Kees'e Friesland'da kalma ihtimalini önceden söylemedin."
         },
         {
           "id": "set_13_b",
@@ -1514,8 +2094,7 @@
               "op": "add",
               "intValue": -1
             }
-          ],
-          "omission": "Kees'e Friesland'da kalma ihtimalini önceden söylemedin."
+          ]
         }
       ]
     },
@@ -1571,6 +2150,18 @@
             {
               "type": "archive",
               "key": "neretva_1943:dragica_isolated",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_search",
+          "text": "Bir istasyonda kayıp aileleri listelerden birbirine bulmuştun. Dominee'nin listesi de bir çocuğu bir aileye bağlıyor; yalnız bu kez aileyi sen seçiyorsun.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:search_desk",
               "op": "equals",
               "boolValue": true
             }
@@ -1888,7 +2479,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
         },
         {
           "id": "don_17a_b",
@@ -1903,8 +2495,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
+          ]
         }
       ]
     },
@@ -2204,7 +2795,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
         },
         {
           "id": "don_17b_b",
@@ -2219,8 +2811,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "Dönüşte yükü sokağın ortak mutfağıyla paylaşmadın."
+          ]
         }
       ]
     },

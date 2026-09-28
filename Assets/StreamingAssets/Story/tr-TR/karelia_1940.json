@@ -1,0 +1,2802 @@
+{
+  "schemaVersion": 1,
+  "storyId": "karelia_1940",
+  "locale": "tr-TR",
+  "startNodeId": "bar_01_gece",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "frozen_bay",
+        "kicker": "KARELYA",
+        "line": "Kasım 1939'da Sovyetler Birliği Finlandiya'ya saldırır; Kış Savaşı üç buçuk ay sürer.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "village_exchange",
+        "kicker": "12 MART 1940",
+        "line": "Moskova'da barış imzalanır. Finlandiya, Karelya'nın büyük bölümünü bırakacaktır.",
+        "holdSeconds": 2.6
+      },
+      {
+        "imageKey": "karelian_farm",
+        "kicker": "AINO KETTUNEN",
+        "line": "Aino, Ladoga kıyısındaki Honkaranta köyünün telefon santralcisidir.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "evacuation_road",
+        "kicker": "İKİ HAFTA",
+        "line": "Bırakılan topraklarda yaşayan herkesin evini boşaltmak için iki haftadan az zamanı vardır.",
+        "holdSeconds": 3.0
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "isa",
+      "name": "Baban Heikki Kettunen",
+      "warm": "Son yıllarında seni \"kapıyı tutan\" diye çağırdı; bundan hoşlandığını biliyordun.",
+      "cold": "Yeni evde doğuya bakan pencerenin önünde oturdu ve seninle Karelya'dan hiç konuşmadı."
+    },
+    {
+      "key": "martta",
+      "name": "Martta Kokko",
+      "warm": "Her Noel bir paket yolladı; içinde Honkaranta'dan tanıdığın bir koku vardı.",
+      "cold": "Yeni yerde aynı köye yerleştiniz; selamlaştınız, o kadar."
+    },
+    {
+      "key": "anni",
+      "name": "Anni Jeskanen",
+      "warm": "Ölmeden önce ikonanın önünde senin için de bir mum yaktırdı.",
+      "cold": "Sana bir daha ikonadan söz etmedi."
+    },
+    {
+      "key": "nuutinen",
+      "name": "Tahliye memuru Paavo Nuutinen",
+      "warm": "Raporunda adını \"santralci Kettunen, güvenilir\" diye geçirdi.",
+      "cold": "Raporuna \"santralci talimatlara uymadı\" diye bir satır ekledi."
+    },
+    {
+      "key": "ristola",
+      "name": "Iivari Ristola",
+      "warm": "Bir daha hiç teşekkür etmedi, ama kapısını sana hep açık tuttu.",
+      "cold": "Seni bir daha selamlamadı."
+    }
+  ],
+  "acts": [
+    {
+      "name": "Barış",
+      "question": "Bir barış, kaybettirdikleriyle ölçülünce hâlâ barış mıdır?"
+    },
+    {
+      "name": "Eşik",
+      "question": "Bir evden ne alınır, ne bırakılır; bırakılan kimin olur?"
+    },
+    {
+      "name": "Buz",
+      "question": "Yurt bir yer midir, yoksa yanında taşıdığın insanlar mı?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Lahti · Mart 1980",
+    "setting": "Kırk yıl sonra. Yerel radyo, bırakılan Karelya'nın insanlarından ses kaydı topluyor. Genç bir muhabir mikrofonu Aino Kettunen'in mutfak masasına koyuyor. Aino altmış dokuz yaşında. Rafta, kimseye açıklamadığı bir kavanoz ve eski bir santral lambası duruyor.",
+    "question": "“Karelya'dan yanınızda ne getirdiniz?”",
+    "tellDone": "Yaptıklarını anlat.",
+    "tellUndone": "Yapmadıklarını anlat.",
+    "closeDone": "Muhabir mikrofonu kapatmak üzereyken Aino ekliyor: “Bir şey daha yaz. Getirdiklerimin hepsi bir kızağa sığdı. Bu yüzden getirmediklerimi sayamıyorum.”",
+    "closeUndone": "Muhabir, bu kadar çok bırakılan şeyin arasında geriye ne kaldığını soruyor. Aino iki parmağını, fiş takar gibi, masaya bastırıyor. “Hat,” diyor. “İnsanlar birbirini aramaya devam etti. Karelya bir yer değildi; bir hattı.”",
+    "done": [
+      {
+        "text": "Barışı babama radyodan önce ben söyledim, gece üçte. Santralcinin duyduğunu söylemesi yasaktı. Babam o gece ahırda hayvanları saydı; ona o geceyi borçlu olduğumu düşündüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_father_early",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Barışı gece üçte duydum ve öğlene kadar kimseye söylemedim. Hat benim değildi. Babam haberi radyodan öğrendi, benden değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_secret",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Barış günü hattı önce Martta'ya verdim; oğlunu arıyordu. Sonra trenleri isteyen adama. Bir annenin beş haftası bir köyün vagonlarından önce geldi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "martta_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Barış günü hattı önce vagonları isteyen adama verdim. Doğru sıra buydu. Martta bir saat daha bekledi; o saati bana hiç söylemedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "railway_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Cephedeki bir santralci annesine sağ olduğunu söyletmek istedi. Onun çiftliğini de aradım. Kadının sesini, hiç görmediğim bir yüz gibi hatırlıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_soldiers_mother",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babam gitmeyeceğini söylediğinde tartışmadım. Yanına oturdum, ineği birlikte sağdık. Bazen birini ikna etmenin tek yolu, onu ikna etmeye çalışmamaktır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "sat_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "O gece otuz dört çiftliği tek tek aradım, her birine aynı cümleyi söyledim. Otuz dördüncüde cümle hâlâ aynıydı. Ben aynı değildim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Telefonu olmayan tek eve, Anni'nin evine buzun üstünden yürüdüm. Santrali bir gece boş bıraktım. Bir hattı tutmak bazen yerinden kalkmaktır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_to_anni",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ristolaların kalmak istediğini biliyordum ve kimseye söylemedim. Karar onlarındı. Doğru muydu, bilmiyorum; ama benim değildi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ristola",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Anni'nin kilisesinin ikonasını kendi kızağımda taşıdım; yerin üçte birini tuttu. Annemin eşyası mı, bir yabancının azizi mi? Bir kızak insana böyle sorular sorar.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "promised_icon",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dikiş makinesini değil, annemin sandığını ve kantelesini getirdim. Karnımızı doyurmadılar. Başka bir şeyi doyurdular.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_chest",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin sandığını bırakıp dikiş makinesini getirdim. O makineyle üç yıl göçmenlerin paltolarını diktim. Annem olsa aynısını yapardı; bunu kendime çok söyledim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_machine",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Mansikki'yi yolda ölmesin diye kestik, etini komşularla paylaştık. Babam o gün hiç konuşmadı. Ben de konuşmadım; ikimiz aynı şeyi düşünüyorduk.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin mezarından bir kavanoz toprak getirdim; hâlâ rafta. Bir yerin toprağı taşınınca hâlâ o yerin toprağı mıdır? Kırk yıldır bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_earth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin mezarını temizledim, bir mum yaktım ve toprağına dokunmadım. Mezarı yerinde bırakmak onu yalnız bırakmak mıydı? Öyle düşünmemeye çalıştım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_grave",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Santrali emre rağmen son aileye kadar açık tuttum. Son gece hattın öbür ucunda hep bir ses vardı. O gece kimseyi yalnız bırakmadım; kendimi bıraktım belki.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_line_open",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Santrali emir üzerine söktüm, kablolarını tek tek sardım. Son lamba söndüğünde bir köyün sesini kapattığımı düşündüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dismantled_board",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Evi babamla birlikte yaktık. Yasaktı. Başka birinin o kapıyı açmasını istemedik. Duman gölün üstünde uzun süre göründü; ben arkama bakmadım, babam baktı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "burned_house",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Evi süpürdüm, anahtarı kapıda bıraktım, masaya bir not yazdım: soba iyi çeker, kuzey penceresi rüzgâr alır. Kime yazdığımı bilmiyordum. Bir ev, içinde kim olursa olsun bir evdir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_key",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yolda Martta'nın çocuklarını kızağıma aldım; babam yürüdü. Babamın yürüdüğü o kilometreleri hâlâ onun hesabına yazarım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Okulda sobanın yanındaki yeri Anni'ye verdim. Babam kapının dibinde yattı ve bir şey demedi. Seksen yaşında bir kadına verilen sıcaklık kimden eksilir?",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_stove_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yolun kenarında yürüyemeyen bir ineğin başında durdum; konvoy gitti. Yakındaki bir çiftlik onu aldı. Bir hayvan için bir saat kaybettim; bunu anlatırken utanmıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stopped_for_cow",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Buzda bir komşunun kızağı kırıldı; yükünü kurtarmak için ipe sarıldık. Islandık, yarım gün kaybettik. O yükün içinde çocuklarının beşiği vardı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son ayine girdim. Rahip vaaz vermedi; yalnız çanları çaldırdı. O sesi bir hat gibi yanımda getirdim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "last_service",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yeni sınırda Savo'daki akrabalara gitmeyi seçtim; uzak ama güvenli. Ödünç bir odada kırk yıl oturmadım. Ama ilk yıl oturdum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "chose_savo",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yeni sınırın yanında kaldım, istasyonun santralinde çalıştım. Her gün insanları birbirine bağladım. Kendi köyümün hattı artık yoktu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_border",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamla aynı vagona bindim. Yol dört gün sürdü, konuşmadık. Bir sabah bana \"Kapı iyi kapanıyordu,\" dedi. Evden söz ettiği son gündü.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "boarded_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamı Martta'yla gönderdim, ben kalıp arama masasında çalıştım. Aileleri listelerde birbirine buldum. Kendi babamı bir mektupta buldum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "search_desk",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Buzda kırılan kızağın başında durmadım; kendi kızağımı güvenli buza çektim. O ailenin babası yıllar sonra beni selamladı. Belki unuttu; ben unutmadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son ayine girmedim; çanları yoldan dinledim. Durursam bir daha kalkamayacağımı biliyordum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_bells",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "Duyduğumu saklamadım; hattın sırrını tutmadım. Babam için bozdum onu. Başka biri için bozar mıydım, bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_father_early",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babama gece haber vermedim. Radyoyu onunla aynı anda, uzaktan, santralde dinledim. O sabah ahırda tek başınaydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_secret",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Barış günü vagonları isteyen adamı bekletmedim mi? Beklettim. Belki trenler geç istendi. Kimin bundan zarar gördüğünü bilmiyorum; biri gördü.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "martta_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Martta'yı ilk bağlamadım. Oğlunun sağ olduğunu bir saat geç öğrendi. Bir saat kısa görünür; o bir saatte Martta'nın yüzünü gördüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "railway_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Cephedeki santralcinin annesini aramadım; hattı geri verdim. Annesi oğlunun sağ olduğunu bir mektuptan öğrendi, belki iki hafta sonra.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_line_back",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamla tartıştım ama yanına oturmadım. O akşam ineği tek başına sağdı. Kazandığımı düşündüm; kaybettiğimi yıllar sonra anladım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "argued_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "O gece listeyi aramadım; Martta aradı. İki çiftlik haberi bir gün geç aldı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_to_anni",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "O gece Anni'ye gitmedim. Telefonu olmayan tek evdi. Haberi ertesi gün bir haberciden aldı; kapıyı açtığında adama bakmamış dediler.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ristolaların sırrını tutmadım. Nuutinen gitti, konuştu; yola çıktılar. Belki onları kurtardım. Kararlarını ellerinden aldım; bu kesin.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_ristola",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Anni'nin ikonasını kendi kızağıma almadım; kilisenin kızağına yazdırdım. Doğrusu buydu. Anni ikonasından ayrı bir kızakta yolculuk etti.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "icon_to_parish",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dikiş makinesini bıraktım. Yeni yerde üç yıl başkalarının makinesinde diktim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_chest",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin sandığını getirmedim. İçinde gelinliği, fotoğrafları ve kantelesi vardı. Evde kaldılar; ev ne olduysa onlar da o oldu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_machine",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Mansikki'yi kesmedim, sürüye kattım. On dört yaşındaydı. Yolda ne olduğunu kimseye sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_drove",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Mansikki'yi sürüye katmadım. Belki yürürdü. Ona bir şans vermedik.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin mezarını temizlemedim, mum yakmadım; yalnız toprağını aldım. Yeni bir mezarı olmadı annemin; bir kavanozu oldu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_earth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Annemin mezarından toprak almadım. Bazen elimde hiçbir şey olmadan o mezarı düşünmek zor.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_grave",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamla aynı gün yola hazırlanmadım; santrali açık tuttum. Babam evdeki son gecesini bensiz geçirdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_line_open",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Santrali son aileye kadar açık tutmadım. Söktüğüm akşam iki çiftlik hâlâ arıyordu; lambalarını gördüm ve kabloyu çektim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dismantled_board",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Evi yerinde bırakmadım. Kimin gireceğini merak etmedim; kimse girmesin istedim. Bunun adı sadakat mi, kıskançlık mı, bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "burned_house",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Evi yakmadım; babam istedi. Başka birinin o sobayı yakmasına razı oldum. Babam bunu bana hiç söylemedi, ama biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_key",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamı kızağa almadım; yürüdü. Altmış sekiz yaşındaydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Martta'nın çocuklarını kızağıma almadım. Konvoydaki yerimi korudum. Martta bir gün sonra geldi; çocuklar ayaklarını hissetmiyordu. Hepsi iyileşti.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sobanın yanındaki yeri Anni'ye vermedim; babama ayırdım. Anni kapının dibinde yattı. Seksen yaşındaydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_stove_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yolun kenarında yatan ineğin başında durmadım. Birinin duracağını umdum. Umut da bir tür yürümeye devam etmektir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_drove",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Nuutinen'in yasağını dinlemedim; buzdan geçtim. Buz tuttu. Tutmasaydı bu kaydı kimse yapmazdı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_ice",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Buzdan geçmedim; yarım gün kaybettik. O gün herkes bana buzun tuttuğunu söyledi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_road",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sınırın yanında kalmadım. Uzağa gittim; geri dönmeyi beklemeyi bıraktım, ya da öyle sandım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "chose_savo",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Savo'daki akrabalara gitmedim. Babam benimle kaldı ve sınır direğini her gün gördü. Uzağa gitseydik belki daha çabuk unuturdu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_border",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Arama masasında kalmadım. Birileri kaybettiklerini başka birinin sesinden bulmak zorunda kaldı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "boarded_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Babamla trene binmedim. Dört gün Martta'nın yanında yolculuk etti; varınca ilk beni sormuş.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "search_desk",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Komşunun yükü dibe giderken ipe sarılmadım; kendi kızağımı çektim. O yükün içinde çocuklarının beşiği vardı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son ayine girmedim. Çanları arkamda bıraktım; arkama da bakmadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_bells",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "bar_01_gece",
+      "act": "Barış",
+      "date": "13 Mart 1940, 03.10",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Santralin tek lambası yanıyor: Sortavala'daki bölge bürosu köyün muhtarını arıyor. Aino Kettunen fişi takıyor ve bağlantıyı kurmak için birkaç saniye dinliyor. O birkaç saniye yetiyor. Barış Moskova'da imzalanmış; ateş bugün saat on birde kesilecek. Honkaranta bırakılacak toprakların içinde kalıyor; herkes günler içinde evini boşaltacak. Radyo bunu öğlen söyleyecek. Santralcinin duyduğunu söylememesi kuraldır. Üç kilometre ötede babası uyuyor; çiftliğin hattı santralin en alt sırasında, karanlık.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ham_concealed",
+          "text": "Bir istasyonda, bir zarfı göstermeyip çantanda tutmuştun. Bu gece saklanacak şey bir zarf değil, bir cümle.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_reported_typhus",
+          "text": "Bir ahırda, bedelini bilerek tifüsü rapora yazmıştın. Doğruyu söylemenin bir sırası olduğunu o gün de biliyordun.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:reported_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_01_a",
+          "text": "Babanın hattını çaldır; ona şimdi söyle.",
+          "trace": "Barış haberini radyodan önce, gece babana sen verdin.",
+          "nextNodeId": "bar_02_on_bir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_01_b",
+          "text": "Duyduğunu radyo söyleyene kadar kendine sakla.",
+          "trace": "Barış haberini, radyo söyleyene kadar kimseye söylemedin.",
+          "nextNodeId": "bar_02_on_bir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_secret",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_02_on_bir",
+      "act": "Barış",
+      "date": "13 Mart 1940, 11.00",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Saat on birde kilise çanı çalıyor; kimse ne için çaldığından emin değil. Öğlen radyo konuşuyor ve postanenin önünde kimse konuşmuyor. Sonra herkes aynı anda santrale doluşuyor: kasabadaki akrabaya, cephedeki oğula, bir ilana. Hat bir tane. İki lamba birden düşüyor. Martta Kokko beş haftadır mektup gelmeyen oğlu Toivo için alayın cephe santralini istiyor. Tahliye memuru Paavo Nuutinen ise Sortavala'daki demiryolu bürosunu: vagon istenmezse köy trensiz kalacak.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_father_counted",
+          "text": "Baban sabah dörtte kalkmış, ahırda hayvanları tek tek saymış. Kimseye bir şey söylememiş.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_father_radio",
+          "text": "Baban haberi radyodan duymuş. Seni aramamış; santralde olduğunu biliyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_secret",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_gave_ladle",
+          "text": "Bir mutfak kuyruğunda annenin kepçesini bir yabancıya vermiştin. Sıra bir kez daha senin elinde; bu kez dağıtılan şey bir hat.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_02_a",
+          "text": "Martta'yı cephe santraline bağla.",
+          "trace": "Barış günü hattı önce oğlunu arayan Martta'ya verdin.",
+          "nextNodeId": "bar_03_cephe",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "martta_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "bar_02_b",
+          "text": "Nuutinen'i demiryolu bürosuna bağla.",
+          "trace": "Barış günü hattı önce vagon isteyen Nuutinen'e verdin.",
+          "nextNodeId": "bar_03_isa",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "railway_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_03_cephe",
+      "act": "Barış",
+      "date": "13 Mart 1940, 11.40",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Cephe santrali kırk dakika sonra açıyor. Hattın öbür ucunda genç bir santralci, sesi kısık. Toivo Kokko bir sahra hastanesinde; ayakları donmuş, ama sağ. Martta santralin tahta tezgâhına tutunuyor. Aino kabloyu çekecekken genç santralci bir şey daha soruyor: annesi yirmi kilometre ötede, Tervu'daki bir çiftlikte; oğlunun sağ olduğunu kimse ona söylemedi. Onu da arayabilir mi? Kapının önünde Nuutinen saatine bakıyor; vagon istenmedi daha.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ner_keeps_list",
+          "text": "Bir kafilenin defterini tutmuştun; kimin nerede olduğunu yazmak senin işindi. Bir santral de öyle bir defter: kimin sağ olduğu önce buradan geçer.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_03_cephe_a",
+          "text": "Askerin annesinin çiftliğini de ara.",
+          "trace": "Cephedeki bir santralcinin annesine oğlunun sağ olduğunu sen söyledin.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "called_soldiers_mother",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 1
+            }
+          ],
+          "omission": "Cephedeki bir askerin annesine oğlunun sağ olduğunu söylemedin."
+        },
+        {
+          "id": "bar_03_cephe_b",
+          "text": "Hattı Nuutinen'e ver; asker annesine kendisi yazsın.",
+          "trace": "Cephedeki santralcinin annesini aramadan hattı Nuutinen'e verdin.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_line_back",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_03_isa",
+      "act": "Barış",
+      "date": "13 Mart 1940, 13.00",
+      "location": "Kettunen çiftliği",
+      "imageKey": "karelian_farm",
+      "body": "Aino öğle arasında çiftliğe yürüyor. Babası Heikki Kettunen, altmış sekiz yaşında, avluda odun kırıyor; baltayı indirmiyor. \"Gitmiyorum,\" diyor. \"Bu çatının altında doğdum. Annen kilisenin yanında yatıyor.\" Bir süre sonra, sesini hiç yükseltmeden ekliyor: bu evi onlara bırakacağına yakar. Ahırdan ineğin sesi geliyor; sağım vakti geçti. Santrali yarım saatliğine Martta'ya bırakmıştı Aino. Yarım saat bitti.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_father_night",
+          "text": "Gece aradığında sesi titrememişti. Şimdi, gün ışığında, titriyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_03_isa_a",
+          "text": "Onunla şimdi tartış: gitmek zorundasınız.",
+          "trace": "Barış günü babanla evi bırakmak için tartıştın.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "argued_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "bar_03_isa_b",
+          "text": "Tartışma; yanına otur, sağıma yardım et.",
+          "trace": "Barış günü babanla tartışmadın; ineği birlikte sağdınız.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "sat_with_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_04_liste",
+      "act": "Barış",
+      "date": "14 Mart 1940",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Nuutinen santrale bir liste getiriyor: altmış iki çiftlik. İnsanlar 19'undan itibaren Sortavala istasyonundan trenle gidecek; hayvanlar 17'sinden itibaren yoldan sürülecek; her ev bir kızak yük alabilir. Bu gece herkes bilmeli. Telefonu olan otuz dört çiftliği Aino arayacak, kalanlara haber gönderilecek. Listenin sonunda bir ad var: Anni Jeskanen, seksen yaşında, tsasounanın yanında tek başına. Evi koyun öbür yanında, altı kilometre; telefonu yok. Haberciler yarın gidecek.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_martta_thanks",
+          "text": "Martta sabah santrale bir somun ekmek bırakmış; yanında not yok.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "martta_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wagons_requested",
+          "text": "Nuutinen'in istediği vagonlar onaylanmış; köy, sıraya ilk girenler arasında.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "railway_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kees_home",
+          "text": "Bir çocuğu açlığa rağmen yanında tutmuştun. Listedeki her ad da birinin yanında tutmak istediği biri.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kees_home",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_04_a",
+          "text": "Gece boyunca listeyi ara.",
+          "trace": "Tahliye listesindeki bütün çiftlikleri o gece tek tek aradın.",
+          "nextNodeId": "bar_05_soitot",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "called_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_04_b",
+          "text": "Santrali Martta'ya bırak; buzun üstünden Anni'ye yürü.",
+          "trace": "Santrali bir geceliğine bırakıp telefonu olmayan Anni'ye yürüdün.",
+          "nextNodeId": "bar_05_anni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "went_to_anni",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Tahliye haberini Anni'ye kendin götürmedin."
+        }
+      ]
+    },
+    {
+      "id": "bar_05_soitot",
+      "act": "Barış",
+      "date": "14 Mart 1940, gece",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Gece yarısı otuz birinci çiftlik: Ristola. Iivari Ristola dinliyor, sonra alçak sesle konuşuyor. Gitmeyecekler. Karısı hasta, toprağı babasından kalma; ne olursa olsun kalacaklar. \"Kimseye söyleme,\" diyor. \"Nuutinen gelir, bizi zorla götürür.\" Aino fişi daha çekmeden Nuutinen'in hattı düşüyor: listenin nerede kaldığını soruyor. İki lamba yan yana yanıp sönüyor. Kalmak yasak değil; ama kalanın bir daha geri dönemeyeceğini herkes biliyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ham_notebook",
+          "text": "Bir sirenin altında birinin defterini mühürlü bir dolaptan çıkarmıştın. Bir sırrı taşımak da bir defteri taşımak gibi: ağırlığı yok, yeri var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_05_soitot_a",
+          "text": "Nuutinen'e Ristolaların kalacağını söyle.",
+          "trace": "Ristolaların kalma kararını tahliye memuruna bildirdin.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "reported_ristola",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "ristola",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "bar_05_soitot_b",
+          "text": "Ristolaların kararını kendine sakla.",
+          "trace": "Ristolaların kalma kararını kimseye söylemedin.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_ristola",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "ristola",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "honkaranta_board",
+        "kind": "board",
+        "caption": "Honkaranta santrali, gece yarısı. İki lamba aynı anda düşüyor; tek bir kablo var.",
+        "chooses": true,
+        "results": [
+          "il_board_first",
+          "il_board_second"
+        ]
+      }
+    },
+    {
+      "id": "bar_05_anni",
+      "act": "Barış",
+      "date": "14 Mart 1940, akşam",
+      "location": "Anni Jeskanen'in kulübesi, tsasounanın yanı",
+      "imageKey": "orthodox_chapel",
+      "body": "Anni kapıyı açıyor, Aino'nun yüzüne bakıp neden geldiğini anlıyor. Semaveri kuruyor. Bir sınırı daha önce de yaşamış: yirmi yıl önce oğlu Vasili öbür yanda kaldı ve bir daha gelmedi. \"İkinci kez taşınıyorum,\" diyor, \"bu sefer ben.\" Tsasounanın ikonası, Aziz Nikolaos, keten bir bezin içinde duvara dayalı; bir kapı kanadı kadar büyük. Anni onu bırakmayacak. Kilisenin eşyası için bir kızak ayrılmış, ama o kızağa kimin gözetim edeceğini kimse bilmiyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ner_nello_taken",
+          "text": "Bir kafilede, taşınamaz denen birini kızağa aldırmıştın. Anni'nin ikonası da taşınamaz denen bir şey.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_05_anni_a",
+          "text": "İkonayı kendi kızağında taşımaya söz ver.",
+          "trace": "Anni'nin tsasounasının ikonasını kendi kızağında taşımaya söz verdin.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_05_anni_b",
+          "text": "Anni'yi ve ikonayı kilisenin kızağına yazdır.",
+          "trace": "Anni'yi ve ikonasını kilisenin kızağına yazdırdın.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "icon_to_parish",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_06_yuk",
+      "act": "Eşik",
+      "date": "16 Mart 1940",
+      "location": "Kettunen çiftliği",
+      "imageKey": "karelian_farm",
+      "body": "Kızak avluda, at Pilkku koşumda. Bir evin kırk yılı bir kızağa sığacak. Yataklar, un, tuz, tencereler, babanın aletleri zaten yüklendi. Geriye bir yer kaldı ve iki şey var. Biri annenin dikiş makinesi: yeni yerde ekmek parası demek. Öbürü annenin sandığı: gelinliği, fotoğraflar, çeyiz örtüleri, sandığın kapağına yaslı kantele. Babası ikisine de bakmıyor; atın kolanını üçüncü kez sıkıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_icon_room",
+          "text": "Anni'nin ikonası kızağın ortasında, keten içinde. Yerin üçte birini tutuyor ve kimse ondan şikâyet etmiyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ristola_quiet",
+          "text": "Ristolaların hattı iki gündür susuyor. Iivari'nin ne yapacağını yalnız sen biliyorsun.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ristola_packing",
+          "text": "Nuutinen dün Ristolalara gitmiş. Bu sabah onların avlusunda da bir kızak yükleniyor; Iivari yola bakmıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "reported_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kept_watch",
+          "text": "Babanın saatini patatese değişmemiştin, dayanırız demiştin. Bir kızak da aynı soruyu soruyor: karnını mı doyuracaksın, geçmişini mi?",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kept_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_06_a",
+          "text": "Dikiş makinesini yükle.",
+          "trace": "Kızağa annenin sandığını değil, dikiş makinesini yükledin.",
+          "nextNodeId": "esi_07_mansikki",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_machine",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "esi_06_b",
+          "text": "Annenin sandığını ve kantelesini yükle.",
+          "trace": "Kızağa dikiş makinesini değil, annenin sandığını ve kantelesini yükledin.",
+          "nextNodeId": "esi_07_mansikki",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_chest",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ],
+          "omission": "Annenin sandığını ve kantelesini evde bıraktın."
+        }
+      ]
+    },
+    {
+      "id": "esi_07_mansikki",
+      "act": "Eşik",
+      "date": "17 Mart 1940",
+      "location": "Kettunen çiftliği",
+      "imageKey": "karelian_farm",
+      "body": "Köyün sürüsü bu sabah yola çıkıyor: iki yüz inek, altı adam, on gün, batıya iki yüz kilometre. Mansikki on dört yaşında; Aino'dan önce bu ahırdaydı. Sürücülerden biri yaşlı hayvanların yolu çoğu zaman bitiremediğini söylüyor, kimseyi suçlamadan. Martta'nın evinde dört çocuk ve bir kayınvalide var; yolda yiyecek et yok. Babası ahırın kapısında duruyor, ineğin boynunu okşuyor ve kararı Aino'ya bırakıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_argued_barn",
+          "text": "Tartıştığınız günden beri baban ineği tek başına sağıyor. Bu sabah da öyle.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "argued_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_blankets_shared",
+          "text": "Bir sundurmada iki battaniyeyi kesip herkese pay etmiştin. Bir ineğin eti de bölünür; ama hep biri eksik kalır.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_07_a",
+          "text": "Mansikki'yi sürüye kat.",
+          "trace": "Yaşlı ineğiniz Mansikki'yi köyün sürüsüne kattın.",
+          "nextNodeId": "esi_08_hauta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "cow_drove",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "esi_07_b",
+          "text": "Mansikki'yi kesin; eti yol için Martta'yla paylaş.",
+          "trace": "Mansikki'yi yola çıkarmadınız; etini yol için Martta'nın ailesiyle paylaştın.",
+          "nextNodeId": "esi_08_hauta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "cow_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_08_hauta",
+      "act": "Eşik",
+      "date": "18 Mart 1940",
+      "location": "Honkaranta kilise mezarlığı",
+      "imageKey": "churchyard",
+      "body": "Mezarlıkta kar diz boyu. İnsanlar mezarların başında duruyor; bazıları kardan toprağa kadar kazıp bir avuç alıyor, keten bir keseye koyuyor. Annesi Helmi dört yıl önce buraya gömüldü; tahta haçın üstünde karın altından adı okunuyor. Babası taşımanın mümkün olmadığını bilen birinin sesiyle mezar taşlarını soruyor. Papaz başını sallıyor: zaman yok, izin yok, at yok. Mezarlar kalacak. Kalan mezara kimin bakacağını kimse söylemiyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_milked_together",
+          "text": "Birlikte sağım yaptığınız akşamdan beri baban seninle mezarlığa gelmeyi kendisi istedi.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "sat_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_buried_dead",
+          "text": "Yanmış bir çiftlikte üç mezar kazmak için bir kafileyi bekletmiştin. Burada mezar kazan yok; burada mezarlar bırakılıyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_shelter_light",
+          "text": "Bir sığınak merdiveninde lambayı onarmıştın ki insanlar birbirinin yüzünü görsün. Buradaki mumun işi başka: kimse görmeyecek.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shelter_light_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_08_a",
+          "text": "Annenin mezarından bir kavanoz toprak al.",
+          "trace": "Annenin mezarından bir kavanoz toprak aldın.",
+          "nextNodeId": "esi_09_santral",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_earth",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "esi_08_b",
+          "text": "Mezarı temizle, bir mum yak; toprağa dokunma.",
+          "trace": "Annenin mezarını temizleyip bir mum yaktın; toprağını yerinde bıraktın.",
+          "nextNodeId": "esi_09_santral",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "tended_grave",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_09_santral",
+      "act": "Eşik",
+      "date": "19 Mart 1940",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Telefon şirketinden telgraf: santral bugün sökülecek, yarınki trene yüklenecek; şirketin malıdır, bırakılmaz. Oysa hatlarda hâlâ ses var: yükünü bitiremeyen bir aile atını soruyor, bir yaşlı adam kızının hangi trene bindiğini, Martta kayınvalidesinin ilacını. Babası yarın sabah yola çıkmak istiyor. Santral açık kalırsa Aino bir gün daha burada olacak. Sökülürse köyün son sesi Aino'nun elleriyle kesilecek.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_list_known",
+          "text": "Listedeki her çiftliği aradığın gece sesini tanımayan kalmadı. Şimdi herkes santrale sesinden bakıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "called_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_anni_walked",
+          "text": "Anni'ye buzun üstünden yürüdüğün gece santrale Martta bakmıştı. Bugün Martta, santral kapanırsa kimin kime ulaşacağını soruyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "went_to_anni",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_09_a",
+          "text": "Santrali son aileye kadar açık tut.",
+          "trace": "Emre rağmen santrali son aile gidene kadar açık tuttun.",
+          "nextNodeId": "esi_10a_son_gece",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_line_open",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Santrali köyün son ailesine kadar açık tutmadın."
+        },
+        {
+          "id": "esi_09_b",
+          "text": "Emre uy: santrali sök, babanla git.",
+          "trace": "Santrali emir üzerine söktün ve babanla yola hazırlandın.",
+          "nextNodeId": "esi_10b_isa",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "dismantled_board",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_10a_son_gece",
+      "act": "Eşik",
+      "date": "19/20 Mart 1940 gecesi",
+      "location": "Honkaranta, telefon santrali",
+      "imageKey": "village_exchange",
+      "body": "Son gece. Köyde lambaların yarısı sönmüş; hatların yarısı da. Saat birde uzak bir santralden bir asker bağlanıyor: cepheden dönmüş, ailesinin hangi köye gönderildiğini bilmiyor, Honkaranta'da bir teyzesi varmış. Aino listeyi açıyor. Adı bulmak bir saat sürebilir; belki bulamaz. Üç kilometre ötede babası evde tek başına, yüklü kızağın yanında son gecesini geçiriyor. Santral ancak bir kişiyle kapanabilir.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_soldiers_mother_again",
+          "text": "Barış günü bir askerin annesini aramıştın. Bu gece hattın öbür ucunda bir asker annesini arıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "called_soldiers_mother",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_turned_back",
+          "text": "Bir köprüde, karşıya on adım kala geri dönmüştün. Bir santrali kapatmak da o on adım gibi: atılınca geri alınmaz.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:turned_back",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_10a_a",
+          "text": "Sabaha kadar santralde kal; askerin ailesini ara.",
+          "trace": "Son gece sabaha kadar santralde kalıp yabancı bir askerin ailesini aradın.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_till_dawn",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "esi_10a_b",
+          "text": "Gece yarısı santrali kapat, eve yürü.",
+          "trace": "Son gece santrali gece yarısı kapatıp babanın yanına döndün.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "went_home_midnight",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_10b_isa",
+      "act": "Eşik",
+      "date": "20 Mart 1940",
+      "location": "Kettunen çiftliği",
+      "imageKey": "karelian_farm",
+      "body": "Santralin tahtaları sandıklarda, kabloları rulo rulo. Aino eve dönüyor. Babası bir karar vermiş: Aino kızakla önden gitsin, o bir gün daha kalıp evi kapatacak, son sürüyle yürüyerek arkadan gelecek. \"Altmış sekiz yaşındayım,\" diyor, \"yürümeyi unutmadım.\" Yolda yürüyerek iki gün sürer. Nuutinen son sürünün yarın akşam çıkacağını söyledi. Babasının ceketinin cebinde bir gaz yağı şişesinin boynu görünüyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_board_packed",
+          "text": "Söktüğün santralin son lambası sandığın üstünde duruyor; ampulü yok, çerçevesi hâlâ sıcak gibi.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "dismantled_board",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_10b_a",
+          "text": "Ona güven; önden git.",
+          "trace": "Babana güvenip önden gitmeyi kabul ettin.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "trusted_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "esi_10b_b",
+          "text": "Birlikte gideceğinizi söyle ve onu bekle.",
+          "trace": "Babanı yalnız bırakmadın; onunla birlikte gitmek için bekledin.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "waited_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_11_talo",
+      "act": "Eşik",
+      "date": "21 Mart 1940, şafak",
+      "location": "Kettunen çiftliği",
+      "imageKey": "karelian_farm",
+      "body": "Şafakta kızak kapının önünde. Ev boş, soba soğuk. Babası gaz yağı şişesini masanın üstüne koyuyor: bu evi onlara bırakmayacak. Nuutinen'in okuduğu emirde binaların sağlam bırakılacağı yazıyor; yakan olursa sorulacak. Masanın öbür ucunda evin anahtarı duruyor, kırk yıldır aynı çivide asılı. Aino'nun cebinde bir kurşun kalem var. Kim gelirse gelsin, bu kapıyı bir yabancı açacak; ya da hiç kimse.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_stayed_dawn",
+          "text": "Sabaha kadar santralde kaldığın için eve şafakla birlikte vardın. Baban gece boyunca ne düşündüyse düşünmüş, bitirmiş.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stayed_till_dawn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_waited_house",
+          "text": "Onu beklediğin için baban yalnız değil. Yalnız olmayan biri bir evi daha zor yakar; ya da daha kolay.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "waited_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_shared_street",
+          "text": "Bir kış, dolu bir arabanın yarısını sokağa vermiştin. Bir evi de birine bırakmak mümkün; tanımadığın birine.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_11_a",
+          "text": "Babanla evi ateşe ver.",
+          "trace": "Evi bırakmamak için babanla birlikte yaktınız.",
+          "nextNodeId": "buz_12_yol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "burned_house",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -3
+            }
+          ]
+        },
+        {
+          "id": "esi_11_b",
+          "text": "Evi süpür, anahtarı kapıda bırak, bir not yaz.",
+          "trace": "Evi süpürüp anahtarı kapıda bıraktın; masaya bir not yazdın.",
+          "nextNodeId": "buz_12_yol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_key",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Evi, gelecek olana süpürülmüş ve anahtarı kapıda bırakmadın."
+        }
+      ]
+    },
+    {
+      "id": "buz_12_yol",
+      "act": "Buz",
+      "date": "21 Mart 1940",
+      "location": "Batıya giden yol",
+      "imageKey": "evacuation_road",
+      "body": "Yol batıya bir kızak kuyruğu. Atların nefesi, tekerlek yerine kızak demiri, konuşmayan insanlar. Öğleden sonra Martta'nın kızağının demiri kırılıyor. Dört çocuk ve kayınvalidesi yolun kenarında, karın içinde duruyor. Kettunenlerin kızağında bir kişilik yer var: babanın yeri. Baban yürüyebilir, ama altmış sekiz yaşında ve yol daha iki gün. Konvoy durmuyor; duran, sıradaki yerini kaybediyor ve akşamki okulda sobanın yanında yer kalmıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_smoke_behind",
+          "text": "Arkada, gölün üstünde duman hâlâ görünüyor. Kimse ona bakmıyor; herkes onun hangi evden çıktığını biliyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "burned_house",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_key_behind",
+          "text": "Anahtarı kapıda bıraktın. Yolda baban iki kez cebine el atıyor; anahtar orada değil, eli yine de gidiyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_meat_shared",
+          "text": "Mansikki'nin eti Martta'nın kızağında, bir keçe torbada. Kırılan demirin yanında o torba duruyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "cow_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_woman_on_cart",
+          "text": "Bir sette, yola oturan yaşlı bir kadını arabaya alıp kendi çocuğunu yürütmüştün. Kızaktaki tek yer aynı hesabı yeniden soruyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_12_a",
+          "text": "Martta'nın çocuklarını kızağına al; baban yürüsün.",
+          "trace": "Yolda Martta'nın çocuklarını kızağına aldın; baban yürüdü.",
+          "nextNodeId": "buz_13a_okul",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "Yolda Martta'nın çocuklarını kızağına almadın."
+        },
+        {
+          "id": "buz_12_b",
+          "text": "Konvoydaki yerini koru; Martta'ya yardım çağır.",
+          "trace": "Konvoydaki yerini korudun; Martta'ya arkadan yardım gönderdin.",
+          "nextNodeId": "buz_13b_sure",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_13a_okul",
+      "act": "Buz",
+      "date": "21 Mart 1940, gece",
+      "location": "Yol üstünde bir okul",
+      "imageKey": "school_night",
+      "body": "Yol üstündeki okulun sınıfı samanla döşenmiş; sıralar duvara yaslanmış, kara tahtada hâlâ bir kesir problemi yazılı. Yüz kişi, bir soba. Martta'nın çocukları kızakta ısındı; baban yürüdü ve ayaklarını hissetmiyor. Sobanın yanında bir kişilik yer kaldı. Kapının dibinde Anni Jeskanen oturuyor: kilisenin kızağı onu buraya getirmiş, seksen yaşında ve titriyor. Baban hiçbir şey istemiyor; hiçbir şey istemediği zamanki gibi bakıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_icon_school",
+          "text": "Anni'nin ikonası senin kızağında, okulun avlusunda karın altında. Anni gece iki kez kalkıp ona bakmaya çıkıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_shared_food",
+          "text": "Bir sığınakta suyunu ve ekmeğini paylaşmıştın. Bir sobanın sıcaklığı da paylaşılır; ama bir kişilik yer bölünmez.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_13a_a",
+          "text": "Sobanın yanındaki yeri Anni'ye ver.",
+          "trace": "Okulda sobanın yanındaki yeri Anni'ye verdin; baban kapının dibinde yattı.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_stove_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "buz_13a_b",
+          "text": "Yeri babana ayır.",
+          "trace": "Okulda sobanın yanındaki yeri babana ayırdın.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_stove_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_13b_sure",
+      "act": "Buz",
+      "date": "21 Mart 1940, akşam",
+      "location": "Batıya giden yol",
+      "imageKey": "evacuation_road",
+      "body": "Kavşakta konvoy duruyor; köyün sürüsü yolu kesip geçiyor. İnekler kar içinde, burunları buzlanmış, adımları ağır. Sürünün sonunda bir inek yolun kenarına çökmüş; sürücü onu bırakmaktan başka yol görmüyor. Yakındaki bir çiftlik belki alır, belki almaz. Martta'nın kızağı arkada, onarılmayı bekliyor; yardım gönderdiğin adam henüz dönmedi. Baban kızaktan ineği izliyor. Durursan konvoy gider, karanlık iner.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_mansikki_road",
+          "text": "Çöken inek Mansikki. Baban onu kızaktan tanıyor; alnındaki beyaz lekeden.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "cow_drove",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_left_stretchers",
+          "text": "Bir kıyıda, yürüyebilenleri geçirip sedyeleri bırakmıştın. Bir sürü de böyle yürür: yürüyebilenler, ve geride kalanlar.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:left_stretchers",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_13b_a",
+          "text": "Dur; ineği yakındaki çiftliğe götür.",
+          "trace": "Yolda yürüyemeyen bir ineği yakındaki çiftliğe götürmek için durdun.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stopped_for_cow",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "buz_13b_b",
+          "text": "Yürümeye devam et.",
+          "trace": "Yolun kenarında çöken ineğin başında durmadın.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "passed_drove",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_14_koy",
+      "act": "Buz",
+      "date": "22 Mart 1940",
+      "location": "Koyun buzu",
+      "imageKey": "frozen_bay",
+      "body": "Koyun öbür yakası karşıda, bembeyaz ve düz. Buzun üstünden gitmek yarım gün kazandırır; karayolu adaların arkasından dolanır. Köylüler buzun tuttuğunu söylüyor: her kış bu koyu kızakla geçerler. Nuutinen'in emri ise 20 Mart'tan sonra ırmak ağzının yakınında buza çıkılmamasını söylüyor; mart güneşi akıntının üstünü inceltir. Yeni sınır iki gün sonra kapanıyor. Önde bir kızak buza çıktı bile; atın ayakları buzun üstünde tok sesle vuruyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_anni_stove",
+          "text": "Sobanın yanında uyuyan Anni sabah daha dik yürüyor. Baban ise topallıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_stove_place",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_cow_farm",
+          "text": "Dün ineği bıraktığın çiftliğin kadını sabah yola kadar gelip el salladı.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_for_cow",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_declared_load",
+          "text": "Bir kontrol noktasında her şeyi beyan etmiş, üçte birini kaybetmiştin. Bir emre uymanın bedelini bilirsin; uymamanınkini de.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_14_a",
+          "text": "Buzdan geç.",
+          "trace": "Tahliye memurunun yasağına rağmen koyu buzdan geçtin.",
+          "nextNodeId": "buz_15a_buz",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_ice",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "buz_14_b",
+          "text": "Karayolundan dolan.",
+          "trace": "Buzdan geçmeyip karayolundan dolandın.",
+          "nextNodeId": "buz_15b_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_road",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_15a_buz",
+      "act": "Buz",
+      "date": "22 Mart 1940",
+      "location": "Koyun buzu",
+      "imageKey": "frozen_bay",
+      "body": "Koyun ortasında buz tutuyor. Irmak ağzına yaklaşınca, öndeki kızağın arka demiri bir çatırtıyla çöküyor. At kurtuluyor, insanlar kurtuluyor; herkes kıyıya doğru yayılmış, buzun üstünde yüzüstü. Kızak arkasından yavaşça batıyor: yataklar, bir sandık, çocukların beşiği. Sahibi ipi tutuyor, çekemiyor. İki kişi daha çekerse yük kurtulabilir. Buz, iki kişinin daha ağırlığını ne kadar taşır, kimse bilmiyor. Senin kızağın güvenli buzda, babanla.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_machine_weight",
+          "text": "Senin kızağında dikiş makinesi var; ağırlığı buzun üstünde her adımda hissediliyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_machine",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_held_stretcher",
+          "text": "Bir köprüde tahta kaydığında sedyeyi bırakmamıştın. İpi tutan el de aynı şeyi bilir: bırakmak bir karar değil, bir an.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:held_stretcher",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_15a_a",
+          "text": "İpe sarıl; yükü çekmeye yardım et.",
+          "trace": "Buzda kırılan bir kızağın yükünü kurtarmak için durup ipi çektin.",
+          "nextNodeId": "buz_16a_asema",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "saved_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ],
+          "omission": "Buzda batan bir komşunun yükünü kurtarmak için ipe sarılmadın."
+        },
+        {
+          "id": "buz_15a_b",
+          "text": "Kızağını güvenli buza çek ve devam et.",
+          "trace": "Buzda kırılan kızağın yükü batarken kendi kızağını güvenli buzda tuttun.",
+          "nextNodeId": "son_ince_buz",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_load",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_15b_kilise",
+      "act": "Buz",
+      "date": "22 Mart 1940",
+      "location": "Yeni sınırdan önceki son kilise",
+      "imageKey": "churchyard",
+      "body": "Karayolu, yeni sınırdan önceki son kilisenin önünden geçiyor. Bu kilise de bırakılacak. Kapıları açık; içeride son ayin için toplananlar var, dışarıda duran kızaklar. Çanlar çalmaya başlıyor, herkes biliyor: bu cemaatin çanları son kez. Ayine girmek bir saat demek; konvoy bekleyemez, akşama istasyona varamayanlar geceyi yolda geçirecek. Baban kızaktan inmiş, şapkasını çıkarmış, kiliseye bakıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_earth_jar",
+          "text": "Kızakta, un çuvalının arasında annenin mezarından aldığın kavanoz duruyor. Baban kiliseye bakarken eli çuvalın üstünde.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_earth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_candle_grave",
+          "text": "Annenin mezarında yaktığın mum çoktan sönmüştür. Burada da biri mum yakıyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "tended_grave",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_15b_a",
+          "text": "Babanla son ayine gir.",
+          "trace": "Yeni sınırdan önceki son kilisede son ayine girdin.",
+          "nextNodeId": "buz_16b_juna",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "last_service",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "buz_15b_b",
+          "text": "Çanları yoldan dinle; devam et.",
+          "trace": "Son ayine girmedin; çanları yoldan dinleyip devam ettin.",
+          "nextNodeId": "son_canlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "passed_bells",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_16a_asema",
+      "act": "Buz",
+      "date": "23 Mart 1940",
+      "location": "Yeni sınırın bu yanındaki istasyon",
+      "imageKey": "border_station",
+      "body": "İstasyonda bir kayıt masası, üstünde listeler. Görevli her aileye aynı şeyi soruyor: nereye? Kettunenlerin Savo'da, dört yüz kilometre ötede akrabaları var; güvenli ve uzak. İstasyonun santrali ise yeni sınırın bir kilometre berisinde ve bir santralci arıyor; göçmen aileler birbirini bu hattan arayacak. Kalırsan Karelya'nın kalan kıyısında, sınır direğinin göründüğü bir odada yaşayacaksın. Baban ıslak ceketiyle sobanın yanında oturmuş, doğuya bakıyor.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_load_saved",
+          "text": "Buzdan kurtardığınız yükün sahibi kayıt sırasında sana beşiği gösterdi; kurumaya bırakmışlar.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "saved_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_stayed",
+          "text": "Bir peronda, sevdiğin birini trene bindirip kendin kalmıştın. Kalmak da bir yolculuk; yalnız yeri değişmiyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:ruth_departed_alone",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_16a_a",
+          "text": "Savo'daki akrabalara git.",
+          "trace": "Yeni sınırda Savo'daki akrabalara gitmeyi seçtin.",
+          "nextNodeId": "son_oda",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "chose_savo",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "buz_16a_b",
+          "text": "Kal; istasyonun santralinde çalış.",
+          "trace": "Yeni sınırın yanında kalıp istasyonun santralinde çalışmayı seçtin.",
+          "nextNodeId": "son_hat",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_border",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_16b_juna",
+      "act": "Buz",
+      "date": "23 Mart 1940",
+      "location": "Yeni sınırın bu yanındaki istasyon",
+      "imageKey": "border_station",
+      "body": "Yük vagonları, içleri samanla döşenmiş, kapılarında tebeşirle köy adları. Tren batıya, Pohjanmaa'ya gidiyor; dört gün. Baban vagonun kapısında duruyor, trene binmeden önce son bir kez doğuya bakıyor. İstasyonun kayıt bürosu ise kayıp aileleri bulmak için yazıcı ve telefoncu arıyor: kimin kızağının kiminle geldiği, hangi çocuğun hangi vagonda olduğu. Martta babanla aynı vagona biniyor; babana göz kulak olabilir. Kalırsan onu dört gün sonra bir mektupla bulacaksın.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_service_father",
+          "text": "Son ayinden beri baban daha az susuyor. Vagonun kapısında sana annenin en sevdiği ilahiyi söylüyor, yalnız ilk dizesini.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "last_service",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_counted_names",
+          "text": "Bir karşı yakada önce adları sayıp yazmıştın. Bu istasyonda da adlar sayılıyor; kimin geçtiği, kimin gelmediği.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:counted_names",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_16b_a",
+          "text": "Babanla trene bin.",
+          "trace": "Yeni sınırda babanla aynı yük vagonuna bindin.",
+          "nextNodeId": "son_vagon",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "boarded_with_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "buz_16b_b",
+          "text": "Babanı Martta'yla gönder; kal, arama masasında çalış.",
+          "trace": "Babanı Martta'yla gönderip kayıp aileleri bulan masada çalışmak için kaldın.",
+          "nextNodeId": "son_arama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "search_desk",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "son_oda",
+      "act": "Buz",
+      "date": "Nisan 1940",
+      "location": "Savo",
+      "imageKey": "karelian_farm",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_oda",
+        "title": "Ödünç Oda",
+        "paragraphs": [
+          "Savo'daki akrabaların evinde bir oda boşaltıldı: ödünç bir oda, iki yatak, bir pencere. Ev sahipleri iyi insanlardı ve bunu her gün biraz hatırlatmak zorunda hissettiler. Baban pencerenin önündeki sandalyeyi doğuya çevirdi; Aino onu her sabah düzeltti, baban her akşam yeniden çevirdi.",
+          "Yaz geldiğinde göçmenlere toprak veren bir yasa çıktı. Kettunenlere sonbaharda bir tarla ve yarım kalmış bir ev düştü. Baban ilk çiviyi çaktığı gün, kırk yıl aynı çivide asılı duran anahtardan hiç söz etmedi.",
+          "Tarih değişmedi: dört yüz bini aşkın insan Karelya'dan ayrıldı ve Honkaranta yeni sınırın öbür yanında kaldı. Değişen, bir baba ile kızının ödünç bir odadaki ilk yılı birlikte geçirmiş olmasıydı."
+        ],
+        "traceFallbacks": [
+          "Karelya'dan kızakla ayrıldın.",
+          "Yeni sınırda Savo'ya gitmeyi seçtin.",
+          "Babanla ödünç bir odada yaşadın."
+        ]
+      }
+    },
+    {
+      "id": "son_hat",
+      "act": "Buz",
+      "date": "Mayıs 1940",
+      "location": "Yeni sınırın bu yanındaki istasyon",
+      "imageKey": "village_exchange",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_hat",
+        "title": "Yeni Hat",
+        "paragraphs": [
+          "Aino yeni sınırın bir kilometre berisindeki istasyonun santralinde çalıştı. Bütün bahar hat susmadı: Pohjanmaa'daki bir kadın Savo'daki kız kardeşini sordu, bir asker ailesinin hangi köye düştüğünü, yaşlı bir adam ineğinin hangi sürüyle gittiğini. Aino her birine bir numara, bir ad, bazen yalnız bir köy adı verdi.",
+          "Baban sınır direğinin göründüğü odada kaldı; her sabah pencereden direğe baktı ve bir şey söylemedi. Martta'nın oğlu Toivo mayısta koltuk değnekleriyle istasyona indi. Aino onu annesine hattan bağladı ve konuşmalarını dinlememek için kulaklığı çıkardı.",
+          "Tarih değişmedi: sınır olduğu yerde kaldı. Değişen, dağılan bir köyün insanlarının birbirini bir süre daha aynı sesten bulabilmesiydi."
+        ],
+        "traceFallbacks": [
+          "Yeni sınırın yanında kaldın.",
+          "İstasyonun santralinde çalıştın.",
+          "Dağılan köyü hattan birbirine bağladın."
+        ]
+      }
+    },
+    {
+      "id": "son_vagon",
+      "act": "Buz",
+      "date": "Mart 1940 sonu",
+      "location": "Pohjanmaa'ya giden tren",
+      "imageKey": "border_station",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_vagon",
+        "title": "Yük Vagonu",
+        "paragraphs": [
+          "Tren dört gün sürdü. Vagonda on iki kişi, bir soba borusu, bir kova. Baban kapının yanında oturdu ve Pohjanmaa'nın düz tarlaları başlayınca, orada bir tepe bile olmadığını ilk fark eden o oldu. Bunu söylediğinde yolculuk boyunca ilk kez güldü.",
+          "Onları kabul eden köyde insanlar başka bir lehçeyle konuşuyor ve Karelyalıların çok konuştuğunu düşünüyordu. Aino bir dükkânda tezgâhtar oldu; akşamları babasına gazete okudu, Karelya'nın adı geçen satırları atlayarak. Baban bunu fark etti ve hiçbir akşam söylemedi.",
+          "Tarih değişmedi: Honkaranta'nın evleri, mezarları ve çanları yeni sınırın öbür yanında kaldı. Değişen, bir baba ile kızının dört gün boyunca bir vagonda, konuşmadan, aynı yöne bakmış olmasıydı."
+        ],
+        "traceFallbacks": [
+          "Babanla aynı vagona bindin.",
+          "Pohjanmaa'ya göç ettin.",
+          "Karelya'yı bir vagon kapısından son kez gördün."
+        ]
+      }
+    },
+    {
+      "id": "son_arama",
+      "act": "Buz",
+      "date": "Nisan 1940",
+      "location": "İstasyonun kayıt bürosu",
+      "imageKey": "border_station",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_arama",
+        "title": "Arama Masası",
+        "paragraphs": [
+          "Aino istasyonun kayıt bürosunda kaldı: bir masa, üç telefon, her gün yenilenen listeler. Kaybolan bir çocuğu bir vagonda buldu, kızını arayan bir kadının kızını başka bir ilde, kızağı başka bir konvoya karışmış bir aileyi bir okulun avlusunda. Her bulunan ad listeden çizildi; Aino çizgileri saymayı bıraktığında nisan olmuştu.",
+          "Babasını dört gün sonra bir mektupta buldu. Martta yazmıştı: baban yolda hiç konuşmamış, varınca ilk iş Aino'nun hangi masada çalıştığını sormuş. Aino mektubu listelerin arasına koydu ve bir hafta sonra, bir aileyi daha bulduktan sonra, babasının yanına gitti.",
+          "Tarih değişmedi: dört yüz bini aşkın insan yurdundan ayrıldı. Değişen, bir kısmının birbirini bir masanın başında, adlarının yanına bir çizgi çekilerek yeniden bulmasıydı."
+        ],
+        "traceFallbacks": [
+          "Babanı Martta'yla gönderdin.",
+          "Kayıp aileleri bulan masada çalıştın.",
+          "Adları bir listeden birer birer çizdin."
+        ]
+      }
+    },
+    {
+      "id": "son_ince_buz",
+      "act": "Buz",
+      "date": "Nisan 1940",
+      "location": "Koyun buzu",
+      "imageKey": "frozen_bay",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_ince_buz",
+        "title": "İnce Buz",
+        "paragraphs": [
+          "Kettunenlerin kızağı karşı kıyıya vardı ve yeni sınırı bir gün erken geçti. Buzda yükünü kaybeden aile arkadan, ıslak ve eli boş geldi; kayıt masasında aynı sırada durdunuz. Kimse bir şey söylemedi.",
+          "Nisanda koyun buzu çözüldü. Batan kızak, sandık ve çocukların beşiği yeni sınırın öbür yanında, suyun dibinde kaldı. Aino o aileyi yıllar sonra bir düğünde gördü; adam onu selamladı. Belki unutmuştu.",
+          "Tarih değişmedi: koy da köy de sınırın öbür yanında kaldı. Değişen, iki ailenin aynı buzun üstünden, aynı gün, farklı yüklerle geçmiş olmasıydı."
+        ],
+        "traceFallbacks": [
+          "Buzdan geçtin.",
+          "Batan yükü kurtarmak için durmadın.",
+          "Yeni sınırı bir gün erken geçtin."
+        ]
+      }
+    },
+    {
+      "id": "son_canlar",
+      "act": "Buz",
+      "date": "Mart 1940 sonu",
+      "location": "Batıya giden yol",
+      "imageKey": "evacuation_road",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_canlar",
+        "title": "Çanlar",
+        "paragraphs": [
+          "Kettunenlerin kızağı akşam istasyona vardı. Çanlar yolun büyük kısmında arkadan duyuldu; sonra rüzgâr döndü ve ses kesildi. Baban yolun geri kalanında tek söz etmedi.",
+          "Yeni köyün kilisesinin çanı başka bir sesle çalıyordu. İlk pazar Aino kapının önüne kadar gitti, girmedi. Baban girdi. Çıktığında \"Çan aynı değil,\" dedi, \"ama tutuyorlar.\"",
+          "Tarih değişmedi: o kilise de bırakıldı ve çanları bir daha o cemaat için çalmadı. Değişen, bir kızın o sesi yoldan, arkasına bakmadan dinlemiş olmasıydı."
+        ],
+        "traceFallbacks": [
+          "Karayolundan dolandın.",
+          "Son ayine girmedin.",
+          "Çanları yoldan dinledin."
+        ]
+      }
+    }
+  ]
+}

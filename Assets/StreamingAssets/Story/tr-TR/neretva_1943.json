@@ -57,6 +57,726 @@
       "cold": "Adını bir rapora yazdı; ne yazdığını hiçbir zaman öğrenmedin."
     }
   ],
+  "acts": [
+    {
+      "name": "Yük",
+      "question": "Herkesi taşıyamıyorsan, kimi taşıyacağına kim karar verir?"
+    },
+    {
+      "name": "Ateş",
+      "question": "Doğruyu yazmak kimi korur, kimi dışarıda bırakır?"
+    },
+    {
+      "name": "Geçit",
+      "question": "Hatırlanması gereken bir sayı mı, yoksa adlar mı?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Saraybosna · Mart 1983",
+    "setting": "Kırk yıl sonra. Milena Radić yetmiş dört yaşında. Tıp okuyan torunu Jasna, Neretva'yı okulda öğrendiğini söylüyor: kitapta bir tarih, bir köprü ve bir sayı var; ad yok. Jasna not defterini açıp kalemiyle bekliyor. Milena kendi ellerine bakıyor.",
+    "question": "“Köprüde sen ne yaptın, baka?”",
+    "tellDone": "Yaptıklarını anlat.",
+    "tellUndone": "Yapmadıklarını anlat.",
+    "done": [
+      {
+        "text": "İlk sabah bir kağnının dingilini onardım. İnsanlardan önce bir tekerleği seçtim. O tekerlek sonra yirmi kişi taşıdı; ben yine de önce tekerleği seçtiğimi hatırlıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cart_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İlk sabah bir sedyenin arka ucunu tuttum. Kimse bana söylemedi; boştaydı. Çoğu şey böyle başlar: bir şey boşta durur ve eline alırsın.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "carried_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karda sedyeyi bırakmadık; üç kişi sırayla taşıdık. Dragica on yedi yaşındaydı ve ön ucu hiç bırakmadı. Ben onun yanında utanarak taşıdım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_stretcher",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ormanda kafileyi yarım saat durdurdum; bir kadın doğuruyordu. Çocuğun adını kimse koymadı. Bir yerlerde adsız başlamış bir adam şimdi kırk yaşında.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "birth_halt",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yanmış bir çiftlikte üç mezar kazdık. Donmuş toprak bir saat aldı. O saati yaşayanlardan mı çaldım, ölülere mi verdim? Hâlâ ikisi birden.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "buried_dead",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Derede ıslananlar için ateş yaktırdım. Ateşin görüneceğini biliyordum. Bazen doğru şeyin bedeli, başkalarının da onu görebilmesidir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "lit_fire",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktorun defterini ben aldım, her akşam adları yazdım. Birini kurtaramadığında yapabileceğin son şey, adını doğru yazmaktır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "keeps_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tifüsü rapora yazdım. Yazınca ahır ikiye bölündü; yazmasaydım daha çok kişi hastalanırdı. İkisini de biliyordum. Kalemi yine de ben tuttum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_typhus",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Herkesi tek tek gezip ateşlileri saydım; bir buçuk gün sürdü. Saymak soğuk bir iş gibi görünür. Oysa her sayı bir alna dokunmaktı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_sick",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dragica'yı hasta tarafa ben yazdım. On yedi yaşındaydı. Doğrusu buydu. Doğru olan, insanı her zaman teselli etmez.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_isolated",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dragica'yı hasta tarafa yazmadım, yanımda tuttum. Kurala aykırıydı. Sevgi de bazen bir kural ihlalidir; bedelini başkaları öder.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Hastaları ayaza çıkarma emrini uygulamadım; ahırı içeriden böldüm. Bunu cesaret diye anlatırlar. Değildi. Dışarının ne kadar soğuk olduğunu biliyordum, o kadar.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "defied_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emri uyguladım, hastaları sundurmaya çıkardım. Battaniyeleri ben dağıttım. Emir onundu; eller benimdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "obeyed_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son morfini bacağı parçalanmış kuryeye verdim. On dokuz yaşındaydı. Öbürü de birinin oğluydu; bunu sonra düşündüm, o gece değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_courier",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son morfini esir İtalyan'a verdim. Bizden değildi. Acı çekenin kimden olduğunu o gece soramadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_nello",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktorun yanına girdim, bildiği her şeyi yazdım. Tifüs oradan bana geçmedi; o şanstı. Onun bildikleri benden sana geçti; o şans değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_notes",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İki battaniyeyi kesip on dört kişiye pay ettim. Hiçbirini ısıtmadı. Ama kimse o gece dışarıda bırakılmış gibi yatmadı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "blankets_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İtalyan'ı kızağa aldırdım; kafile yavaşladı. Düşmanı taşımak herkesin hoşuna gitmedi. O gün karşımda bir düşman değil, bir yara vardı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_taken",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kendi ateşimi deftere yazdım. En zor satır oydu: kendi adını hasta sütununa yazmak.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "self_reported",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geçiş sırasını en ağır yaralılara verdim. Yürüyebilenler bekledi. Bazıları bekleyemeyecek kadar üşüdü.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worst_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sedyeleri iki sefer kullandık, yukarıda kimse kalmasın diye. Gün ağardı, patika açıkta kaldı. İkinci sefer, birincinin bedelini de taşıdı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "two_trips",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geçitte listede olmayan bir kadını sıraya aldım. Liste benim elimdeydi. Listeyi tutan, listeyi bozabilen tek kişidir; tutmak bu yüzden ağırdır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "broke_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sedye sırasında listede olmayan esirin sedyesini işaret ettim. Önce kimse bir şey demedi. Sonra herkes bir şey dedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tahta kaydığında sedyeyi bırakmadım. Bunu ben seçmedim; ellerim seçti. Kırk yıldır ellerime teşekkür ediyorum ve bunu kimseye söylemedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "held_stretcher",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karşı yakaya on adım kala geri döndüm, sırayı düzeltmek için. On adım. Bazen bütün bir hayat o kadardır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "turned_back",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karşı yakada adları saydım ve yazdım. O iki saatte iki kişi öldü. Onların adlarını da ben yazdım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_names",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karşı yakada saymadım, yaralılara baktım. Kaç kişi olduğumuzu bilmiyorum. Kimin nefes aldığını biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_wounded",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kıyıda sabahı bekledim ve yeniden sıraya girdim. Ateş yakmadık. Sabah üç kişi yoktu. Bunu bir emre bağlayamadım, çünkü ortada emir yoktu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_morning",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geçidi bırakıp yukarıya, geride kalanlara döndüm. On bir gün. Senin kitabında o on bir gün yok. Olması da gerekmiyor; ben biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_back_up",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son grupta dört sedyenin dördünü de buzdan geçirdik. İki taşıyıcı geçemedi. Dört kişiyi iki kişiyle ödedik. Bu hesabı kimse yapmasın diye ben yaptım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "all_four",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son grupta yürüyebilenleri geçirdim. Sekiz kişi yaşadı. O gün defteri kapattım; bir daha kimsenin adını yazmadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_stretchers",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "İlk sabah sedyenin boştaki ucunu tutmadım; kağnıyla uğraştım. O sedyeyi kimin taşıdığını bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cart_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İlk sabah kağnıyı onarmadım. Yükü olduğu yerde kaldı. O yükün içinde kimin nesi vardı, sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "carried_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kağnıya ağır yaralıları bindirmedim; hız lazımdı. Kimi geride bıraktığımı biliyorum. Hepsinin adını değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "light_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karda sedyeyi taşımayı bıraktım, adamı kağnıya yükledik. Karnındaki yara sarsıntıya gelmezdi. Bunu biliyordum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "man_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ormanda kafileyi durdurmadım. Kadını sedyeye aldık, yürüdük. Doğumun nasıl bittiğini sonra başkasından duydum. Orada olmam gerekirdi; ebeydim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "birth_moving",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yanmış çiftlikteki aileyi gömmedik; unu aldık, yürüdük. Açlık haklıydı. Haklı olmak, kardaki o üç yüzü unutturmadı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_flour",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Derede ateş yaktırmadım; uçaklar görebilirdi. Islanan iki taşıyıcı ertesi gün yürüyemedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "no_fire",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktorun defterini almadım. O hafta ölenlerin adını kimse yazmadı. Senin kitabındaki sayının içinde onlar da var; ama adsız.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "no_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tifüsü ilk gün yazmadım; ahır dağılmasın diye bir gün bekledim. O bir günde kaç kişiye geçti, bilemem. Bilmemek de bir cezadır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_typhus",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ateşlileri saymadım, tahminle yürüttük. Tahmin hızlıdır. Yanıldığı yerde de hızlıdır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "guessed_sick",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dragica'yı hasta tarafa yazmadım. Sağlam tarafta otuz kişi yatıyordu. Hiçbirine sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dragica'yı yanımda tutmadım. Hasta tarafa geçerken bana bakmadı. Haklıydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_isolated",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emre karşı çıkmadım. Sundurmada o gece eksi ondu. Emri ben vermedim; ama ben uyguladım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "obeyed_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emri uygulamadım. Bogdan adımı bir rapora yazdı; ne yazdığını hiç öğrenmedim. Hayır demenin bedelini, ne olduğunu bilmeden ödemek de mümkünmüş.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "defied_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son morfini İtalyan'a vermedim. O gece acıyla kaldı. Bizden değil, dediler; ben de öyle dedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_courier",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Son morfini kuryeye vermedim. On dokuz yaşındaydı ve bacağı yoktu. Ona ne diyeceğimi bilmedim; hiçbir şey demedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_nello",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Doktorun yanına girmedim. Kafileye lazımdım, dedim. Doğruydu. Bildikleri onunla gitti; bu da doğru.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_out",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Battaniyeleri herkese bölmedim; en ağır iki kişiye verdim. Hesap doğruydu. Sundurmadaki öteki on iki kişi o hesabın içindeydi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "blankets_two",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İtalyan'ı ahırda bıraktım. Yanına su ve battaniye koyduk, kapıya beyaz bir bez astık, kendi tarafı bulsun diye. Buldular mı, bilmiyorum. Bilmemeyi seçmek kolaydı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kendi ateşimi kimseye söylemedim. Ayakta kaldım, çalıştım. O hafta kaç kişiye dokundum? Bu soruyu kendime hiç yüksek sesle sormadım. Şimdi soruyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "self_hidden",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sırayı yürüyebilenlere verdim. Yürüyemeyenler bekledi. Sayı bizden yanaydı; sayılar hep yürüyebilenlerden yanadır.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "walkers_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emre uydum, tek sefer yaptık. Yukarıda kalanların adları defterdeydi. Defteri kapatmadım; yalnızca o sayfayı çevirdim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "one_trip",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geçitte listede olmayan kadını sıraya almadım. Kendi adını aradı, bulamadı. Liste doğruydu. Kadın da gerçekti.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "held_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sedye sırasında esiri öne almadım, kendi yaralımızı geçirdim. Herkes böyle yapardı. Bunun bir teselli olması gerekirdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "own_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tahta kaydığında sedyeyi bıraktım. Bunu ben seçmedim; ellerim açıldı. Kırk yıldır ellerimi affetmeye çalışıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "let_go",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geri dönüp sırayı düzeltmedim; karşıya geçip geçidi kapattım. Kapanan geçidin arkasında kalanlar kıyıda görünüyordu. Bakmamayı öğrendim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "closed_crossing",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karşı yakada iki saat boyunca yaralılara bakmadım, adları yazdım. O iki saatte iki kişi öldü.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_names",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karşı yakada saymadım. Kitabındaki sayı bu yüzden bir tahmin. O sayının eksik olmasının bir nedeni benim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_wounded",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Geride kalanlara dönmedim; sabahı bekledim, sıraya girdim. Yukarıda hâlâ insanlar vardı. Biliyordum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_morning",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kafileyle karşıya geçmedim. Karşıda beni bekleyenler vardı. Beni aradılar mı, hiç sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_back_up",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Yürüyebilenleri önce geçirmedim; dört sedyede ısrar ettim. İki taşıyıcı bunun bedelini ödedi. Onlara sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "all_four",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Dört sedyeyi buza sürmedim. Sekiz kişi yaşadı, dördü kıyıda kaldı. Mümkün olan en iyi sayı olabilirdi, diyorlar. Ben hiçbir zaman kabul etmedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_stretchers",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Jasna yazmayı bırakmış. “Bunlar kitapta yok,” diyor. Milena başını sallıyor. “Kitaba sığmaz. Sana sığar mı, ona bak.”",
+    "closeUndone": "Jasna neden yapmadıklarını anlattığını soruyor. Milena bir süre susuyor. “Yaptıklarım karşı yakaya geçti,” diyor. “Yapmadıklarım hâlâ bu yakada. Birinin onları da taşıması gerek.”"
+  },
   "nodes": [
     {
       "id": "kol_01_yola_cikis",
@@ -317,7 +1037,7 @@
       "act": "Yük",
       "date": "20 Şubat 1943",
       "location": "Açık sırt",
-      "imageKey": "mountain_column",
+      "imageKey": "snow_ridge",
       "body": "Sırtın üstü açık ve kar sert. Yol buradan kısa, fakat gündüz vakti kafile kilometrelerce öteden görünür. Ağaç sınırının altındaki dolambaç yolu üç saat uzun, buna karşılık kapalı. Kafilenin başındaki siyasi komiser Rade Bogdan kararı hızlı vermek istiyor: geride kalanlar akşam ayazına yakalanır. Milena'ya soruyorlar, çünkü kaç kişinin gerçekten yürüyebileceğini bilen tek kişi o.",
       "conditions": [],
       "echoes": [
@@ -410,7 +1130,7 @@
       "act": "Yük",
       "date": "20 Şubat 1943",
       "location": "Ağaç sınırı",
-      "imageKey": "mountain_column",
+      "imageKey": "pine_forest",
       "body": "Ormanın içi karanlık ve yol dar. Kafilenin ortasında bir kadın doğuruyor; kimse bunu hesaba katmamıştı. Rade Bogdan durmadan yürünmesini, kadının bir sedyeye alınmasını istiyor. Milena, doğumun sedyede yürürken tamamlanamayacağını biliyor. Yarım saat durmak, kafilenin kuyruğunu karanlıkta bırakır. Yürümeye devam etmek de bir seçim; ama o seçimin bedelini kimse yüksek sesle söylemiyor.",
       "conditions": [],
       "echoes": [
@@ -509,7 +1229,7 @@
       "act": "Yük",
       "date": "20 Şubat 1943",
       "location": "Yanmış çiftlik",
-      "imageKey": "burned_village",
+      "imageKey": "burned_farm",
       "body": "Yolun kenarında yanmış bir çiftlik var. Ambarın altında üç çuval mısır unu duruyor. Kilerde bir aile var; ölmüşler, üstlerini kar tutmuş. Kafilenin iki günlük yiyeceği kaldı. Rade Bogdan unu almayı ve yürümeyi söylüyor. Stevan ise bu insanları toprağa vermeden gitmenin yapılacak en kötü şey olduğunu söylüyor. Donmuş toprakta üç mezar bir saat sürer.",
       "conditions": [],
       "echoes": [
@@ -544,6 +1264,18 @@
             {
               "type": "archive",
               "key": "hamburg_1943:saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_burned_house",
+          "text": "Bir evi, başkası girmesin diye kendi elinle yakmıştın. Bu çiftliği kimin yaktığını bilmiyorsun; yanan bir evin ardında hep bir soru kalır.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:burned_house",
               "op": "equals",
               "boolValue": true
             }
@@ -627,7 +1359,7 @@
       "act": "Yük",
       "date": "20 Şubat 1943",
       "location": "Dere geçidi",
-      "imageKey": "mountain_column",
+      "imageKey": "stream_ford",
       "body": "Dere donmuş değil ve taşlar buzlu. Sedyeler tek tek geçirilecek; her geçiş iki kişiyi belden aşağı ıslatıyor. Islanan biri bu havada üç saat sonra yürüyemez. Dragica, sedye taşıyanların çorabını değiştirebilmesi için kafilenin karşı yakada ateş yakmasını istiyor. Ateş, vadinin yukarısından görülür. Rade Bogdan ateşe karşı; ıslak ayak, uçaktan daha az öldürür diye düşünüyor.",
       "conditions": [],
       "echoes": [
@@ -726,7 +1458,7 @@
       "act": "Yük",
       "date": "20 Şubat 1943",
       "location": "Gece molası",
-      "imageKey": "mountain_column",
+      "imageKey": "night_camp",
       "body": "Kafile bir yamacın rüzgâr almayan yüzünde durdu. Doktor Perić, Milena'ya bir defter uzatıyor: yaralıların adları, yaraları ve nereden geldikleri. Kendisinin buna vakti yok, elleri de titriyor. Defteri tutmak her akşam bir saat demek; sedye ekibinden çıkmak demek. Tutmamak, kafilede ölen birinin adının hiçbir yere yazılmaması demek. Perić ısrar etmiyor, sadece defteri uzatıyor.",
       "conditions": [],
       "echoes": [
@@ -749,6 +1481,18 @@
             {
               "type": "archive",
               "key": "hamburg_1943:worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_search_desk",
+          "text": "Bir istasyonda, adları listeden çizerek kaybolan aileleri bulmuştun. Bu defter de bir gün birinin birini bulması için tutulur.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:search_desk",
               "op": "equals",
               "boolValue": true
             }
@@ -969,7 +1713,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Ahırın içi",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "Ahır ikiye ayrıldı. Hasta tarafına giren bir daha çıkmıyor; kafile yürüdüğünde o taraf ya kağnıyla gelecek ya da gelmeyecek. Dragica'nın ateşi bu sabah çıktı. Kendisi söylemedi, Milena gözünden anladı. Onu hasta tarafa yazmak, bir sedye taşıyıcısını daha kaybetmek demek. Yazmamak, sağlam tarafta yatan otuz kişiyi tehlikeye atmak demek.",
       "conditions": [],
       "echoes": [],
@@ -1049,7 +1793,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Ahırın içi",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "Ahırda ayrım yok; hasta da sağlam da aynı samanın üstünde yatıyor. Rade Bogdan bunu öğrenince ahırı boşaltmayı ve hastaları dışarıdaki sundurmaya çıkarmayı emrediyor. Dışarısı gece eksi on. Perić emre karşı çıkacak durumda değil, iki gündür ayakta duramıyor. Emri uygulayacak olan Milena, çünkü defteri de ahırı da o tutuyor.",
       "conditions": [],
       "echoes": [],
@@ -1129,7 +1873,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Sargı yeri",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "Kafilenin elinde altı ampul morfin kaldı ve yenisi gelmeyecek. İki aday var: on dokuz yaşında bir kurye, bacağı dizden aşağı parçalanmış, dört gün dayanırsa kurtulur; ve Prozor'da esir alınan İtalyan er Nello, göğsünden yaralı, kimse ne kadar dayanacağını bilmiyor. Perić karar veremiyor. Karar Milena'ya kalıyor: defter onun elinde ve ikisinin de adı o deftere yazılı.",
       "conditions": [],
       "echoes": [
@@ -1228,7 +1972,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Kuyu başı",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_night",
       "body": "Tek kuyu ahırın elli adım ötesinde ve kova bir tane. Hasta tarafla sağlam taraf aynı kovadan içiyor; tifüs böyle de geçiyor. İkinci bir kova yok, ama Stevan kağnının su fıçısını verebilir; o zaman kağnı yolda su taşıyamaz ve kafile Neretva'ya kadar susuz gider. Karla su yapmak yakacak ister, yakacak da yok.",
       "conditions": [],
       "echoes": [
@@ -1333,7 +2077,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Ahır, gece",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "Perić'in ateşi kırka çıktı. Kafilenin tek doktoru hasta tarafta yatıyor ve sabaha çıkarsa şaşırtıcı olur. Yanına girmek, bitin bir gövdeden ötekine geçmesine izin vermek demek. Girmemek, hangi şişede ne kaldığını ve hangi yaranın nasıl kapatılacağını kimsenin bilmemesi demek. Bunu ondan başka bilen yok; ancak konuşabildiği sürece anlatabilir.",
       "conditions": [],
       "echoes": [],
@@ -1402,7 +2146,7 @@
       "act": "Ateş",
       "date": "27 Şubat 1943",
       "location": "Sundurma",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_night",
       "body": "Sundurmada on dört kişi yatıyor ve iki battaniye var. Milena battaniyeleri en ağır ikisine verdi; sabaha ikisi de sağ çıktı, öbürlerinden biri çıkmadı. Bu gece aynı hesabı yeniden yapması gerekiyor. Stevan, battaniyeleri kesip on dört parçaya bölmeyi öneriyor; hiçbiri kimseyi ısıtmaz ama herkes bir şey alır. Bu, bir hesap değil, bir tercih.",
       "conditions": [],
       "echoes": [
@@ -1449,6 +2193,18 @@
             {
               "type": "archive",
               "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_stove",
+          "text": "Bir okulda sobanın yanındaki yeri seksen yaşında bir kadına vermiştin; baban kapının dibinde yattı. Burada paylaştırılacak şey iki battaniye.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:gave_stove_place",
               "op": "equals",
               "boolValue": true
             }
@@ -1526,7 +2282,7 @@
       "date": "27 Şubat 1943",
       "location": "Ahır avlusu",
       "imageKey": "typhus_barn",
-      "body": "Nello'nun durumu belli: götürülemez. Kafile iki gün sonra Neretva'ya iniyor ve esirler için sedye yok. Rade Bogdan, esirin bırakılmasını söylüyor; kendi yaralısını taşıyamayan bir kafilenin düşman erini taşıması savunulamaz. Stevan, adamı kağnının arkasına bağlanacak bir kızağa alabileceğini söylüyor. Kızak, kağnının hızını üçte bir düşürür.",
+      "body": "Nello'nun durumu belli: kafileyle yürüyemez. Kafile iki gün sonra Neretva'ya iniyor ve esirler için sedye yok. Rade Bogdan esirin ahırda bırakılmasını söylüyor: kendi tarafı kafilenin iki gün arkasından geliyor ve onu bulacaktır; kendi yaralısını taşıyamayan bir kafile düşman erini taşıyamaz. Stevan ise adamı kağnının arkasına bağlanacak bir kızağa alabileceğini söylüyor; kızak kağnının hızını üçte bir düşürür. Nello konuşulanları anlamıyor. Yüzleri izliyor.",
       "conditions": [],
       "echoes": [
         {
@@ -1604,8 +2360,8 @@
         },
         {
           "id": "tif_10_b",
-          "text": "Nello'yu bırak.",
-          "trace": "Esir İtalyan'ı ahırda bıraktın.",
+          "text": "Nello'yu su ve battaniyeyle ahırda bırak.",
+          "trace": "Esir İtalyan'ı su ve battaniyeyle, kendi tarafının bulacağı ahırda bıraktın.",
           "nextNodeId": "tif_11_emir_geldi",
           "conditions": [],
           "effects": [
@@ -1852,7 +2608,7 @@
         },
         {
           "id": "echo_ner_nello",
-          "text": "Kızaktaki adam patikaya sığmıyor; onu buradan taşımanın yolu yok.",
+          "text": "Kızaktaki Nello patikaya sığmıyor. Stevan onu kanyonun üstünde, kendi tarafının geçeceği yolun kenarında, battaniyesine sarılı bırakıyor.",
           "conditions": [
             {
               "type": "echo",
@@ -2143,7 +2899,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Sol yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "Geçitte sıra var ve sıra ilerlemiyor. Karşıda bir tıkanma olmuş; kimse ne olduğunu bilmiyor. Bekleyenlerin arasında iki sedye taşıyıcısı sırıkları bırakıp gitmeyi konuşuyor. Milena onların gitmesine engel olamaz, ama iki sedye taşıyıcısı iki sedye demek. Sıranın başına gidip nedenini sormak, yerini kaybetmek demek; kaybedilen yer bir daha alınmıyor.",
       "conditions": [],
       "echoes": [
@@ -2330,7 +3086,7 @@
       "date": "6/7 Mart 1943",
       "location": "Sedye sırası",
       "imageKey": "broken_bridge",
-      "body": "Sedyeler tek tek geçiyor ve her geçiş iki dakika sürüyor. Sıradaki sedyede Nello yatıyor; adı listede yok, kimse onu geçirmek istemiyor. Arkasındaki sedyede kafilenin kendi yaralısı var. Milena'nın elinde defter var ve sırayı defter belirliyor. Geçidin karşı ucunda bekleyen adam, hangi sedyeyi alacağını Milena'nın işaretine bakarak seçecek.",
+      "body": "Sedyeler tek tek geçiyor ve her geçiş iki dakika sürüyor. Sıradaki sedyede Prozor'da esir alınmış bir İtalyan yatıyor; adı listede yok ve kimse onun için ses çıkarmıyor. Arkasındaki sedyede kafilenin kendi yaralısı var. Milena'nın elinde defter var ve sırayı defter belirliyor. Geçidin karşı ucundaki adam, hangi sedyeyi alacağını Milena'nın işaretine bakarak seçecek. Esir onun dilini bilmiyor; ama bir işaretin ne demek olduğunu biliyor.",
       "conditions": [],
       "echoes": [
         {
@@ -2395,7 +3151,7 @@
         },
         {
           "id": "ner_14_d",
-          "text": "Nello'nun sedyesini işaret et.",
+          "text": "Esirin sedyesini işaret et.",
           "trace": "Listede olmayan esirin sedyesini işaret ettin.",
           "nextNodeId": "ner_15_kayan_tahta",
           "conditions": [],
@@ -2568,7 +3324,7 @@
         },
         {
           "id": "echo_ner_nfirst",
-          "text": "Nello'yu öne aldığın için sıradakiler artık sırayı tanımıyor.",
+          "text": "Esiri öne aldığın için sıradakiler artık sırayı tanımıyor.",
           "conditions": [
             {
               "type": "echo",
@@ -2649,7 +3405,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Karşı yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "Karşı yakada kafile yeniden toplanıyor. Kimse kaç kişi olduğunu bilmiyor; sayacak kimse de yok. Milena'nın önünde iki iş var: adları saymak ve yaralılara bakmak. İkisini birden yapamaz, çünkü kafile iki saat sonra yürüyecek. Saymak, kimin geçtiğini ve kimin geçmediğini kalıcı hâle getirir. Bakmak, şu anda nefes alan birkaç kişinin akşama da nefes almasını sağlayabilir.",
       "conditions": [],
       "echoes": [
@@ -2766,7 +3522,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Sol yaka, gece",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "Milena karşıya geçmedi. Geçit akşam kapandı ve kıyıda kalanlar bir gecelik kamp kurdu; ateş yok, çünkü ateş görünür. Sabaha kadar bekleyip yeniden sıraya girmek mümkün. Ya da kanyondan yukarı çıkıp kafilenin geride bıraktıklarına dönmek mümkün; orada hâlâ yaşayan insanlar var ve onlara bakacak kimse kalmadı. İkisi aynı yöne gitmiyor.",
       "conditions": [],
       "echoes": [
@@ -2877,7 +3633,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Sol yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "Sıra düzeldi ve geçit gece boyunca işledi. Son grup Milena'nınki. Karşıda kafilenin geri kalanı çoktan toplanmış; burada on iki kişi ve dört sedye kaldı. Tahtalar buzlandı; gece geçişi gündüzden iki kat uzun sürüyor. Rade Bogdan karşıdan bağırıyor: ya şimdi, ya hiç. Dört sedyeyi buzda geçirmek, on iki kişinin hepsini riske atmak demek.",
       "conditions": [],
       "echoes": [
@@ -2983,7 +3739,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Karşı yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3009,7 +3765,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Karşı yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3033,7 +3789,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Sol yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3068,7 +3824,7 @@
         "title": "Geride Kalanlar",
         "paragraphs": [
           "Milena karşıya geçmedi. Kanyondan yukarı çıktı ve kafilenin bıraktığı yerde yirmi sekiz kişi buldu; on dokuzu hâlâ yaşıyordu. Onlarla birlikte bir çoban kulübesine çekildi ve on bir gün orada kaldı.",
-          "On bir günün sonunda dokuz kişi kalmıştı. Bir devriye onları buldu; devriyenin hangi taraftan olduğunu Milena hiçbir zaman anlatmadı. Dokuz kişiden yedisi savaşın sonunu gördü.",
+          "On bir günün sonunda dokuz kişi kalmıştı. On ikinci gün aşağı köyden bir çoban kulübeyi buldu; ertesi sabah köyün kadınları ekmek ve temiz bez taşıdı. Kimse onlara hangi taraftan olduklarını sormadı. Dokuz kişiden yedisi savaşın sonunu gördü.",
           "Kafile geçti, cephe güneye kaydı, savaşın gidişi değişmedi. Yukarıda kalan yirmi sekiz kişiden yedisinin yaşamış olmasının tek nedeni, birinin geçidin on adım önünde geri dönmesiydi."
         ],
         "traceFallbacks": [
@@ -3083,7 +3839,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Karşı yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3109,7 +3865,7 @@
       "act": "Geçit",
       "date": "6/7 Mart 1943",
       "location": "Karşı yaka",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3118,7 +3874,7 @@
         "id": "son_biten_defter",
         "title": "Kapanan Defter",
         "paragraphs": [
-          "Yürüyebilen sekiz kişi karşıya geçti. Dört sedye kıyıda kaldı. Sabah oraya bakan devriye dört sedyeyi de bulduğunu bildirdi; içlerinde kimsenin yaşamadığını da bildirdi.",
+          "Yürüyebilen sekiz kişi karşıya geçti. Dört sedye kıyıda kaldı. Sabah geçidi yeniden kuran taşıyıcılar dört sedyeyi kıyıda buldu; gecenin ayazı hiçbirini sabaha bırakmamıştı.",
           "Milena defteri o gün kapattı ve bir daha açmadı. Kafile güneye yürüdü, o da yürüdü, savaş iki yıl daha sürdü ve bu iki yıl boyunca bir kez olsun ad yazmadı.",
           "Sekiz kişi yaşadı. Dördü ölürken sekizi yaşadı ve bu, o gece kıyıda mümkün olan en iyi sayı da olabilirdi. Milena bunu hiçbir zaman kabul etmedi."
         ],

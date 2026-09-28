@@ -96,7 +96,8 @@ namespace OrdinaryFronts
             if (imageKey == "shelter_stairs") requested = shelterAmbience;
             else if (imageKey == "train_platform") requested = trainAmbience;
             else if (imageKey == "afsluitdijk" && windAmbience != null) requested = windAmbience;
-            else if ((imageKey == "broken_bridge" || imageKey == "river_gorge") && riverAmbience != null) requested = riverAmbience;
+            else if ((imageKey == "broken_bridge" || imageKey == "river_gorge" || imageKey == "stream_ford" || imageKey == "bank_night" || imageKey == "far_bank") && riverAmbience != null) requested = riverAmbience;
+            else if ((imageKey == "snow_ridge" || imageKey == "frozen_bay" || imageKey == "evacuation_road") && windAmbience != null) requested = windAmbience;
             if (requested == ambientSource.clip && ambientSource.isPlaying) return;
             if (ambientRoutine != null) StopCoroutine(ambientRoutine);
             ambientRoutine = StartCoroutine(CrossFade(requested));

@@ -99,6 +99,36 @@ finalin hiçbiri kışın sonucunu, kurtuluş tarihini veya ölü sayısını de
 > doğrulama tablosuna taşınmalıdır. Bu yapılana kadar bölüm, tarihsel doğruluk iddiası taşıyan
 > bir materyal olarak tanıtılmamalıdır.
 
+## Karelya 1940 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin dördüncü bölümü (`karelia_1940`), Kış Savaşı'nın sona ermesinin ardından Moskova
+Barışı ile bırakılan Karelya topraklarının boşaltılmasını, Ladoga kıyısındaki kurgusal bir köyün
+(Honkaranta) telefon santralcisinin gözünden anlatır. Bölüm **ateşkesten sonra** başlar; hiçbir
+sahnede çatışma, bombardıman ya da bir tarafın suçu yoktur. Diğer bölümler gibi çerçeve henüz ana
+doğrulama tablosunun standardında kaynağa bağlanmamıştır.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Kış Savaşı'nın 30 Kasım 1939'da başlaması ve üç buçuk ay sürmesi | **Doğrulanmadı** — açılış kartında genel ifadeyle geçer |
+| Moskova Barışı'nın 12 Mart 1940'ta imzalanması, ateşin 13 Mart'ta öğleden önce kesilmesi | **Doğrulanmadı** — oyunda "saat on bir" denir; saat dilimi kesinleştirilmedi |
+| Bırakılan topraklardaki halkın iki haftadan kısa sürede evlerini boşaltması | **Doğrulanmadı** — bölgeye göre değişen teslim tarihleri tek bir takvime indirgenmedi |
+| Boşaltılanların sayısının "dört yüz bini aşkın" olması | **Doğrulanmadı** — finallerde yaklaşık olarak geçer |
+| Hayvanların yoldan sürülerek batıya götürülmesi, insanların tren ve kızakla gitmesi | **Doğrulanmadı** — köyün takvimi (17'sinde sürü, 19'undan itibaren tren) kurgudur |
+| Bazı ailelerin evlerini bırakmak yerine yakması; binaların sağlam bırakılması yönünde talimat | **Doğrulanmadı** — oyunda talimat Nuutinen'in okuduğu emir olarak geçer, belge biçimi verilmez |
+| Kalmayı seçenlerin olması ve geri dönemeyecek olması | **Doğrulanmadı** — tek cümleyle geçer, sayı verilmez |
+| Yaz 1940'ta boşaltılanlara toprak veren bir yasa | **Doğrulanmadı** — yasanın adı ve tarihi verilmez |
+| Ladoga Karelyası'nda Ortodoks cemaatler, tsasounalar ve ikonaların taşınması | **Doğrulanmadı** — Anni'nin tsasounası ve Aziz Nikolaos ikonası kurgudur |
+| Köy telefon santralleri ve santralcilerin görevi | **Doğrulanmadı** — "duyduğunu söylememe" kuralı genel meslek ahlakı olarak sunulur |
+
+Bölümün bütün kişileri ve köyü kurgusaldır: Aino Kettunen, Heikki Kettunen, Martta ve Toivo Kokko,
+Anni Jeskanen ve oğlu Vasili, Paavo Nuutinen, Iivari Ristola. Honkaranta haritada Sortavala
+yakınına yerleştirilir ama gerçek bir köy olarak sunulmaz. Sovyet tarafı yalnız "barış", "sınır" ve
+"bırakılan topraklar" olarak görünür; hiçbir asker, görevli ya da olay kişiselleştirilmez. 1941–44
+dönemi (geri dönüş ve ikinci boşaltma) bölümde anılmaz.
+
+> Yapılacak iş: yukarıdaki satırlar için Hamburg standardında kaynak bulunmalı ve tablo ana
+> doğrulama tablosuna taşınmalıdır.
+
 ## Kurgu güvenlik sınırları
 
 1. Gerçek tarihî kişilere kurmaca diyalog verilmez; Marione Ingram oyunda görünmez.
@@ -108,3 +138,5 @@ finalin hiçbiri kışın sonucunu, kurtuluş tarihini veya ölü sayısını de
 5. Nazi sembolleri dekor, menü motifi veya görsel vurgu olarak kullanılmaz. Rejim yalnızca gerekli tarihsel bağlam ve baskı mekanizmaları üzerinden görünür.
 6. Grafik şiddet, askerî güç fantezisi ve tarihsel sonucu değiştiren final kullanılmaz.
 7. Kaynaklarda doğrulanmayan sokak adı, belge biçimi, kurum içi görev veya kesin zamanlama tarihsel gerçek gibi sunulmaz.
+8. Hiçbir rota, gerçek bir tarafın (partizanlar, Alman ya da İtalyan birlikleri, Hollanda polisi) esirlere, yaralılara ya da sivillere karşı bir savaş suçu işlediğini tasvir etmez veya ima etmez. 1.3'te Neretva bölümünde üç yer bu ilkeye göre yeniden yazıldı: esir Nello bırakıldığında su, battaniye ve kapıda beyaz bir bezle kendi tarafının bulacağı yerde bırakılır; kanyonun üstünde kalan Nello kendi tarafının yolunun kenarında bırakılır; "Kapanan Defter" finalinde kıyıda kalan sedyelerin sonu belirsiz bir "devriye"ye değil gecenin ayazına bağlanır; "Geride Kalanlar" finalinde kulübedekileri bulan kişi bir çobandır ve köy yardım eder.
+9. Tanıklık çerçeveleri (Hamburg 1983, Saraybosna 1983, Amsterdam 1985) kurgusaldır; kurum, okul ya da program adı verilmez, gerçek bir tanıklık arşivine veya projesine atıf yapılmaz.

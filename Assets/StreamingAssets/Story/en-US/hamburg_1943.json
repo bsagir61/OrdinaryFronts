@@ -57,6 +57,429 @@
       "cold": "A silence left over from that summer stays between you."
     }
   ],
+  "acts": [
+    {
+      "name": "Sirens",
+      "question": "When danger is closest, whom are you answerable to?"
+    },
+    {
+      "name": "Ash",
+      "question": "When searching, helping and keeping yourself safe cannot all be done, what do you let go of?"
+    },
+    {
+      "name": "The Order",
+      "question": "If obeying an order keeps you safe, who pays for it?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Hamburg · November 1983",
+    "setting": "Forty years later. A secondary-school student is interviewing people who lived through that summer, for a history project. She sets the tape recorder on Matthias Krüger's kitchen table; the red light comes on. Matthias is sixty-four. Outside the window, the shipyard cranes are still working.",
+    "question": "“What did you do that summer?”",
+    "tellDone": "Tell her what you did.",
+    "tellUndone": "Tell her what you did not do.",
+    "done": [
+      {
+        "text": "The first night I shut the main switch so there would be no fire. That job went into my file and protected me for years. I was protected because I had protected a machine. I still find that strange.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When the sirens started I left with Olek. It was not heroism; we walked to the gate at the same time, that is all. But that night I saw for the first time that his shelter was not the same as mine.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got Olek's notebook out of the sealed locker. I had the key. My having it was no virtue of mine, and his not having it was no fault of his.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_saved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the service passage I forced a jammed door with a bar; there were three workers behind it. The bar bent. The yard asked me to account for the bar. Nobody asked about the workers.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "west_door_opened",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I repaired the lamp in the shelter. When it came on I saw people's faces. Sometimes I wish I hadn't. Then I remember that not seeing them would have been worse.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shelter_light_fixed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the dark I took people by the hand and led them down the stairs. I never saw any of their faces. My hands are the only way I remember them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stairs_guided",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the shelter I shared my bread. I had bought it for Ruth. I never told her. I know what she would have said, and that is why I never told her.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_shelter_food",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We counted the tins in a broken-open pantry one by one and left a note. Counting in the middle of a fire may sound absurd. But what isn't counted is taken from its owner a second time.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_logged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I showed my shipyard card and had a Polish woman's name written into the register. At that desk my card spoke louder than my voice. Her name became a line. A line is not freedom; but it is better than nothing.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "One morning I stopped looking for Ruth and went to the records depot with Olek. Ruth knows. Whether she forgave me I don't know. I never asked.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "olek_archive_help",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got a school's generator running. I was an electrician; that was what I could do. When the light comes on everyone looks at the electrician for a moment, then forgets. That is how it should be.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_generator_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the station I put my call-up paper openly on the desk. Was it honesty, or fear? That day the two wore the same face.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_disclosed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I would not sign that declaration until Olek's name was corrected. I held out for one day, that is all. That day his name did not go onto a list with my signature under it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_delayed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I signed the deferral with all its conditions. For four weeks the muster list crossed my desk every morning. I never wrote a name on it. But it crossed my desk.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the personnel room there was one line I would not sign: reporting my colleagues' names. Don't call it courage. My hand would not do it, that is all. Courage was sitting down at that desk again the next morning.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got on the train with Ruth. As the city fell away behind us I felt relief. I still remember that relief with shame.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I put Ruth on the train myself. We did not wave. We were not sure enough of what would happen to wave.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I went to the recruiting office before the deadline. Then I wore a uniform for two years. You are not asking about those years. If you did, this tape would not be long enough.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I signed on with Elsbeth's crew and asked for time. I gained a few days, and in them I kept a school's lights on. I did not spend the time I gained on myself. I'm not proud of it; I just know it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "At the first siren I did not leave with Olek; I stayed with the switch. That night I did not know which cellar he went down into. It did not occur to me to ask. Not asking was something too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The first night I left without shutting the main switch. I never asked what happened in the workshop that night. I chose not to ask.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left Olek's notebook in the locker. There was no time, that is true. But there never is, at that moment.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the service passage I did not force the jammed door; I saved my tools and went through the tunnel. There were three workers behind that door. Olek got them out, not me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tools_preserved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the shelter I did not share my bread. It was for Ruth. The child next to me had an empty cup. I still remember its colour: blue enamel.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_family_supplies",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the registry desk I did not stand with Olek; I had them look for my own sister first. No one blamed me. Not being blamed is not always the same as being right.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_registry_clue",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the registry desk I did not ask about Ruth first. I had someone else's name written down. That morning I didn't know where my sister was, and I put a stranger's name first. What I'd do today, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not write down what I took from the pantry. Elsbeth signed her own name under the missing count. I found that out years later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_unlogged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the bridge I did not go to the depot with Olek. I kept my card for myself. That card would have opened a door; I kept the door for myself.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "work_card_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the station I did not show the call-up envelope. I did not lie; I just did not say. I thought I learned the difference that day. I'm still not sure.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_concealed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek's name was on the absence list and I knew where he was. I signed the declaration as it stood. I did not write his name. But I did not strike it out either.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_signed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not refuse the reporting condition. I never had to report anyone, as it happened. Luck has no morals.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stand against the orders, only against one line. Everything else they asked, I did. The yard ran on my hands.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay. Olek stayed, Elsbeth stayed. I got on a train because a piece of paper allowed me to. They had no such paper.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go with Ruth. I stayed to sort out the orders, I said. Perhaps I was only afraid to leave.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not run from the call-up. Whether there was another way, I don't know. I didn't look for one.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go to the recruiting office; I asked for time. I gained time but I did not decide. I have been deciding for forty years.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Before she switches the recorder off, the student asks one more thing: “Was it enough?” Matthias does not answer. The tape turns for a while with nothing on it; the red light stays on.",
+    "closeUndone": "The student asks why he chose to tell her these things. “Anyone can tell what I did,” Matthias says. “No one but me knows what I didn't.”"
+  },
   "nodes": [
     {
       "id": "sir_01_vardiya_sonu",
@@ -64,7 +487,7 @@
       "date": "Night of 24/25 July 1943",
       "location": "Harbour shipyard",
       "imageKey": "shipyard_evening",
-      "body": "Matthias Krüger is finishing the last check of the evening shift when the sirens rise over the harbour. The crane arms look frozen in the dark; the workshop lamps go out one by one. Foreman Otto Brehm says that leaving the main switch open could start a fire. At the gate, Olek Nowak, a Polish forced labourer, worries that the shelter set aside for workers will be locked early. Matthias's maintenance electrician card opens some doors, but while the siren runs, every minute can close another one.",
+      "body": "Matthias Krüger is finishing the last check of the evening shift when the sirens rise over the harbour. The crane arms look frozen in the dark; the workshop lamps go out one by one. Foreman Otto Brehm says that if the main switch is left open it could start a fire. At the gate waits Olek Nowak, a Polish forced labourer, worried that the shelter set aside for workers will be locked early. The card in Matthias's pocket carries a single stamp: indispensable. While the siren runs, he will learn to whom that word applies, and against what.",
       "conditions": [],
       "echoes": [],
       "choices": [
@@ -432,7 +855,7 @@
       "date": "25 July 1943, after midnight",
       "location": "Shelter by the canal",
       "imageKey": "shelter_stairs",
-      "body": "After the first long shock, only the ticking of the pipes is left in the cellar. The air is hot and the smell of plaster is sharp. While Elsbeth writes names on scraps of paper, a woman holds out an empty cup to her thirsty child. In Matthias's bag there is a half-full flask and the small parcel of bread he bought for Ruth at the end of his shift. Nobody knows when it will be possible to go outside. Sharing would make the wait in here easier; keeping it would leave him room to move while searching for family in the morning.",
+      "body": "After the first long shock, only the ticking of the pipes is left in the cellar. The air is hot and the smell of plaster is sharp. While Elsbeth writes names on scraps of paper, a woman holds out an empty cup to her thirsty child. In Matthias's bag there is a half-full flask and the small parcel of bread he bought for Ruth at the end of his shift. He bought it for his sister; the child holding the cup is somebody's too. Nobody knows when it will be possible to go outside. Sharing would ease the wait in here; keeping it would leave him room to move while searching for Ruth in the morning.",
       "conditions": [],
       "echoes": [
         {
@@ -659,7 +1082,7 @@
       "date": "25 July 1943, 07:35",
       "location": "Temporary aid desk",
       "imageKey": "aid_registry",
-      "body": "At the school entrance two door leaves are being used instead of a table. Stones hold the papers down; the clerks copy addresses, injuries and destinations into separate lists. Olek is trying to have Irena Sawicka's name written down. The clerk says a different record is kept for forced labourers and leaves the line blank. Olek wants the name to reach the right desk; Matthias wants not to lose Ruth's trail. The shipyard card might get the clerk's attention, but it would also tie Matthias's presence here to an official record.",
+      "body": "At the school entrance two door leaves are being used instead of a table. Stones hold the papers down; the clerks copy addresses, injuries and destinations into separate lists. Olek is trying to have Irena Sawicka's name written down. The clerk says a different record is kept for forced labourers and leaves the line blank. No one has done anything; the line is simply empty. Olek wants the name to reach the right desk; Matthias wants not to lose Ruth's trail. The shipyard card might get the clerk's attention, but it would also tie Matthias's presence here to an official record.",
       "conditions": [],
       "echoes": [
         {
@@ -772,7 +1195,20 @@
       "imageKey": "bombed_street",
       "body": "The front of Ruth's building is standing, but the stairwell cannot be used. In the back courtyard Elsbeth is collecting the neighbours' names. Beside the door, rain has thinned the chalk until only \"R.K. — School 17\" can be read. The cellar of the next building has been opened; there are tins and soap inside. Elsbeth wants the goods counted and entered in a record until the owners are found. Taking a few things now would be faster for the trip to the school, but she adds that people carrying undocumented goods are questioned at checkpoints.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_kar_left_key",
+          "text": "Once you left a house key in the door and wrote a note on the table for a stranger. Beside this door too there is a chalk mark someone wrote for someone else.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "ash_06_avlu_a",
@@ -1840,6 +2276,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_boarded",
+          "text": "Once you travelled four days in a freight wagon with your father, without speaking. A platform takes you somewhere; it also takes you from somewhere.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:boarded_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -1899,7 +2347,7 @@
       "date": "27 July 1943, 08:00",
       "location": "Shipyard switch house",
       "imageKey": "shipyard_evening",
-      "body": "The panels in the switch house are working, but some cables have cracked in the heat. Brehm puts the indispensable worker declaration in front of Matthias. The signature will be strong ground for a temporary deferral; it will also commit him to reporting workers who leave without permission. Olek's name is on the absence list on the next desk, though Matthias knows where he is and why. Signing the declaration as it stands protects his own file. Refusing to sign until the list is corrected leaves the deferral hearing uncertain.",
+      "body": "The panels in the switch house are working, but some cables have cracked in the heat. Brehm puts the indispensable worker declaration in front of Matthias. The signature will be strong ground for a temporary deferral; it will also commit him to reporting workers who leave without permission. Olek's name is on the absence list on the next desk, though Matthias knows where he is and why. Putting a name on a list takes a pen; leaving it there takes nothing at all. Signing the declaration as it stands protects his own file. Refusing to sign until the list is corrected leaves the deferral hearing uncertain.",
       "conditions": [],
       "echoes": [
         {
@@ -1921,6 +2369,18 @@
             {
               "type": "flag",
               "key": "tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_kept_ristola",
+          "text": "At an exchange once you told no one about a family's decision to stay. Not striking a name from a list is another kind of silence; you have to choose which silence protects whom.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:kept_ristola",
               "op": "equals",
               "boolValue": true
             }
@@ -2063,7 +2523,7 @@
       "date": "27 July 1943, 10:25",
       "location": "Shipyard personnel room",
       "imageKey": "harbor_dawn",
-      "body": "In the personnel room an official reads Brehm's letter and the call-up. Matthias is offered a four-week temporary deferral; in return he will go back to the night maintenance shift and report absentees the same day. Brehm says this is the only certain road. Matthias can accept the work condition, but he then also takes on the duty of naming people. Or he can accept the maintenance work and say he will not report on his colleagues; in that case the deferral paper may still be issued, but a note of insubordination will most likely go into his file.",
+      "body": "In the personnel room an official reads Brehm's letter and the call-up. Matthias is offered a four-week temporary deferral; in return he will go back to the night maintenance shift and report absentees the same day. Brehm says this is the only certain road. The official does not change his voice as he holds out the pen; to him this is not a wrong, only a form. Matthias can accept the work condition, and with it the duty of naming people. Or he can accept the maintenance work and say he will not report on his colleagues; the deferral may still be issued, but a note of insubordination will most likely go into his file.",
       "conditions": [],
       "echoes": [
         {
@@ -2261,7 +2721,7 @@
         "paragraphs": [
           "The deferral document that came out of the personnel room did not send Matthias to the front; it only pushed the decision four weeks further away. He returned to the night shift. While the repairs in the harbour continued, so did the flow of new raids and new orders. Brehm kept him on as a reliable electrician, but the muster lists now passed across Matthias's desk every morning.",
           "Ruth stayed on the evacuation list and left the city. Her letters arrived irregularly. Olek confirmed that Irena had been transferred to another work detail; the information brought no freedom, it only made a vanished name visible again. Matthias's document was not a victory but a temporary breathing space, tied to the labour the regime needed.",
-          "The historical destruction of Hamburg did not change. Matthias carried the switch house key in his pocket, knowing that at the end of four weeks the same questions would come back."
+          "The historical destruction of Hamburg did not change. Matthias carried the switch house key in his pocket. Being indispensable meant that a machine would not let him go; at the end of four weeks the same questions came back, and this time they were harder to answer because he knew the answer better."
         ],
         "traceFallbacks": [
           "You chose to protect the worker deferral at the yard.",

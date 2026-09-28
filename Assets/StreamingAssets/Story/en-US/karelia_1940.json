@@ -1,0 +1,2802 @@
+{
+  "schemaVersion": 1,
+  "storyId": "karelia_1940",
+  "locale": "en-US",
+  "startNodeId": "bar_01_gece",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "frozen_bay",
+        "kicker": "KARELIA",
+        "line": "In November 1939 the Soviet Union attacks Finland; the Winter War lasts three and a half months.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "village_exchange",
+        "kicker": "12 MARCH 1940",
+        "line": "Peace is signed in Moscow. Finland is to give up most of Karelia.",
+        "holdSeconds": 2.6
+      },
+      {
+        "imageKey": "karelian_farm",
+        "kicker": "AINO KETTUNEN",
+        "line": "Aino is the telephone operator of Honkaranta, a village on the shore of Lake Ladoga.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "evacuation_road",
+        "kicker": "TWO WEEKS",
+        "line": "Everyone living in the land given up has less than two weeks to leave home.",
+        "holdSeconds": 3.0
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "isa",
+      "name": "Your father, Heikki Kettunen",
+      "warm": "In his last years he called you \"the one who kept the door\"; you knew he liked saying it.",
+      "cold": "In the new house he sat at the window that faced east and never spoke to you about Karelia."
+    },
+    {
+      "key": "martta",
+      "name": "Martta Kokko",
+      "warm": "Every Christmas she sent a parcel; inside was a smell you knew from Honkaranta.",
+      "cold": "You settled in the same village in the new place; you greeted each other, and that was all."
+    },
+    {
+      "key": "anni",
+      "name": "Anni Jeskanen",
+      "warm": "Before she died she had a candle lit before the icon for you too.",
+      "cold": "She never spoke to you about the icon again."
+    },
+    {
+      "key": "nuutinen",
+      "name": "Evacuation officer Paavo Nuutinen",
+      "warm": "In his report he wrote your name down as \"operator Kettunen, reliable\".",
+      "cold": "He added a line to his report: \"the operator did not follow instructions\"."
+    },
+    {
+      "key": "ristola",
+      "name": "Iivari Ristola",
+      "warm": "He never thanked you again, but he always kept his door open to you.",
+      "cold": "He never greeted you again."
+    }
+  ],
+  "acts": [
+    {
+      "name": "Peace",
+      "question": "If a peace is measured by what it takes, is it still a peace?"
+    },
+    {
+      "name": "The Threshold",
+      "question": "What do you take from a house, what do you leave, and whose is what you leave?"
+    },
+    {
+      "name": "The Ice",
+      "question": "Is home a place, or the people you carry with you?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Lahti · March 1980",
+    "setting": "Forty years later. The local radio is recording the voices of the people of ceded Karelia. A young reporter sets the microphone on Aino Kettunen's kitchen table. Aino is sixty-nine. On the shelf stand a jar and an old switchboard lamp that she has never explained to anyone.",
+    "question": "“What did you bring with you from Karelia?”",
+    "tellDone": "Tell him what you did.",
+    "tellUndone": "Tell him what you did not do.",
+    "closeDone": "As the reporter is about to switch off the microphone, Aino adds: “Write one more thing. Everything I brought fitted on one sleigh. That is why I cannot count what I did not bring.”",
+    "closeUndone": "The reporter asks what was left, among so many things left behind. Aino presses two fingers to the table, as if putting in a plug. “The line,” she says. “People went on calling one another. Karelia was not a place; it was a line.”",
+    "done": [
+      {
+        "text": "I told my father about the peace before the radio did, at three in the morning. An operator was forbidden to repeat what she heard. That night my father counted the animals in the barn; I thought I owed him that night.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_father_early",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I heard about the peace at three in the morning and told no one until noon. The line was not mine. My father learned it from the radio, not from me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_secret",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the day of the peace I gave the line to Martta first; she was looking for her son. Then to the man who wanted the trains. One mother's five weeks came before a village's wagons.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "martta_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the day of the peace I gave the line first to the man asking for wagons. It was the right order. Martta waited another hour; she never mentioned that hour to me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "railway_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "An operator at the front wanted his mother told that he was alive. I rang her farm too. I remember the woman's voice the way you remember a face you never saw.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_soldiers_mother",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When my father said he would not go, I did not argue. I sat with him and we milked the cow together. Sometimes the only way to persuade someone is not to try.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "sat_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "That night I rang thirty-four farms one by one and said the same sentence to each. By the thirty-fourth the sentence was still the same. I was not.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I walked across the ice to the one house without a telephone, Anni's. I left the exchange empty for a night. Sometimes keeping a line means getting up from it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_to_anni",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I knew the Ristolas wanted to stay and I told no one. It was their decision. Whether it was right, I don't know; but it was not mine.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ristola",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I carried the icon from Anni's chapel on my own sleigh; it took a third of the space. My mother's things, or a stranger's saint? A sleigh asks you questions like that.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "promised_icon",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I brought my mother's chest and her kantele, not the sewing machine. They did not feed us. They fed something else.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_chest",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left my mother's chest and brought the sewing machine. For three years I sewed evacuees' coats on it. My mother would have done the same; I told myself that many times.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_machine",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We had Mansikki slaughtered so she would not die on the road, and shared the meat with the neighbours. My father did not speak that day. Nor did I; we were thinking the same thing.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I brought a jar of earth from my mother's grave; it is still on the shelf. Is the earth of a place still that place's earth once it is carried away? For forty years I have not known.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_earth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I cleared my mother's grave, lit a candle and did not touch its earth. Was leaving the grave where it was the same as leaving her alone? I tried not to think so.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_grave",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I kept the exchange open against orders until the last family. On the last night there was always a voice at the other end of the line. That night I left no one alone; except perhaps myself.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_line_open",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I took the exchange down as ordered and wound its cords one by one. When the last lamp went out I thought I had switched off a village's voice.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dismantled_board",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "My father and I burned the house. It was forbidden. We did not want anyone else to open that door. The smoke hung over the lake for a long time; I did not look back, my father did.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "burned_house",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I swept the house, left the key in the door and wrote a note on the table: the stove draws well, the north window lets in the wind. I did not know who I was writing to. A house is a house, whoever lives in it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_key",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the road I took Martta's children on my sleigh; my father walked. I still write those kilometres he walked to his account.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the school I gave the place by the stove to Anni. My father lay by the door and said nothing. Whom does warmth given to an eighty-year-old woman take from?",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_stove_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I stopped by the roadside for a cow that could not walk; the convoy went on. A farm nearby took her. I lost an hour for an animal; I am not ashamed to say so.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stopped_for_cow",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the ice a neighbour's sleigh broke through; we took the rope to save the load. We got soaked and lost half a day. Their children's cradle was in that load.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I went in to the last service. The priest gave no sermon; he only had the bells rung. I brought that sound with me, like a line.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "last_service",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the new border I chose to go to our relatives in Savo; far, but safe. I did not live in a borrowed room for forty years. But I did the first year.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "chose_savo",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I stayed by the new border and worked at the station exchange. Every day I connected people to one another. My own village's line no longer existed.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_border",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got into the same wagon as my father. The journey took four days and we did not speak. One morning he said to me, \"The door closed well.\" It was the last day he spoke of the house.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "boarded_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I sent my father on with Martta and stayed to work at the search desk. I found families for one another in the lists. My own father I found in a letter.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "search_desk",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stop at the sleigh that broke through the ice; I pulled my own onto safe ice. Years later that family's father greeted me. Perhaps he forgot; I did not.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go in to the last service; I listened to the bells from the road. I knew that if I stopped I would never get up again.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_bells",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "I did not keep what I heard; I did not keep the line's secret. I broke it for my father. Would I have broken it for someone else? I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_father_early",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not tell my father in the night. I listened to the radio at the same moment as he did, far away, at the exchange. That morning he was alone in the barn.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_secret",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Did I not keep the man asking for wagons waiting on the day of the peace? I did. Perhaps the trains were asked for late. I don't know who was harmed by it; someone was.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "martta_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not put Martta through first. She learned her son was alive an hour late. An hour sounds short; I saw Martta's face in that hour.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "railway_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not ring the front-line operator's mother; I gave the line back. She learned her son was alive from a letter, perhaps two weeks later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_line_back",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I argued with my father but I did not sit with him. That evening he milked the cow alone. I thought I had won; years later I understood I had lost.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "argued_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "That night I did not ring through the list; Martta did. Two farms got the news a day late.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_to_anni",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "That night I did not go to Anni. Hers was the only house without a telephone. She got the news the next day from a messenger; they said she did not look at him when she opened the door.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "called_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not keep the Ristolas' secret. Nuutinen went and talked to them; they set off. Perhaps I saved them. I took their decision out of their hands; that much is certain.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_ristola",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not take Anni's icon on my own sleigh; I put it on the church sleigh's list. That was proper. Anni travelled on a different sleigh from her icon.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "icon_to_parish",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left the sewing machine behind. In the new place I sewed on other people's machines for three years.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_chest",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not bring my mother's chest. Her wedding dress, the photographs and her kantele were in it. They stayed in the house; whatever became of the house became of them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_machine",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not have Mansikki slaughtered; I sent her with the herd. She was fourteen. I never asked anyone what happened to her on the road.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_drove",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not send Mansikki with the herd. Perhaps she would have walked. We did not give her the chance.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cow_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not clear my mother's grave or light a candle; I only took its earth. My mother never had a new grave; she had a jar.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_earth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I took no earth from my mother's grave. Sometimes it is hard to think of that grave with nothing in my hands.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_grave",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not get ready to leave on the same day as my father; I kept the exchange open. He spent his last night in the house without me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_line_open",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not keep the exchange open until the last family. On the evening I took it down, two farms were still calling; I saw their lamps and pulled the cord.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dismantled_board",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not leave the house standing. I did not wonder who would go in; I wanted no one to. Whether that was loyalty or jealousy, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "burned_house",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not burn the house; my father wanted to. I agreed that someone else would light that stove. My father never said it to me, but I know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_key",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not put my father on the sleigh; he walked. He was sixty-eight.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not take Martta's children on my sleigh. I kept my place in the convoy. Martta came a day later; the children could not feel their feet. They all got better.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not give the place by the stove to Anni; I kept it for my father. Anni lay by the door. She was eighty.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_stove_place",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stop for the cow lying at the roadside. I hoped someone would. Hoping is another way of walking on.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_drove",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not heed Nuutinen's order; I crossed on the ice. The ice held. If it had not, no one would be making this recording.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_ice",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not cross the ice; we lost half a day. All that day everyone told me the ice had held.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_road",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay by the border. I went far away; I stopped waiting to go back, or so I thought.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "chose_savo",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go to our relatives in Savo. My father stayed with me and saw the border post every day. If we had gone far away, perhaps he would have forgotten sooner.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_border",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay at the search desk. Someone else's voice had to find people their lost ones.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "boarded_with_father",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not get on the train with my father. He travelled four days beside Martta; when he arrived, the first thing he asked about was me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "search_desk",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "While my neighbour's load went down I did not take the rope; I pulled my own sleigh. Their children's cradle was in that load.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go in to the last service. I left the bells behind me, and I did not look back.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "passed_bells",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "bar_01_gece",
+      "act": "Peace",
+      "date": "13 March 1940, 03:10",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "The exchange's single lamp is lit: the district office in Sortavala is calling the village head. Aino Kettunen puts in the plug and listens for the few seconds it takes to make the connection. A few seconds are enough. Peace has been signed in Moscow; the guns stop at eleven today. Honkaranta lies inside the land to be handed over; within days everyone will leave their homes. The radio will say it at noon. The rule is that an operator does not repeat what she hears. Three kilometres away her father is asleep; the farm's line is on the bottom row of the board, dark.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ham_concealed",
+          "text": "At a station once you kept an envelope in your bag instead of showing it. Tonight what can be kept back is not an envelope but a sentence.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_reported_typhus",
+          "text": "In a barn once you wrote the typhus into the report, knowing what it would cost. You knew then too that telling the truth has an order to it.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:reported_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_01_a",
+          "text": "Ring your father's line and tell him now.",
+          "trace": "You told your father about the peace in the night, before the radio did.",
+          "nextNodeId": "bar_02_on_bir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_01_b",
+          "text": "Keep what you heard to yourself until the radio says it.",
+          "trace": "You told no one about the peace until the radio did.",
+          "nextNodeId": "bar_02_on_bir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_secret",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_02_on_bir",
+      "act": "Peace",
+      "date": "13 March 1940, 11:00",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "At eleven the church bell rings; no one is sure what for. At noon the radio speaks, and in front of the post office nobody speaks at all. Then everyone crowds into the exchange at once: a relative in town, a son at the front, a notice to be placed. There is one line. Two lamps drop together. Martta Kokko wants the regiment's field exchange, for her son Toivo, who has not written in five weeks. The evacuation officer Paavo Nuutinen wants the railway office in Sortavala: if no wagons are requested, the village will have no train.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_father_counted",
+          "text": "Your father got up at four and counted the animals in the barn, one by one. He said nothing to anyone.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_father_radio",
+          "text": "Your father heard the news on the radio. He did not ring you; he knows you are at the exchange.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_secret",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_gave_ladle",
+          "text": "In a kitchen queue once you gave your mother's ladle to a stranger. Again the order is in your hands; this time what is being handed out is a line.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_02_a",
+          "text": "Connect Martta to the field exchange.",
+          "trace": "On the day of the peace you gave the line first to Martta, looking for her son.",
+          "nextNodeId": "bar_03_cephe",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "martta_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "bar_02_b",
+          "text": "Connect Nuutinen to the railway office.",
+          "trace": "On the day of the peace you gave the line first to Nuutinen, asking for wagons.",
+          "nextNodeId": "bar_03_isa",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "railway_first",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_03_cephe",
+      "act": "Peace",
+      "date": "13 March 1940, 11:40",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "The field exchange answers forty minutes later. At the other end is a young operator with a hoarse voice. Toivo Kokko is in a field hospital; his feet are frostbitten, but he is alive. Martta holds on to the wooden counter of the exchange. As Aino reaches to pull the cord, the young operator asks one more thing: his mother is on a farm at Tervu, twenty kilometres away; no one has told her that her son is alive. Could Aino ring her too? By the door Nuutinen is looking at his watch; the wagons have not been requested yet.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ner_keeps_list",
+          "text": "You once kept a column's book; writing down who was where was your work. An exchange is a book like that: who is alive passes through here first.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_03_cephe_a",
+          "text": "Ring the soldier's mother's farm too.",
+          "trace": "You were the one who told a front-line operator's mother that her son was alive.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "called_soldiers_mother",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 1
+            }
+          ],
+          "omission": "You did not tell a soldier's mother that her son was alive."
+        },
+        {
+          "id": "bar_03_cephe_b",
+          "text": "Give the line to Nuutinen; the soldier can write to his mother himself.",
+          "trace": "You gave the line to Nuutinen without ringing the front-line operator's mother.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_line_back",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_03_isa",
+      "act": "Peace",
+      "date": "13 March 1940, 13:00",
+      "location": "The Kettunen farm",
+      "imageKey": "karelian_farm",
+      "body": "At midday Aino walks to the farm. Her father, Heikki Kettunen, sixty-eight, is splitting wood in the yard; he does not lower the axe. \"I am not going,\" he says. \"I was born under this roof. Your mother lies beside the church.\" After a while, without raising his voice at all, he adds that he would rather burn this house than leave it to them. The cow is lowing in the barn; milking time is past. Aino left the exchange with Martta for half an hour. The half hour is over.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_father_night",
+          "text": "When you rang him in the night his voice did not shake. Now, in daylight, it does.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_father_early",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_03_isa_a",
+          "text": "Argue with him now: you have to go.",
+          "trace": "On the day of the peace you argued with your father about leaving the house.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "argued_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "bar_03_isa_b",
+          "text": "Do not argue; sit with him and help with the milking.",
+          "trace": "On the day of the peace you did not argue with your father; you milked the cow together.",
+          "nextNodeId": "bar_04_liste",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "sat_with_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_04_liste",
+      "act": "Peace",
+      "date": "14 March 1940",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "Nuutinen brings a list to the exchange: sixty-two farms. People leave by train from Sortavala station from the nineteenth; the animals will be driven along the road from the seventeenth; each house may take one sleigh-load. Everyone must know tonight. Aino is to ring the thirty-four farms that have telephones; word will be sent to the rest. At the bottom of the list is one name: Anni Jeskanen, eighty, alone by the chapel. Her house is on the far side of the bay, six kilometres; there is no telephone. The messengers go tomorrow.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_martta_thanks",
+          "text": "Martta has left a loaf of bread at the exchange this morning; no note with it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "martta_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wagons_requested",
+          "text": "The wagons Nuutinen asked for have been granted; the village is among the first in line.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "railway_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kees_home",
+          "text": "Once you kept a child with you in spite of the hunger. Every name on this list is someone somebody wants to keep beside them.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kees_home",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_04_a",
+          "text": "Ring through the list all night.",
+          "trace": "That night you rang every farm on the evacuation list, one by one.",
+          "nextNodeId": "bar_05_soitot",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "called_list",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_04_b",
+          "text": "Leave the exchange with Martta and walk across the ice to Anni.",
+          "trace": "You left the exchange for a night and walked to Anni, who had no telephone.",
+          "nextNodeId": "bar_05_anni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "went_to_anni",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "You did not take the evacuation news to Anni yourself."
+        }
+      ]
+    },
+    {
+      "id": "bar_05_soitot",
+      "act": "Peace",
+      "date": "14 March 1940, night",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "Past midnight, the thirty-first farm: Ristola. Iivari Ristola listens, then speaks quietly. They will not go. His wife is ill, the land came from his father; whatever happens, they are staying. \"Tell no one,\" he says. \"Nuutinen will come and take us by force.\" Before Aino can pull the plug, Nuutinen's line drops: he wants to know how far the list has got. Two lamps blink side by side. Staying is not forbidden; but everyone knows that whoever stays can never come back.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ham_notebook",
+          "text": "Under a siren once you took someone's notebook out of a sealed locker. Carrying a secret is like carrying a notebook: it weighs nothing and takes up room.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_05_soitot_a",
+          "text": "Tell Nuutinen the Ristolas mean to stay.",
+          "trace": "You reported the Ristolas' decision to stay to the evacuation officer.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "reported_ristola",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "ristola",
+              "op": "add",
+              "intValue": -4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "bar_05_soitot_b",
+          "text": "Keep the Ristolas' decision to yourself.",
+          "trace": "You told no one that the Ristolas meant to stay.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_ristola",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "ristola",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "honkaranta_board",
+        "kind": "board",
+        "caption": "Honkaranta exchange, past midnight. Two lamps drop at once; there is one cord.",
+        "chooses": true,
+        "results": [
+          "il_board_first",
+          "il_board_second"
+        ]
+      }
+    },
+    {
+      "id": "bar_05_anni",
+      "act": "Peace",
+      "date": "14 March 1940, evening",
+      "location": "Anni Jeskanen's cabin, beside the chapel",
+      "imageKey": "orthodox_chapel",
+      "body": "Anni opens the door, looks at Aino's face and understands why she has come. She sets up the samovar. She has lived through a border before: twenty years ago her son Vasili stayed on the other side and never came back. \"I am moving a second time,\" she says, \"only this time it is me.\" The chapel's icon, Saint Nicholas, stands against the wall wrapped in linen, as big as a door leaf. Anni will not leave it. A sleigh has been set aside for church property, but nobody knows who will watch over that sleigh.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_ner_nello_taken",
+          "text": "In a column once you had someone put on a sledge whom everyone said could not be carried. Anni's icon is another thing that cannot be carried, they say.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "bar_05_anni_a",
+          "text": "Promise to carry the icon on your own sleigh.",
+          "trace": "You promised to carry the icon from Anni's chapel on your own sleigh.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "bar_05_anni_b",
+          "text": "Put Anni and the icon on the church sleigh's list.",
+          "trace": "You put Anni and her icon on the church sleigh's list.",
+          "nextNodeId": "esi_06_yuk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "icon_to_parish",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_06_yuk",
+      "act": "The Threshold",
+      "date": "16 March 1940",
+      "location": "The Kettunen farm",
+      "imageKey": "karelian_farm",
+      "body": "The sleigh stands in the yard, the horse Pilkku in harness. Forty years of a house must fit on one sleigh. The bedding, flour, salt, pots and her father's tools are already loaded. One space is left and there are two things. One is her mother's sewing machine: in a new place it means bread money. The other is her mother's chest: the wedding dress, the photographs, the dowry linen, and the kantele leaning against its lid. Her father looks at neither; he is tightening the horse's girth for the third time.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_icon_room",
+          "text": "Anni's icon lies in the middle of the sleigh, wrapped in linen. It takes a third of the space and no one complains of it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ristola_quiet",
+          "text": "The Ristolas' line has been silent for two days. Only you know what Iivari means to do.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_ristola_packing",
+          "text": "Nuutinen went to the Ristolas yesterday. This morning a sleigh is being loaded in their yard too; Iivari does not look at the road.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "reported_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kept_watch",
+          "text": "You once refused to trade your father's watch for potatoes; we will manage, you said. A sleigh asks the same question: will you feed your stomach or your past?",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kept_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_06_a",
+          "text": "Load the sewing machine.",
+          "trace": "You loaded the sewing machine onto the sleigh, not your mother's chest.",
+          "nextNodeId": "esi_07_mansikki",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_machine",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "esi_06_b",
+          "text": "Load your mother's chest and her kantele.",
+          "trace": "You loaded your mother's chest and her kantele, not the sewing machine.",
+          "nextNodeId": "esi_07_mansikki",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_chest",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ],
+          "omission": "You left your mother's chest and her kantele in the house."
+        }
+      ]
+    },
+    {
+      "id": "esi_07_mansikki",
+      "act": "The Threshold",
+      "date": "17 March 1940",
+      "location": "The Kettunen farm",
+      "imageKey": "karelian_farm",
+      "body": "The village herd sets off this morning: two hundred cows, six men, ten days, two hundred kilometres west. Mansikki is fourteen; she was in this barn before Aino was born. One of the drovers says that old animals often do not finish the road, blaming no one. In Martta's house there are four children and a mother-in-law; there is no meat for the journey. Her father stands at the barn door stroking the cow's neck, and leaves the decision to Aino.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_argued_barn",
+          "text": "Since the day you argued your father has milked the cow alone. This morning too.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "argued_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_blankets_shared",
+          "text": "In a lean-to once you cut two blankets into pieces for everyone. A cow's meat can be divided too; but someone always goes short.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_07_a",
+          "text": "Send Mansikki with the herd.",
+          "trace": "You sent your old cow Mansikki with the village herd.",
+          "nextNodeId": "esi_08_hauta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "cow_drove",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "esi_07_b",
+          "text": "Have Mansikki slaughtered and share the meat with Martta for the road.",
+          "trace": "You did not send Mansikki on the road; you shared her meat with Martta's family for the journey.",
+          "nextNodeId": "esi_08_hauta",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "cow_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_08_hauta",
+      "act": "The Threshold",
+      "date": "18 March 1940",
+      "location": "Honkaranta churchyard",
+      "imageKey": "churchyard",
+      "body": "In the churchyard the snow is knee-deep. People stand at the graves; some dig through the snow to the earth and take a handful, putting it into a linen bag. Her mother Helmi was buried here four years ago; her name shows on the wooden cross above the snow. Her father asks about the headstones in the voice of someone who knows they cannot be moved. The pastor shakes his head: no time, no permission, no horses. The graves will stay. No one says who will look after a grave that stays.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_milked_together",
+          "text": "Since the evening you milked together, it was your father who asked you to come to the churchyard with him.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "sat_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_buried_dead",
+          "text": "At a burned farm once you held a column back to dig three graves. Here no one is digging graves; here graves are being left.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_shelter_light",
+          "text": "On a shelter stair once you mended a lamp so that people could see each other's faces. The candle here has another job: no one will see it.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shelter_light_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_08_a",
+          "text": "Take a jar of earth from your mother's grave.",
+          "trace": "You took a jar of earth from your mother's grave.",
+          "nextNodeId": "esi_09_santral",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_earth",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "esi_08_b",
+          "text": "Clear the grave, light a candle, and leave the earth untouched.",
+          "trace": "You cleared your mother's grave and lit a candle; you left its earth where it was.",
+          "nextNodeId": "esi_09_santral",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "tended_grave",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_09_santral",
+      "act": "The Threshold",
+      "date": "19 March 1940",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "A telegram from the telephone company: the exchange is to be dismantled today and loaded on tomorrow's train; it is company property and may not be left. Yet there are still voices on the lines: a family that cannot finish loading is asking about a horse, an old man about which train his daughter took, Martta about her mother-in-law's medicine. Her father wants to set off tomorrow morning. If the exchange stays open, Aino will be here another day. If it is taken down, the village's last voice will be cut by Aino's own hands.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_list_known",
+          "text": "Since the night you rang every farm on the list, there is no one who does not know your voice. Now everyone looks to the exchange through it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "called_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_anni_walked",
+          "text": "The night you walked across the ice to Anni, Martta minded the exchange. Today Martta asks who will reach whom if it closes.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "went_to_anni",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_09_a",
+          "text": "Keep the exchange open until the last family leaves.",
+          "trace": "Against orders you kept the exchange open until the last family had gone.",
+          "nextNodeId": "esi_10a_son_gece",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_line_open",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "You did not keep the exchange open for the village's last family."
+        },
+        {
+          "id": "esi_09_b",
+          "text": "Follow the order: dismantle the exchange and go with your father.",
+          "trace": "You dismantled the exchange as ordered and got ready to leave with your father.",
+          "nextNodeId": "esi_10b_isa",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "dismantled_board",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_10a_son_gece",
+      "act": "The Threshold",
+      "date": "Night of 19/20 March 1940",
+      "location": "Honkaranta, the telephone exchange",
+      "imageKey": "village_exchange",
+      "body": "The last night. Half the lamps in the village are out; half the lines too. At one o'clock a soldier comes through from a distant exchange: back from the front, he does not know which village his family was sent to; he had an aunt in Honkaranta. Aino opens the list. Finding the name may take an hour; she may not find it. Three kilometres away her father is alone in the house, spending his last night beside the loaded sleigh. The exchange can only be closed by one person.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_soldiers_mother_again",
+          "text": "On the day of the peace you rang a soldier's mother. Tonight a soldier on the other end of the line is looking for his.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "called_soldiers_mother",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_turned_back",
+          "text": "On a bridge once you turned back ten paces from the far side. Closing an exchange is like those ten paces: once taken, they cannot be taken back.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:turned_back",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_10a_a",
+          "text": "Stay at the exchange till morning and look for the soldier's family.",
+          "trace": "On the last night you stayed at the exchange till morning, looking for a stranger's family.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_till_dawn",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "esi_10a_b",
+          "text": "Close the exchange at midnight and walk home.",
+          "trace": "On the last night you closed the exchange at midnight and went back to your father.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "went_home_midnight",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_10b_isa",
+      "act": "The Threshold",
+      "date": "20 March 1940",
+      "location": "The Kettunen farm",
+      "imageKey": "karelian_farm",
+      "body": "The boards of the exchange are in crates, its cords in coils. Aino goes home. Her father has made a decision: Aino is to go ahead with the sleigh; he will stay one more day to close up the house and follow on foot with the last herd. \"I am sixty-eight,\" he says, \"I have not forgotten how to walk.\" On foot it is two days on the road. Nuutinen said the last herd leaves tomorrow evening. The neck of a paraffin bottle shows from her father's coat pocket.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_board_packed",
+          "text": "The last lamp of the exchange you took down lies on top of a crate; there is no bulb in it, yet the frame still seems warm.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "dismantled_board",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_10b_a",
+          "text": "Trust him and go ahead.",
+          "trace": "You trusted your father and agreed to go ahead.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "trusted_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "esi_10b_b",
+          "text": "Tell him you will go together, and wait for him.",
+          "trace": "You did not leave your father alone; you waited so you could go together.",
+          "nextNodeId": "esi_11_talo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "waited_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esi_11_talo",
+      "act": "The Threshold",
+      "date": "21 March 1940, dawn",
+      "location": "The Kettunen farm",
+      "imageKey": "karelian_farm",
+      "body": "At dawn the sleigh stands at the door. The house is empty, the stove cold. Her father puts the paraffin bottle on the table: he will not leave this house to them. The order Nuutinen read out says buildings are to be left intact; anyone who burns one will be questioned. At the other end of the table lies the house key, which has hung on the same nail for forty years. There is a pencil in Aino's pocket. Whoever comes, a stranger will open this door; or no one will.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_stayed_dawn",
+          "text": "Because you stayed at the exchange till morning you reached the house with the dawn. Whatever your father thought through the night, he has finished thinking it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stayed_till_dawn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_waited_house",
+          "text": "Because you waited, your father is not alone. Someone who is not alone finds a house harder to burn; or easier.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "waited_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_shared_street",
+          "text": "One winter you gave half of a full cart to the street. A house can be left to someone too; someone you do not know.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "esi_11_a",
+          "text": "Set the house on fire with your father.",
+          "trace": "You and your father burned the house rather than leave it.",
+          "nextNodeId": "buz_12_yol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "burned_house",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -3
+            }
+          ]
+        },
+        {
+          "id": "esi_11_b",
+          "text": "Sweep the house, leave the key in the door, write a note.",
+          "trace": "You swept the house, left the key in the door and wrote a note on the table.",
+          "nextNodeId": "buz_12_yol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_key",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "You did not leave the house swept, with its key in the door, for whoever came."
+        }
+      ]
+    },
+    {
+      "id": "buz_12_yol",
+      "act": "The Ice",
+      "date": "21 March 1940",
+      "location": "The road west",
+      "imageKey": "evacuation_road",
+      "body": "The road west is a line of sleighs. The breath of horses, runners instead of wheels, people who do not speak. In the afternoon the runner of Martta's sleigh breaks. Four children and her mother-in-law stand by the road in the snow. On the Kettunen sleigh there is room for one person: her father's place. Her father can walk, but he is sixty-eight and there are two more days of road. The convoy does not stop; whoever stops loses their place in the line, and at the school tonight there will be no room left by the stove.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_smoke_behind",
+          "text": "Behind you, above the lake, the smoke can still be seen. No one looks at it; everyone knows which house it comes from.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "burned_house",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_key_behind",
+          "text": "You left the key in the door. On the road your father twice reaches into his pocket; the key is not there, but his hand still goes.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_meat_shared",
+          "text": "Mansikki's meat is on Martta's sleigh, in a felt sack. The sack lies beside the broken runner.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "cow_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_woman_on_cart",
+          "text": "On a dike once you took an old woman who had sat down in the road onto the cart and made your own child walk. The one place on the sleigh asks that sum again.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_12_a",
+          "text": "Take Martta's children on your sleigh; your father walks.",
+          "trace": "On the road you took Martta's children on your sleigh; your father walked.",
+          "nextNodeId": "buz_13a_okul",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "On the road you did not take Martta's children on your sleigh."
+        },
+        {
+          "id": "buz_12_b",
+          "text": "Keep your place in the convoy and send help back to Martta.",
+          "trace": "You kept your place in the convoy and sent help back to Martta.",
+          "nextNodeId": "buz_13b_sure",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_13a_okul",
+      "act": "The Ice",
+      "date": "21 March 1940, night",
+      "location": "A school on the road",
+      "imageKey": "school_night",
+      "body": "The classroom of the school on the road has been laid with straw; the desks are pushed against the wall, and a fractions problem is still written on the blackboard. A hundred people, one stove. Martta's children warmed up on the sleigh; your father walked and cannot feel his feet. By the stove there is room for one person. Anni Jeskanen sits by the door: the church sleigh brought her here; she is eighty and shivering. Your father asks for nothing; he looks the way he looks when he is asking for nothing.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_icon_school",
+          "text": "Anni's icon is on your sleigh, under the snow in the school yard. Twice in the night Anni gets up and goes out to look at it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_icon",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_shared_food",
+          "text": "In a shelter once you shared your water and bread. The warmth of a stove can be shared too; but a place for one cannot be divided.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_13a_a",
+          "text": "Give the place by the stove to Anni.",
+          "trace": "At the school you gave the place by the stove to Anni; your father lay by the door.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_stove_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "buz_13a_b",
+          "text": "Keep the place for your father.",
+          "trace": "At the school you kept the place by the stove for your father.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_stove_place",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "anni",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_13b_sure",
+      "act": "The Ice",
+      "date": "21 March 1940, evening",
+      "location": "The road west",
+      "imageKey": "evacuation_road",
+      "body": "At the crossroads the convoy stops; the village herd crosses the road. The cows walk in the snow, their muzzles iced, their steps heavy. At the end of the herd a cow has sunk down at the roadside; the drover sees no choice but to leave her. A farm nearby might take her, or might not. Martta's sleigh is behind you waiting to be mended; the man you sent back has not returned yet. Your father watches the cow from the sleigh. If you stop, the convoy goes on and the dark comes down.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_mansikki_road",
+          "text": "The cow that has sunk down is Mansikki. Your father knows her from the sleigh; by the white mark on her forehead.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "cow_drove",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_left_stretchers",
+          "text": "On a riverbank once you took the walkers across and left the stretchers. A herd walks the same way: those who can, and those left behind.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:left_stretchers",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_13b_a",
+          "text": "Stop and take the cow to the farm nearby.",
+          "trace": "On the road you stopped to take a cow that could not walk to a nearby farm.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stopped_for_cow",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "buz_13b_b",
+          "text": "Keep going.",
+          "trace": "You did not stop for the cow that had sunk down by the road.",
+          "nextNodeId": "buz_14_koy",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "passed_drove",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_14_koy",
+      "act": "The Ice",
+      "date": "22 March 1940",
+      "location": "The ice of the bay",
+      "imageKey": "frozen_bay",
+      "body": "The far shore of the bay lies opposite, white and flat. Going over the ice saves half a day; the road winds round behind the islands. The villagers say the ice holds: every winter they cross this bay by sleigh. Nuutinen's order, though, says no one is to go onto the ice near the river mouth after the twentieth of March; the March sun thins it over the current. The new border closes in two days. A sleigh ahead is already on the ice; its horse's hooves ring dully on it.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_anni_stove",
+          "text": "Anni, who slept by the stove, walks straighter this morning. Your father is limping.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_stove_place",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_cow_farm",
+          "text": "The woman at the farm where you left the cow came out to the road this morning and waved.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_for_cow",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_declared_load",
+          "text": "At a checkpoint once you declared everything and lost a third of it. You know the price of obeying an order; and of not obeying one.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_14_a",
+          "text": "Cross on the ice.",
+          "trace": "Against the evacuation officer's order you crossed the bay on the ice.",
+          "nextNodeId": "buz_15a_buz",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_ice",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        },
+        {
+          "id": "buz_14_b",
+          "text": "Go round by the road.",
+          "trace": "You did not cross the ice; you went round by the road.",
+          "nextNodeId": "buz_15b_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_road",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "nuutinen",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_15a_buz",
+      "act": "The Ice",
+      "date": "22 March 1940",
+      "location": "The ice of the bay",
+      "imageKey": "frozen_bay",
+      "body": "In the middle of the bay the ice holds. As they near the river mouth, the back runner of the sleigh ahead breaks through with a crack. The horse is saved, the people are saved; everyone spreads out flat on the ice towards the shore. The sleigh sinks slowly from the back: bedding, a chest, the children's cradle. Its owner holds the rope and cannot pull it. If two more people pull, the load may be saved. How much the weight of two more people the ice will bear, no one knows. Your sleigh is on safe ice, with your father.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_machine_weight",
+          "text": "There is a sewing machine on your sleigh; you feel its weight on the ice at every step.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_machine",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_held_stretcher",
+          "text": "On a bridge once, when the plank slipped, you did not let go of the stretcher. A hand on a rope knows the same thing: letting go is not a decision, it is a moment.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:held_stretcher",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_15a_a",
+          "text": "Take the rope and help pull the load.",
+          "trace": "On the ice you stopped and pulled the rope to save a broken sleigh's load.",
+          "nextNodeId": "buz_16a_asema",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "saved_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ],
+          "omission": "On the ice you did not take the rope to save a neighbour's sinking load."
+        },
+        {
+          "id": "buz_15a_b",
+          "text": "Pull your own sleigh onto safe ice and go on.",
+          "trace": "While the broken sleigh's load was sinking you kept your own sleigh on safe ice.",
+          "nextNodeId": "son_ince_buz",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_load",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_15b_kilise",
+      "act": "The Ice",
+      "date": "22 March 1940",
+      "location": "The last church before the new border",
+      "imageKey": "churchyard",
+      "body": "The road passes the last church before the new border. This church will be left behind too. Its doors are open; inside are those who have gathered for a last service, outside stand the sleighs. The bells begin to ring and everyone knows: for this congregation it is the last time. Going in to the service means an hour; the convoy cannot wait, and whoever does not reach the station by evening will spend the night on the road. Your father has got down from the sleigh, taken off his cap, and is looking at the church.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_earth_jar",
+          "text": "On the sleigh, between the sacks of flour, is the jar you took from your mother's grave. While your father looks at the church his hand rests on the sack.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_earth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_candle_grave",
+          "text": "The candle you lit on your mother's grave will have gone out long ago. Here too someone is lighting a candle.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "tended_grave",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_15b_a",
+          "text": "Go in to the last service with your father.",
+          "trace": "At the last church before the new border you went in to the last service.",
+          "nextNodeId": "buz_16b_juna",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "last_service",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "buz_15b_b",
+          "text": "Listen to the bells from the road and go on.",
+          "trace": "You did not go in to the last service; you listened to the bells from the road and went on.",
+          "nextNodeId": "son_canlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "passed_bells",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_16a_asema",
+      "act": "The Ice",
+      "date": "23 March 1940",
+      "location": "The station on this side of the new border",
+      "imageKey": "border_station",
+      "body": "At the station there is a registration desk covered in lists. The clerk asks every family the same thing: where to? The Kettunens have relatives in Savo, four hundred kilometres away; safe, and far. The station's exchange, though, is a kilometre this side of the new border and needs an operator; the evacuated families will look for one another along this line. If you stay, you will live on the part of Karelia that is left, in a room from which the border post can be seen. Your father sits by the stove in his wet coat, looking east.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_load_saved",
+          "text": "The owner of the load you saved from the ice showed you the cradle in the registration queue; they have set it out to dry.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "saved_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ham_stayed",
+          "text": "On a platform once you put someone you loved on a train and stayed behind yourself. Staying is a journey too; only its place does not change.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:ruth_departed_alone",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_16a_a",
+          "text": "Go to the relatives in Savo.",
+          "trace": "At the new border you chose to go to your relatives in Savo.",
+          "nextNodeId": "son_oda",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "chose_savo",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "buz_16a_b",
+          "text": "Stay and work at the station's exchange.",
+          "trace": "You chose to stay by the new border and work at the station's exchange.",
+          "nextNodeId": "son_hat",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_border",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buz_16b_juna",
+      "act": "The Ice",
+      "date": "23 March 1940",
+      "location": "The station on this side of the new border",
+      "imageKey": "border_station",
+      "body": "Freight wagons, their floors laid with straw, village names chalked on their doors. The train goes west, to Ostrobothnia; four days. Your father stands at the wagon door and looks east one last time before getting in. The station's registration office, though, needs clerks and telephonists to find lost families: whose sleigh came with whom, which child is in which wagon. Martta is boarding the same wagon as your father; she could keep an eye on him. If you stay, you will find him four days from now, in a letter.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_service_father",
+          "text": "Since the last service your father is less silent. At the wagon door he sings you your mother's favourite hymn, only its first line.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "last_service",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ner_counted_names",
+          "text": "On a far bank once you counted and wrote down the names first. At this station too the names are being counted: who has come through, who has not come.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:counted_names",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "buz_16b_a",
+          "text": "Board the train with your father.",
+          "trace": "At the new border you boarded the same freight wagon as your father.",
+          "nextNodeId": "son_vagon",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "boarded_with_father",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "buz_16b_b",
+          "text": "Send your father on with Martta; stay and work at the search desk.",
+          "trace": "You sent your father on with Martta and stayed to work at the desk that found lost families.",
+          "nextNodeId": "son_arama",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "search_desk",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "martta",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "isa",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "son_oda",
+      "act": "The Ice",
+      "date": "April 1940",
+      "location": "Savo",
+      "imageKey": "karelian_farm",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_oda",
+        "title": "The Borrowed Room",
+        "paragraphs": [
+          "In the relatives' house in Savo a room was cleared: a borrowed room, two beds, one window. The hosts were good people, and felt they had to remind you of it a little every day. Your father turned the chair by the window to face east; Aino straightened it every morning, and every evening he turned it back.",
+          "When summer came a law was passed giving land to the evacuees. In the autumn the Kettunens were allotted a field and a half-built house. On the day your father drove the first nail, he said nothing at all about the key that had hung on the same nail for forty years.",
+          "History did not change: more than four hundred thousand people left Karelia, and Honkaranta stayed on the far side of the new border. What changed was that a father and his daughter spent their first year in a borrowed room together."
+        ],
+        "traceFallbacks": [
+          "You left Karelia by sleigh.",
+          "At the new border you chose to go to Savo.",
+          "You lived with your father in a borrowed room."
+        ]
+      }
+    },
+    {
+      "id": "son_hat",
+      "act": "The Ice",
+      "date": "May 1940",
+      "location": "The station on this side of the new border",
+      "imageKey": "village_exchange",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_hat",
+        "title": "The New Line",
+        "paragraphs": [
+          "Aino worked at the station exchange a kilometre this side of the new border. All spring the line was never silent: a woman in Ostrobothnia asked for her sister in Savo, a soldier for the village his family had been sent to, an old man for the herd his cow had gone with. To each of them Aino gave a number, a name, sometimes only the name of a village.",
+          "Your father stayed in the room from which the border post could be seen; every morning he looked at it from the window and said nothing. In May Martta's son Toivo got off at the station on crutches. Aino put him through to his mother and took off her headset so as not to hear what they said.",
+          "History did not change: the border stayed where it was. What changed was that the people of a scattered village could still find one another, for a while, through the same voice."
+        ],
+        "traceFallbacks": [
+          "You stayed by the new border.",
+          "You worked at the station's exchange.",
+          "You connected the scattered village along the line."
+        ]
+      }
+    },
+    {
+      "id": "son_vagon",
+      "act": "The Ice",
+      "date": "Late March 1940",
+      "location": "The train to Ostrobothnia",
+      "imageKey": "border_station",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_vagon",
+        "title": "The Freight Wagon",
+        "paragraphs": [
+          "The train took four days. Twelve people in the wagon, a stovepipe, a bucket. Your father sat by the door, and when the flat fields of Ostrobothnia began he was the first to notice there was not even a hill there. When he said so, he laughed for the first time on the journey.",
+          "In the village that took them in, people spoke another dialect and thought Karelians talked too much. Aino became a shop assistant; in the evenings she read the newspaper to her father, skipping the lines in which Karelia was named. He noticed, and never once said so.",
+          "History did not change: Honkaranta's houses, graves and bells stayed on the far side of the new border. What changed was that a father and his daughter sat in one wagon for four days, without speaking, looking the same way."
+        ],
+        "traceFallbacks": [
+          "You boarded the same wagon as your father.",
+          "You moved to Ostrobothnia.",
+          "You saw Karelia for the last time from a wagon door."
+        ]
+      }
+    },
+    {
+      "id": "son_arama",
+      "act": "The Ice",
+      "date": "April 1940",
+      "location": "The station's registration office",
+      "imageKey": "border_station",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_arama",
+        "title": "The Search Desk",
+        "paragraphs": [
+          "Aino stayed at the station's registration office: one desk, three telephones, lists renewed every day. She found a lost child in a wagon, the daughter of a woman searching for her in another province, a family whose sleigh had strayed into another convoy in a school yard. Every name found was struck from the list; by the time Aino stopped counting the strokes it was April.",
+          "She found her father four days later, in a letter. Martta had written it: he had not spoken at all on the way, and the first thing he did on arriving was ask which desk Aino worked at. Aino put the letter among the lists, and a week later, after finding one more family, she went to him.",
+          "History did not change: more than four hundred thousand people left their homeland. What changed was that some of them found one another again at a desk, with a line drawn beside their names."
+        ],
+        "traceFallbacks": [
+          "You sent your father on with Martta.",
+          "You worked at the desk that found lost families.",
+          "You struck names from a list one by one."
+        ]
+      }
+    },
+    {
+      "id": "son_ince_buz",
+      "act": "The Ice",
+      "date": "April 1940",
+      "location": "The ice of the bay",
+      "imageKey": "frozen_bay",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_ince_buz",
+        "title": "Thin Ice",
+        "paragraphs": [
+          "The Kettunens' sleigh reached the far shore and crossed the new border a day early. The family who had lost their load on the ice came in behind you, wet and empty-handed; you stood in the same queue at the registration desk. No one said anything.",
+          "In April the ice on the bay broke up. The sunken sleigh, the chest and the children's cradle stayed at the bottom of the water, on the far side of the new border. Years later Aino saw that family at a wedding; the man greeted her. Perhaps he had forgotten.",
+          "History did not change: the bay and the village both stayed on the far side of the border. What changed was that two families crossed the same ice on the same day with different loads."
+        ],
+        "traceFallbacks": [
+          "You crossed on the ice.",
+          "You did not stop to save the sinking load.",
+          "You crossed the new border a day early."
+        ]
+      }
+    },
+    {
+      "id": "son_canlar",
+      "act": "The Ice",
+      "date": "Late March 1940",
+      "location": "The road west",
+      "imageKey": "evacuation_road",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_canlar",
+        "title": "The Bells",
+        "paragraphs": [
+          "The Kettunens' sleigh reached the station in the evening. For most of the way the bells could be heard behind you; then the wind turned and the sound was gone. Your father did not say a word for the rest of the road.",
+          "The bell of the new village's church rang with another voice. On the first Sunday Aino went as far as the door and did not go in. Her father did. When he came out he said, \"The bell is not the same, but they keep time.\"",
+          "History did not change: that church was left behind too, and its bells never rang for that congregation again. What changed was that a daughter listened to the sound from the road, without looking back."
+        ],
+        "traceFallbacks": [
+          "You went round by the road.",
+          "You did not go in to the last service.",
+          "You listened to the bells from the road."
+        ]
+      }
+    }
+  ]
+}

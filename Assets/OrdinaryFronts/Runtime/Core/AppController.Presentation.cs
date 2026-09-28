@@ -54,6 +54,7 @@ namespace OrdinaryFronts
         private bool actCardSkip;
         private float actCardArmTime;
         private bool pendingActCard;
+        private TMP_Text actQuestionText;
 
         private Coroutine revealRoutine;
         private bool bodyRevealing;
@@ -188,7 +189,24 @@ namespace OrdinaryFronts
                 case "burned_village": return Preset(theme.rust, 0.05f, ashFall, Layer("il_puff", 30, white, 0.25f, 0.6f, new Vector2(4f, 4f), new Vector2(9f, 9f), new Vector2(-25f, -70f), new Vector2(10f, -35f), 20f, 0f, false));
                 case "aid_registry": return Preset(theme.mustard, 0.05f, motes, Layer("il_puff", 16, ash, 0.2f, 0.5f, new Vector2(3f, 3f), new Vector2(6f, 6f), new Vector2(-10f, -30f), new Vector2(14f, -12f), 26f, 0f, false));
                 case "shelter_stairs":
-                case "typhus_barn": return Preset(theme.mustard, 0.06f, motes);
+                case "barn_interior":
+                case "village_exchange":
+                case "school_night": return Preset(theme.mustard, 0.06f, motes);
+                case "karelian_farm":
+                case "churchyard": return Preset(theme.petrol, 0.05f, snowLight);
+                case "orthodox_chapel":
+                case "border_station": return Preset(theme.sootNavy, 0.08f, Layer("il_puff", 60, white, 0.2f, 0.55f, new Vector2(3f, 3f), new Vector2(8f, 8f), new Vector2(-25f, -60f), new Vector2(10f, -30f), 18f, 0f, false));
+                case "evacuation_road":
+                case "frozen_bay": return Preset(theme.petrol, 0.07f, snowWind, snowGust);
+                case "typhus_barn":
+                case "burned_farm": return Preset(theme.mustard, 0.05f, Layer("il_puff", 40, white, 0.25f, 0.6f, new Vector2(4f, 4f), new Vector2(9f, 9f), new Vector2(-25f, -70f), new Vector2(10f, -35f), 20f, 0f, false));
+                case "night_camp":
+                case "barn_night":
+                case "bank_night": return Preset(theme.sootNavy, 0.10f, Layer("il_puff", 55, white, 0.2f, 0.55f, new Vector2(3f, 3f), new Vector2(8f, 8f), new Vector2(-25f, -60f), new Vector2(10f, -30f), 18f, 0f, false));
+                case "pine_forest": return Preset(theme.sootNavy, 0.08f, snowLight);
+                case "snow_ridge": return Preset(theme.petrol, 0.08f, snowHeavy, snowGust);
+                case "stream_ford":
+                case "far_bank": return Preset(theme.petrol, 0.06f, mist);
                 case "train_platform": return Preset(theme.agedPaper, 0.04f, mist, steam);
                 case "harbor_dawn":
                 case "shipyard_evening": return Preset(theme.agedPaper, 0.035f, mist);
@@ -342,6 +360,13 @@ namespace OrdinaryFronts
                 new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.72f),
                 new Vector2(0.1f, 0.35f), new Vector2(0.9f, 0.41f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center));
             actMetaText.characterSpacing = 3f;
+            // Perdenin sorusu (1.3): oyun sorar, cevaplamaz. Soru yoksa alan boş kalır.
+            actQuestionText = CreateText("Act Question", actCard.transform, string.Empty, 30f, FontStyles.Italic,
+                new Color(theme.agedPaper.r, theme.agedPaper.g, theme.agedPaper.b, 0.9f),
+                new Vector2(0.16f, 0.22f), new Vector2(0.84f, 0.32f), Vector2.zero, Vector2.zero, TextAlignmentOptions.Center);
+            actQuestionText.enableAutoSizing = true;
+            actQuestionText.fontSizeMin = 22f;
+            actQuestionText.fontSizeMax = 30f;
             actCard.SetActive(false);
         }
 
@@ -380,6 +405,9 @@ namespace OrdinaryFronts
             actNameText.text = node.act;
             string meta = ((node.date ?? string.Empty) + "   ·   " + (node.location ?? string.Empty)).Trim();
             actMetaText.text = localization == null ? meta : localization.ToUpper(meta);
+            ActData actData = storyController == null || storyController.Story == null ? null : storyController.Story.FindAct(node.act);
+            string question = actData == null ? null : actData.question;
+            if (actQuestionText != null) actQuestionText.text = string.IsNullOrWhiteSpace(question) ? string.Empty : question.Trim();
 
             // Anlatı kartı perde kartının arkasında görünmez; çağıran taraf onu sonra açar.
             if (storyCardGroup != null) storyCardGroup.alpha = 0f;
@@ -391,7 +419,8 @@ namespace OrdinaryFronts
             if (audioManager != null) audioManager.PlayActTone();
 
             float fadeIn = motion ? 0.55f : 0f;
-            float hold = 1.9f;
+            // Soru okunacak kadar kalır; atlanabilir.
+            float hold = actQuestionText != null && actQuestionText.text.Length > 0 ? 3.6f : 1.9f;
             float fadeOut = motion ? 0.55f : 0f;
             for (float t = 0f; t < fadeIn && !actCardSkip; t += Time.unscaledDeltaTime)
             {
@@ -708,7 +737,8 @@ namespace OrdinaryFronts
             if (bodyRevealing && router.Current == AppScreen.Gameplay)
             {
                 bool pressed = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow)
-                    || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
+                    || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)
+                    || PadLeftDown || PadRightDown || PadActionDown;
                 if (pressed)
                 {
                     revealFinishRequested = true;

@@ -6,7 +6,7 @@ Sunum: 2D, Built-In Render Pipeline
 
 ## 1. Yüksek seviye tanım
 
-`Ordinary Fronts`, İkinci Dünya Savaşı’nı askerî zaferlerden değil, sıradan insanların kişisel sorumluluklarından anlatan bölüm tabanlı bir seçim oyunu antolojisidir. Antoloji şu an üç bölüm içerir: Hamburg 1943 (bakım elektrikçisi Matthias Krüger), Neretva 1943 (köy ebesi Milena Radić) ve Amsterdam 1945 (ilkokul öğretmeni Truus Bakker). Oyuncu tarihi değiştirmez; kimi aradığına, kime güvendiğine, ne taşıdığına, hangi emre uyduğuna ve bu seçimlerin bedelini kiminle paylaştığına karar verir.
+`Ordinary Fronts`, İkinci Dünya Savaşı’nı askerî zaferlerden değil, sıradan insanların kişisel sorumluluklarından anlatan bölüm tabanlı bir seçim oyunu antolojisidir. Antoloji şu an dört bölüm içerir: Hamburg 1943 (bakım elektrikçisi Matthias Krüger), Neretva 1943 (köy ebesi Milena Radić), Amsterdam 1945 (ilkokul öğretmeni Truus Bakker) ve Karelya 1940 (köy santralcisi Aino Kettunen). Oyuncu tarihi değiştirmez; kimi aradığına, kime güvendiğine, ne taşıdığına, hangi emre uyduğuna ve bu seçimlerin bedelini kiminle paylaştığına karar verir.
 
 İlk oynayış hedefi 20-30 dakikadır. Bir rota 14-18 anlamlı karardan oluşur. Veri seti en az 28 anlatı düğümü, en az beş erişilebilir final ve en az sekiz gecikmeli sonuç içerir. İlk anlamlı seçim 45 saniye dolmadan; ilk açık karar yankısı en geç dördüncü anlatı düğümünde görünür.
 
@@ -182,11 +182,21 @@ Tekrar oynama motivasyonu gizli içerik koleksiyonundan değil, farklı bedeller
 
 Ana menü doğrudan bir bölüm başlatmaz; `Savaş Hikâyeleri` ekranı bir Avrupa haritasıdır. Her oynanabilir bölüm, geçtiği yerin gerçek enlem ve boylamında (`catalog.json` içindeki `latitude`/`longitude`) bir işaret olarak durur; işaret seçildiğinde sağdaki arşiv panosu bölümün sahne görselini, tarihini ve tek cümlelik tanıtımını gösterir, hikâye oradan başlatılır. Harita kart ızgarasının yerini aldı, çünkü antolojinin iddiası aynı savaşın farklı yerlerdeki sıradan insanlarını yan yana koymaktır; yerin kendisi bu iddianın görünür hâlidir. Hazırlanmakta olan bölümlerin haritada yeri yoktur: uydurma bir işaret, ad veya tarih yanlış beklenti yaratırdı. Yeni bir bölüm eklemek için kod değişikliği gerekmez; konumlu bir katalog girdisi, iki dilde hikâye dosyası ve sahne görselleri yeterlidir.
 
-Harita (`map_europe.png`) elle yazılmış kıyı çokgenlerinden üretilir; 11° batı–42° doğu, 35°–65° kuzey aralığını eşdikdörtgen projeksiyonla kaplar (`MapProjection`). Ayrıntı düzeyi bilinçli olarak düşüktür: bir arşiv haritasının kaba kıyı çizgisi, sınır ya da şehir adı olmadan. Sınır çizilmez, çünkü 1943'te hangi sınırın "geçerli" olduğu başlı başına bir iddiadır ve oyunun tavrı bunu söylememektir.
+Harita (`map_europe.png`) elle yazılmış kıyı çokgenlerinden üretilir; 11° batı–42° doğu, 35°–65° kuzey aralığını eşdikdörtgen projeksiyonla kaplar (`MapProjection`). 1.7'de yeniden çizildi: yarım derecelik kıyılar köşe kesme ve hafif girinti çıkıntıyla doğallaştırılır; adalar, Karadeniz, Azak, Marmara ve Ladoga, Onega, Saimaa gibi göller vardır; denizde kıyıya paralel eski usul dalga çizgileri, dağ sıralarında tarama ve yumuşak kabartma gölgesi, kaynaktan ağza kalınlaşan nehirler, beş derecelik ızgara, derece bantlı çift çerçeve ve pusula gülü bulunur. Sınır ya da şehir adı yine yoktur.
+
+**Harita masası (1.7).** Harita, masanın üstüne serilmiş bir kâğıt gibi durur ve üç katman taşır:
+
+- **İğneler.** Bölümler iğneyle tutturulmuştur; seçili iğnenin çevresinde yavaş bir nabız atar, yarım kalmış bölümün iğnesinde hardal bir ayraç vardır.
+- **İplikler.** Oyuncunun gerçekten gördüğü bölümler arası kesişmeler (§13.1) iki iğne arasında gerili kırmızı bir iplik olur; ipliğin düğümüne gelince iki bölümün birbirine ne hatırlattığı okunur. İplik yalnız görülen kesişmeden doğar; kaç iplik olabileceği hiçbir yerde yazmaz (§13.4). Hiç iplik yokken not, ipliklerin nasıl oluştuğunu söyler.
+- **Zaman şeridi.** Haritanın altında Eylül 1939'dan Mayıs 1945'e bir şerit; bölümler geçtikleri ayda (`catalog.json` içindeki `date`) durur. A/D ya da LB/RB bölümler arasında zaman sırasıyla gezer; yön tuşları haritada dolaşmaya kalır.
+
+Bölüm kartının görselinin üstünde, oyuncunun o bölümde verdiği son tanıklıktan (§13.6) ilk satır durur. Arşiv satırı metin olarak değil dizin olarak saklar; kart onu oyuncunun o anki dilinde yeniden okur.
+
+Ayrıntı düzeyi yine de bir atlas değil: bir arşiv duvarındaki haritanın okunurluğudur. Sınır çizilmez, çünkü 1943'te hangi sınırın "geçerli" olduğu başlı başına bir iddiadır ve oyunun tavrı bunu söylememektir.
 
 ## 13. Arşiv — oyunun kalıcı belleği
 
-Antoloji üç (ve ileride daha çok) bağımsız hikâyeden oluşur. Aynı savaşın farklı uçlarında geçen bu hikâyeler birbirini nedensel olarak etkileyemez: Hamburg'daki bir elektrikçi Bosna'daki bir ebenin ya da Amsterdam'daki bir öğretmenin kaderini değiştiremez. Fakat oyuncu aynı oyuncudur ve aynı türden sorularla karşılaşır — birine uzatılan defter, düşman sayılan birine yardım, rapordan saklanan bir şey. **Arşiv**, bu örüntüyü oyunun kendisine gösteren sistemdir.
+Antoloji dört (ve ileride daha çok) bağımsız hikâyeden oluşur. Aynı savaşın farklı uçlarında geçen bu hikâyeler birbirini nedensel olarak etkileyemez: Hamburg'daki bir elektrikçi Bosna'daki bir ebenin ya da Amsterdam'daki bir öğretmenin kaderini değiştiremez. Fakat oyuncu aynı oyuncudur ve aynı türden sorularla karşılaşır — birine uzatılan defter, düşman sayılan birine yardım, rapordan saklanan bir şey. **Arşiv**, bu örüntüyü oyunun kendisine gösteren sistemdir.
 
 Arşiv `ordinary-fronts-archive.json` dosyasında saklanır; oynanış kaydından ayrıdır ve yeni oyunla silinmez. Bozuk ya da eksikse oyun onsuz eksiksiz çalışır. Üç mekanik buradan beslenir:
 
@@ -201,7 +211,7 @@ Kurallar:
 - Her iki yönde de yazılır: Neretva Hamburg'u, Hamburg Neretva'yı hatırlar. Oyuncunun hangi sırayla oynadığı fark etmez.
 - Kesişme arşivsiz ortamda **kapalı-güvenlidir**: hiçbiri yanlışlıkla tetiklenmez.
 
-Mevcut içerik: Neretva'da Hamburg'a bağlı 10, Hamburg'da Neretva'ya bağlı 9 kesişme; Amsterdam'da Hamburg ve Neretva'ya bağlı 26, Hamburg ve Neretva'da Amsterdam'a bağlı üçer kesişme. Test, her kesişmenin gerçekten var olan bir bölümün gerçekten üretilen bir bayrağına bağlandığını zorunlu kılar.
+Mevcut içerik: Neretva'da Hamburg'a bağlı 10, Hamburg'da Neretva'ya bağlı 9 kesişme; Amsterdam'da Hamburg ve Neretva'ya bağlı 26, Hamburg ve Neretva'da Amsterdam'a bağlı üçer kesişme; Karelya'da öbür üç bölüme bağlı 20, her birinde Karelya'ya bağlı üçer kesişme. Test, her kesişmenin gerçekten var olan bir bölümün gerçekten üretilen bir bayrağına bağlandığını zorunlu kılar.
 
 ### 13.2 Önceki oynanış izi
 
@@ -209,11 +219,33 @@ Bir bölüm yeniden oynanırken, kayıt defteri o düğümde geçen sefer verile
 
 ### 13.3 Yapılmayanlar
 
-Seçimler isteğe bağlı bir `omission` metni taşıyabilir: bu seçim **alınmadığında** final raporuna yazılacak satır. Rapor böylece yalnız yapılanların değil, bırakılanların da kaydı olur: *"Yanmış çiftlikteki aileyi toprağa vermedin."* Yalnız ağırlığı olan seçeneklere yazılır (bölüm başına 5-7), raporda en çok dört satır gösterilir.
+Seçimler isteğe bağlı bir `omission` metni taşıyabilir: bu seçim **alınmadığında** final raporuna yazılacak satır. Satır, alınmamasını anlattığı seçeneğin üstüne yazılır; kardeş seçeneğe yazmak raporda tam tersini söyletir (1.5'te Amsterdam'da bu hata bulundu ve düzeltildi). Rapor böylece yalnız yapılanların değil, bırakılanların da kaydı olur: *"Yanmış çiftlikteki aileyi toprağa vermedin."* Yalnız ağırlığı olan seçeneklere yazılır (bölüm başına 5-7), raporda en çok dört satır gösterilir.
 
 ### 13.4 Ne değildir
 
 Arşiv bir koleksiyon listesi ya da tamamlanma sayacı değildir. Hiçbir ekranda "6 finalden 3'ünü gördün" yazmaz. Ulaşılan finaller saklanır ama gösterilmez; saklanmalarının tek nedeni ileride bir bölümün "bu oyuncu daha önce şu finali gördü" koşulunu yazabilmesidir. §8'deki taahhüt geçerlidir.
+
+### 13.5 Yol haritası (1.2)
+
+Duraklatma menüsünden ve final ekranından açılan, bölümün dallanma haritası. Soldan sağa karar sırası; perdeler arka planda soluk bantlar. Üç çizgi türü vardır: **pas renkli kalın çizgi** bu oynanışın yolu, **kâğıt renkli çizgi** önceki oynanışlarda yürünmüş yollar, **kesik çizgi ve boş halka** yürünmüş bir durağın bir adım ötesindeki yürünmemiş yol. Bir durağın üstüne gelmek ya da onu seçmek alttaki panoda yerini, tarihini ve orada verilen kararları gösterir: bu oynanışta ve son yürüyüşte.
+
+**Ne değildir.** Tamamlama listesi değildir: kaç final olduğu, yüzde, sayaç, kilit ya da soru işareti yoktur. Yürünmemiş bir yolun ne olduğu, nereye çıktığı, hangi perdeye vardığı söylenmez; yürünmemiş bir durağın ötesi hiç çizilmez; henüz varılmamış bir perdenin adı yazılmaz. Harita yalnız oyuncunun kendi yaptığını ve yapmadığını gösterir: 13.3'teki "Yapılmayanlar"ın grafik karşılığıdır. §12'deki ilke (tekrar oynamanın merakı koleksiyondan değil, bedelleri karşılaştırmaktan gelir) böylece korunur.
+
+**Yerleşim.** Bir durağın sütunu, başlangıçtan ona giden en uzun yolun karar sayısıdır; en kısa yol kullanılsaydı yeniden birleşen dallarda kenarlar geriye giderdi. Test, her bölümde her kenarın sağa gittiğini ve haritanın bir adımdan ötesini göstermediğini zorunlu kılar.
+
+**Veri.** Kayıt, bu oynanışın adımlarını (`düğüm>seçim`) sırasıyla tutar; arşiv bütün oynanışların birleşimini. 1.2'den önceki arşivlerde son oynanışın kararları yürünmüş sayılır.
+
+### 13.6 Tanıklık ve perde soruları (1.3)
+
+**Perde soruları.** Her perdenin kartında, adın altında tek bir soru durur (ör. Hamburg/Emir: *"Bir emre uymak seni koruyorsa, bedelini kim öder?"*). Soru §5'teki "duygusal soru"nun oyuncuya görünen hâlidir. Oyun soruyu sorar, cevaplamaz; cevap oyuncunun o perdede verdiği kararlardır. Sorular slogan değil, iki seçeneğin de haklı olabildiği bir gerilimin adıdır ve hepsi soru işaretiyle biter (test zorunlu kılar).
+
+**Tanıklık.** Bölümün son kararından sonra, final kaydından önce, kırk yıl sonraki bir masaya geçilir: Hamburg 1983'te bir lise öğrencisinin teybi, Saraybosna 1983'te tıp okuyan bir torunun defteri, Amsterdam 1985'te kurtuluş yıldönümünde bir sınıf. Biri başkaraktere o günleri sorar ve oyuncu ne anlatılacağını seçer: **yaptıklarını** ya da **yapmadıklarını**. Ardından birinci tekil kişiyle, bu oynanışın bayraklarına bağlı üç satır ve kipin kapanışı gelir; sonra final kaydı (başlık, paragraflar, izler).
+
+- Satırlar elle yazılır ve dosyada rota sırasıyla dizilir. Koşulu tutan satırlardan ilk, orta ve son seçilir; böylece tanıklık ilk geceden, rotanın ortasından ve bölümü bitiren karardan birer an taşır.
+- "Yaptıklarım" satırları yapılanın bedelini, "yapmadıklarım" satırları yapılmayanın gerekçesini taşır. İkisi de doğrudur ve ikisi de eksiktir. Tanıklık ile hemen ardından gelen kayıt arasındaki boşluk oyuncuya kalır: insan kendini nasıl anlatır, neyi aktarmayı seçer?
+- Tanıklık bir karar değildir: hiçbir bayrak üretmez, rotayı, finali ve arşivi değiştirmez. Kayda yalnız hangi kipte verildiği yazılır; verilmeden çıkılırsa kayıttan devam edildiğinde yeniden sorulur. Atlanabilir.
+- Test, her bölümün **bütün rotalarını** (bölüm başına 65-82 bin) yürüyerek iki kipte de en az iki satır çıktığını ve iki dilin aynı satırları aynı bayraklara bağladığını zorunlu kılar.
+- Tanıklığı veren kişi kurgusaldır ve hayattadır; bu, tarihsel bir iddia değil anlatının çerçevesidir. Üniformayla geçen yıllar (Hamburg'da askerlik finalleri) anlatılmaz, yalnız anılır: *"O yılları sormuyorsun; sorsaydın, bu kaset yetmezdi."*
 
 ## 14. Ara sahneler — metnin anlatamadığını ellerin yapması
 
@@ -259,6 +291,8 @@ Sahne biter ve oyuncunun yaptığı şey **bir iki bayrağa** çevrilir (`result
 
 **Afsluitdijk, rüzgâr (`amsterdam_1945`, `set_10_afsluitdijk`, giriş sahnesi).** BOŞLUK/D/sol tık basılı tutuldukça grup yürür. Alttaki cetvel yolun kalanını ve üç boranın yerini gösterir. Boradan hemen önce "Bora geliyor" ve ekranı süpüren rüzgâr dalgası; bora sırasında ya eğilip itersin (yavaş, sarsıntılı) ya bırakırsın ve grup sırtını rüzgâra verip çömelir. Herhangi bir borada bir saniyeden uzun bekleyen `il_wind_waited`, hep iten `il_wind_pushed`. Yaklaşık 25 saniye.
 
+**Köy santrali (`karelia_1940`, `bar_05_soitot`, karar sahnesi).** Tahta panoda iki kapak lambası aynı anda düşmüş, yanıp sönüyor; tezgâhta tek bir kablo var. A soldaki, D sağdaki lambaya döner. *Fiş:* kablonun ucu seçilen deliğin önünden sallanarak geçer; delikle üst üste geldiğinde BOŞLUK/sol tık. Erken ya da geç basmak yalnız yeniden denemektir. *Zil:* BOŞLUK/sol tık basılı tutularak kol çevrilir, halka dolar. Bu sırada öbür lamba yanıp sönmeyi sürdürür; bağlantı kurulunca bir süre daha yanar, sonra söner. Seçimin bedeli budur. Sonuçlar `il_board_first` / `il_board_second`.
+
 ## 15. Ekran akışı
 
 ```text
@@ -295,9 +329,17 @@ Gerekçesi ölçülebilir: bir rota 14-18 karardır ve gecikmeli yankılar oyunc
 
 Defter salt okunurdur: içinde seçim yapılmaz, hiçbir şey açılmaz, tamamlanma yüzdesi göstermez.
 
+### Oyun kolu ve Steam Deck (1.2)
+
+Oyun baştan sona oyun koluyla oynanır; eşleme klavyeyle aynı mantıktadır: **LB / yön tuşu sol / sol çubuk** sol seçenek, **RB / yön tuşu sağ** sağ seçenek, **A** onay ve ara sahnelerde "elinle yap", **B** geri ve ara sahneyi geç, **Menü** duraklat. Menülerde yön tuşları ve çubuk gezer, A seçer.
+
+Tuş ipuçları oyuncunun o an kullandığı cihaza göre yazılır: kola dokunulduğunda "BOŞLUK / sol tık" yerine "A düğmesi", "A / ←" yerine "LB / ←", "Esc" yerine "B" görünür ve fare imleci gizlenir; klavyeye ya da fareye dokunulduğunda geri döner. Yerelleştirme metinleri tuş adı yazmaz, yer tutucu yazar (`{LEFT}`, `{RIGHT}`, `{ACT}`, `{BACK}`, `{PAUSE}`); test, hiçbir metnin ham yer tutucu bırakmadığını ve kol modunda klavye tuşu adı geçmediğini zorunlu kılar. Kol adları Xbox düzenindedir; Steam Input, Steam Deck ve PlayStation kollarını bu düzene çevirir.
+
+Steam Deck çözünürlüğü (1280×800, 16:10) duman testinde ayrıca çalıştırılır; bütün ekranlar bu oranda yakalanır. En küçük metin bu çözünürlükte yaklaşık 9 piksel ve üstündedir.
+
 ## 16. Kayıt ve ayarlar
 
-Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. Aynı klasörde `ordinary-fronts-archive.json` (bkz. §13) ayrı durur ve yeni oyunla silinmez. Kayıt; şema sürümü, bölüm/düğüm, bayraklar, ilişkiler, görülmüş yankılar, izler ve tamamlanma durumunu içerir. Durum çubukları kaldırıldığında şema sürümü `2`'ye yükseltildi; sürüm `1` kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
+Her seçimden sonra `Application.persistentDataPath` altında otomatik kayıt alınır. **Her bölümün kendi kaydı vardır (1.6):** `save-<bölüm>.json`. Bir bölüme başlamak öbürünün ilerlemesini silmez. Ana menüdeki "Devam Et" en son oynanan bölümü açar ve adını taşır ("Devam Et · Karelya"); haritada yarım kalmış bir bölümün kartında "Kaldığın yerden devam et" önde, "Baştan başla" ikinci sıradadır. 1.5'e kadar bütün bölümler tek bir dosyayı paylaşıyordu ve oyun her açılışta ilk bölümü yüklediği için başka bir bölümün kaydına devam edilemiyordu ("kayıt uyumsuz"). Eski tek dosya ilk açılışta kendi bölümünün dosyasına taşınır; okunamıyorsa kanıt için yerinde bırakılır. Aynı klasörde `ordinary-fronts-archive.json` (bkz. §13) ayrı durur ve yeni oyunla silinmez. Kayıt; şema sürümü, bölüm/düğüm, bayraklar, ilişkiler, görülmüş yankılar, izler ve tamamlanma durumunu içerir. Durum çubukları kaldırıldığında şema sürümü `2`'ye yükseltildi; sürüm `1` kayıtları uyumsuz sayılır ve oyuncuya yeni oyun yolu sunulur. Önce geçici dosyaya yazılır, ardından asıl kayıt güvenli biçimde değiştirilir. Bozuk dosya oyunu çökertmez; kullanıcıya yeni oyun yolu sunulur.
 
 Ayarlar kalıcıdır:
 
@@ -308,6 +350,7 @@ Ayarlar kalıcıdır:
 - Tam ekran.
 - Metin boyutu: Normal/Büyük.
 - Hareket azaltma.
+- **El sahneleri: Standart / Kolay / Eller serbest (1.6).** *Kolay:* zamanlama pencereleri genişler, halka ve fiş yavaşlar, basılı tutma süreleri kısalır, kiriş daha az sallanır, karar penceresi uzar. *Eller serbest:* basılı tutma, denge ve zamanlama kendiliğinden yapılır; ipucu "Ellerin kendiliğinden çalışıyor; kararlar senin" der. **Karar anları asla kendiliğinden verilmez:** iki seçenekten biri (A/D), boranın ortasında itmeyi sürdürmek ve kayan tahtada tutmak, oyuncunun tek bir basışını bekler; basmazsa sahnenin varsayılanı (beklemek, elin açılması) gerçekleşir, tıpkı standart modda hiçbir şey yapmamak gibi. Hareket azaltma açıkken el sahneleri yine hiç oynanmaz.
 
 ## 17. Dil ve yerelleştirme
 

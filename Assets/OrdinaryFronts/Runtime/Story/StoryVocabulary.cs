@@ -31,10 +31,13 @@ namespace OrdinaryFronts
         /// <summary>Karar sahnesi: ıslak kirişte denge ve kayma anında tutmak ya da bırakmak.</summary>
         public const string InterludeKindPlank = "plank";
 
+        /// <summary>Karar sahnesi: köy santralinde iki lambadan birine fişi takıp zili çevirmek.</summary>
+        public const string InterludeKindBoard = "board";
+
         public static bool IsKnownInterludeKind(string kind)
         {
             string normalized = Normalize(kind);
-            return normalized == InterludeKindWalk || normalized == InterludeKindLamp || normalized == InterludeKindPlank;
+            return normalized == InterludeKindWalk || normalized == InterludeKindLamp || normalized == InterludeKindPlank || normalized == InterludeKindBoard;
         }
 
         /// <summary>Ara sahnenin tamamlandığını kayda yazan sonuç kimliği.</summary>

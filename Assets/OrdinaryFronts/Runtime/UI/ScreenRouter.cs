@@ -13,7 +13,9 @@ namespace OrdinaryFronts
         Settings,
         Pause,
         Journal,
+        RouteMap,
         Interlude,
+        Testimony,
         Ending,
         Error
     }

@@ -43,6 +43,8 @@ namespace OrdinaryFronts
         public bool TryContinue(out string userMessageKey)
         {
             Initialize();
+            // Her bölümün kendi kaydı vardır; devam edilen, yüklü bölümün kaydıdır.
+            saveService.ActiveStoryId = repository.Database.storyId;
             GameState loaded;
             if (!saveService.TryLoad(out loaded, out userMessageKey)) return false;
             if (loaded.storyId != repository.Database.storyId || repository.GetNode(loaded.currentNodeId) == null)
@@ -70,6 +72,7 @@ namespace OrdinaryFronts
             if (archive != null) archive.RememberChoice(State.storyId, source.id, choice.id);
             // İz, kararın alındığı düğümün bölümüyle etiketlenir; final raporu buna göre gruplar.
             State.AddTrace(source.act, choice.trace);
+            State.RecordStep(source.id, choice.id);
             State.currentNodeId = choice.nextNodeId;
             StoryNode destination = CurrentNode;
             if (destination == null) throw new InvalidOperationException("Seçimin hedef düğümü bulunamadı: " + choice.nextNodeId);
@@ -86,6 +89,55 @@ namespace OrdinaryFronts
                 choice = choice,
                 destination = destination
             };
+        }
+
+        public const string TestimonyDone = "done";
+        public const string TestimonyUndone = "undone";
+
+        /// <summary>Bölümün bir tanıklığı var ve bu oynanışta henüz verilmedi.</summary>
+        public bool TestimonyPending
+        {
+            get
+            {
+                TestimonyData testimony = Story == null ? null : Story.testimony;
+                return testimony != null && testimony.IsComplete && State != null && State.completed
+                    && string.IsNullOrEmpty(State.testimony);
+            }
+        }
+
+        /// <summary>
+        /// Tanıklığın satırları: seçilen kipin koşulu tutan satırları ve kapanış. Satırlar
+        /// bu oynanışın bayraklarına bakar; arşive değil.
+        /// </summary>
+        public List<string> BuildTestimony(bool done)
+        {
+            TestimonyData testimony = Story == null ? null : Story.testimony;
+            if (testimony == null || State == null) return new List<string>();
+            return TestimonyData.Select(done ? testimony.done : testimony.undone,
+                conditions => ConditionEvaluator.EvaluateAll(conditions, State, archive));
+        }
+
+        public void RecordTestimony(bool done)
+        {
+            if (State == null) return;
+            State.testimony = done ? TestimonyDone : TestimonyUndone;
+            saveService.Save(State);
+            TestimonyData testimony = Story == null ? null : Story.testimony;
+            if (archive != null && testimony != null)
+            {
+                List<int> picked = TestimonyData.SelectIndices(done ? testimony.done : testimony.undone,
+                    conditions => ConditionEvaluator.EvaluateAll(conditions, State, archive));
+                archive.RememberTestimony(State.storyId, State.testimony, picked.ToArray());
+            }
+        }
+
+        /// <summary>Başka bir bölümün arşivine bakan yankı: bölümler arası bir kesişme.</summary>
+        public static bool IsCrossing(EchoData echo)
+        {
+            if (echo == null || echo.conditions == null) return false;
+            for (int i = 0; i < echo.conditions.Length; i++)
+                if (echo.conditions[i] != null && StoryVocabulary.IsArchiveType(echo.conditions[i].type)) return true;
+            return false;
         }
 
         /// <summary>
@@ -124,6 +176,7 @@ namespace OrdinaryFronts
                 if (!ConditionEvaluator.EvaluateAll(echo.conditions, State, archive)) continue;
                 lines.Add(echo.text.Trim());
                 State.MarkResultSeen(echo.id);
+                if (archive != null && IsCrossing(echo)) archive.RememberCrossing(State.storyId, echo.id);
                 changed = true;
             }
             if (changed) saveService.Save(State);

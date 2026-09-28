@@ -230,7 +230,12 @@ namespace OrdinaryFronts.Tests.EditMode
         public void Omissions_AreAuthoredInBothLocalesForTheSameChoices()
         {
             string reference = LocalizationService.SupportedLocales[0];
-            foreach (string storyId in new[] { "hamburg_1943", "neretva_1943" })
+            StoryCatalog catalog = StoryCatalog.Load(reference, StreamingRoot);
+            List<string> playable = new List<string>();
+            for (int i = 0; i < catalog.entries.Length; i++)
+                if (catalog.entries[i] != null && catalog.entries[i].IsPlayable) playable.Add(catalog.entries[i].storyId);
+            Assert.That(playable.Count, Is.GreaterThanOrEqualTo(4));
+            foreach (string storyId in playable)
             {
                 StoryDatabase first = LoadStory(reference, storyId);
                 HashSet<string> authored = new HashSet<string>();

@@ -57,6 +57,726 @@
       "cold": "He wrote your name into a report; you never learned what it said."
     }
   ],
+  "acts": [
+    {
+      "name": "The Load",
+      "question": "If you cannot carry everyone, who decides whom you carry?"
+    },
+    {
+      "name": "The Fever",
+      "question": "Whom does writing the truth protect, and whom does it shut out?"
+    },
+    {
+      "name": "The Crossing",
+      "question": "What should be remembered: a number, or the names?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Sarajevo · March 1983",
+    "setting": "Forty years later. Milena Radić is seventy-four. Her granddaughter Jasna, a medical student, says she learned about the Neretva at school: the textbook has a date, a bridge and a number, and no names. Jasna opens her notebook and waits with her pen. Milena looks at her own hands.",
+    "question": "“What did you do at the bridge, Baka?”",
+    "tellDone": "Tell her what you did.",
+    "tellUndone": "Tell her what you did not do.",
+    "done": [
+      {
+        "text": "The first morning I mended a cart's axle. I chose a wheel before people. That wheel carried twenty people afterwards; still, what I remember is that I chose the wheel first.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cart_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The first morning I took the back end of a stretcher. Nobody told me to; it was free. Most things begin like that: something lies free, and you pick it up.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "carried_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the snow we did not put the stretcher down; three of us carried it in turns. Dragica was seventeen and never let go of the front. I carried it next to her, ashamed.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_stretcher",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the forest I stopped the column for half an hour; a woman was giving birth. Nobody named the child. Somewhere a man who began without a name is forty now.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "birth_halt",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At a burned farm we dug three graves. The frozen ground took an hour. Did I steal that hour from the living or give it to the dead? Still both.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "buried_dead",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I had a fire lit for the ones who got soaked at the stream. I knew it would be seen. Sometimes the price of the right thing is that others can see it too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "lit_fire",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I took the doctor's book and wrote the names every evening. When you cannot save someone, the last thing you can do is write their name correctly.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "keeps_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I wrote the typhus into the report. Once I did, the barn was divided in two; if I hadn't, more would have fallen sick. I knew both. It was still my hand on the pen.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_typhus",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I went round everyone one by one and counted the feverish; it took a day and a half. Counting looks like cold work. But every number was a hand on a forehead.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_sick",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I wrote Dragica onto the sick side myself. She was seventeen. It was the right thing. The right thing does not always console you.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_isolated",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not write Dragica onto the sick side; I kept her with me. It was against the rule. Love is sometimes a broken rule, and others pay for it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not carry out the order to move the sick out into the frost; I divided the barn from inside. People tell it as courage. It wasn't. I knew how cold it was outside, that's all.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "defied_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I carried out the order and moved the sick to the lean-to. I handed out the blankets myself. The order was his; the hands were mine.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "obeyed_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave the last morphine to the courier with the shattered leg. He was nineteen. The other one was someone's son too; I thought of that later, not that night.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_courier",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave the last morphine to the Italian prisoner. He was not one of ours. That night I could not ask whose side the pain was on.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_nello",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I went in to the doctor and wrote down everything he knew. The typhus did not pass from him to me; that was luck. What he knew passed from me to you; that was not luck.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_notes",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I cut two blankets into fourteen pieces. They warmed nobody. But no one lay there that night as if they had been left out.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "blankets_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I had the Italian put on the sledge; the column slowed. Not everyone liked carrying the enemy. That day what I had in front of me was not an enemy but a wound.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_taken",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I wrote my own fever into the book. That was the hardest line: your own name in the sick column.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "self_reported",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave the crossing order to the worst wounded. Those who could walk waited. Some grew too cold to wait.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worst_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We used the stretchers twice so that no one would be left at the top. Day broke and the path lay in the open. The second trip carried the cost of the first as well.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "two_trips",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the crossing I let a woman into the queue who was not on the list. The list was in my hands. The one who keeps the list is the only one who can break it; that is why keeping it is heavy.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "broke_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the stretcher queue I signalled for the prisoner who was not on the list. At first nobody said anything. Then everybody did.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When the plank slipped I did not let go of the stretcher. I did not choose it; my hands did. For forty years I have been thanking my hands, and I never told anyone.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "held_stretcher",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ten paces from the far bank I turned back to put the queue in order. Ten paces. Sometimes a whole life is about that long.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "turned_back",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the far bank I counted the names and wrote them down. In those two hours two people died. I wrote their names too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_names",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the far bank I did not count; I looked after the wounded. I don't know how many we were. I know who was breathing.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_wounded",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I waited for morning on the bank and queued again. We lit no fire. By morning three people were gone. I could not blame an order, because there was no order.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_morning",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left the crossing and climbed back up to the ones left behind. Eleven days. Your textbook does not have those eleven days. It doesn't need to; I know them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_back_up",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the last party we got all four stretchers across the ice. Two bearers did not make it. We paid for four with two. I did that sum so that nobody else would have to.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "all_four",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the last party I got the walkers across. Eight people lived. That day I closed the book; I never wrote anyone's name again.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_stretchers",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "The first morning I did not take the free end of the stretcher; I worked on the cart. Who carried that stretcher, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cart_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The first morning I did not mend the cart. Its load stayed where it was. Whose things were in it, I didn't ask.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "carried_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not put the badly wounded on the cart; we needed speed. I know whom I left behind. Not all their names.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "light_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the snow I stopped carrying the stretcher and we put the man on the cart. The wound in his belly could not take the jolting. I knew that.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "man_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the forest I did not stop the column. We put the woman on a stretcher and walked on. I heard later, from someone else, how the birth ended. I should have been there; I was the midwife.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "birth_moving",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We did not bury the family at the burned farm; we took the flour and walked on. Hunger was right. Being right did not make me forget those three faces in the snow.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_flour",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not let them light a fire at the stream; the planes might see it. The two bearers who got soaked could not walk the next day.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "no_fire",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not take the doctor's book. No one wrote down the names of those who died that week. They are inside the number in your textbook, but without names.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "no_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not write the typhus down the first day; I waited a day so the barn would not be broken up. How many caught it in that day, I can't know. Not knowing is a sentence too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_typhus",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not count the feverish; we went by guesswork. Guessing is fast. It is just as fast where it is wrong.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "guessed_sick",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not write Dragica onto the sick side. Thirty people were lying on the healthy side. I asked none of them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not keep Dragica with me. She did not look at me as she went over to the sick side. She was right not to.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "dragica_isolated",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not refuse the order. It was minus ten in the lean-to that night. I did not give the order; but I carried it out.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "obeyed_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not carry out the order. Bogdan put my name in a report; I never learned what he wrote. It turns out you can pay for saying no without ever knowing the price.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "defied_clearance",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not give the last morphine to the Italian. He spent that night in pain. He isn't ours, they said; I said it too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_courier",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not give the last morphine to the courier. He was nineteen and his leg was gone. I didn't know what to say to him, so I said nothing.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "morphine_nello",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go in to the doctor. The column needed me, I said. That was true. What he knew went with him; that is true too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_out",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not share the blankets out; I gave them to the two worst off. The sum was right. The other twelve in the lean-to were inside that sum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "blankets_two",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left the Italian in the barn. We put water and a blanket by him and hung a white cloth on the door so his own side would find him. Did they? I don't know. Choosing not to know was easy.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "nello_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I told no one about my own fever. I stayed on my feet and worked. How many people did I touch that week? I never asked myself that out loud. I'm asking now.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "self_hidden",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave the order to those who could walk. Those who couldn't waited. The numbers were on our side; numbers are always on the side of those who can walk.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "walkers_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I followed the order; we made one trip. The names of those left at the top were in the book. I did not close the book; I only turned that page.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "one_trip",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the crossing I did not let the woman who wasn't on the list into the queue. She looked for her own name and didn't find it. The list was correct. So was she.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "held_list",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the stretcher queue I did not send the prisoner first; I sent our own wounded. Anyone would have done the same. That ought to be a comfort.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "own_first",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When the plank slipped I let go of the stretcher. I did not choose it; my hands opened. For forty years I have been trying to forgive my hands.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "let_go",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not turn back to put the queue in order; I crossed and helped close the crossing. Those shut out behind it could be seen on the bank. I learned not to look.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "closed_crossing",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the far bank, for two hours, I did not look after the wounded; I wrote names. In those two hours two people died.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "counted_names",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the far bank I did not count. That is why the number in your book is a guess. I am one of the reasons it is incomplete.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tended_wounded",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go back to those left behind; I waited for morning and queued. There were still people at the top. I knew.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_morning",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not cross with the column. There were people on the far bank waiting for me. Whether they looked for me, I never asked.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "went_back_up",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not send the walkers first; I insisted on the four stretchers. Two bearers paid for it. I didn't ask them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "all_four",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not take the four stretchers onto the ice. Eight lived; four stayed on the bank. It may have been the best number possible, they say. I never accepted it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_stretchers",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Jasna has stopped writing. “None of this is in the book,” she says. Milena nods. “It doesn't fit in a book. See whether it fits in you.”",
+    "closeUndone": "Jasna asks why she told her what she did not do. Milena is quiet for a while. “What I did crossed to the far bank,” she says. “What I didn't is still on this side. Someone has to carry that too.”"
+  },
   "nodes": [
     {
       "id": "kol_01_yola_cikis",
@@ -317,7 +1037,7 @@
       "act": "The Load",
       "date": "20 February 1943",
       "location": "The open ridge",
-      "imageKey": "mountain_column",
+      "imageKey": "snow_ridge",
       "body": "The top of the ridge is open and the snow is hard. The road is short from here, but in daylight the column is visible for miles. The winding way below the tree line is three hours longer and covered. Rade Bogdan, the commissar at the head of the column, wants the decision made quickly: whoever falls behind meets the evening frost. What Milena has to say is about how many can still walk, and she is the only one who knows.",
       "conditions": [],
       "echoes": [
@@ -410,7 +1130,7 @@
       "act": "The Load",
       "date": "20 February 1943",
       "location": "The tree line",
-      "imageKey": "mountain_column",
+      "imageKey": "pine_forest",
       "body": "It is dark under the trees and the road is narrow. In the middle of the column a woman is giving birth; no one had allowed for that. Rade Bogdan wants the column to keep moving and the woman put on a stretcher. Milena knows the birth cannot be finished on a moving stretcher. Half an hour's halt leaves the tail of the column in the dark. Going on is also a choice, and no one says out loud what that choice costs.",
       "conditions": [],
       "echoes": [
@@ -509,7 +1229,7 @@
       "act": "The Load",
       "date": "20 February 1943",
       "location": "A burned farm",
-      "imageKey": "burned_village",
+      "imageKey": "burned_farm",
       "body": "There is a burned farm at the side of the road. Under the barn are three sacks of maize flour, and in the cellar a family; they are dead, and the snow has covered them. The column has two days' food left. Rade Bogdan says take the flour and walk. Stevan says leaving without burying them is the worst thing that can be done to what is left of this village. Three graves in frozen ground take an hour.",
       "conditions": [],
       "echoes": [
@@ -544,6 +1264,18 @@
             {
               "type": "archive",
               "key": "hamburg_1943:saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_burned_house",
+          "text": "You once burned a house with your own hands so that no one else would go in. You do not know who burned this farm; behind a burned house there is always a question.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:burned_house",
               "op": "equals",
               "boolValue": true
             }
@@ -627,7 +1359,7 @@
       "act": "The Load",
       "date": "20 February 1943",
       "location": "The stream crossing",
-      "imageKey": "mountain_column",
+      "imageKey": "stream_ford",
       "body": "The stream is not frozen and the stones are iced. The stretchers will be taken over one at a time; every crossing soaks two people from the waist down. In this weather someone who gets wet cannot walk three hours later. Dragica wants a fire on the far bank so the bearers can change their socks. A fire can be seen from up the valley. Rade Bogdan is against it; he reckons wet feet kill fewer people than aircraft do.",
       "conditions": [],
       "echoes": [
@@ -726,7 +1458,7 @@
       "act": "The Load",
       "date": "20 February 1943",
       "location": "The night halt",
-      "imageKey": "mountain_column",
+      "imageKey": "night_camp",
       "body": "The column has stopped on the sheltered face of a slope. Doctor Perić holds out a notebook to Milena: the names of the wounded, their wounds and where they came from. He has no time for it, and his hands shake. Keeping the book means an hour every evening; it means dropping out of the bearer teams. Not keeping it means that when someone in this column dies, their name is written nowhere. Perić does not press her. He only holds it out.",
       "conditions": [],
       "echoes": [
@@ -749,6 +1481,18 @@
             {
               "type": "archive",
               "key": "hamburg_1943:worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_search_desk",
+          "text": "At a station once you found lost families by striking their names from a list. This book too is kept so that one day someone can find someone.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:search_desk",
               "op": "equals",
               "boolValue": true
             }
@@ -969,7 +1713,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "Inside the barn",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "The barn has been divided in two. No one who goes into the sick half comes out; when the column moves, that half either comes by cart or does not come. Dragica's fever started this morning. She did not say so; Milena saw it in her eyes. Writing her into the sick half means losing another bearer. Not writing her means putting the thirty people on the healthy side at risk.",
       "conditions": [],
       "echoes": [],
@@ -1049,7 +1793,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "Inside the barn",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "There is no division in the barn; the sick and the sound lie on the same straw. When Rade Bogdan learns of it he orders the barn cleared and the sick moved to the open lean-to outside. Outside it is minus ten at night. Perić is in no state to argue; he has not been able to stand for two days. The one who will carry out the order is Milena, because the book and the barn are both hers.",
       "conditions": [],
       "echoes": [],
@@ -1129,7 +1873,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "The dressing station",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "The column has six ampoules of morphine left and no more coming. There are two claimants: a courier of nineteen whose leg is shattered below the knee and who will live if he lasts four days; and Nello, an Italian private taken prisoner at Prozor, wounded in the chest, with nobody able to say how long he has. Perić cannot decide. Milena has the book, and both names are written in it.",
       "conditions": [],
       "echoes": [
@@ -1228,7 +1972,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "At the well",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_night",
       "body": "The only well is fifty paces from the barn and there is one bucket. The sick side and the sound side drink from the same bucket; typhus travels that way too. There is no second bucket, but Stevan can give up the cart's water barrel; then the cart cannot carry water on the road and the column goes dry as far as the Neretva. Making water from snow wants fuel, and there is no fuel.",
       "conditions": [],
       "echoes": [
@@ -1333,7 +2077,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "The barn at night",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_interior",
       "body": "Perić's fever has reached forty. The column's only doctor is lying on the sick side, and it would be a surprise if he saw the morning. To go in to him is to put your hands and face in the same air. To stay out is for no one to know which drug is where, or the catch on the surgical bag. Nobody else knows it, and he can only tell it while he can still speak.",
       "conditions": [],
       "echoes": [],
@@ -1402,7 +2146,7 @@
       "act": "The Fever",
       "date": "27 February 1943",
       "location": "The lean-to",
-      "imageKey": "typhus_barn",
+      "imageKey": "barn_night",
       "body": "Fourteen people are lying in the lean-to and there are two blankets. Milena gave the blankets to the two worst; both came through to morning, and one of the others did not. Tonight she has to make the same arithmetic again. Stevan suggests cutting the blankets into fourteen pieces; none of them would warm anyone, but everyone would get something. That is not arithmetic. It is a choice.",
       "conditions": [],
       "echoes": [
@@ -1449,6 +2193,18 @@
             {
               "type": "archive",
               "key": "amsterdam_1945:shared_street",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_stove",
+          "text": "At a school once you gave the place by the stove to an eighty-year-old woman; your father lay by the door. Here what must be shared out is two blankets.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:gave_stove_place",
               "op": "equals",
               "boolValue": true
             }
@@ -1526,7 +2282,7 @@
       "date": "27 February 1943",
       "location": "The barn yard",
       "imageKey": "typhus_barn",
-      "body": "Nello's case is clear: he cannot be moved. The column goes down to the Neretva in two days and there are no stretchers for prisoners. Rade Bogdan says leave him; a column that cannot carry its own wounded cannot defend carrying an enemy soldier. Stevan says he could take the man on a sledge lashed behind the cart. The sledge cuts the cart's pace by a third.",
+      "body": "Nello's case is clear: he cannot walk with the column. The column goes down to the Neretva in two days and there are no stretchers for prisoners. Rade Bogdan says to leave him in the barn: his own side is two days behind the column and will find him; a column that cannot carry its own wounded cannot carry an enemy soldier. Stevan says he could take the man on a sledge lashed behind the cart; the sledge cuts the cart's pace by a third. Nello does not understand what is being said. He watches their faces.",
       "conditions": [],
       "echoes": [
         {
@@ -1604,8 +2360,8 @@
         },
         {
           "id": "tif_10_b",
-          "text": "Leave Nello behind.",
-          "trace": "You left the Italian prisoner at the barn.",
+          "text": "Leave Nello in the barn with water and a blanket.",
+          "trace": "You left the Italian prisoner in the barn with water and a blanket, where his own side would find him.",
           "nextNodeId": "tif_11_emir_geldi",
           "conditions": [],
           "effects": [
@@ -1852,7 +2608,7 @@
         },
         {
           "id": "echo_ner_nello",
-          "text": "The man on the sledge does not fit the path; there is no way to carry him down from here.",
+          "text": "Nello's sledge will not fit the path. Stevan leaves him at the top of the canyon, wrapped in his blanket, beside the road his own side will come down.",
           "conditions": [
             {
               "type": "echo",
@@ -2143,7 +2899,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The near bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "There is a queue at the crossing and the queue is not moving. Something is blocked on the far side and no one knows what. Among those waiting, two stretcher bearers are talking about setting down the poles and going. Milena cannot stop them, but two bearers are two stretchers. Going to the head of the queue to ask why means losing your place, and a lost place is not got back.",
       "conditions": [],
       "echoes": [
@@ -2330,7 +3086,7 @@
       "date": "6/7 March 1943",
       "location": "The stretcher queue",
       "imageKey": "broken_bridge",
-      "body": "The stretchers cross one at a time and each crossing takes two minutes. Nello is on the next stretcher; his name is not on the list and no one wants to send him over. On the stretcher behind him is one of the column's own wounded. Milena has the book and the book sets the order. The man waiting at the far end of the crossing will take whichever stretcher Milena signals for.",
+      "body": "The stretchers cross one at a time and each crossing takes two minutes. On the next stretcher lies an Italian taken prisoner at Prozor; his name is not on the list and no one speaks up for him. On the stretcher behind him is one of the column's own wounded. Milena has the book and the book sets the order. The man waiting at the far end will take whichever stretcher Milena signals for. The prisoner does not know her language; he knows what a signal means.",
       "conditions": [],
       "echoes": [
         {
@@ -2395,7 +3151,7 @@
         },
         {
           "id": "ner_14_d",
-          "text": "Signal for Nello's stretcher.",
+          "text": "Signal for the prisoner's stretcher.",
           "trace": "You signalled for the prisoner's stretcher, though he was not on the list.",
           "nextNodeId": "ner_15_kayan_tahta",
           "conditions": [],
@@ -2568,7 +3324,7 @@
         },
         {
           "id": "echo_ner_nfirst",
-          "text": "Because you sent Nello first, the queue no longer recognises the queue.",
+          "text": "Because you sent the prisoner first, the queue no longer recognises the queue.",
           "conditions": [
             {
               "type": "echo",
@@ -2649,7 +3405,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The far bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "On the far bank the column is gathering again. No one knows how many they are; there is no one to count. Two tasks stand in front of Milena: to count the names and to tend the wounded. She cannot do both, because the column marches in two hours. Counting makes permanent who crossed and who did not. Tending may keep a few people who are breathing now breathing this evening as well.",
       "conditions": [],
       "echoes": [
@@ -2766,7 +3522,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The near bank at night",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "Milena did not cross. The crossing closed at dusk and those on the bank made a camp for the night; no fire, because a fire is visible. It is possible to wait until morning and take a place in the queue again. It is also possible to climb back up the canyon to what the column left behind; there are still living people up there and no one left to look after them. The two do not lead the same way.",
       "conditions": [],
       "echoes": [
@@ -2877,7 +3633,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The near bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "The queue came right and the crossing worked through the night. The last party is Milena's. Across the water the column has long since gathered; here there are twelve people and four stretchers. The boards have iced; a night crossing takes twice as long as a day one. Rade Bogdan is shouting from the far side: now or never. Taking four stretchers over the ice means putting all twelve at risk.",
       "conditions": [],
       "echoes": [
@@ -2983,7 +3739,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The far bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3009,7 +3765,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The far bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3033,7 +3789,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The near bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "bank_night",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3068,7 +3824,7 @@
         "title": "Those Left Behind",
         "paragraphs": [
           "Milena did not cross. She climbed back up the canyon and found twenty-eight people where the column had left them; nineteen were still alive. She withdrew with them to a shepherd's hut and stayed there eleven days.",
-          "At the end of eleven days there were nine. A patrol found them; Milena never said which side the patrol belonged to. Seven of the nine lived to see the end of the war.",
+          "At the end of eleven days there were nine. On the twelfth day a shepherd from the village below found the hut; the next morning the village women carried up bread and clean cloth. Nobody asked them which side they were on. Seven of the nine lived to see the end of the war.",
           "The column crossed, the front moved south, the course of the war did not change. The only reason seven of the twenty-eight left at the top were alive is that someone turned back ten paces from the crossing."
         ],
         "traceFallbacks": [
@@ -3083,7 +3839,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The far bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3109,7 +3865,7 @@
       "act": "The Crossing",
       "date": "6/7 March 1943",
       "location": "The far bank",
-      "imageKey": "broken_bridge",
+      "imageKey": "far_bank",
       "body": "",
       "conditions": [],
       "echoes": [],
@@ -3118,7 +3874,7 @@
         "id": "son_biten_defter",
         "title": "The Closed Book",
         "paragraphs": [
-          "The eight who could walk crossed. Four stretchers stayed on the bank. The patrol that looked there in the morning reported finding all four; it also reported that no one in them was alive.",
+          "The eight who could walk crossed. Four stretchers stayed on the bank. In the morning the bearers who rebuilt the crossing found all four still there; the night frost had not left any of them to see the morning.",
           "Milena closed the book that day and never opened it again. The column marched south, she marched with it, the war lasted two more years, and in those two years she did not write down a single name.",
           "Eight people lived. Eight lived while four died, and that may well have been the best number possible on the bank that night. Milena never accepted it."
         ],

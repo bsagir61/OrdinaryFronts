@@ -22,10 +22,34 @@ namespace OrdinaryFronts
         public const string StorySelectLocked = "storySelect.locked";
         public const string StorySelectUnknown = "storySelect.unknown";
         public const string StorySelectBegin = "storySelect.begin";
+        public const string StorySelectContinue = "storySelect.continue";
+        public const string StorySelectRestart = "storySelect.restart";
+        public const string MapThreadsTitle = "map.threadsTitle";
+        public const string MapThreadsEmpty = "map.threadsEmpty";
+        public const string MapThreadsHint = "map.threadsHint";
+        public const string MapTimelineHintKeys = "map.timelineHintKeys";
+        public const string MapTimelineHintPad = "map.timelineHintPad";
+        public const string MapLastTestimony = "map.lastTestimony";
         public const string ActLabel = "act.label";
         public const string MenuTagline = "menu.tagline";
         public const string EndingStamp = "ending.stamp";
         public const string InterludeSkipHint = "interlude.skipHint";
+        public const string GlyphKeyAction = "glyph.key.action";
+        public const string GlyphPadAction = "glyph.pad.action";
+        public const string GlyphPadPause = "glyph.pad.pause";
+        public const string RouteOpen = "route.open";
+        public const string RouteTitle = "route.title";
+        public const string RouteLegendCurrent = "route.legend.current";
+        public const string RouteLegendWalked = "route.legend.walked";
+        public const string RouteLegendUntaken = "route.legend.untaken";
+        public const string RouteUntaken = "route.untaken";
+        public const string RouteThisRun = "route.thisRun";
+        public const string RouteLastRun = "route.lastRun";
+        public const string RouteEndingReached = "route.endingReached";
+        public const string RouteHere = "route.here";
+        public const string RouteHint = "route.hint";
+        public const string TestimonyContinue = "testimony.continue";
+        public const string TestimonySkipHint = "testimony.skipHint";
         public const string IlChooseHint = "il.chooseHint";
         public const string IlWalkTitle = "il.walk.title";
         public const string IlWalkHow = "il.walk.how";
@@ -52,6 +76,21 @@ namespace OrdinaryFronts
         public const string IlHoldHint = "il.holdHint";
         public const string IlHeld = "il.held";
         public const string IlLetGo = "il.letGo";
+        public const string IlAutoHint = "il.autoHint";
+        public const string IlHoldTapHint = "il.holdTapHint";
+        public const string IlGustTap = "il.gustTap";
+        public const string SettingsHandScenes = "settings.handScenes";
+        public const string SettingsHandStandard = "settings.handStandard";
+        public const string SettingsHandGentle = "settings.handGentle";
+        public const string SettingsHandFree = "settings.handFree";
+        public const string IlBoardTitle = "il.board.title";
+        public const string IlBoardHow = "il.board.how";
+        public const string IlPlugHint = "il.plugHint";
+        public const string IlCrankHint = "il.crankHint";
+        public const string IlPlugged = "il.plugged";
+        public const string IlBoardMiss = "il.boardMiss";
+        public const string IlBoardOther = "il.boardOther";
+        public const string InterludeBoardDone = "interlude.boardDone";
         public const string InterludeChoiceHint = "interlude.choiceHint";
         public const string InterludeLampLit = "interlude.lampLit";
         public const string InterludeStairsDone = "interlude.stairsDone";
@@ -110,10 +149,11 @@ namespace OrdinaryFronts
             return new[]
             {
                 MenuNewGame, MenuContinue, MenuSettings, MenuExit,
-                StorySelectTitle, StorySelectIntro, StorySelectLocked, StorySelectUnknown, StorySelectBegin,
+                StorySelectTitle, StorySelectIntro, StorySelectLocked, StorySelectUnknown, StorySelectBegin, StorySelectContinue, StorySelectRestart, MapThreadsTitle, MapThreadsEmpty, MapThreadsHint, MapTimelineHintKeys, MapTimelineHintPad, MapLastTestimony,
                 IlChooseHint, IlWalkTitle, IlWalkHow, IlWalkHint, IlGustWarn, IlGust, IlWalkPushed, IlWalkWaited, IlLampTitle, IlLampHow, IlWireHint, IlSparkWarn, IlSparkJolt, IlSparkPassed, IlGuideHint, IlCaught, IlEarly, IlLate, IlPlankTitle, IlPlankHow, IlBalanceHint, IlStumble, IlSlip, IlHoldHint, IlHeld, IlLetGo,
+                GlyphKeyAction, GlyphPadAction, GlyphPadPause, RouteOpen, RouteTitle, RouteLegendCurrent, RouteLegendWalked, RouteLegendUntaken, RouteUntaken, RouteThisRun, RouteLastRun, RouteEndingReached, RouteHere, RouteHint, TestimonyContinue, TestimonySkipHint,
                 InterludeSkipHint, InterludeChoiceHint, ActLabel, MenuTagline, EndingStamp,
-                InterludeLampLit, InterludeStairsDone,
+                InterludeLampLit, InterludeStairsDone, IlAutoHint, IlHoldTapHint, IlGustTap, SettingsHandScenes, SettingsHandStandard, SettingsHandGentle, SettingsHandFree, IlBoardTitle, IlBoardHow, IlPlugHint, IlCrankHint, IlPlugged, IlBoardMiss, IlBoardOther, InterludeBoardDone,
                 GameplayPauseHint, GameplayNoChoice, EchoPrefix,
                 IntroSkipHint,
                 SettingsTitle, SettingsMasterVolume, SettingsAmbientVolume, SettingsEffectsVolume,

@@ -57,6 +57,429 @@
       "cold": "Aranızda o yazdan kalan bir sessizlik var."
     }
   ],
+  "acts": [
+    {
+      "name": "Sirenler",
+      "question": "Tehlike en yakındayken insan kime karşı sorumludur?"
+    },
+    {
+      "name": "Kül",
+      "question": "Aramak, yardım etmek ve kendini korumak aynı anda olmuyorsa, ne bırakılır?"
+    },
+    {
+      "name": "Emir",
+      "question": "Bir emre uymak seni koruyorsa, bedelini kim öder?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Hamburg · Kasım 1983",
+    "setting": "Kırk yıl sonra. Bir lise öğrencisi tarih ödevi için o yazı yaşamış insanları dinliyor. Teybi Matthias Krüger'in mutfak masasına koyuyor; kırmızı ışık yanıyor. Matthias altmış dört yaşında. Pencerenin dışında tersanenin vinçleri hâlâ çalışıyor.",
+    "question": "“O yaz siz ne yaptınız?”",
+    "tellDone": "Yaptıklarını anlat.",
+    "tellUndone": "Yapmadıklarını anlat.",
+    "done": [
+      {
+        "text": "İlk gece şalteri kapattım, yangın çıkmasın diye. O iş dosyama girdi ve beni yıllarca korudu. Bir makineyi koruduğum için korundum; bunu hâlâ tuhaf buluyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sirenler başlayınca Olek'le çıktım. Kahramanlık değildi; kapıya aynı anda yürüdük, o kadar. Ama o gece onun sığınağının benimkinden ayrı olduğunu ilk kez gördüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in defterini mühürlü dolaptan çıkardım. Anahtar bendeydi. Bende olması benim bir erdemim değildi; onun olmaması da onun bir kusuru değildi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_saved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Servis geçidinde sıkışmış bir kapıyı levyeyle açtım; arkasında üç işçi vardı. Levye eğildi. Tersane levyenin hesabını sordu. İşçilerin hesabını soran olmadı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "west_door_opened",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınağın lambasını onardım. Işık yanınca insanların yüzünü gördüm. Bazen keşke görmeseydim diyorum; sonra görmemenin daha kötü olduğunu hatırlıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shelter_light_fixed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karanlıkta insanları elinden tutup merdivenden indirdim. Hiçbirinin yüzünü görmedim. Onları hatırlamamın tek yolu ellerim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stairs_guided",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınakta ekmeğimi paylaştım. Ruth için almıştım. Ona bunu hiç söylemedim; söylesem ne derdi, biliyorum, ve o yüzden söylemedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_shelter_food",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Açılmış bir kilerdeki konserveleri tek tek saydık, bir not bıraktık. Yangının ortasında sayım yapmak gülünç gelebilir. Ama sayılmayan şey, sahibinden bir kez daha alınmış olur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_logged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tersane kartımı gösterip bir Polonyalı kadının adını kayda yazdırdım. O masada kartım benim sesimden daha çok konuşuyordu. Adı bir satır oldu. Bir satır özgürlük değildir; ama hiç yoktan iyidir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bir sabah Ruth'u aramayı bırakıp Olek'le kayıt deposuna gittim. Ruth bunu biliyor. Beni affetti mi, bilmiyorum. Ben de sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "olek_archive_help",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bir okulun jeneratörünü çalıştırdım. Elektrikçiydim, elimden gelen buydu. Işık yanınca herkes bir an elektrikçiye bakar, sonra unutur. Doğrusu da budur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_generator_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İstasyonda çağrı kâğıdımı açıkça masaya koydum. Dürüstlük müydü, korku mu? O gün ikisi aynı yüzü taşıyordu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_disclosed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in adı düzeltilmeden o beyanı imzalamadım. Bir gün bekledim, o kadar. O gün onun adı benim imzamla bir listeye girmedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_delayed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ertelemeyi bütün şartlarıyla imzaladım. Dört hafta boyunca yoklama listesi her sabah masamdan geçti. Hiçbir adı ben yazmadım. Ama o liste benim masamdan geçti.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Personel odasında bir satırı imzalamadım: iş arkadaşlarımın adlarını bildirmeyi. Bunu cesaret sanma. Elim gitmedi, o kadar. Cesaret, ertesi sabah o masaya yeniden oturmaktı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'la trene bindim. Şehir arkamızda kaldıkça içim rahatladı. O rahatlamayı hâlâ utançla hatırlarım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'u trene ben bindirdim. El sallamadık. Birbirimize el sallayacak kadar emin değildik ne olacağından.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Süresi dolmadan şubeye gittim. Sonra iki yıl üniforma giydim. O yılları sormuyorsun; sorsaydın, bu kaset yetmezdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Elsbeth'in ekibine yazıldım, süre istedim. Birkaç gün kazandım ve o günlerde bir okulun ışıklarını yaktım. Kazandığım zamanı kendime harcamadım. Bununla övünmüyorum; yalnızca biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "İlk sirende Olek'le çıkmadım; şalterin başında kaldım. O gece onun hangi bodruma indiğini bilmiyordum. Sormak aklıma gelmedi. Sormamak da bir şeydi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İlk gece şalteri kapatmadan çıktım. O gece atölyede ne olduğunu hiç sormadım. Sormamayı seçtim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in defterini dolapta bıraktım. Vakit yoktu, doğru. Ama vakit hep o anda yoktur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Servis geçidinde sıkışmış kapıyı zorlamadım; aletlerimi korudum, tünelden geçtim. Kapının arkasında üç işçi vardı. Onları Olek çıkardı, ben değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tools_preserved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınakta ekmeğimi paylaşmadım. Ruth içindi. Yanımdaki çocuğun kupası boştu. O kupanın rengini hâlâ hatırlıyorum: mavi emaye.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_family_supplies",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kayıt masasında Olek'in yanında durmadım; önce kendi kardeşimi arattım. Kimse beni suçlamadı. Suçlanmamak her zaman haklı olmak demek değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_registry_clue",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kayıt masasında önce Ruth'u sormadım. Başkasının adını yazdırdım. O sabah kardeşimin nerede olduğunu bilmiyordum ve bir yabancının adını öne koydum. Bugün olsa ne yapardım, bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kilerden aldıklarımı yazmadım. Elsbeth eksik sayımın altına kendi adını yazdı. Bunu yıllar sonra öğrendim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_unlogged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Köprüde Olek'le depoya gitmedim. Kartımı kendime sakladım. O kart bir kapıyı açardı; ben o kapıyı kendime ayırdım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "work_card_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İstasyonda çağrı zarfını göstermedim. Yalan söylemedim; yalnızca söylemedim. İkisinin farkını o gün öğrendiğimi sandım. Hâlâ emin değilim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_concealed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in adı eksik listesindeydi ve ben nerede olduğunu biliyordum. Beyanı olduğu gibi imzaladım. Adını ben yazmadım. Ama silmedim de.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_signed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bildirme şartını reddetmedim. Kimseyi bildirmek zorunda kalmadım; şans eseri. Şansın ahlakı olmaz.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emirlerin hepsine karşı çıkmadım, yalnızca bir satıra. Geri kalan her şeyi yaptım. Tersane benim ellerimle çalıştı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kalmadım. Olek kaldı, Elsbeth kaldı. Ben bir trene bindim, çünkü bir kâğıt bana izin veriyordu. Onların öyle bir kâğıdı yoktu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'la gitmedim. Emri çözmek için kaldım, dedim. Belki yalnızca gitmekten korktum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Çağrıdan kaçmadım. Başka bir yol var mıydı, bilmiyorum. Aramadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Şubeye gitmedim, süre istedim. Süre kazandım ama karar vermedim. Kırk yıldır o kararı veriyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Öğrenci teybi kapatmadan önce bir şey daha soruyor: “Yeterli miydi?” Matthias cevap vermiyor. Kaset bir süre boş dönüyor; kırmızı ışık yanık kalıyor.",
+    "closeUndone": "Öğrenci bunları neden anlattığını soruyor. “Yaptıklarımı herkes anlatabilir,” diyor Matthias. “Yapmadıklarımı benden başka bilen yok.”"
+  },
   "nodes": [
     {
       "id": "sir_01_vardiya_sonu",
@@ -64,7 +487,7 @@
       "date": "24/25 Temmuz 1943 gecesi",
       "location": "Liman tersanesi",
       "imageKey": "shipyard_evening",
-      "body": "Matthias Krüger, akşam vardiyasının son kontrolünü bitirirken limanın üzerinde sirenler yükselir. Vinçlerin kolları karanlıkta donmuş gibidir; atölye lambaları birer birer söner. Ustabaşı Otto Brehm, ana şalterin açık kalmasının yangın çıkarabileceğini söyler. Kapıda bekleyen Polonyalı zorunlu işçi Olek Nowak ise işçilere ayrılan sığınağın erken kilitlenmesinden kaygılıdır. Matthias'ın bakım elektrikçisi kartı bazı kapıları açar, fakat siren sürerken her dakika başka bir kapıyı kapatabilir.",
+      "body": "Matthias Krüger akşam vardiyasının son kontrolünü bitirirken limanın üzerinde sirenler yükselir. Vinçlerin kolları karanlıkta donmuş gibidir; atölye lambaları birer birer söner. Ustabaşı Otto Brehm, ana şalter açık kalırsa yangın çıkabileceğini söyler. Kapıda Polonyalı zorunlu işçi Olek Nowak bekler; işçilere ayrılan sığınağın erken kilitlenmesinden kaygılıdır. Matthias'ın cebindeki kartta tek bir damga vardır: vazgeçilmez. Siren sürerken o kelimenin kimin için, neye karşı geçerli olduğunu öğrenecektir.",
       "conditions": [],
       "echoes": [],
       "choices": [
@@ -432,7 +855,7 @@
       "date": "25 Temmuz 1943, gece yarısından sonra",
       "location": "Kanal kenarı sığınağı",
       "imageKey": "shelter_stairs",
-      "body": "İlk uzun sarsıntıdan sonra bodrumda yalnızca boruların tıkırtısı duyulur. Hava sıcak, sıva kokusu keskindir. Elsbeth isimleri kâğıt parçalarına yazarken bir kadın susayan çocuğuna boş bir kupa uzatır. Matthias'ın çantasında yarım matara ile Ruth için vardiya çıkışında aldığı küçük ekmek paketi vardır. Dışarı çıkmanın ne zaman mümkün olacağı bilinmez. Paylaşmak içerideki bekleyişi kolaylaştırabilir; saklamak ise sabah aile ararken ona hareket alanı bırakacaktır.",
+      "body": "İlk uzun sarsıntıdan sonra bodrumda yalnızca boruların tıkırtısı duyulur. Hava sıcak, sıva kokusu keskindir. Elsbeth isimleri kâğıt parçalarına yazarken bir kadın susayan çocuğuna boş bir kupa uzatır. Matthias'ın çantasında yarım matara ile Ruth için vardiya çıkışında aldığı küçük ekmek paketi vardır. Paketi bir kardeş için almıştı; kupayı tutan çocuk da birinin kardeşidir. Dışarı çıkmanın ne zaman mümkün olacağını kimse bilmez. Paylaşmak buradaki bekleyişi kolaylaştırır; saklamak sabah Ruth'u ararken ona hareket alanı bırakır.",
       "conditions": [],
       "echoes": [
         {
@@ -659,7 +1082,7 @@
       "date": "25 Temmuz 1943, 07.35",
       "location": "Geçici yardım masası",
       "imageKey": "aid_registry",
-      "body": "Okulun girişinde masa yerine iki kapı kanadı kullanılmıştır. Kâğıtlar taşlarla tutulur; görevliler adres, yaralanma ve gidilen yer bilgilerini ayrı listelere geçirir. Olek, Irena Sawicka'nın adını yazdırmaya çalışmaktadır. Görevli, zorunlu işçiler için başka kayıt tutulduğunu söyleyip satırı boş bırakır. Olek adın doğru masaya ulaşmasını, Matthias ise Ruth'un izini kaybetmemeyi ister. Tersane kartı görevlinin dikkatini çekebilir, ama Matthias'ın burada bulunduğunu da resmî bir kayda bağlayacaktır.",
+      "body": "Okulun girişinde masa yerine iki kapı kanadı kullanılmıştır. Kâğıtlar taşlarla tutulur; görevliler adres, yaralanma ve gidilen yer bilgilerini ayrı listelere geçirir. Olek, Irena Sawicka'nın adını yazdırmaya çalışmaktadır. Görevli, zorunlu işçiler için başka kayıt tutulduğunu söyleyip satırı boş bırakır. Kimse bir şey yapmış değildir; satır yalnızca boştur. Olek adın doğru masaya ulaşmasını, Matthias ise Ruth'un izini kaybetmemeyi ister. Tersane kartı görevlinin dikkatini çekebilir, ama Matthias'ın burada bulunduğunu da resmî bir kayda bağlayacaktır.",
       "conditions": [],
       "echoes": [
         {
@@ -772,7 +1195,20 @@
       "imageKey": "bombed_street",
       "body": "Ruth'un apartmanının ön cephesi ayaktadır, fakat merdiven boşluğu kullanılamaz. Arka avluda Elsbeth komşuların adlarını toplar. Kapı yanında yağmurun incelttiği tebeşir yazısında yalnızca “R.K. — Okul 17” okunur. Yan binanın kileri açılmış; içeride konserve ve sabun vardır. Elsbeth, malzemenin sahipleri bulunana kadar sayılıp tutanağa geçirilmesini ister. Okula götürmek için hemen birkaç parça almak daha hızlıdır, ama belgesiz malzeme taşıyanların çevirmede sorgulandığını da ekler.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_kar_left_key",
+          "text": "Bir evin anahtarını kapıda bırakıp masaya bir yabancı için not yazmıştın. Bu kapının yanında da birinin başkası için yazdığı tebeşir izi var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "ash_06_avlu_a",
@@ -1840,6 +2276,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_boarded",
+          "text": "Bir yük vagonunda babanla dört gün, konuşmadan yol gitmiştin. Bir peron insanı bir yere götürür; bir yerden de koparır.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:boarded_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -1899,7 +2347,7 @@
       "date": "27 Temmuz 1943, 08.00",
       "location": "Tersane şalter evi",
       "imageKey": "shipyard_evening",
-      "body": "Şalter evindeki panolar çalışır durumdadır, fakat bazı kablolar ısıdan çatlamıştır. Brehm, Matthias'ın önüne gerekli işçi beyanını koyar. İmza, geçici erteleme için güçlü bir dayanak sağlayacak; aynı zamanda izinsiz ayrılan işçileri bildirme yükümlülüğünü de kabul ettirecektir. Yan masadaki eksik listesinde Olek'in adı vardır, oysa Matthias onun kayıt düzeltmek için nerede olduğunu bilir. Beyanı olduğu gibi imzalamak kendi dosyasını korur. Liste düzeltilmeden imzalamamak ise erteleme görüşmesini belirsizleştirir.",
+      "body": "Şalter evindeki panolar çalışır durumdadır, fakat bazı kablolar ısıdan çatlamıştır. Brehm, Matthias'ın önüne gerekli işçi beyanını koyar. İmza, geçici erteleme için güçlü bir dayanak olacak; aynı zamanda izinsiz ayrılan işçileri bildirme yükümlülüğünü de kabul ettirecektir. Yan masadaki eksik listesinde Olek'in adı vardır, oysa Matthias onun nerede ve neden olduğunu bilir. Bir adı listeye yazmak için kalem gerekir; orada kalması için hiçbir şey yapmamak yeter. Beyanı olduğu gibi imzalamak kendi dosyasını korur. Liste düzeltilmeden imzalamamak erteleme görüşmesini belirsizleştirir.",
       "conditions": [],
       "echoes": [
         {
@@ -1921,6 +2369,18 @@
             {
               "type": "flag",
               "key": "tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_kept_ristola",
+          "text": "Bir santralde, bir ailenin kalma kararını kimseye söylememiştin. Bir listedeki adı silmemek de bir susma biçimi; hangi susmanın kimi koruduğunu seçmek gerekir.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:kept_ristola",
               "op": "equals",
               "boolValue": true
             }
@@ -2063,7 +2523,7 @@
       "date": "27 Temmuz 1943, 10.25",
       "location": "Tersane personel odası",
       "imageKey": "harbor_dawn",
-      "body": "Personel odasında bir memur Brehm'in yazısını ve askerlik çağrısını okur. Matthias'a dört haftalık geçici erteleme önerilir; karşılığında gece bakım vardiyasına dönecek ve işe gelmeyenleri aynı gün bildirecektir. Brehm bunun tek kesin yol olduğunu söyler. Matthias çalışma koşulunu kabul edebilir, fakat isim bildirme yükümlülüğünü de üstlenmiş olur. Ya da bakım görevini kabul edip çalışanlar hakkında rapor vermeyeceğini söyleyebilir; bu durumda erteleme kâğıdı verilebilir, ama dosyasına itaatsizlik notu düşülmesi muhtemeldir.",
+      "body": "Personel odasında bir memur Brehm'in yazısını ve askerlik çağrısını okur. Matthias'a dört haftalık geçici erteleme önerilir; karşılığında gece bakım vardiyasına dönecek ve işe gelmeyenleri aynı gün bildirecektir. Brehm bunun tek kesin yol olduğunu söyler. Memur kalemi uzatırken sesini değiştirmez; onun için bu bir kötülük değil, bir formdur. Matthias çalışma koşulunu kabul edebilir ve isim bildirme yükümlülüğünü de üstlenir. Ya da bakım görevini kabul edip çalışanlar hakkında rapor vermeyeceğini söyleyebilir; erteleme yine verilebilir, ama dosyasına itaatsizlik notu düşülmesi muhtemeldir.",
       "conditions": [],
       "echoes": [
         {
@@ -2261,7 +2721,7 @@
         "paragraphs": [
           "Personel odasından çıkan erteleme belgesi Matthias'ı cepheye göndermedi; yalnızca kararı dört hafta öteledi. Gece vardiyasına döndü. Limandaki onarımlar sürerken yeni saldırıların ve emirlerin akışı da sürdü. Brehm onu güvenilir bir elektrikçi olarak tuttu, fakat yoklama listeleri artık her sabah Matthias'ın masasından geçiyordu.",
           "Ruth tahliye listesinde kaldı ve şehir dışına çıktı. Mektupları düzensiz ulaştı. Olek, Irena'nın başka bir çalışma ekibine sevk edildiğini doğruladı; bu bilgi özgürlük getirmedi, yalnızca kaybolmuş bir adı yeniden görünür kıldı. Matthias'ın belgesi bir zafer değil, rejimin ihtiyaç duyduğu emeğe bağlanmış geçici bir soluklanmaydı.",
-          "Hamburg'un tarihî yıkımı değişmedi. Matthias, dört haftanın sonunda aynı soruların yeniden geleceğini bilerek şalter evinin anahtarını cebinde taşıdı."
+          "Hamburg'un tarihî yıkımı değişmedi. Matthias şalter evinin anahtarını cebinde taşıdı. Vazgeçilmez olmak, bir makinenin onu bırakmaması demekti; dört haftanın sonunda aynı sorular yeniden geldi ve bu kez cevabı daha iyi bildiği için vermesi daha zor oldu."
         ],
         "traceFallbacks": [
           "Tersanedeki işçi ertelemesini korumayı seçtin.",

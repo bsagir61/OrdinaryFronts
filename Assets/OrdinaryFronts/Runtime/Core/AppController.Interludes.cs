@@ -131,6 +131,7 @@ namespace OrdinaryFronts
                 case StoryVocabulary.InterludeKindWalk: return new WalkInterlude(this, node);
                 case StoryVocabulary.InterludeKindLamp: return new LampInterlude(this, node);
                 case StoryVocabulary.InterludeKindPlank: return new PlankInterlude(this, node);
+                case StoryVocabulary.InterludeKindBoard: return new BoardInterlude(this, node);
                 default: return null;
             }
         }
@@ -144,8 +145,8 @@ namespace OrdinaryFronts
         {
             bool byHand = ShouldPlayChoosingInterlude(node);
             string suffix = byHand ? "     ·     " + (localization == null ? T(UiKey.InterludeChoiceHint) : localization.ToUpper(T(UiKey.InterludeChoiceHint))) : string.Empty;
-            if (choiceKeyLabels[0] != null) choiceKeyLabels[0].text = "A  /  ←" + suffix;
-            if (choiceKeyLabels[1] != null) choiceKeyLabels[1].text = "D  /  →" + suffix;
+            if (choiceKeyLabels[0] != null) choiceKeyLabels[0].text = InputGlyphs.Left(inputDevice, null) + suffix;
+            if (choiceKeyLabels[1] != null) choiceKeyLabels[1].text = InputGlyphs.Right(inputDevice, null) + suffix;
         }
 
         // ------------------------------------------------------------------ girdi
@@ -155,23 +156,34 @@ namespace OrdinaryFronts
 
         private bool IlActionHeld
         {
-            get { return interludeForcePush || Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0); }
+            get { return interludeForcePush || Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || PadActionHeld; }
         }
 
         private bool IlActionPressed
         {
-            get { return Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0); }
+            get { return Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || PadActionDown; }
         }
 
-        private bool IlLeftHeld { get { return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow); } }
-        private bool IlRightHeld { get { return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow); } }
-        private bool IlLeftPressed { get { return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow); } }
-        private bool IlRightPressed { get { return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow); } }
+        /// <summary>El sahneleri modu: kolay (geniş zamanlama) ya da eller serbest.</summary>
+        private int HandMode { get { return settings == null ? 0 : Mathf.Clamp(settings.handScenes, 0, 2); } }
+        private bool IlGentle { get { return HandMode >= SettingsData.HandScenesGentle; } }
+
+        /// <summary>
+        /// Eller serbest: basılı tutma ve zamanlama kendiliğinden yapılır. Karar anları asla
+        /// kendiliğinden verilmez: iki seçenekten biri, boranın ortasında itmek, kayan tahtada
+        /// tutmak oyuncunun tek bir basışını bekler.
+        /// </summary>
+        private bool IlAuto { get { return HandMode == SettingsData.HandScenesFree; } }
+
+        private bool IlLeftHeld { get { return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || PadLeftHeld; } }
+        private bool IlRightHeld { get { return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || PadRightHeld; } }
+        private bool IlLeftPressed { get { return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) || PadLeftDown; } }
+        private bool IlRightPressed { get { return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || PadRightDown; } }
 
         /// <summary>Ara sahnenin dinlediği herhangi bir tuş şu an basılı mı? (Girdi kilidi için.)</summary>
         private bool IlAnyHeld
         {
-            get { return Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || IlLeftHeld || IlRightHeld; }
+            get { return Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || PadActionHeld || IlLeftHeld || IlRightHeld; }
         }
 
         private Sprite InterludeSprite(string key)
@@ -221,6 +233,7 @@ namespace OrdinaryFronts
             private CanvasGroup instructionsGroup;
             private RectTransform shakeTarget;
             private float shake;
+            private int hintGlyphVersion;
 
             public string Result { get; protected set; }
             public int ChoiceIndex { get; protected set; }
@@ -390,8 +403,8 @@ namespace OrdinaryFronts
                 how.fontSizeMin = 17f;
                 how.fontSizeMax = 24f;
                 if (!choices) return;
-                BuildChoiceColumn(new Vector2(0.04f, 0.07f), new Vector2(0.485f, 0.50f), "A  ←", node.choices[0].text);
-                BuildChoiceColumn(new Vector2(0.515f, 0.07f), new Vector2(0.96f, 0.50f), "D  →", node.choices[1].text);
+                BuildChoiceColumn(new Vector2(0.04f, 0.07f), new Vector2(0.485f, 0.50f), InputGlyphs.Left(app.inputDevice, null), node.choices[0].text);
+                BuildChoiceColumn(new Vector2(0.515f, 0.07f), new Vector2(0.96f, 0.50f), InputGlyphs.Right(app.inputDevice, null), node.choices[1].text);
             }
 
             private void BuildChoiceColumn(Vector2 min, Vector2 max, string key, string label)
@@ -433,6 +446,8 @@ namespace OrdinaryFronts
                     instructionsGroup.alpha = Mathf.MoveTowards(instructionsGroup.alpha, target, dt * (begun ? 4f : 3f));
                     if (begun && instructionsGroup.alpha <= 0f) instructions.SetActive(false);
                 }
+                // Oyuncu sahnenin ortasında cihaz değiştirdiyse ipucu yeni cihazın diliyle yazılır.
+                if (hintGlyphVersion != app.glyphVersion) SetHint(HintText);
                 shake = Mathf.MoveTowards(shake, 0f, dt * 2.5f);
                 shakeTarget.anchoredPosition = shake > 0f
                     ? new Vector2(Mathf.Sin(elapsed * 71f) * 9f * shake, Mathf.Cos(elapsed * 59f) * 6f * shake)
@@ -462,7 +477,8 @@ namespace OrdinaryFronts
 
             protected void SetHint(string text)
             {
-                if (hint != null) hint.text = text + "     ·     " + app.T(UiKey.InterludeSkipHint);
+                hintGlyphVersion = app.glyphVersion;
+                if (hint != null) hint.text = text + "     ·     " + app.TG(UiKey.InterludeSkipHint);
             }
 
             // ------------------------------------------------------------ çizim yardımcıları
@@ -549,7 +565,14 @@ namespace OrdinaryFronts
                 if (sprite != null && image.sprite != sprite) image.sprite = sprite;
             }
 
-            protected string L(string key) { return app.T(key); }
+            /// <summary>Çeviri + tuş yer tutucuları: ipuçları oyuncunun cihazına göre yazılır.</summary>
+            protected string L(string key) { return app.TG(key); }
+
+            /// <summary>Bir el işinin ipucu; eller serbestken yerine "kendiliğinden" satırı.</summary>
+            protected string HandHint(string key) { return app.IlAuto ? L(UiKey.IlAutoHint) : L(key); }
+
+            /// <summary>Kolay ya da eller serbest modda standart değerin yerine geçen değer.</summary>
+            protected float Ease(float standard, float gentle) { return app.IlGentle ? gentle : standard; }
         }
     }
 }

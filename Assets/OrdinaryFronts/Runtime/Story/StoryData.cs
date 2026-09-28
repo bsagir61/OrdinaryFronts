@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace OrdinaryFronts
 {
@@ -12,6 +13,118 @@ namespace OrdinaryFronts
         public IntroData intro;
         public CharacterData[] characters = Array.Empty<CharacterData>();
         public StoryNode[] nodes = Array.Empty<StoryNode>();
+
+        /// <summary>Perdelerin soruları; perde kartında adın altında durur. İsteğe bağlıdır.</summary>
+        public ActData[] acts = Array.Empty<ActData>();
+
+        /// <summary>Kırk yıl sonraki tanıklık; final kaydından önce oynanır. İsteğe bağlıdır.</summary>
+        public TestimonyData testimony;
+
+        public ActData FindAct(string name)
+        {
+            if (acts == null || string.IsNullOrEmpty(name)) return null;
+            for (int i = 0; i < acts.Length; i++)
+                if (acts[i] != null && acts[i].name == name) return acts[i];
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Bir perdenin sorusu. Oyun soruyu sorar, cevaplamaz: cevap oyuncunun o perdede
+    /// verdiği kararlardır. Soru bir slogan değil, iki seçeneğin de haklı olabildiği bir
+    /// gerilimin adıdır.
+    /// </summary>
+    [Serializable]
+    public sealed class ActData
+    {
+        public string name;
+        public string question;
+    }
+
+    /// <summary>
+    /// Tanıklık: bölüm bittikten kırk yıl sonra birisi başkarakterden o günleri anlatmasını
+    /// ister. Oyuncu ne anlatılacağını seçer: yaptıklarını ya da yapmadıklarını. İkisi de
+    /// doğrudur ve ikisi de eksiktir; tarih değişmez, değişen yalnız neyin aktarıldığıdır.
+    /// <para>
+    /// Satırlar birinci tekil kişiyle elle yazılır ve oynanışın bayraklarına bağlanır.
+    /// Seçilen kipin koşulu tutan satırlarından en çok üçü, rotanın başını, ortasını ve
+    /// sonunu kapsayacak biçimde seçilir; ardından o kipin kapanışı gelir.
+    /// </para>
+    /// </summary>
+    [Serializable]
+    public sealed class TestimonyData
+    {
+        /// <summary>Yer ve zaman, ör. "HAMBURG · KASIM 1983".</summary>
+        public string kicker;
+
+        /// <summary>Kim soruyor, nerede; kısa bir paragraf.</summary>
+        public string setting;
+
+        public string question;
+        public string tellDone;
+        public string tellUndone;
+        public TestimonyLine[] done = Array.Empty<TestimonyLine>();
+        public TestimonyLine[] undone = Array.Empty<TestimonyLine>();
+        public string closeDone;
+        public string closeUndone;
+
+        public const int MaxLines = 3;
+
+        public bool IsComplete
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(kicker) && !string.IsNullOrWhiteSpace(setting)
+                    && !string.IsNullOrWhiteSpace(question) && !string.IsNullOrWhiteSpace(tellDone)
+                    && !string.IsNullOrWhiteSpace(tellUndone) && !string.IsNullOrWhiteSpace(closeDone)
+                    && !string.IsNullOrWhiteSpace(closeUndone)
+                    && done != null && done.Length > 0 && undone != null && undone.Length > 0;
+            }
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(kicker) && string.IsNullOrWhiteSpace(question)
+                    && (done == null || done.Length == 0) && (undone == null || undone.Length == 0);
+            }
+        }
+
+        /// <summary>
+        /// Koşulu tutan satırlardan en çok <see cref="MaxLines"/> tanesi: ilk, orta ve son.
+        /// Satırlar dosyada rota sırasıyla yazıldığı için bu seçim erken, orta ve geç bir
+        /// kararı birlikte getirir; son satır hep bölümü bitiren karara aittir.
+        /// </summary>
+        public static List<string> Select(TestimonyLine[] lines, Func<ConditionData[], bool> holds)
+        {
+            List<string> result = new List<string>();
+            foreach (int i in SelectIndices(lines, holds)) result.Add(lines[i].text.Trim());
+            return result;
+        }
+
+        /// <summary>
+        /// <see cref="Select"/> ile aynı seçim, satır dizini olarak. İki dilde satırlar aynı
+        /// sırada ve aynı koşullarla yazıldığı için dizin dilden bağımsızdır; arşiv bunu saklar
+        /// ve harita, son tanıklığı oyuncunun o anki dilinde yeniden okur.
+        /// </summary>
+        public static List<int> SelectIndices(TestimonyLine[] lines, Func<ConditionData[], bool> holds)
+        {
+            List<int> matching = new List<int>();
+            if (lines != null)
+                for (int i = 0; i < lines.Length; i++)
+                    if (lines[i] != null && !string.IsNullOrWhiteSpace(lines[i].text) && holds(lines[i].conditions))
+                        matching.Add(i);
+            if (matching.Count <= MaxLines) return matching;
+            return new List<int> { matching[0], matching[matching.Count / 2], matching[matching.Count - 1] };
+        }
+    }
+
+    [Serializable]
+    public sealed class TestimonyLine
+    {
+        public string text;
+        public ConditionData[] conditions = Array.Empty<ConditionData>();
     }
 
     /// <summary>

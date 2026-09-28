@@ -103,7 +103,65 @@ namespace OrdinaryFronts
 
             ValidateIntro(story.intro, nodes, issues);
             ValidateCharacters(story, knownRelations, issues);
+            ValidateActs(story, nodes, issues);
+            ValidateTestimony(story.testimony, knownFlags, knownRelations, issues);
             return issues;
+        }
+
+        /// <summary>
+        /// Perde soruları isteğe bağlıdır; tanımlıysa her biri gerçekten var olan bir perdeye
+        /// bağlanmalı ve bir soru taşımalıdır. Yazım hatası, kartta sorunun sessizce
+        /// görünmemesi demek olurdu.
+        /// </summary>
+        private static void ValidateActs(StoryDatabase story, Dictionary<string, StoryNode> nodes, List<string> issues)
+        {
+            if (story.acts == null || story.acts.Length == 0) return;
+            HashSet<string> actNames = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values) if (!string.IsNullOrWhiteSpace(node.act)) actNames.Add(node.act);
+            HashSet<string> seen = new HashSet<string>();
+            for (int i = 0; i < story.acts.Length; i++)
+            {
+                ActData act = story.acts[i];
+                if (act == null || string.IsNullOrWhiteSpace(act.name) || string.IsNullOrWhiteSpace(act.question))
+                {
+                    issues.Add("Eksik perde sorusu: #" + i);
+                    continue;
+                }
+                if (!seen.Add(act.name)) issues.Add("Yinelenen perde sorusu: " + act.name);
+                if (!actNames.Contains(act.name)) issues.Add("Hiçbir düğümde geçmeyen perde: " + act.name);
+            }
+        }
+
+        /// <summary>
+        /// Tanıklık isteğe bağlıdır; tanımlıysa eksiksiz olmalı ve satırları yalnız bu
+        /// bölümde gerçekten üretilen bayraklara bağlanmalıdır.
+        /// </summary>
+        private static void ValidateTestimony(TestimonyData testimony, HashSet<string> flags, HashSet<string> relations, List<string> issues)
+        {
+            if (testimony == null || testimony.IsEmpty) return;
+            if (!testimony.IsComplete)
+            {
+                issues.Add("Eksik tanıklık tanımı.");
+                return;
+            }
+            ValidateTestimonyLines("tanıklık/yapılanlar", testimony.done, flags, relations, issues);
+            ValidateTestimonyLines("tanıklık/yapılmayanlar", testimony.undone, flags, relations, issues);
+        }
+
+        private static void ValidateTestimonyLines(string owner, TestimonyLine[] lines, HashSet<string> flags, HashSet<string> relations, List<string> issues)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                TestimonyLine line = lines[i];
+                if (line == null || string.IsNullOrWhiteSpace(line.text))
+                {
+                    issues.Add("Boş tanıklık satırı: " + owner + " #" + i);
+                    continue;
+                }
+                if (line.conditions == null || line.conditions.Length == 0)
+                    issues.Add("Koşulsuz tanıklık satırı: " + owner + " #" + i);
+                ValidateConditions(owner + " #" + i, line.conditions, flags, relations, issues);
+            }
         }
 
         public static HashSet<string> ReachableNodeIds(StoryDatabase story)

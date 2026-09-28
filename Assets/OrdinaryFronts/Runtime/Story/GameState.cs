@@ -15,7 +15,19 @@ namespace OrdinaryFronts
         public IntStateEntry[] relations = Array.Empty<IntStateEntry>();
         public string[] seenResults = Array.Empty<string>();
         public TraceEntry[] traces = Array.Empty<TraceEntry>();
+
+        /// <summary>
+        /// Bu oynanışta atılan adımlar, sırasıyla: "düğüm>seçim". Yol haritası bu oynanışın
+        /// izini buradan çizer. Eski kayıtlarda alan yoktur; JsonUtility boş dizi bırakır.
+        /// </summary>
+        public string[] path = Array.Empty<string>();
         public bool completed;
+
+        /// <summary>
+        /// Final kaydından önce verilen tanıklığın kipi: <c>done</c> ya da <c>undone</c>.
+        /// Boşsa tanıklık henüz verilmemiştir; kayıttan devam edildiğinde yeniden sorulur.
+        /// </summary>
+        public string testimony;
 
         public static GameState Create(StoryDatabase story)
         {
@@ -88,6 +100,12 @@ namespace OrdinaryFronts
         /// tutuluyordu; bir rota 14-18 karardan oluştuğu için bu, oyunun belirleyici erken
         /// kararlarını final raporuna hiç ulaşmadan siliyordu. Artık rotanın tamamı korunur.
         /// </summary>
+        public void RecordStep(string nodeId, string choiceId)
+        {
+            if (string.IsNullOrWhiteSpace(nodeId) || string.IsNullOrWhiteSpace(choiceId)) return;
+            path = Append(path ?? Array.Empty<string>(), RouteMap.Step(nodeId, choiceId));
+        }
+
         public void AddTrace(string act, string trace)
         {
             if (string.IsNullOrWhiteSpace(trace)) return;

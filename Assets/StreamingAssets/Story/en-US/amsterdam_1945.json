@@ -57,6 +57,561 @@
       "cold": "He sent word to Jan; he sent none to you."
     }
   ],
+  "acts": [
+    {
+      "name": "The Queue",
+      "question": "Where everyone is hungry, whose right is a share?"
+    },
+    {
+      "name": "The Dike",
+      "question": "What you give a stranger, is it taken from your own child?"
+    },
+    {
+      "name": "The Return",
+      "question": "Is love keeping someone beside you, or letting them go?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Amsterdam · May 1985",
+    "setting": "Forty years later. On the anniversary of the liberation, a class at the school in the Jordaan waits to hear their old teacher, Truus Bakker. Truus is seventy-six. There are thirty children at the desks. On the teacher's desk lies half a sandwich left over from lunch; nobody looks at it.",
+    "question": "“Juf Bakker, what did you do that winter?”",
+    "tellDone": "Tell them what you did.",
+    "tellUndone": "Tell them what you did not do.",
+    "done": [
+      {
+        "text": "In the kitchen queue I gave my mother's ladle to a woman whose card had been stolen. My mother went to bed hungry that night and never knew why. Sometimes someone else pays for your kindness; I learned that that winter.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the kitchen queue I took both ladles home. My mother ate that night, and Kees ate. You can hear who is missing from that sentence as well as I can.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave an armful of the wood we pulled from the tram tracks to a policeman. His children were cold too. There was a winter under the uniform as well.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "police_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We took a girl we didn't know along the road, nineteen years old. There was no room on the cart; room was made. That's how room is usually made: someone squeezes a little.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_joined",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I told the sentry Greet was my sister. It was a lie. It was the truest lie I ever told.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "vouched_greet",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Purmerend I gave half the aspirin to a baby I didn't know. Kees had a fever. I still cannot do the sum of giving from one child's share to another's.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I traded my father's watch for five kilos of potatoes. I say it was broken anyway; that's a lie. It was running.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "traded_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I stopped for a day and took Kees to the doctor. Jan's face fell. A child's cough upsets the sums of a journey. It should.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stopped_hoorn",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I took six children with me as far as Den Oever. I handed them over to a list. The smallest gave Kees his glove as he left. I still have that glove.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Medemblik I left my mother's sheets behind to make room for Greet's things. My mother never asked about the sheets. Perhaps she knew.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_linen",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Den Oever I gave some of my own things so Jan's tobacco would not be taken. Jan and I talked for forty years; we never mentioned it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "paid_for_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I put an old woman who had sat down in the road onto the cart, and Kees walked. His shoes were full of blood. Kees never reminded me of it. I remembered.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not take Kees off the cart. An old woman had sat down in the road; we left her behind. I chose my child; anyone would understand. Being understood is one thing, being forgiven another.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I told Kees beforehand that he might stay in Friesland. He was nine. Telling a child the truth is a kind of respect. The child pays for it too, at night, in the straw.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left Kees with a family in Friesland. It was the right decision. Right decisions leave a hole in you too; mine was the size of a chair.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not leave Kees; we went back together. I took him back to hunger, to my side. Love is sometimes the warmest name for selfishness, and sometimes it isn't. Which it was, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I stayed in Friesland until spring and taught thirty children. My mother got through the winter in Amsterdam on the load Jan brought her. I was not there.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The doctor said wait; I didn't. I took Kees across the dike in that wind. He lived. I say that thanks to him, not to me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the way back I declared the whole load; a third of it stayed behind. Honesty had a price, and I paid it with the street's food.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the way back I hid part of the load under Greet's pram. It worked. I was a teacher; I used to teach children not to hide things.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I hid part of the load under a sick child's blankets: Kees's. It worked. My face still burns telling it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When we got home I gave half the load to the street's shared kitchen. The stove burned three more weeks. I don't know who lived because of those three weeks. It's better not to know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I kept the load in the pantry. My mother saw May. The sum was right. A right sum can leave you alone too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Kornwerderzand I waited with Kees until the wind dropped. Nine days. Jan took the load home alone; I sat in a hall and measured a child's fever.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "I did not give my ladle to the woman whose card was stolen. She had a baby in her arms. I didn't make the rule; but I hid behind it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not bring my mother's share home. I didn't ask her. That night I did not protect my mother, and I never told her.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the tram tracks I did not give the policeman a single block; I pulled Jan away. His house was cold too. I understood that later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_blocks",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not ask Greet to come; I said there was no room on the cart. There was room; it opened up later. Room always opens up later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the checkpoint I did not speak for Greet; let her speak for herself, I said. She had no German. Was it respect or fear? That morning both kept silent in the same voice.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_spoke",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Purmerend I did not give the baby any aspirin; I kept it for Kees. I don't know the baby's name. I know its mother's face.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not trade my father's watch; we'll manage, I said. Kees walked that day on one slice of bread. The watch is still in my drawer. It doesn't run.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I did not stop; I did not take Kees to the doctor. Jan was right, the dike might close. Kees walked with a fever. Being right doesn't bring a fever down.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pushed_on",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I did not take the six children. I already have a child in my hands, I said. It was true. I was a teacher; that day I was not a teacher.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "refused_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Den Oever I did not step in while Jan's tobacco was taken. Jan didn't speak; he counted the kilometres all the way along the dike. So did I.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "jan_lost_tobacco",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not take the woman who had sat down in the road onto the cart. Her husband was holding her arm. We never saw them again. I see them in every wind.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not keep Kees on the cart; I made him walk. For a stranger, I made my own child walk. Kees will be surprised to hear it; he doesn't remember.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not tell Kees what had been said; we'll talk tomorrow, I said. The next day he found out at a table, in front of a minister. I stole that morning from him.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_from_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not bring Kees home. When he came back in June, for a week he called me 'Juf', not 'Auntie'.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not leave Kees in Friesland. The Van der Meers had bread, they had cows. I took him back to hunger, to my side.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay in Friesland to teach those thirty children; I went home. No one asked me to stay, and no one asked me to go. The decision was mine alone.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "returned_with_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go back to my mother. Jan took the load; Jan knocked on the door. My mother got through the winter without me and never said a word about it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The doctor said to wait until the wind dropped. I didn't. Kees lived; but that day it was I who decided for him, not the wind.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not hide the load. Jan had done it for years and showed me how. I declared it; a third went. That third was the street's share.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not declare the whole load. Hiding never felt like a teacher's work to me. But my mother saw May.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not declare the whole load. I knew they wouldn't lift a sick child's blankets, and I used that.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not share the load with the street. The shared stove went out in February. I never sat by that stove again.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not keep the load in the pantry. I gave the street the half that would have fed my mother until May. My mother never once complained. That was the heaviest part.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not cross the dike with Jan; I stayed with Kees. Jan pushed the load alone. Thirty-two kilometres. I never thanked him; thanks would have been too small.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "A child puts up a hand: “What was hunger like?” Truus looks at the half sandwich on the desk. “Nobody would have thrown that away,” she says. The class laughs. Truus doesn't.",
+    "closeUndone": "The class is quiet. “If I had told you what I did, you would have heard about a heroine,” Truus says. “There were no heroes that winter. There were hungry people, and the choices they made.”"
+  },
   "nodes": [
     {
       "id": "kuy_01_merkez_mutfak",
@@ -106,7 +661,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "You did not give your ladle to the woman whose card had been stolen."
         },
         {
           "id": "kuy_01_b",
@@ -121,8 +677,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "You did not give your ladle to the woman whose card had been stolen."
+          ]
         }
       ]
     },
@@ -237,6 +792,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_children",
+          "text": "On a road once you took a neighbour's children on your sleigh and made your father walk. On Jan's cart too there is room for one, and someone is standing at the door.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -259,7 +826,8 @@
               "op": "add",
               "intValue": 3
             }
-          ]
+          ],
+          "omission": "You did not ask Greet to set out with you."
         },
         {
           "id": "kuy_03_b",
@@ -286,8 +854,7 @@
               "op": "add",
               "intValue": 1
             }
-          ],
-          "omission": "You did not ask Greet to set out with you."
+          ]
         }
       ]
     },
@@ -430,7 +997,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "You did not give any of the aspirin to the baby in Purmerend."
         },
         {
           "id": "kuy_05_b",
@@ -451,8 +1019,7 @@
               "op": "add",
               "intValue": 1
             }
-          ],
-          "omission": "You did not give any of the aspirin to the baby in Purmerend."
+          ]
         }
       ]
     },
@@ -613,7 +1180,8 @@
               "op": "add",
               "intValue": -2
             }
-          ]
+          ],
+          "omission": "You did not take Kees to the doctor in Hoorn."
         },
         {
           "id": "set_07_b",
@@ -640,8 +1208,7 @@
               "op": "add",
               "intValue": -2
             }
-          ],
-          "omission": "You did not take Kees to the doctor in Hoorn."
+          ]
         }
       ]
     },
@@ -693,7 +1260,8 @@
               "op": "add",
               "intValue": -1
             }
-          ]
+          ],
+          "omission": "You did not take the six children waiting in Hoorn to Den Oever."
         },
         {
           "id": "set_08a_b",
@@ -708,8 +1276,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "You did not take the six children waiting in Hoorn to Den Oever."
+          ]
         }
       ]
     },
@@ -876,7 +1443,8 @@
               "op": "add",
               "intValue": 4
             }
-          ]
+          ],
+          "omission": "You did not step in when Jan's tobacco was taken at Den Oever."
         },
         {
           "id": "set_09_b",
@@ -897,8 +1465,7 @@
               "op": "add",
               "intValue": -3
             }
-          ],
-          "omission": "You did not step in when Jan's tobacco was taken at Den Oever."
+          ]
         }
       ]
     },
@@ -1004,7 +1571,8 @@
               "op": "add",
               "intValue": 2
             }
-          ]
+          ],
+          "omission": "You did not take the old woman who sat down on the dike onto the cart."
         },
         {
           "id": "set_10_b",
@@ -1031,8 +1599,7 @@
               "op": "add",
               "intValue": -2
             }
-          ],
-          "omission": "You did not take the old woman who sat down on the dike onto the cart."
+          ]
         }
       ],
       "interlude": {
@@ -1471,6 +2038,18 @@
               "boolValue": true
             }
           ]
+        },
+        {
+          "id": "cross_kar_earth",
+          "text": "You once took a jar of earth from your mother's grave, because you could not take the grave with you. Leaving a child somewhere is harder: a child looks after you.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_earth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
         }
       ],
       "choices": [
@@ -1493,7 +2072,8 @@
               "op": "add",
               "intValue": 2
             }
-          ]
+          ],
+          "omission": "You did not tell Kees beforehand that he might stay in Friesland."
         },
         {
           "id": "set_13_b",
@@ -1514,8 +2094,7 @@
               "op": "add",
               "intValue": -1
             }
-          ],
-          "omission": "You did not tell Kees beforehand that he might stay in Friesland."
+          ]
         }
       ]
     },
@@ -1571,6 +2150,18 @@
             {
               "type": "archive",
               "key": "neretva_1943:dragica_isolated",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_search",
+          "text": "At a station once you found lost families for one another in lists. The minister's list also joins a child to a family; only this time you are the one choosing the family.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:search_desk",
               "op": "equals",
               "boolValue": true
             }
@@ -1888,7 +2479,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "On your return you did not share the load with the street's shared kitchen."
         },
         {
           "id": "don_17a_b",
@@ -1903,8 +2495,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "On your return you did not share the load with the street's shared kitchen."
+          ]
         }
       ]
     },
@@ -2204,7 +2795,8 @@
               "op": "set",
               "boolValue": true
             }
-          ]
+          ],
+          "omission": "On your return you did not share the load with the street's shared kitchen."
         },
         {
           "id": "don_17b_b",
@@ -2219,8 +2811,7 @@
               "op": "set",
               "boolValue": true
             }
-          ],
-          "omission": "On your return you did not share the load with the street's shared kitchen."
+          ]
         }
       ]
     },

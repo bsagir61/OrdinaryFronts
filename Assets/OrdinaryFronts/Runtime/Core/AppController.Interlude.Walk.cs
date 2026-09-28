@@ -40,6 +40,9 @@ namespace OrdinaryFronts
 
             private float distanceKm;
             private int nextGust;
+
+            /// <summary>Eller serbest: bu borada itmeyi sürdürmek için oyuncu bir kez bastı.</summary>
+            private bool gustLatch;
             private bool warned;
             private float gustRemaining;
             private float gustPushedSeconds;
@@ -152,8 +155,10 @@ namespace OrdinaryFronts
 
             protected override void Step(float dt)
             {
-                bool pushing = Pushing && !Finished;
                 bool gust = gustRemaining > 0f;
+                // Eller serbest: yürüyüş kendiliğinden, ama borada itmek oyuncunun bir basışıdır.
+                if (app.IlAuto && gust && (app.IlActionPressed || app.IlRightPressed)) gustLatch = true;
+                bool pushing = (Pushing || (app.IlAuto && Begun && (!gust || gustLatch))) && !Finished;
 
                 // Uyarı: bora gelmeden hemen önce.
                 if (!gust && nextGust < GustAtKm.Length && !warned && distanceKm >= GustAtKm[nextGust] - WarningKm)
@@ -182,6 +187,7 @@ namespace OrdinaryFronts
                     if (pushing) gustPushedSeconds += dt; else gustReleasedSeconds += dt;
                     if (pushing) Shake(0.18f);
                     if (gustRemaining <= 0f && gustReleasedSeconds >= 1.0f) anyGustWaited = true;
+                    if (gustRemaining <= 0f) gustLatch = false;
                 }
                 // Bora ortada gelir; ilk bora sırasında da hareketsiz kalan oyuncu ilerleyemez,
                 // ama bora zamanla geçer: beklemek yolu kapatmaz.
@@ -243,7 +249,7 @@ namespace OrdinaryFronts
 
                 if (rulerMarker != null)
                     rulerMarker.anchoredPosition = new Vector2(Mathf.Lerp(rulerLeft, rulerRight, Mathf.Clamp01(distanceKm / TargetDistanceKm)), rulerMarker.anchoredPosition.y);
-                if (Begun) SetHint(gust ? L(UiKey.IlGust) : L(UiKey.IlWalkHint));
+                if (Begun) SetHint(gust ? (app.IlAuto ? L(UiKey.IlGustTap) : L(UiKey.IlGust)) : HandHint(UiKey.IlWalkHint));
             }
 
             protected override void Resolve()

@@ -70,6 +70,31 @@ namespace OrdinaryFronts
         public bool HasLocation { get { return latitude != 0f || longitude != 0f; } }
 
         /// <summary>
+        /// Bölümün geçtiği ay, "YYYY-AA" (1.7). Harita altındaki zaman şeridi bölümleri buna
+        /// göre dizer; aynı sıra, bölümler arasında zamanda gezinmeyi de belirler.
+        /// </summary>
+        public string date;
+
+        public bool TryGetDate(out int year, out int month)
+        {
+            year = 0;
+            month = 0;
+            if (string.IsNullOrWhiteSpace(date) || date.Length != 7 || date[4] != '-') return false;
+            return int.TryParse(date.Substring(0, 4), out year) && int.TryParse(date.Substring(5, 2), out month)
+                && month >= 1 && month <= 12;
+        }
+
+        /// <summary>Ay cinsinden sıra anahtarı; tarihi olmayan bölüm sona düşer.</summary>
+        public int MonthIndex
+        {
+            get
+            {
+                int y, m;
+                return TryGetDate(out y, out m) ? y * 12 + (m - 1) : int.MaxValue;
+            }
+        }
+
+        /// <summary>
         /// Yalnız işaretlenmiş <em>ve</em> bir hikâye dosyasına bağlı bölümler oynanabilir.
         /// Hazırlanmakta olan bölümler kartta görünür fakat başlatılamaz.
         /// </summary>

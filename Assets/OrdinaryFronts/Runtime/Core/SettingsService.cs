@@ -18,12 +18,24 @@ namespace OrdinaryFronts
         public bool largeText;
         public bool reduceMotion;
 
+        /// <summary>
+        /// El sahneleri (1.6): 0 standart, 1 kolay (geniş zamanlama, kısa basılı tutma),
+        /// 2 eller serbest (basılı tutma ve zamanlama kendiliğinden; kararlar oyuncuda).
+        /// Alan eski ayar dosyalarında yoktur; JsonUtility 0 bırakır.
+        /// </summary>
+        public int handScenes;
+
+        public const int HandScenesStandard = 0;
+        public const int HandScenesGentle = 1;
+        public const int HandScenesFree = 2;
+
         public void Clamp()
         {
             masterVolume = Mathf.Clamp01(masterVolume);
             ambientVolume = Mathf.Clamp01(ambientVolume);
             effectsVolume = Mathf.Clamp01(effectsVolume);
             locale = LocalizationService.Normalize(locale);
+            handScenes = Mathf.Clamp(handScenes, HandScenesStandard, HandScenesFree);
         }
     }
 

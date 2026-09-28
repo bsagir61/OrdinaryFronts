@@ -63,7 +63,7 @@ namespace OrdinaryFronts
 
             protected override string Title { get { return L(UiKey.IlPlankTitle); } }
             protected override string HowTo { get { return L(UiKey.IlPlankHow); } }
-            protected override string HintText { get { return L(UiKey.IlBalanceHint); } }
+            protected override string HintText { get { return slipped && decided < 0 ? (app.IlAuto ? L(UiKey.IlHoldTapHint) : L(UiKey.IlHoldHint)) : HandHint(UiKey.IlBalanceHint); } }
             protected override bool StartPressed { get { return app.IlLeftPressed || app.IlRightPressed || app.IlActionPressed; } }
             protected override bool Finished { get { return doneAt >= 0f && elapsed >= doneAt; } }
             protected override string OutcomeText { get { return decided == 0 ? L(UiKey.IlHeld) : L(UiKey.IlLetGo); } }
@@ -219,12 +219,12 @@ namespace OrdinaryFronts
                 }
                 float axis = (app.IlRightHeld ? 1f : 0f) - (app.IlLeftHeld ? 1f : 0f);
                 // QA: denge kendiliğinden tutulur ki yakalama yürüyüşü göstersin.
-                if (app.interludeForcePush) axis = Mathf.Clamp(-tilt * 0.25f - tiltVel * 0.08f, -1f, 1f);
-                float drift = (Mathf.PerlinNoise(elapsed * 0.8f, 3.1f) - 0.5f) * 50f;
+                if (app.interludeForcePush || app.IlAuto) axis = Mathf.Clamp(-tilt * 0.25f - tiltVel * 0.08f, -1f, 1f);
+                float drift = (Mathf.PerlinNoise(elapsed * 0.8f, 3.1f) - 0.5f) * Ease(50f, 25f);
                 if (kicks < KickAt.Length && progress >= KickAt[kicks])
                 {
                     kicks++;
-                    tiltVel += (kicks % 2 == 0 ? 1f : -1f) * 42f;
+                    tiltVel += (kicks % 2 == 0 ? 1f : -1f) * Ease(42f, 22f);
                     Shake(0.35f);
                     app.audioManager.PlayCreak();
                 }
@@ -253,8 +253,8 @@ namespace OrdinaryFronts
                 Shake(1f);
                 app.audioManager.PlayCreak();
                 SetCentreColor(theme.rust);
-                ShowCentre(L(UiKey.IlSlip), DecisionWindow);
-                SetHint(L(UiKey.IlHoldHint));
+                ShowCentre(L(UiKey.IlSlip), Ease(DecisionWindow, 4.2f));
+                SetHint(HintText);
                 Animate(rear, rearFrames, 1f, false);
                 Animate(front, frontFrames, 1f, false);
                 decisionRing.gameObject.SetActive(true);
@@ -271,10 +271,11 @@ namespace OrdinaryFronts
                 if (decided < 0)
                 {
                     if (!holdStarted && slipClock > 0.05f && (app.IlActionPressed || app.interludeForcePush)) holdStarted = true;
-                    bool holding = holdStarted && app.IlActionHeld;
+                    // Eller serbestken tek basış yeter; ama basış hep oyuncunundur.
+                    bool holding = holdStarted && (app.IlActionHeld || app.IlAuto);
                     if (holding) heldSeconds += dt;
-                    float fall = Mathf.Clamp01(slipClock / DecisionWindow);
-                    float hold = Mathf.Clamp01(heldSeconds / HoldNeeded);
+                    float fall = Mathf.Clamp01(slipClock / Ease(DecisionWindow, 4.2f));
+                    float hold = Mathf.Clamp01(heldSeconds / Ease(HoldNeeded, 0.6f));
                     frontRect.anchoredPosition = new Vector2(160f, -28f * Mathf.Min(1f, slipClock * 3f));
                     frontRect.localRotation = Quaternion.Euler(0f, 0f, 14f * Mathf.Min(1f, slipClock * 3f));
                     float drop = Mathf.Lerp(fall, 0.25f, hold);
@@ -284,8 +285,8 @@ namespace OrdinaryFronts
                     decisionRing.rectTransform.anchoredPosition = group.anchoredPosition + new Vector2(10f, 110f);
                     decisionRing.fillAmount = 1f - fall;
                     decisionRing.color = holding ? theme.mustard : theme.agedPaper;
-                    if (heldSeconds >= HoldNeeded) Decide(0);
-                    else if (slipClock >= DecisionWindow) Decide(1);
+                    if (heldSeconds >= Ease(HoldNeeded, 0.6f)) Decide(0);
+                    else if (slipClock >= Ease(DecisionWindow, 4.2f)) Decide(1);
                     return;
                 }
                 decidedClock += dt;

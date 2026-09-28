@@ -295,15 +295,14 @@ namespace OrdinaryFronts.Editor
                 UnityEngine.Object.DestroyImmediate(texture);
             }
 
-            // Yugoslavya bölümünün sahneleri ayrı bir üreticiden gelir: bunlar yer tutucu
-            // değil, palete ve tekniğe uyacak biçimde çizilmiş katmanlı siluet sahneleridir.
-            // Dosya varsa dokunulmaz; elle hazırlanmış bir illüstrasyon aynı ada konduğunda
-            // kod değişikliği gerekmeden onun yerini alır.
-            for (int i = 0; i < LinocutSceneFactory.FileNames.Length; i++)
+            // Neretva bölümünün on dört sahnesi ayrı bir ressamdan gelir (1.4). Dosya varsa
+            // dokunulmaz; elle hazırlanmış bir illüstrasyon aynı ada konduğunda kod
+            // değişikliği gerekmeden onun yerini alır.
+            for (int i = 0; i < PaintedSceneFactory.Keys.Length; i++)
             {
-                string path = ArtRoot + "/" + LinocutSceneFactory.FileNames[i];
+                string path = ArtRoot + "/" + PaintedSceneFactory.FileName(i);
                 if (File.Exists(path)) continue;
-                Texture2D texture = LinocutSceneFactory.Render(i);
+                Texture2D texture = PaintedSceneFactory.Render(i);
                 WritePng(path, texture);
                 UnityEngine.Object.DestroyImmediate(texture);
             }

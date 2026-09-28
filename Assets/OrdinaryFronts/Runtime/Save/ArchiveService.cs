@@ -92,6 +92,13 @@ namespace OrdinaryFronts
             ArchiveChapter chapter = ChapterFor(storyId, true);
             if (chapter == null) return;
             chapter.lastChoices = Upsert(chapter.lastChoices, nodeId, choiceId);
+            // Yol haritası için bütün oynanışların birleşimi: bir adım bir kez yazılır.
+            string step = RouteMap.Step(nodeId, choiceId);
+            if (Array.IndexOf(chapter.walked ?? Array.Empty<string>(), step) < 0)
+            {
+                List<string> walked = new List<string>(chapter.walked ?? Array.Empty<string>()) { step };
+                chapter.walked = walked.ToArray();
+            }
             Persist();
         }
 
@@ -120,6 +127,41 @@ namespace OrdinaryFronts
             }
             chapter.completedRuns++;
             Persist();
+        }
+
+        /// <summary>Bir kesişme yankısı ekranda göründü; iplik olarak hatırlanır.</summary>
+        public void RememberCrossing(string storyId, string echoId)
+        {
+            if (string.IsNullOrWhiteSpace(storyId) || string.IsNullOrWhiteSpace(echoId)) return;
+            string key = storyId + ">" + echoId;
+            string[] seen = Data.crossings ?? Array.Empty<string>();
+            if (Array.IndexOf(seen, key) >= 0) return;
+            List<string> list = new List<string>(seen) { key };
+            Data.crossings = list.ToArray();
+            Persist();
+        }
+
+        /// <summary>Görülmüş kesişmeler, görülme sırasıyla.</summary>
+        public string[] SeenCrossings()
+        {
+            return (string[])(Data.crossings ?? Array.Empty<string>()).Clone();
+        }
+
+        public void RememberTestimony(string storyId, string mode, int[] lines)
+        {
+            ArchiveChapter chapter = ChapterFor(storyId, true);
+            if (chapter == null) return;
+            chapter.testimonyMode = mode;
+            chapter.testimonyLines = lines ?? Array.Empty<int>();
+            Persist();
+        }
+
+        public bool TryGetTestimony(string storyId, out string mode, out int[] lines)
+        {
+            ArchiveChapter chapter = ChapterFor(storyId, false);
+            mode = chapter == null ? null : chapter.testimonyMode;
+            lines = chapter == null ? null : chapter.testimonyLines;
+            return !string.IsNullOrWhiteSpace(mode) && lines != null && lines.Length > 0;
         }
 
         private void Persist()
@@ -164,6 +206,24 @@ namespace OrdinaryFronts
             return null;
         }
 
+        /// <summary>Bu bölümde herhangi bir oynanışta atılmış bütün "düğüm>seçim" adımları.</summary>
+        public string[] WalkedSteps(string storyId)
+        {
+            ArchiveChapter chapter = ChapterFor(storyId, false);
+            if (chapter == null) return Array.Empty<string>();
+            // 1.2 öncesi arşivlerde "walked" yoktur; son oynanışın kararları yine de yürünmüş sayılır.
+            List<string> steps = new List<string>(chapter.walked ?? Array.Empty<string>());
+            if (chapter.lastChoices != null)
+                for (int i = 0; i < chapter.lastChoices.Length; i++)
+                {
+                    StringStateEntry entry = chapter.lastChoices[i];
+                    if (entry == null) continue;
+                    string step = RouteMap.Step(entry.key, entry.value);
+                    if (!steps.Contains(step)) steps.Add(step);
+                }
+            return steps.ToArray();
+        }
+
         public int CompletedRuns(string storyId)
         {
             ArchiveChapter chapter = ChapterFor(storyId, false);
@@ -189,6 +249,12 @@ namespace OrdinaryFronts
     {
         public int schemaVersion = ArchiveService.CurrentSchemaVersion;
         public ArchiveChapter[] chapters = Array.Empty<ArchiveChapter>();
+
+        /// <summary>
+        /// Oyuncunun gerçekten gördüğü kesişmeler, "bölüm>yankı" (1.7). Haritadaki kırmızı
+        /// iplikler buradan çizilir. Eski arşivlerde alan yoktur; boş dizi kalır.
+        /// </summary>
+        public string[] crossings = Array.Empty<string>();
     }
 
     [Serializable]
@@ -199,6 +265,13 @@ namespace OrdinaryFronts
         public string[] endingsReached = Array.Empty<string>();
         public BoolStateEntry[] flags = Array.Empty<BoolStateEntry>();
         public StringStateEntry[] lastChoices = Array.Empty<StringStateEntry>();
+
+        /// <summary>Bütün oynanışlarda atılmış adımlar ("düğüm>seçim"); yol haritası için.</summary>
+        public string[] walked = Array.Empty<string>();
+
+        /// <summary>Son tanıklığın kipi ("done"/"undone") ve seçilen satırların dizinleri (1.7).</summary>
+        public string testimonyMode;
+        public int[] testimonyLines = Array.Empty<int>();
     }
 
     [Serializable]

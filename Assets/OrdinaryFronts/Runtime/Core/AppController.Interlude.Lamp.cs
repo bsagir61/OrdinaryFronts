@@ -76,7 +76,7 @@ namespace OrdinaryFronts
 
             protected override string Title { get { return L(UiKey.IlLampTitle); } }
             protected override string HowTo { get { return L(UiKey.IlLampHow); } }
-            protected override string HintText { get { return L(UiKey.IlChooseHint); } }
+            protected override string HintText { get { return task < 0 ? L(UiKey.IlChooseHint) : task == 0 ? HandHint(UiKey.IlWireHint) : HandHint(UiKey.IlGuideHint); } }
             protected override bool ShowsChoices { get { return true; } }
             protected override bool StartPressed { get { return app.IlLeftPressed || app.IlRightPressed; } }
             protected override bool Finished { get { return doneAt >= 0f && elapsed >= doneAt; } }
@@ -187,7 +187,7 @@ namespace OrdinaryFronts
                 SetCentreColor(theme.agedPaper);
                 ShowCentre(node.choices != null && node.choices.Length > task ? node.choices[task].text : string.Empty, 1.4f);
                 if (task == 0) progressRing.gameObject.SetActive(true);
-                SetHint(task == 0 ? L(UiKey.IlWireHint) : L(UiKey.IlGuideHint));
+                SetHint(HintText);
             }
 
             protected override void Step(float dt)
@@ -261,14 +261,15 @@ namespace OrdinaryFronts
             private void StepLamp(float dt)
             {
                 if (progress >= 1f) return;
-                bool holding = app.IlActionHeld;
+                bool holding = app.IlActionHeld || app.IlAuto;
                 if (stun > 0f) stun -= dt;
                 if (warning >= 0f)
                 {
                     warning += dt;
                     flash = Mathf.Max(flash, 0.5f + 0.5f * Mathf.Sin(warning * 40f));
-                    if (!holding) releasedDuringWarning = true;
-                    if (warning >= SparkWarning)
+                    // Eller serbestken el kıvılcımda kendiliğinden çekilir.
+                    if (!app.IlActionHeld || app.IlAuto) releasedDuringWarning = true;
+                    if (warning >= Ease(SparkWarning, 1.4f))
                     {
                         warning = -1f;
                         sparkIndex++;
@@ -290,7 +291,7 @@ namespace OrdinaryFronts
                 }
                 else if (holding && stun <= 0f && Begun)
                 {
-                    progress = Mathf.Min(1f, progress + dt / RepairSeconds);
+                    progress = Mathf.Min(1f, progress + dt / Ease(RepairSeconds, 3.2f));
                     if (Rand01((int)(elapsed * 30f)) > 0.93f) BurstSparks(1);
                     if (sparkIndex < SparkAt.Length && progress >= SparkAt[sparkIndex])
                     {
@@ -298,7 +299,7 @@ namespace OrdinaryFronts
                         releasedDuringWarning = false;
                         app.audioManager.PlaySpark();
                         SetCentreColor(theme.rust);
-                        ShowCentre(L(UiKey.IlSparkWarn), SparkWarning);
+                        ShowCentre(L(UiKey.IlSparkWarn), Ease(SparkWarning, 1.4f));
                     }
                 }
                 progressRing.fillAmount = progress;
@@ -335,12 +336,12 @@ namespace OrdinaryFronts
                     return;
                 }
                 ringTime += dt;
-                float t = ringTime / RingCycle;
+                float t = ringTime / Ease(RingCycle, 2.0f);
                 float scale = Mathf.Lerp(2.8f, 0.55f, t);
                 guideRing.rectTransform.sizeDelta = Vector2.one * 64f * scale;
-                bool inWindow = scale <= 1.25f && scale >= 0.8f;
+                bool inWindow = app.IlGentle ? scale <= 1.6f && scale >= 0.6f : scale <= 1.25f && scale >= 0.8f;
                 guideRing.color = inWindow ? Color.Lerp(theme.mustard, Color.white, 0.5f) : theme.mustard;
-                if (app.IlActionPressed || (app.interludeForcePush && inWindow))
+                if (app.IlActionPressed || ((app.interludeForcePush || app.IlAuto) && inWindow))
                 {
                     if (inWindow)
                     {
