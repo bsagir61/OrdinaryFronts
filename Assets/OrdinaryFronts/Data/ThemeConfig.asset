@@ -25,6 +25,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 51b6544d7ad43534bb2e1025dd304bb2, type: 3}
   - {fileID: 21300000, guid: 0dabc7ce33e4a9a439d073a83c7d7bb4, type: 3}
   - {fileID: 21300000, guid: fe11a9d838aa842439217a20457d2ccd, type: 3}
+  europeMap: {fileID: 21300000, guid: d19ea2ac5b60a9242b468508db275514, type: 3}
+  mapMarker: {fileID: 21300000, guid: 42a4c0962c5effa49b0e698580a3c3c9, type: 3}
   introTextScrim: {fileID: 21300000, guid: 95428886f6025a7468e7059623fe0d9c, type: 3}
+  serifFont: {fileID: 11400000, guid: 70e0ba0a820039e4487d7d20bffbcd9c, type: 2}
+  monoFont: {fileID: 11400000, guid: 04bc41dad89afa04387988b2603f2f27, type: 2}
   transitionDuration: 0.26
   introFadeDuration: 0.45

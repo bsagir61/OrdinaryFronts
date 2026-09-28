@@ -1,0 +1,2975 @@
+{
+  "schemaVersion": 1,
+  "storyId": "amsterdam_1945",
+  "locale": "en-US",
+  "startNodeId": "kuy_01_merkez_mutfak",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "frozen_canal",
+        "kicker": "THE NETHERLANDS",
+        "line": "In September 1944, after the railway strike, food shipments to the western Netherlands are halted. The winter comes early and hard.",
+        "holdSeconds": 3.0
+      },
+      {
+        "imageKey": "frozen_canal",
+        "kicker": "THE HUNGER WINTER",
+        "line": "By January 1945 the official ration in Amsterdam falls to about five hundred calories a day. Tens of thousands walk into the countryside for food.",
+        "holdSeconds": 3.2
+      },
+      {
+        "imageKey": "polder_road",
+        "kicker": "TRUUS BAKKER",
+        "line": "Truus Bakker is a primary school teacher. Her school is closed for lack of coal; at home are her mother and her nephew Kees, aged nine.",
+        "holdSeconds": 3.0
+      },
+      {
+        "imageKey": "afsluitdijk",
+        "kicker": "15 JANUARY 1945",
+        "line": "The only road to the farms of the north is a dike thirty-two kilometres long: the Afsluitdijk.",
+        "holdSeconds": 3.0
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "kees",
+      "name": "Kees",
+      "warm": "At the end of the road he still had not let go of your hand.",
+      "cold": "He answers when asked; when not asked, he does not speak."
+    },
+    {
+      "key": "jan",
+      "name": "Jan Dekker",
+      "warm": "He no longer gives the front handle of the cart to anyone but you.",
+      "cold": "On the Bloemgracht he still opens his door, but he no longer asks you in."
+    },
+    {
+      "key": "greet",
+      "name": "Greet Visser",
+      "warm": "When she went back to Noord she left her address, and she wrote.",
+      "cold": "When she went back to Noord she said goodbye and left no address."
+    },
+    {
+      "key": "hoekstra",
+      "name": "Wiebe Hoekstra",
+      "warm": "In May a sack came from Bolsward with nothing on it but your name.",
+      "cold": "He sent word to Jan; he sent none to you."
+    }
+  ],
+  "acts": [
+    {
+      "name": "The Queue",
+      "question": "Where everyone is hungry, whose right is a share?"
+    },
+    {
+      "name": "The Dike",
+      "question": "What you give a stranger, is it taken from your own child?"
+    },
+    {
+      "name": "The Return",
+      "question": "Is love keeping someone beside you, or letting them go?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Amsterdam · May 1985",
+    "setting": "Forty years later. On the anniversary of the liberation, a class at the school in the Jordaan waits to hear their old teacher, Truus Bakker. Truus is seventy-six. There are thirty children at the desks. On the teacher's desk lies half a sandwich left over from lunch; nobody looks at it.",
+    "question": "“Juf Bakker, what did you do that winter?”",
+    "tellDone": "Tell them what you did.",
+    "tellUndone": "Tell them what you did not do.",
+    "done": [
+      {
+        "text": "In the kitchen queue I gave my mother's ladle to a woman whose card had been stolen. My mother went to bed hungry that night and never knew why. Sometimes someone else pays for your kindness; I learned that that winter.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the kitchen queue I took both ladles home. My mother ate that night, and Kees ate. You can hear who is missing from that sentence as well as I can.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I gave an armful of the wood we pulled from the tram tracks to a policeman. His children were cold too. There was a winter under the uniform as well.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "police_shared",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We took a girl we didn't know along the road, nineteen years old. There was no room on the cart; room was made. That's how room is usually made: someone squeezes a little.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_joined",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I told the sentry Greet was my sister. It was a lie. It was the truest lie I ever told.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "vouched_greet",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Purmerend I gave half the aspirin to a baby I didn't know. Kees had a fever. I still cannot do the sum of giving from one child's share to another's.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I traded my father's watch for five kilos of potatoes. I say it was broken anyway; that's a lie. It was running.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "traded_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I stopped for a day and took Kees to the doctor. Jan's face fell. A child's cough upsets the sums of a journey. It should.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stopped_hoorn",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I took six children with me as far as Den Oever. I handed them over to a list. The smallest gave Kees his glove as he left. I still have that glove.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Medemblik I left my mother's sheets behind to make room for Greet's things. My mother never asked about the sheets. Perhaps she knew.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_linen",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Den Oever I gave some of my own things so Jan's tobacco would not be taken. Jan and I talked for forty years; we never mentioned it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "paid_for_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I put an old woman who had sat down in the road onto the cart, and Kees walked. His shoes were full of blood. Kees never reminded me of it. I remembered.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not take Kees off the cart. An old woman had sat down in the road; we left her behind. I chose my child; anyone would understand. Being understood is one thing, being forgiven another.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I told Kees beforehand that he might stay in Friesland. He was nine. Telling a child the truth is a kind of respect. The child pays for it too, at night, in the straw.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "told_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left Kees with a family in Friesland. It was the right decision. Right decisions leave a hole in you too; mine was the size of a chair.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not leave Kees; we went back together. I took him back to hunger, to my side. Love is sometimes the warmest name for selfishness, and sometimes it isn't. Which it was, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I stayed in Friesland until spring and taught thirty children. My mother got through the winter in Amsterdam on the load Jan brought her. I was not there.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The doctor said wait; I didn't. I took Kees across the dike in that wind. He lived. I say that thanks to him, not to me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the way back I declared the whole load; a third of it stayed behind. Honesty had a price, and I paid it with the street's food.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the way back I hid part of the load under Greet's pram. It worked. I was a teacher; I used to teach children not to hide things.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I hid part of the load under a sick child's blankets: Kees's. It worked. My face still burns telling it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When we got home I gave half the load to the street's shared kitchen. The stove burned three more weeks. I don't know who lived because of those three weeks. It's better not to know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I kept the load in the pantry. My mother saw May. The sum was right. A right sum can leave you alone too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Kornwerderzand I waited with Kees until the wind dropped. Nine days. Jan took the load home alone; I sat in a hall and measured a child's fever.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "I did not give my ladle to the woman whose card was stolen. She had a baby in her arms. I didn't make the rule; but I hid behind it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not bring my mother's share home. I didn't ask her. That night I did not protect my mother, and I never told her.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "gave_ladle",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the tram tracks I did not give the policeman a single block; I pulled Jan away. His house was cold too. I understood that later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_blocks",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not ask Greet to come; I said there was no room on the cart. There was room; it opened up later. Room always opens up later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the checkpoint I did not speak for Greet; let her speak for herself, I said. She had no German. Was it respect or fear? That morning both kept silent in the same voice.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "greet_spoke",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Purmerend I did not give the baby any aspirin; I kept it for Kees. I don't know the baby's name. I know its mother's face.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_aspirin",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not trade my father's watch; we'll manage, I said. Kees walked that day on one slice of bread. The watch is still in my drawer. It doesn't run.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_watch",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I did not stop; I did not take Kees to the doctor. Jan was right, the dike might close. Kees walked with a fever. Being right doesn't bring a fever down.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pushed_on",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In Hoorn I did not take the six children. I already have a child in my hands, I said. It was true. I was a teacher; that day I was not a teacher.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "refused_children",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At Den Oever I did not step in while Jan's tobacco was taken. Jan didn't speak; he counted the kilometres all the way along the dike. So did I.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "jan_lost_tobacco",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not take the woman who had sat down in the road onto the cart. Her husband was holding her arm. We never saw them again. I see them in every wind.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the dike I did not keep Kees on the cart; I made him walk. For a stranger, I made my own child walk. Kees will be surprised to hear it; he doesn't remember.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "woman_on_cart",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not tell Kees what had been said; we'll talk tomorrow, I said. The next day he found out at a table, in front of a minister. I stole that morning from him.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_from_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not bring Kees home. When he came back in June, for a week he called me 'Juf', not 'Auntie'.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_placed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not leave Kees in Friesland. The Van der Meers had bread, they had cows. I took him back to hunger, to my side.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kees_home",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay in Friesland to teach those thirty children; I went home. No one asked me to stay, and no one asked me to go. The decision was mine alone.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "returned_with_jan",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go back to my mother. Jan took the load; Jan knocked on the door. My mother got through the winter without me and never said a word about it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stayed_friesland",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The doctor said to wait until the wind dropped. I didn't. Kees lived; but that day it was I who decided for him, not the wind.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "crossed_with_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not hide the load. Jan had done it for years and showed me how. I declared it; a third went. That third was the street's share.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "declared_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not declare the whole load. Hiding never felt like a teacher's work to me. But my mother saw May.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_load",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not declare the whole load. I knew they wouldn't lift a sick child's blankets, and I used that.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "hid_under_kees",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not share the load with the street. The shared stove went out in February. I never sat by that stove again.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "kept_pantry",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not keep the load in the pantry. I gave the street the half that would have fed my mother until May. My mother never once complained. That was the heaviest part.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_street",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not cross the dike with Jan; I stayed with Kees. Jan pushed the load alone. Thirty-two kilometres. I never thanked him; thanks would have been too small.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "waited_wind",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "A child puts up a hand: “What was hunger like?” Truus looks at the half sandwich on the desk. “Nobody would have thrown that away,” she says. The class laughs. Truus doesn't.",
+    "closeUndone": "The class is quiet. “If I had told you what I did, you would have heard about a heroine,” Truus says. “There were no heroes that winter. There were hungry people, and the choices they made.”"
+  },
+  "nodes": [
+    {
+      "id": "kuy_01_merkez_mutfak",
+      "act": "The Queue",
+      "date": "15 January 1945",
+      "location": "Rozengracht, the central kitchen",
+      "imageKey": "frozen_canal",
+      "body": "The queue for the central kitchen runs the length of the Rozengracht and round the corner. Truus Bakker is thirty-six, a teacher at the primary school in the Jordaan; the school has been closed since December because there is no coal. She holds a card for three: herself, her mother, and her nephew Kees, who is nine. The woman at the cauldron says it is two ladles per card today; the reason is not worth asking. The young woman behind her is crying, a baby in her arms: her card was stolen this morning, and without a card there is no ladle. Kees's cough did not stop all night.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_shared_shelter_food",
+          "text": "In a shelter once you shared your water and bread. That day the queue was an everyday thing; today the ladle is not.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_took_flour",
+          "text": "At a burned farm you took the flour and walked on, because the column was hungry. Hunger keeps the same accounts here; only the queue is longer.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:took_flour",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_01_a",
+          "text": "Give the woman your mother's ladle.",
+          "trace": "At the central kitchen you gave your mother's share to the woman whose card had been stolen.",
+          "nextNodeId": "kuy_02_tramvay_bloklari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "You did not give your ladle to the woman whose card had been stolen."
+        },
+        {
+          "id": "kuy_01_b",
+          "text": "Take both ladles home; nothing is given to anyone without a card.",
+          "trace": "At the central kitchen you took both ladles home.",
+          "nextNodeId": "kuy_02_tramvay_bloklari",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_ladle",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_02_tramvay_bloklari",
+      "act": "The Queue",
+      "date": "15 January 1945",
+      "location": "Marnixstraat, the tram line",
+      "imageKey": "frozen_canal",
+      "body": "The trams have not run since October; there is no electricity. In the afternoons people pry up the oak blocks between the rails, the best wood there is for a stove. Your neighbour Jan Dekker, fifty-two, a barge skipper once, is beside you with his crowbar. The floorboards of the empty houses along the canal are being torn out too; Truus does not go into those houses, she knows whose they were. A municipal policeman comes over. \"That is city property,\" he says; his voice as tired as anyone's, his coat as thin. Jan does not put the crowbar down.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_gave_ladle_street",
+          "text": "The woman you gave your ladle to this morning is on the Marnixstraat with a sack; she saw you, lowered her head, said nothing.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_pantry_logged",
+          "text": "In Hamburg you handed over an opened pantry with a written record. Nobody keeps records for the wood between the rails.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:pantry_logged",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_02_a",
+          "text": "Set aside an armful of blocks for the policeman too.",
+          "trace": "You shared an armful of tram blocks with the policeman.",
+          "nextNodeId": "kuy_03_jan_teklifi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "kuy_02_b",
+          "text": "Leave the blocks and pull Jan away.",
+          "trace": "When the policeman came you left the blocks and got Jan away.",
+          "nextNodeId": "kuy_03_jan_teklifi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_blocks",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_03_jan_teklifi",
+      "act": "The Queue",
+      "date": "16 January 1945",
+      "location": "Bloemgracht, Jan's door",
+      "imageKey": "frozen_canal",
+      "body": "Jan's proposal is simple: north. Across the Afsluitdijk into Friesland, to his cousin Wiebe Hoekstra, who has a farm near Bolsward. Five days, six at most. He has a handcart with wooden rims; he needs a second pair of hands. Your mother cannot walk. \"I will manage,\" she says. \"The boy will not last another two weeks here.\" A girl is standing at the door: Greet Visser, nineteen, from Noord. She has heard the talk. There is no baby in her pram, only her mother's silver spoons; her aunt is in Harlingen. She means to go alone, but she does not want to.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_police_coal",
+          "text": "The policeman left a bucket of coal dust at the door this morning; no note.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_carried_first",
+          "text": "On the column's first morning you took the back end of a stretcher. That is what Jan is looking for: the other end.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_children",
+          "text": "On a road once you took a neighbour's children on your sleigh and made your father walk. On Jan's cart too there is room for one, and someone is standing at the door.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_03_a",
+          "text": "Tie Greet's pram to the handcart; you go together.",
+          "trace": "You took Greet Visser along; her pram was tied to the handcart.",
+          "nextNodeId": "kuy_04_ij_kontrol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_joined",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 3
+            }
+          ],
+          "omission": "You did not ask Greet to set out with you."
+        },
+        {
+          "id": "kuy_03_b",
+          "text": "Describe the road to Greet; there is no room on the cart.",
+          "trace": "You described the road to Greet and told her there was no room on the cart.",
+          "nextNodeId": "kuy_04_ij_kontrol",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_04_ij_kontrol",
+      "act": "The Queue",
+      "date": "17 January 1945",
+      "location": "North bank of the IJ, Buiksloterweg",
+      "imageKey": "polder_road",
+      "body": "The ferry crossed the IJ in the dark before dawn; on the north bank German sentries are checking the papers of everyone leaving the city. The line is long: handcarts, prams, bicycles on wooden tyres. Jan's papers are in order; fifty-two, a former bargeman, nobody will take him for labour. Greet is beside you. Her card gives an address in Noord; the sentry asks why she is travelling alone, and Greet has no German. Kees is holding on to Truus's coat, trying not to cough.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_greet_followed",
+          "text": "Greet was beside you on the ferry after all; nobody said anything, and she did not explain.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_greet_rope",
+          "text": "The pram is behind the handcart; Greet has not let go of the rope all night.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_joined",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_conscription_concealed",
+          "text": "At a station once you held back the call-up envelope and showed the relief paper instead. What you show the sentry is again in your hands.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_04_a",
+          "text": "Introduce Greet as your sister.",
+          "trace": "At the checkpoint on the IJ you introduced Greet as your sister.",
+          "nextNodeId": "kuy_05_purmerend",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        },
+        {
+          "id": "kuy_04_b",
+          "text": "Let Greet answer for herself.",
+          "trace": "At the checkpoint you let Greet speak for herself.",
+          "nextNodeId": "kuy_05_purmerend",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "greet_spoke",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuy_05_purmerend",
+      "act": "The Queue",
+      "date": "17 January 1945",
+      "location": "Purmerend, the school gymnasium",
+      "imageKey": "polder_road",
+      "body": "In Purmerend the school gymnasium is full of people spending the night: two hundred of them, coats spread between the apparatus. Kees's fever came back in the evening. Truus has twelve aspirin in her bag, for the whole journey. Next to you a couple; their baby is warm and quiet. The mother says the baby has not cried since morning, and she knows that this is not a good thing. The man in charge of the hall says the doctor is in Hoorn and cannot come before tomorrow.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_ladle_babies",
+          "text": "The woman you gave your ladle to on the Rozengracht had a baby in her arms too. This winter the babies all cry with the same silence.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_morphine_nello",
+          "text": "You gave the last of the morphine to a prisoner, not to one of your own wounded. There is no prisoner here; there is a baby.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:morphine_nello",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "kuy_05_a",
+          "text": "Give half the aspirin to the baby.",
+          "trace": "In Purmerend you gave half your aspirin to the sick baby.",
+          "nextNodeId": "set_06_beemster",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "You did not give any of the aspirin to the baby in Purmerend."
+        },
+        {
+          "id": "kuy_05_b",
+          "text": "Keep the aspirin for Kees.",
+          "trace": "In Purmerend you kept the aspirin for Kees.",
+          "nextNodeId": "set_06_beemster",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_aspirin",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_06_beemster",
+      "act": "The Dike",
+      "date": "18 January 1945",
+      "location": "The Beemster polder, the road to Hoorn",
+      "imageKey": "polder_road",
+      "body": "The polder is flat and white; the wind comes from the north-east like a knife across the face. Hundreds of people are walking the road in the same direction and nobody talks. At a farm gate a man is selling potatoes: ten times the city price per kilo, and he wants goods, not money. Truus's trade goods are her father's pocket watch and her mother's linen sheets. Jan says his cousin in Friesland will give for nothing; in two days. Kees has eaten one slice of bread since morning and has fallen asleep against the side of the cart.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kept_ladle_rule",
+          "text": "On the Rozengracht you gave nothing to the one without a card. This farmer keeps the same rule: no goods, no potatoes.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_cart_repaired",
+          "text": "You got the column's only wheeled cart onto the road once. Jan's handcart is the ox-cart of this road.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_06_a",
+          "text": "Trade the watch for five kilos of potatoes.",
+          "trace": "In the Beemster you traded your father's watch for five kilos of potatoes.",
+          "nextNodeId": "set_07_hoorn",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        },
+        {
+          "id": "set_06_b",
+          "text": "Keep the watch; hold out until Friesland.",
+          "trace": "In the Beemster you kept the watch and chose to hold out until Friesland.",
+          "nextNodeId": "set_07_hoorn",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_watch",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_07_hoorn",
+      "act": "The Dike",
+      "date": "18 January 1945",
+      "location": "Hoorn, the square by the Grote Kerk",
+      "imageKey": "polder_road",
+      "body": "You came into Hoorn towards evening. Kees's fever is above thirty-nine; he is wrapped in a blanket on the cart, his eyes bright. On the house at the corner of the square there is a brass plate: Dr Veen. Jan is for walking on. \"Every day we lose is one more day of snow on the way back,\" he says. \"The sentries at Den Oever close the dike whenever they please.\" Greet says nothing; the wheel of her pram has begun to make a noise. There is a light in the doctor's window.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_aspirin_six",
+          "text": "Half the aspirin stayed with the baby in Purmerend; there are six left for Kees.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_watch_potatoes",
+          "text": "The potatoes you bought this morning are at the bottom of the cart; Kees ate one of them cold.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_birth_halt",
+          "text": "You halted the column half an hour for a birth once. Jan's \"every day is snow\" arithmetic was Bogdan's arithmetic that day.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:birth_halt",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_07_a",
+          "text": "Stop a day in Hoorn; take Kees to the doctor.",
+          "trace": "You stopped a day in Hoorn and took Kees to the doctor.",
+          "nextNodeId": "set_08a_doktor",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ],
+          "omission": "You did not take Kees to the doctor in Hoorn."
+        },
+        {
+          "id": "set_07_b",
+          "text": "Walk on; as far as Medemblik.",
+          "trace": "You did not stop in Hoorn and walked on to Medemblik in the dark.",
+          "nextNodeId": "set_08b_medemblik",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_08a_doktor",
+      "act": "The Dike",
+      "date": "19 January 1945",
+      "location": "Hoorn, Dr Veen's waiting room",
+      "imageKey": "polder_road",
+      "body": "Dr Veen takes no money. He listened to Kees's chest, said \"bronchitis, not pneumonia,\" and gave you a bottle of cod-liver oil. In the waiting room sit six children from Amsterdam, the eldest twelve. They belong to a group the church committee sent off to Friesland; their escort fell ill in Purmerend and the children have been waiting here for two days. A woman from the Red Cross has learned that Truus is a teacher: would you take the children as far as the Red Cross post at Den Oever? Forty-five kilometres; it is your road.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_keeps_list",
+          "text": "You took on Perić's register once. Six children are a list too; nobody has written their names down yet.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_08a_a",
+          "text": "Take the six children along as far as Den Oever.",
+          "trace": "You undertook to take the six Amsterdam children from Hoorn as far as Den Oever.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ],
+          "omission": "You did not take the six children waiting in Hoorn to Den Oever."
+        },
+        {
+          "id": "set_08a_b",
+          "text": "Refuse; you have a child of your own to see to.",
+          "trace": "In Hoorn you refused to take the Red Cross's six children.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "refused_children",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_08b_medemblik",
+      "act": "The Dike",
+      "date": "18 January 1945",
+      "location": "Medemblik, the lean-to of a barn",
+      "imageKey": "polder_road",
+      "body": "You reached Medemblik after midnight. A farmer has opened the lean-to of his barn; inside it is warm with travellers and steam. The wheel of Greet's pram came apart over the last two kilometres; the silver spoons, her mother's linen and two kilos of dried beans are lying in the straw. Jan's handcart is already full: your things, Kees, the blankets. Greet is sitting and looking at the wheel; she is not crying. You rise at five.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_refused_now_looking",
+          "text": "In Amsterdam you told Greet there was no room on the cart. There is no room now either; the difference is that now you are looking at her.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "greet_refused",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_cart_broken",
+          "text": "You broke up an ox-cart once for stretcher poles. A wheel comes apart too; it can be mended too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_broken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_08b_a",
+          "text": "Put Greet's things on the cart; leave your own sheets here.",
+          "trace": "In Medemblik you left your mother's sheets behind to make room for Greet's things.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "left_linen",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 4
+            }
+          ]
+        },
+        {
+          "id": "set_08b_b",
+          "text": "Mend the wheel with strips of sheet and wire.",
+          "trace": "In Medemblik you mended Greet's pram with strips of sheet.",
+          "nextNodeId": "set_09_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "fixed_pram",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_09_den_oever",
+      "act": "The Dike",
+      "date": "19/20 January 1945",
+      "location": "Den Oever, the checkpoint at the head of the dike",
+      "imageKey": "afsluitdijk",
+      "body": "At Den Oever the dike begins: thirty-two kilometres, dead straight between two waters. The German sentries let the travellers on at first light; nobody goes onto the dike at night. The line moves slowly through the checkpoint. Handcarts are opened, tobacco and spirits are taken, the rest is mostly left alone. Jan's trade goods were tobacco: twelve packets, kept from his barge days. The sentry has laid the packets out on the table. Jan is not speaking. You could; the sentry understands Dutch.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_children_delivered",
+          "text": "You handed the six children over at the Red Cross post; the smallest gave Kees his glove as he left.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "took_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_children_passed",
+          "text": "The six children you left in Hoorn came yesterday on the Red Cross lorry; they went through before you.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "refused_children",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_no_watch_here",
+          "text": "You gave the watch away in the Beemster; there is nothing bright left to put on the sentry's table.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "traded_watch",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_tools_preserved",
+          "text": "At the shipyard you kept your maintenance tools safe. Jan's tobacco is his tools.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_09_a",
+          "text": "Offer something of your own trade goods; let Jan keep the tobacco.",
+          "trace": "At Den Oever you gave some of your own trade goods so that Jan's tobacco would not be taken.",
+          "nextNodeId": "set_10_afsluitdijk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 4
+            }
+          ],
+          "omission": "You did not step in when Jan's tobacco was taken at Den Oever."
+        },
+        {
+          "id": "set_09_b",
+          "text": "Stay out of it; the tobacco goes.",
+          "trace": "At Den Oever you did not step in when Jan's tobacco was taken.",
+          "nextNodeId": "set_10_afsluitdijk",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "jan_lost_tobacco",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_10_afsluitdijk",
+      "act": "The Dike",
+      "date": "20 January 1945",
+      "location": "The Afsluitdijk, twelfth kilometre",
+      "imageKey": "afsluitdijk",
+      "body": "On the dike there is nowhere to hide from the wind. The ice of the IJsselmeer on the left, the grey water of the Wadden on the right, a road between them and hundreds of people on the road. Kees is on the cart under the blankets; Jan on the front handle, Truus on the back. Greet is pushing the pram. At the twelfth kilometre an old woman sat down on the road and did not get up; her husband holds her arm and cannot lift her. From Noord, Greet's neighbourhood. Twenty kilometres to go, and room on the cart for one.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_jan_packet",
+          "text": "Jan keeps his tobacco in his pocket; as you went onto the dike he held a packet out to you. You do not smoke; you took it.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_jan_counting",
+          "text": "Jan has not spoken since Den Oever; he pushes the cart and counts the kilometres.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "jan_lost_tobacco",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_man_on_cart",
+          "text": "You loaded the man from the stretcher onto the ox-cart once and made two people walk. The dike is ox-cart arithmetic too: who rides, who walks.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:man_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_pushed_now",
+          "text": "Every time the wind came you leaned into it and kept walking; Jan felt your weight on the back handle and did not once look round.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_waited_now",
+          "text": "Every time the wind came you stopped the cart and waited; each time Kees asked from under the blanket, \"is it over?\"",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_waited",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_10_a",
+          "text": "Put the woman on the cart; Kees walks.",
+          "trace": "On the dike you put the old woman on the cart and had Kees walk.",
+          "nextNodeId": "set_11a_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "woman_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 2
+            }
+          ],
+          "omission": "You did not take the old woman who sat down on the dike onto the cart."
+        },
+        {
+          "id": "set_10_b",
+          "text": "Kees stays on the cart.",
+          "trace": "On the dike you did not take Kees off the cart; the woman stayed behind with her husband.",
+          "nextNodeId": "set_11b_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_on_cart",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "afsluitdijk_wind",
+        "kind": "walk",
+        "caption": "The Afsluitdijk, twelfth kilometre. The wind is from the north-east; there is nowhere to hide.",
+        "results": [
+          "il_wind_pushed",
+          "il_wind_waited"
+        ]
+      }
+    },
+    {
+      "id": "set_11a_kornwerderzand",
+      "act": "The Dike",
+      "date": "20 January 1945",
+      "location": "Kornwerderzand, the Frisian end of the dike",
+      "imageKey": "afsluitdijk",
+      "body": "At the end of the dike Friesland begins, and there are women there: milk churns, hot milk, cup after cup. Nobody asks questions. The woman you carried holds her cup in both hands; her son farms at Makkum, and she says there is room for you there: \"Come; don't pay.\" Jan will not give up his cousin's farm: Bolsward, twelve kilometres more. Kees walked the last five kilometres of the dike and the inside of his shoe is bloody. It will be dark in an hour.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_wind_passed_by",
+          "text": "Every time you stopped in the wind on the dike, ten people passed you; none of them looked back, none of them judged.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_waited",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_lit_fire",
+          "text": "On the far bank you had a fire lit for the ones who got wet. The milk churns are Friesland's fire.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:lit_fire",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_11a_a",
+          "text": "Go to Jan's cousin, to Bolsward.",
+          "trace": "From Kornwerderzand you walked on to Jan's cousin Hoekstra's farm.",
+          "nextNodeId": "set_12a_hoekstra",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_hoekstra",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_11a_b",
+          "text": "Go to the woman's son's farm, to Makkum.",
+          "trace": "From Kornwerderzand you went to the farm of the son of the woman you carried on the dike.",
+          "nextNodeId": "set_12b_makkum",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_makkum",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_11b_kornwerderzand",
+      "act": "The Dike",
+      "date": "20 January 1945",
+      "location": "Kornwerderzand, the Frisian end of the dike",
+      "imageKey": "afsluitdijk",
+      "body": "At the end of the dike Friesland begins, and there are women there: milk churns, hot milk, cup after cup. Nobody asks questions. A man from the church committee keeps a list at a table; he is handing out farm addresses to the people from Amsterdam, the nearest at Makkum. Jan will not give up his cousin's farm: Bolsward, twelve kilometres more. Kees got down from the cart; his legs will not hold him. You did not see the woman and her husband who stayed behind on the dike again. It will be dark in an hour.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_wind_arms",
+          "text": "You did not stop once against the wind on the dike; you did not feel your arms until evening, and then you felt them all night.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_walkers_first",
+          "text": "You gave the crossing to those who could walk. On the dike, too, those who could walk got across.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:walkers_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_11b_a",
+          "text": "Go to Jan's cousin, to Bolsward.",
+          "trace": "From Kornwerderzand you walked on to Jan's cousin Hoekstra's farm.",
+          "nextNodeId": "set_12a_hoekstra",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_hoekstra",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "set_11b_b",
+          "text": "Go to the farm the committee gave you, at Makkum.",
+          "trace": "From Kornwerderzand you went to the farm at Makkum that the church committee assigned you.",
+          "nextNodeId": "set_12b_makkum",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "to_makkum",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_12a_hoekstra",
+      "act": "The Dike",
+      "date": "21 January 1945",
+      "location": "The Hoekstra farm, near Bolsward",
+      "imageKey": "frisian_farm",
+      "body": "Wiebe Hoekstra opened the door the moment he saw Jan; the two men had not met in fifteen years, and they did not speak, they embraced. Eight Amsterdam children are already living on the farm, placed by the church committee. Hoekstra will not take payment. In the morning he showed you the barn: potatoes, as many as you like, heavy but filling; or rye, cheese and a piece of bacon, lighter, worth more, and the first things to be taken at the checkpoint on the way back. The handcart carries one or the other, not both. Kees sat at a table for the first time and ate three plates.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_jan_laughed",
+          "text": "Jan left half his tobacco with Hoekstra; at the table he laughed for the first time.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "paid_for_jan",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_greet_sheets",
+          "text": "Greet asked Hoekstra's wife for two sheets to replace the ones you left in Medemblik; for you.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "left_linen",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_blankets_shared",
+          "text": "You cut the blankets up once and shared them out. Hoekstra's barn is not a blanket to be cut; still, one thing has to be chosen.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:blankets_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_12a_a",
+          "text": "Fill the cart with potatoes.",
+          "trace": "From Hoekstra's barn you filled the cart with potatoes.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": 4
+            }
+          ]
+        },
+        {
+          "id": "set_12a_b",
+          "text": "Take rye, cheese and bacon; lighter.",
+          "trace": "From Hoekstra you took rye, cheese and bacon instead of potatoes.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "hoekstra",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_12b_makkum",
+      "act": "The Dike",
+      "date": "21 January 1945",
+      "location": "Makkum, the De Boer farm",
+      "imageKey": "frisian_farm",
+      "body": "The farm at Makkum is the address you were given at Kornwerderzand. The farmer, Tjeerd de Boer, opened the door, asked your name, looked at his list and let you in: warm, crowded, quiet. Here everything has its price, but a fair one; he looks at your mother's sheets, or whatever you have left. In the barn the choice is the same: potatoes, heavy but filling; or rye, cheese and a piece of bacon, lighter, worth more, the first things to be taken at the checkpoint on the way back. Jan is standing in the yard. His cousin's farm is twelve kilometres away and you did not go there.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_woman_bread",
+          "text": "The woman you carried on the dike is sitting in her son's kitchen; when she looked at you she pushed the bread across the table towards you.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "woman_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_slept",
+          "text": "Kees, whom you kept on the cart on the dike, slept a day and a night in De Boer's barn.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kees_on_cart",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_registry_first",
+          "text": "When you looked for Ruth you checked the official records first. The church committee's list is a record too; it is what brought you here.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:registry_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_12b_a",
+          "text": "Fill the cart with potatoes.",
+          "trace": "From De Boer's barn you filled the cart with potatoes.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "set_12b_b",
+          "text": "Take rye, cheese and bacon; lighter.",
+          "trace": "From De Boer you took rye, cheese and bacon instead of potatoes.",
+          "nextNodeId": "set_13_ahir_gecesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "set_13_ahir_gecesi",
+      "act": "The Dike",
+      "date": "21 January 1945",
+      "location": "The farm barn, at night",
+      "imageKey": "frisian_farm",
+      "body": "In the barn the cows are warm and the straw is dry; for the first time you will sleep without being cold. Kees is not asleep. In the afternoon the village pastor, Dominee Rinsma, called at the farm and showed Truus the list he keeps for the Amsterdam children: there is one more family in the village, the Van der Meers, who could take a child, \"until the war is over.\" Nobody knows when the war will be over. Kees did not hear what the Dominee said, but he understood that something was said. Now he lies in the straw, looking into the dark, and asks: \"Are we going back tomorrow?\"",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_cod_liver",
+          "text": "Dr Veen's cod-liver oil is nearly finished; so is Kees's cough.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_fever_drops",
+          "text": "The night you walked on past Hoorn, Kees's fever did not come down; in the warmth of the barn it is coming down for the first time.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ruth_departed_alone",
+          "text": "You put Ruth on the evacuation train alone. Leaving a child takes longer than putting one on a train.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:ruth_departed_alone",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_evacuated_with_ruth",
+          "text": "You got on the train with Ruth; you left nobody behind. In this barn the choice is not that clean.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:evacuated_with_ruth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_earth",
+          "text": "You once took a jar of earth from your mother's grave, because you could not take the grave with you. Leaving a child somewhere is harder: a child looks after you.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:took_earth",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_13_a",
+          "text": "Tell Kees about the Dominee's list.",
+          "trace": "In the barn you told Kees about the Dominee's list and the Van der Meers.",
+          "nextNodeId": "don_14_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "told_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ],
+          "omission": "You did not tell Kees beforehand that he might stay in Friesland."
+        },
+        {
+          "id": "set_13_b",
+          "text": "Say \"we'll talk tomorrow.\"",
+          "trace": "In the barn you did not tell Kees about the list; you said \"we'll talk tomorrow.\"",
+          "nextNodeId": "don_14_kilise",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_from_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_14_kilise",
+      "act": "The Return",
+      "date": "22 January 1945",
+      "location": "The village church hall",
+      "imageKey": "frisian_farm",
+      "body": "In the church hall Dominee Rinsma sits at his table with his list in front of him. The Van der Meers are waiting at the door: a middle-aged couple, two daughters, a cow, bread. Letters go back and forth through the Red Cross; once a month, perhaps. Kees stands beside Truus. Your mother's voice is in your ear: \"The boy will not last another two weeks here.\" Nothing has changed in Amsterdam, and the winter has at least three months left in it. Outside, Jan is lashing the cart; he does not ask.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_kees_packed",
+          "text": "Kees remembers everything you told him last night; this morning he packed his own bag and did not ask what for.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "told_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_understood",
+          "text": "Kees understood what was being discussed by looking at the table. He is looking at the Dominee, not at you.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kept_from_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_dragica_kept",
+          "text": "You did not write Dragica onto the sick side; you kept her with you. You knew what keeping someone with you cost then, too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:dragica_kept",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_dragica_isolated",
+          "text": "You wrote Dragica onto the sick side, because it was the right thing. The right thing is not always to keep someone with you.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:dragica_isolated",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_search",
+          "text": "At a station once you found lost families for one another in lists. The minister's list also joins a child to a family; only this time you are the one choosing the family.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:search_desk",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_14_a",
+          "text": "Leave Kees with the Van der Meers.",
+          "trace": "You left Kees with the Van der Meer family in Friesland until the war was over.",
+          "nextNodeId": "don_15a_veda",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_placed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -3
+            }
+          ]
+        },
+        {
+          "id": "don_14_b",
+          "text": "Take Kees with you; go back together.",
+          "trace": "You did not leave Kees in Friesland; you went back to Amsterdam together.",
+          "nextNodeId": "don_15b_kornwerderzand",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kees_home",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_15a_veda",
+      "act": "The Return",
+      "date": "22 January 1945",
+      "location": "The Van der Meer farm, the yard",
+      "imageKey": "frisian_farm",
+      "body": "The snow has been cleared from the Van der Meers' yard; a small wooden chest has been set by the door for Kees. Truus gave him the school's last exercise book: one line a day, to be sent by letter. Kees is not crying; he is clenching his jaw so as not to. The Dominee has told Truus one thing more: there are thirty children from Amsterdam at the village school and nobody to teach them. If you stay there is a room, there is food, until spring. Jan can take the cart alone; your mother would get her food. Nobody is telling Truus to stay. Nobody is telling her to go, either.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_baby_mother_neighbour",
+          "text": "The mother of the baby you gave aspirin to in Purmerend has been placed with the Van der Meers' neighbours; she recognised Kees.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "gave_aspirin",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_school_pump",
+          "text": "In Hamburg you mended the pump in a school kitchen. Today is not the first day a school has needed you.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:school_pump_fixed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_15a_a",
+          "text": "Go back to Amsterdam with Jan.",
+          "trace": "You left Kees behind and went back to Amsterdam with Jan.",
+          "nextNodeId": "don_16a_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "returned_with_jan",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "don_15a_b",
+          "text": "Stay in Friesland until spring; teach at the village school.",
+          "trace": "You stayed in Friesland until spring and taught the Amsterdam children at the village school.",
+          "nextNodeId": "son_kis_okulu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stayed_friesland",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_16a_den_oever",
+      "act": "The Return",
+      "date": "23 January 1945",
+      "location": "Den Oever, the return checkpoint",
+      "imageKey": "afsluitdijk",
+      "body": "The dike is longer on the way back; the wind is behind you this time, but the cart is full. At Den Oever those returning are put in a separate line. Loads are opened and the \"surplus\" is set aside; the rule is not written anywhere, it changes with the sentry. The man in front of you lost all his cheese; they did not touch his potatoes. Greet's pram holds her own linen, and there is room under the linen. You look at Jan: he did this for years on the barge, part of the cargo where it could be seen, part where it could not. Without Kees there is more room on the cart than you expected.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_rye_visible",
+          "text": "The rye and cheese are in the visible part of the load; the man in front of you just lost his cheese.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_potatoes_ignored",
+          "text": "Nobody is interested in sacks of potatoes; that is what their weight buys.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_same_table",
+          "text": "On the way out you introduced Greet as your sister. Not the same sentry, but the same table.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_conscription_disclosed",
+          "text": "At the station you laid the call-up openly before the clerk. Declaring cost something that day, too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_16a_a",
+          "text": "Declare the whole load.",
+          "trace": "At Den Oever you declared the whole of the return load.",
+          "nextNodeId": "don_17a_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": 1
+            }
+          ]
+        },
+        {
+          "id": "don_16a_b",
+          "text": "Hide part of it under Greet's pram linen.",
+          "trace": "At Den Oever you hid part of the load under the linen in Greet's pram.",
+          "nextNodeId": "don_17a_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "hid_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "greet",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_17a_ev",
+      "act": "The Return",
+      "date": "24 January 1945",
+      "location": "Bloemgracht, home",
+      "imageKey": "canal_night",
+      "body": "You came onto the Bloemgracht after dark; the cart skidded on the ice by the canal and Jan held it. Your mother opened the door before you knocked, looked past you, and did not ask. The street saw you: nine days ago three people left, and two have come back with a full cart. The Van Dams' daughter, Pieter's mother, the widow downstairs. On the street's shared stove, beet peelings are boiling again tonight. The load will carry you and your mother to May; or this street for a month.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_policeman_neighbour",
+          "text": "The policeman you shared the tram blocks with is outside the door; now he looks at you like a neighbour.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_hidden_came_home",
+          "text": "The part under the pram came home too. Greet left the rope when she went on to Noord; she did not take it back.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "hid_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_third_left",
+          "text": "A third of the load you declared stayed at Den Oever. What is left is still the fullest cart this street has seen.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_relief_shift",
+          "text": "You set up the school's evening distribution with Ruth once. This street's distribution is done at a kitchen table too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:relief_shift_helped",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_17a_a",
+          "text": "Give half the load to the street's shared kitchen.",
+          "trace": "When you got home you gave half the load to the street's shared kitchen.",
+          "nextNodeId": "son_bos_sandalye",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "shared_street",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "On your return you did not share the load with the street's shared kitchen."
+        },
+        {
+          "id": "don_17a_b",
+          "text": "Keep the load in the pantry; it has to last until May.",
+          "trace": "When you got home you put the load in the pantry and did not share it with the street.",
+          "nextNodeId": "son_bahar_mektubu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_pantry",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_15b_kornwerderzand",
+      "act": "The Return",
+      "date": "22 January 1945",
+      "location": "Kornwerderzand, the end of the dike",
+      "imageKey": "afsluitdijk",
+      "body": "You reached the Frisian end of the dike in the afternoon and Kees's fever came back; this time he is shivering. The village doctor beside the women with the milk looked at the boy: \"Thirty-two kilometres in this wind could kill this child. Wait until the wind drops; there is room in the church hall.\" Jan cannot wait with a loaded cart: every day is a day less of food, and your mother is at home alone. Greet could go with Jan; two people can push the cart. Ahead the dike is grey, straight and empty; the wind is from the north-east.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_no_stop_then",
+          "text": "You did not stop in Hoorn; he had a fever that night too. This time there is a doctor in front of you.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "pushed_on",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_veen_was_sure",
+          "text": "You stopped a day in Hoorn; Dr Veen said \"not pneumonia.\" This doctor is not so sure.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "stopped_hoorn",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_wind_return_pushed",
+          "text": "On the way out you crossed the dike without stopping for the wind. Today it is the same dike and the same wind; the only difference is the child on the cart.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_wind_pushed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_self_hidden",
+          "text": "You did not write your own fever in the register, because the column had to walk. There is no register to hide Kees's fever in; there is Jan's cart.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:self_hidden",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_15b_a",
+          "text": "Cross today; Kees on the cart, under the blankets.",
+          "trace": "You did not wait at Kornwerderzand; you crossed the dike with Kees.",
+          "nextNodeId": "don_16b_den_oever",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "crossed_with_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "don_15b_b",
+          "text": "Wait with Kees until the wind drops; let Jan go on with the cart.",
+          "trace": "You stayed at Kornwerderzand with Kees and sent Jan ahead with the cart.",
+          "nextNodeId": "son_cozulme",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "waited_wind",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_16b_den_oever",
+      "act": "The Return",
+      "date": "23 January 1945",
+      "location": "Den Oever, the return checkpoint",
+      "imageKey": "afsluitdijk",
+      "body": "At Den Oever those returning are put in a separate line. Loads are opened and the \"surplus\" is set aside; the rule is not written anywhere, it changes with the sentry. The man in front of you lost all his cheese; they did not touch his potatoes. Kees is on the cart under three blankets; he still has a fever. The sentries do not lift a sick child's blanket; Jan noticed that on the way out. There is room beside Kees. Greet is holding the rope and looking at you. Kees is looking at you too.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_rye_visible_b",
+          "text": "The rye and cheese are in the visible part of the load; the man in front of you just lost his cheese.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_rye",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_potatoes_ignored_b",
+          "text": "Nobody is interested in sacks of potatoes; that is what their weight buys.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "loaded_potatoes",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_same_table_b",
+          "text": "On the way out you introduced Greet as your sister. Not the same sentry, but the same table.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "vouched_greet",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_worker_notebook",
+          "text": "You took Olek's name book out of the sealed cabinet once. Hiding a thing and protecting a thing were not the same thing that day, either.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_16b_a",
+          "text": "Declare the whole load.",
+          "trace": "At Den Oever you declared the load without putting anything under Kees's blanket.",
+          "nextNodeId": "don_17b_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": 2
+            }
+          ]
+        },
+        {
+          "id": "don_16b_b",
+          "text": "Put part of it under Kees's blankets.",
+          "trace": "At Den Oever you hid part of the load under Kees's blankets.",
+          "nextNodeId": "don_17b_ev",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "hid_under_kees",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "relation",
+              "key": "jan",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "kees",
+              "op": "add",
+              "intValue": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "don_17b_ev",
+      "act": "The Return",
+      "date": "24 January 1945",
+      "location": "Bloemgracht, home",
+      "imageKey": "canal_night",
+      "body": "You came onto the Bloemgracht after dark; the cart skidded on the ice by the canal and Jan held it. Your mother opened the door before you knocked and lifted Kees down from the cart with her own arms. The street saw you: the three who left nine days ago, and a full cart. The Van Dams' daughter, Pieter's mother, the widow downstairs. On the street's shared stove, beet peelings are boiling again tonight. The load will carry the three of you to May; or this street for three weeks.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_policeman_neighbour_b",
+          "text": "The policeman you shared the tram blocks with is outside the door; now he looks at you like a neighbour.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_shared",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_kees_carried_sack",
+          "text": "Kees carried the sack from under the blankets into the house himself; he told nobody what it was.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "hid_under_kees",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_third_left_b",
+          "text": "The third left at Den Oever was not discounted for Kees's fever; the sentry did not even look at the boy.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_relief_shift_b",
+          "text": "You set up the school's evening distribution with Ruth once. This street's distribution is done at a kitchen table too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "hamburg_1943:relief_shift_helped",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "don_17b_a",
+          "text": "Give half the load to the street's shared kitchen.",
+          "trace": "When you got home you gave half the load to the street's shared kitchen.",
+          "nextNodeId": "son_sekiz_kilo",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "shared_street",
+              "op": "set",
+              "boolValue": true
+            }
+          ],
+          "omission": "On your return you did not share the load with the street's shared kitchen."
+        },
+        {
+          "id": "don_17b_b",
+          "text": "Keep the load in the pantry; it has to last until May.",
+          "trace": "When you got home you put the load in the pantry and did not share it with the street.",
+          "nextNodeId": "son_kiler",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "kept_pantry",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "son_bos_sandalye",
+      "act": "The Return",
+      "date": "Winter 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_bos_sandalye",
+        "title": "The Empty Chair",
+        "paragraphs": [
+          "The street's shared kitchen burned for three more weeks that winter. Nobody on the Bloemgracht spoke of Truus Bakker's cart; everybody knew. The Van Dams' daughter died in April; Pieter's mother saw May. Nobody can say which of those two had anything to do with the cart.",
+          "The first letter from Kees came at the beginning of March, in a Red Cross envelope: four lines, two of them about the cow. Truus pasted it into the school exercise book. In May the Canadian troops came into Amsterdam; Kees came back in June, three kilos heavier and with two sentences of Frisian. His chair at the kitchen table had stood in the same place all along.",
+          "History did not change. That winter close to twenty thousand people starved in the cities of the west, and a handcart did not alter it. What changed was that one street on the Bloemgracht spent those three weeks together."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You left Kees in Friesland.",
+          "• You shared the load with the street.",
+          "• The details of this road were recorded."
+        ]
+      }
+    },
+    {
+      "id": "son_bahar_mektubu",
+      "act": "The Return",
+      "date": "Winter 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_bahar_mektubu",
+        "title": "The Spring Letter",
+        "paragraphs": [
+          "The pantry lasted until May; the arithmetic was right. Your mother came through that winter, and so did Truus. On the Bloemgracht the shared stove went out in February. The street did not blame a cart for it, but Truus never sat by that stove again.",
+          "The letter from Kees came at the beginning of March: four lines, two of them about the cow. He came back in June, three kilos heavier. For the first time since his mother's death he had lived in someone's house as a child, and he did not say so. Truus did not ask.",
+          "History did not change. Close to twenty thousand people starved that winter, and a pantry did not alter it. What changed was that one house stayed full and one street stayed empty; and that it was known whose decision that was."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You left Kees in Friesland.",
+          "• You kept the load in the pantry.",
+          "• The details of this road were recorded."
+        ]
+      }
+    },
+    {
+      "id": "son_kis_okulu",
+      "act": "The Return",
+      "date": "Winter 1945",
+      "location": "Friesland, the village school",
+      "imageKey": "frisian_farm",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_kis_okulu",
+        "title": "The Winter School",
+        "paragraphs": [
+          "Truus stayed in Friesland until spring. In the back classroom of the village school she taught thirty Amsterdam children; there was no blackboard, and they wrote on the back pages of hymn books. Kees sat in the front row but slept at the Van der Meers'. Truus had decided this was right, and the decision was made again every morning.",
+          "Jan took the cart to Amsterdam alone. A third of the load stayed at Den Oever and the rest reached the Bloemgracht; your mother saw May. Jan's letter was one sentence: \"Arrived, delivered, well.\" Truus and Kees came back in June, in the back of an empty lorry.",
+          "History did not change. Most of the children who went to Friesland that winter survived; Truus's classroom had no part in that, the children survived because they ate. What changed was that thirty children got through that winter without forgetting how to read."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You left Kees in Friesland.",
+          "• You stayed in Friesland until spring.",
+          "• The details of this road were recorded."
+        ]
+      }
+    },
+    {
+      "id": "son_sekiz_kilo",
+      "act": "The Return",
+      "date": "Winter 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_sekiz_kilo",
+        "title": "Eight Kilos",
+        "paragraphs": [
+          "The street's shared kitchen burned for three more weeks that winter. Kees's fever broke on the fourth day, and he sat at the kitchen door and counted the people who came; being a teacher's nephew, he counted well. The Van Dams' daughter died in April; Pieter's mother saw May. Nobody connected either of those to a cart.",
+          "In May the Canadian troops came into Amsterdam. Kees put on eight kilos that summer; Truus wrote it on the last page of the exercise book and wrote nothing beneath it. The school opened in September. There were nineteen children in the class; in December there had been twenty-six.",
+          "History did not change. Close to twenty thousand people starved that winter, and a handcart did not alter it. What changed was that one street spent those three weeks together, and never forgot whose cart it had spent them on."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You brought Kees home with you.",
+          "• You shared the load with the street.",
+          "• The details of this road were recorded."
+        ]
+      }
+    },
+    {
+      "id": "son_kiler",
+      "act": "The Return",
+      "date": "Winter 1945",
+      "location": "Bloemgracht",
+      "imageKey": "canal_night",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_kiler",
+        "title": "The Pantry",
+        "paragraphs": [
+          "The pantry lasted until May; the arithmetic was right. Kees's fever broke on the fourth day and did not come back. On the Bloemgracht the shared stove went out in February; the street did not blame a cart, and Truus did not explain. Whenever there was a knock she told Kees \"open it,\" and whoever was at the door got a plate. A pantry runs out plate by plate too; only more slowly.",
+          "In May the Canadian troops came into Amsterdam. The school opened in September. There were nineteen children in the class; in December there had been twenty-six. Truus knew who was missing, and she showed the list to no one.",
+          "History did not change. Close to twenty thousand people starved that winter, and a pantry did not alter it. What changed was that one house got through the winter fed and with its door open; both were possible, it turned out, but only by someone's decision."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You brought Kees home with you.",
+          "• You kept the load in the pantry.",
+          "• The details of this road were recorded."
+        ]
+      }
+    },
+    {
+      "id": "son_cozulme",
+      "act": "The Return",
+      "date": "February 1945",
+      "location": "Kornwerderzand",
+      "imageKey": "afsluitdijk",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "son_cozulme",
+        "title": "The Thaw",
+        "paragraphs": [
+          "The wind dropped after nine days. Truus and Kees waited in the church hall at Kornwerderzand; the village doctor came every morning, the women with the milk every evening. Kees's fever came down on the sixth day. Jan and Greet had set out with the cart on the second day; a third of the load stayed at Den Oever and the rest reached the Bloemgracht. Your mother opened the door to Jan and asked about the boy. Jan said, \"He's coming.\"",
+          "On the first day of February they walked the dike. Kees walked twelve kilometres of it himself, the rest on Truus's back. When they reached Amsterdam the pantry was half gone and the street was still talking about the evening the cart came in. Kees put on eight kilos that summer.",
+          "History did not change. The wind blew for nine days, and nobody counted how many people walked the dike in those nine days. What changed was that one child listened to that wind from inside a hall."
+        ],
+        "traceFallbacks": [
+          "• You walked north for food.",
+          "• You brought Kees home with you.",
+          "• You waited at Kornwerderzand until the wind dropped.",
+          "• The details of this road were recorded."
+        ]
+      }
+    }
+  ]
+}

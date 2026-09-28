@@ -14,8 +14,20 @@ namespace OrdinaryFronts
         public BoolStateEntry[] flags = Array.Empty<BoolStateEntry>();
         public IntStateEntry[] relations = Array.Empty<IntStateEntry>();
         public string[] seenResults = Array.Empty<string>();
-        public string[] traces = Array.Empty<string>();
+        public TraceEntry[] traces = Array.Empty<TraceEntry>();
+
+        /// <summary>
+        /// Bu oynanışta atılan adımlar, sırasıyla: "düğüm>seçim". Yol haritası bu oynanışın
+        /// izini buradan çizer. Eski kayıtlarda alan yoktur; JsonUtility boş dizi bırakır.
+        /// </summary>
+        public string[] path = Array.Empty<string>();
         public bool completed;
+
+        /// <summary>
+        /// Final kaydından önce verilen tanıklığın kipi: <c>done</c> ya da <c>undone</c>.
+        /// Boşsa tanıklık henüz verilmemiştir; kayıttan devam edildiğinde yeniden sorulur.
+        /// </summary>
+        public string testimony;
 
         public static GameState Create(StoryDatabase story)
         {
@@ -83,12 +95,29 @@ namespace OrdinaryFronts
             if (!string.IsNullOrWhiteSpace(id) && !HasSeenResult(id)) seenResults = Append(seenResults, id);
         }
 
-        public void AddTrace(string trace)
+        /// <summary>
+        /// Kararın izini, alındığı bölümle birlikte saklar. Eskiden yalnız son sekiz iz
+        /// tutuluyordu; bir rota 14-18 karardan oluştuğu için bu, oyunun belirleyici erken
+        /// kararlarını final raporuna hiç ulaşmadan siliyordu. Artık rotanın tamamı korunur.
+        /// </summary>
+        public void RecordStep(string nodeId, string choiceId)
         {
-            if (string.IsNullOrWhiteSpace(trace) || Contains(traces, trace)) return;
-            List<string> list = new List<string>(traces ?? Array.Empty<string>());
-            list.Add(trace.Trim());
-            if (list.Count > 8) list.RemoveAt(0);
+            if (string.IsNullOrWhiteSpace(nodeId) || string.IsNullOrWhiteSpace(choiceId)) return;
+            path = Append(path ?? Array.Empty<string>(), RouteMap.Step(nodeId, choiceId));
+        }
+
+        public void AddTrace(string act, string trace)
+        {
+            if (string.IsNullOrWhiteSpace(trace)) return;
+            string text = trace.Trim();
+            if (traces != null)
+                for (int i = 0; i < traces.Length; i++)
+                    if (traces[i] != null && traces[i].text == text) return;
+
+            List<TraceEntry> list = new List<TraceEntry>(traces ?? Array.Empty<TraceEntry>());
+            list.Add(new TraceEntry { act = act ?? string.Empty, text = text });
+            // En uzun rota 18 karardır; üst sınır yalnız bozuk veriye karşı emniyettir.
+            if (list.Count > 32) list.RemoveAt(0);
             traces = list.ToArray();
         }
 
@@ -104,6 +133,14 @@ namespace OrdinaryFronts
             List<string> list = new List<string>(values ?? Array.Empty<string>()) { value };
             return list.ToArray();
         }
+    }
+
+    /// <summary>Final raporunda bölümlere göre gruplanabilmesi için iz, bölümüyle saklanır.</summary>
+    [Serializable]
+    public sealed class TraceEntry
+    {
+        public string act;
+        public string text;
     }
 
     [Serializable]

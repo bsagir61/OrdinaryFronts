@@ -1,0 +1,2865 @@
+{
+  "schemaVersion": 1,
+  "storyId": "hamburg_1943",
+  "locale": "en-US",
+  "startNodeId": "sir_01_vardiya_sonu",
+  "intro": {
+    "beats": [
+      {
+        "imageKey": "harbor_dawn",
+        "kicker": "HAMBURG",
+        "line": "Hamburg's port and shipyards work day and night for the war.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "shipyard_evening",
+        "kicker": "THE SHIPYARD",
+        "line": "Matthias Krüger works here as a maintenance electrician.",
+        "holdSeconds": 2.8
+      },
+      {
+        "imageKey": "aid_registry",
+        "kicker": "JULY 1943",
+        "line": "His call-up is deferred: the yard counts him as indispensable.",
+        "holdSeconds": 2.6
+      },
+      {
+        "imageKey": "shelter_stairs",
+        "kicker": "24/25 JULY",
+        "line": "When the sirens sound tonight, that deferral will not protect him.",
+        "holdSeconds": 3.2
+      }
+    ]
+  },
+  "characters": [
+    {
+      "key": "brehm",
+      "name": "Foreman Otto Brehm",
+      "warm": "At every roll call he wrote \"indispensable\" beside your name.",
+      "cold": "One morning he did not defend your name on the list, and never explained it."
+    },
+    {
+      "key": "olek",
+      "name": "Olek Nowak",
+      "warm": "He never told anyone he waited for you at the gate, but he waited.",
+      "cold": "After that night he never asked you for anything again."
+    },
+    {
+      "key": "elsbeth",
+      "name": "Elsbeth",
+      "warm": "In the shelter she kept her place beside you.",
+      "cold": "She goes down to the shelter by a different stairway now."
+    },
+    {
+      "key": "ruth",
+      "name": "Your sister Ruth",
+      "warm": "She waited for you even on the nights she did not know where you were.",
+      "cold": "A silence left over from that summer stays between you."
+    }
+  ],
+  "acts": [
+    {
+      "name": "Sirens",
+      "question": "When danger is closest, whom are you answerable to?"
+    },
+    {
+      "name": "Ash",
+      "question": "When searching, helping and keeping yourself safe cannot all be done, what do you let go of?"
+    },
+    {
+      "name": "The Order",
+      "question": "If obeying an order keeps you safe, who pays for it?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Hamburg · November 1983",
+    "setting": "Forty years later. A secondary-school student is interviewing people who lived through that summer, for a history project. She sets the tape recorder on Matthias Krüger's kitchen table; the red light comes on. Matthias is sixty-four. Outside the window, the shipyard cranes are still working.",
+    "question": "“What did you do that summer?”",
+    "tellDone": "Tell her what you did.",
+    "tellUndone": "Tell her what you did not do.",
+    "done": [
+      {
+        "text": "The first night I shut the main switch so there would be no fire. That job went into my file and protected me for years. I was protected because I had protected a machine. I still find that strange.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "When the sirens started I left with Olek. It was not heroism; we walked to the gate at the same time, that is all. But that night I saw for the first time that his shelter was not the same as mine.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got Olek's notebook out of the sealed locker. I had the key. My having it was no virtue of mine, and his not having it was no fault of his.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_saved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the service passage I forced a jammed door with a bar; there were three workers behind it. The bar bent. The yard asked me to account for the bar. Nobody asked about the workers.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "west_door_opened",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I repaired the lamp in the shelter. When it came on I saw people's faces. Sometimes I wish I hadn't. Then I remember that not seeing them would have been worse.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shelter_light_fixed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the dark I took people by the hand and led them down the stairs. I never saw any of their faces. My hands are the only way I remember them.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stairs_guided",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the shelter I shared my bread. I had bought it for Ruth. I never told her. I know what she would have said, and that is why I never told her.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_shelter_food",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "We counted the tins in a broken-open pantry one by one and left a note. Counting in the middle of a fire may sound absurd. But what isn't counted is taken from its owner a second time.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_logged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I showed my shipyard card and had a Polish woman's name written into the register. At that desk my card spoke louder than my voice. Her name became a line. A line is not freedom; but it is better than nothing.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "One morning I stopped looking for Ruth and went to the records depot with Olek. Ruth knows. Whether she forgave me I don't know. I never asked.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "olek_archive_help",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got a school's generator running. I was an electrician; that was what I could do. When the light comes on everyone looks at the electrician for a moment, then forgets. That is how it should be.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_generator_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the station I put my call-up paper openly on the desk. Was it honesty, or fear? That day the two wore the same face.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_disclosed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I would not sign that declaration until Olek's name was corrected. I held out for one day, that is all. That day his name did not go onto a list with my signature under it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_delayed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I signed the deferral with all its conditions. For four weeks the muster list crossed my desk every morning. I never wrote a name on it. But it crossed my desk.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the personnel room there was one line I would not sign: reporting my colleagues' names. Don't call it courage. My hand would not do it, that is all. Courage was sitting down at that desk again the next morning.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I got on the train with Ruth. As the city fell away behind us I felt relief. I still remember that relief with shame.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I put Ruth on the train myself. We did not wave. We were not sure enough of what would happen to wave.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I went to the recruiting office before the deadline. Then I wore a uniform for two years. You are not asking about those years. If you did, this tape would not be long enough.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I signed on with Elsbeth's crew and asked for time. I gained a few days, and in them I kept a school's lights on. I did not spend the time I gained on myself. I'm not proud of it; I just know it.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "At the first siren I did not leave with Olek; I stayed with the switch. That night I did not know which cellar he went down into. It did not occur to me to ask. Not asking was something too.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "The first night I left without shutting the main switch. I never asked what happened in the workshop that night. I chose not to ask.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I left Olek's notebook in the locker. There was no time, that is true. But there never is, at that moment.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the service passage I did not force the jammed door; I saved my tools and went through the tunnel. There were three workers behind that door. Olek got them out, not me.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tools_preserved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "In the shelter I did not share my bread. It was for Ruth. The child next to me had an empty cup. I still remember its colour: blue enamel.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_family_supplies",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the registry desk I did not stand with Olek; I had them look for my own sister first. No one blamed me. Not being blamed is not always the same as being right.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_registry_clue",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the registry desk I did not ask about Ruth first. I had someone else's name written down. That morning I didn't know where my sister was, and I put a stranger's name first. What I'd do today, I don't know.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not write down what I took from the pantry. Elsbeth signed her own name under the missing count. I found that out years later.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_unlogged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "On the bridge I did not go to the depot with Olek. I kept my card for myself. That card would have opened a door; I kept the door for myself.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "work_card_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "At the station I did not show the call-up envelope. I did not lie; I just did not say. I thought I learned the difference that day. I'm still not sure.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_concealed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek's name was on the absence list and I knew where he was. I signed the declaration as it stood. I did not write his name. But I did not strike it out either.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_signed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not refuse the reporting condition. I never had to report anyone, as it happened. Luck has no morals.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stand against the orders, only against one line. Everything else they asked, I did. The yard ran on my hands.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not stay. Olek stayed, Elsbeth stayed. I got on a train because a piece of paper allowed me to. They had no such paper.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go with Ruth. I stayed to sort out the orders, I said. Perhaps I was only afraid to leave.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not run from the call-up. Whether there was another way, I don't know. I didn't look for one.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "I did not go to the recruiting office; I asked for time. I gained time but I did not decide. I have been deciding for forty years.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Before she switches the recorder off, the student asks one more thing: “Was it enough?” Matthias does not answer. The tape turns for a while with nothing on it; the red light stays on.",
+    "closeUndone": "The student asks why he chose to tell her these things. “Anyone can tell what I did,” Matthias says. “No one but me knows what I didn't.”"
+  },
+  "nodes": [
+    {
+      "id": "sir_01_vardiya_sonu",
+      "act": "Sirens",
+      "date": "Night of 24/25 July 1943",
+      "location": "Harbour shipyard",
+      "imageKey": "shipyard_evening",
+      "body": "Matthias Krüger is finishing the last check of the evening shift when the sirens rise over the harbour. The crane arms look frozen in the dark; the workshop lamps go out one by one. Foreman Otto Brehm says that if the main switch is left open it could start a fire. At the gate waits Olek Nowak, a Polish forced labourer, worried that the shelter set aside for workers will be locked early. The card in Matthias's pocket carries a single stamp: indispensable. While the siren runs, he will learn to whom that word applies, and against what.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_01_a",
+          "text": "Stay with Brehm and make the main switch safe.",
+          "trace": "You stayed in the yard to make the main switch safe when the sirens began.",
+          "nextNodeId": "sir_02_salter_dairesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "set",
+              "boolValue": true,
+              "text": "Shutting down the main switch lowered the fire risk in the yard after the first raid."
+            }
+          ]
+        },
+        {
+          "id": "sir_01_b",
+          "text": "Leave for the shelter queue with Olek.",
+          "trace": "At the first siren you left the switch room and took the shelter route with Olek.",
+          "nextNodeId": "sir_02_tophane_kapisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "left_with_olek",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "set",
+              "boolValue": true,
+              "text": "Leaving together with Olek got you into the yard before the service gate closed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_02_salter_dairesi",
+      "act": "Sirens",
+      "date": "Night of 24/25 July 1943",
+      "location": "Shipyard switch room",
+      "imageKey": "shipyard_evening",
+      "body": "When the last lever comes down, the workshop falls quiet. Brehm tucks the inspection book under his arm and heads for the shelter. Olek has come back; he says his identity papers and a small notebook with a friend's address are still in the changing room locker. That row of lockers sits behind a sealed door. Olek does not ask Matthias to decide for him: if the lock is opened, he will take the notebook and go alone down the eastern service road. The sound of approaching aircraft turns into a steady vibration in the metal roof.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_keeps_list",
+          "text": "On a mountain road you kept the book of the wounded; writing names had become your work. The notebook in that locker is full of names too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_no_list",
+          "text": "On a mountain road you once refused a notebook that was held out to you. The one in that locker carries someone's names too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "sir_02_salter_a",
+          "text": "Open the locker section with the maintenance key.",
+          "trace": "You opened the sealed section so Olek could take his papers and the notebook of names.",
+          "nextNodeId": "sir_03_servis_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "set",
+              "boolValue": true,
+              "text": "The notebook of names you saved later became solid ground for tracing missing workers."
+            }
+          ],
+          "omission": "You did not take Olek's notebook out of the locker."
+        },
+        {
+          "id": "sir_02_salter_b",
+          "text": "Say there is no time and head for the stairs.",
+          "trace": "You left for the shelter without opening the sealed locker; Olek tried to hold the names in his head.",
+          "nextNodeId": "sir_03_siginak_merdiveni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Because the notebook stayed in the locker, some names could later only be written from memory."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_02_tophane_kapisi",
+      "act": "Sirens",
+      "date": "Night of 24/25 July 1943",
+      "location": "Shipyard east gate",
+      "imageKey": "shipyard_evening",
+      "body": "At the east gate two queues tangle into each other. Elsbeth Dorn, the district's civil defence warden, directs people arriving from outside toward the stone stairs, while the yard watchman sends foreign workers to a cellar further away. Olek does not know whether that cellar door is open. Elsbeth sees Matthias's electrician's bag and asks him to deal with the failing stairwell lamp. Olek says he knows the service passage and that if he waits he will not catch up with his own group. Neither of them offers Matthias's choice as a safe solution.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_02_kapi_a",
+          "text": "Take the service passage with Olek.",
+          "trace": "You took the service passage so Olek could reach the distant cellar.",
+          "nextNodeId": "sir_03_servis_gecidi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "service_route_chosen",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "sir_02_kapi_b",
+          "text": "Stay with Elsbeth and open the stairwell entrance.",
+          "trace": "You worked with Elsbeth to get the shelter entrance running for the crowd at the gate.",
+          "nextNodeId": "sir_03_siginak_merdiveni",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "shelter_entry_helped",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "set",
+              "boolValue": true,
+              "text": "The people you helped at the stairwell entrance remembered you beside Elsbeth the next morning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_03_servis_gecidi",
+      "act": "Sirens",
+      "date": "Night of 24/25 July 1943",
+      "location": "Eastern service passage",
+      "imageKey": "shelter_stairs",
+      "body": "When the single bulb in the service passage dies, you feel your way forward along the pipes. A fire door has jammed, and three workers are waiting behind it. Olek says he will open the west door to take his friends to the cellar, and that Matthias can use the narrow cable tunnel to the main shelter if he wants. Forcing the door may bend the maintenance bar; the tunnel is so tight that it can only be crawled with the bag pushed ahead. Fine plaster drifts down from above onto your shoulders, as if measuring what time is left to decide.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "sir_03_servis_a",
+          "text": "Use the bar and open the west door.",
+          "trace": "You forced the jammed door in the service passage and cleared the way for Olek's group.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "west_door_opened",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "set",
+              "boolValue": true,
+              "text": "The workers who got out through the west door passed the morning's missing list to one another."
+            }
+          ]
+        },
+        {
+          "id": "sir_03_servis_b",
+          "text": "Take the cable tunnel to the main shelter.",
+          "trace": "You kept your maintenance tools and crawled through the narrow cable tunnel to the main shelter.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sir_03_siginak_merdiveni",
+      "act": "Sirens",
+      "date": "Night of 24/25 July 1943",
+      "location": "Civil shelter stairs",
+      "imageKey": "shelter_stairs",
+      "body": "The stone stairs are packed with people. When the power fails, voices rise from below saying the door will not close; those higher up sit down on the steps in the dark. Elsbeth holds out the cable of the emergency lamp to Matthias. Wiring it will take a few minutes and keep him at the entrance. The other option is to leave the lamp and bring people down hand over hand along the railing. Either way the queue slows. Between the distant rumbles, Matthias tries not to think about which shelter Ruth went to tonight.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_cart_repaired",
+          "text": "When a column set out you mended a cart's axle; you chose repairing over carrying. The cable Elsbeth holds out asks the same question.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_carried_first",
+          "text": "When a column set out you left the cart and took the end of a stretcher. On this stair too there is something to mend and people to bring down.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "sir_03_merdiven_a",
+          "text": "Repair the emergency lamp.",
+          "trace": "You repaired the emergency lamp on the dark shelter stairs.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "shelter_light_fixed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "set",
+              "boolValue": true,
+              "text": "The stairwell lamp you repaired helped people move out without crushing one another."
+            }
+          ]
+        },
+        {
+          "id": "sir_03_merdiven_b",
+          "text": "Leave the lamp and guide the queue down the railing.",
+          "trace": "Instead of repairing the lamp, you guided the shelter queue down through the dark.",
+          "nextNodeId": "sir_04_ilk_dalga",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "stairs_guided",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "interlude": {
+        "id": "shelter_lamp",
+        "kind": "lamp",
+        "chooses": true,
+        "caption": "The power is out. Elsbeth is holding out the cable; below, the queue has stopped in the dark.",
+        "results": [
+          "il_lamp_hands",
+          "il_stairs_hands"
+        ]
+      }
+    },
+    {
+      "id": "sir_04_ilk_dalga",
+      "act": "Sirens",
+      "date": "25 July 1943, after midnight",
+      "location": "Shelter by the canal",
+      "imageKey": "shelter_stairs",
+      "body": "After the first long shock, only the ticking of the pipes is left in the cellar. The air is hot and the smell of plaster is sharp. While Elsbeth writes names on scraps of paper, a woman holds out an empty cup to her thirsty child. In Matthias's bag there is a half-full flask and the small parcel of bread he bought for Ruth at the end of his shift. He bought it for his sister; the child holding the cup is somebody's too. Nobody knows when it will be possible to go outside. Sharing would ease the wait in here; keeping it would leave him room to move while searching for Ruth in the morning.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_01_switchgear_result",
+          "text": "Because you shut down the main switch, no new fire was reported from the workshop beside the yard.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_02_left_column_result",
+          "text": "Leaving the switch room early got you onto the shelter route before the east gate closed.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_hands",
+          "text": "You spent two minutes on the cable on the stairs; the spark burned your hand twice, and the mark is still on your fingers.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_stairs_hands",
+          "text": "You took four people by the hand on the stairs and brought them down; you saw none of their faces, and all four thanked you once in the dark.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_stairs_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "sir_04_a",
+          "text": "Share the flask and bread with the others in the shelter.",
+          "trace": "You shared your water and bread during the wait in the shelter.",
+          "nextNodeId": "ash_05_paylasilan_su",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "shared_shelter_food",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "set",
+              "boolValue": true,
+              "text": "The food you shared in the shelter meant a witness remembered you at the registry in the morning."
+            }
+          ],
+          "omission": "You did not share your water and bread in the shelter."
+        },
+        {
+          "id": "sir_04_b",
+          "text": "Keep the supplies for the search for Ruth.",
+          "trace": "You kept the shelter supplies to use while searching for Ruth in the morning.",
+          "nextNodeId": "ash_05_saklanan_paket",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "saved_family_supplies",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "set",
+              "boolValue": true,
+              "text": "The parcel you kept helped both of you stay on your feet once you found Ruth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_05_paylasilan_su",
+      "act": "Ash",
+      "date": "25 July 1943, 06:20",
+      "location": "Canal crossing",
+      "imageKey": "bombed_street",
+      "body": "By morning the streets still carry their names, but not their faces. Wet ash sticks to shoes; power lines run silently along the pavement. Elsbeth says a woman from Ruth's district was sent on to the school building, but she cannot confirm the surname. The aid desk lies in the same direction; Ruth's house is two streets the other way. Matthias's flask is empty, and the crowds slow both routes. Registering first could produce information; going straight to the house offers the chance of finding a trace that has not been erased yet.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_buried_dead",
+          "text": "At a farm you once held a column for an hour so that three graves could be dug. This morning there are dead again, and again no time.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_gave_ladle",
+          "text": "At a central kitchen you once gave your mother's ladle to a woman whose card had been stolen. This morning it is water and bread to be shared; the rule is the same.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_morning",
+          "text": "In the morning nobody thought to switch the lamp off; it was still burning.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_05_paylas_a",
+          "text": "Go to the aid and registry desk at the school.",
+          "trace": "While searching for Ruth you checked the official aid records first.",
+          "nextNodeId": "ash_06_kayit_masasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_05_paylas_b",
+          "text": "Search the courtyard of Ruth's building first.",
+          "trace": "You skipped the registry queue and went to Ruth's building first.",
+          "nextNodeId": "ash_06_arka_avlu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_05_saklanan_paket",
+      "act": "Ash",
+      "date": "25 July 1943, 06:20",
+      "location": "Canal crossing",
+      "imageKey": "bombed_street",
+      "body": "When you come out of the shelter, the smoke has turned the harbour side into a single grey surface. Matthias feels the parcel he kept for Ruth at the bottom of his bag. Elsbeth explains that the registry desk set up at the school is gathering the district's residents. Just then an elderly neighbour from Ruth's street says a direction was chalked on the building door; he cannot remember what it said. It is possible to reach the desk before the queue grows. The way home is less certain, but chalk can be washed off by rain.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_05_paket_a",
+          "text": "Set part of the parcel aside and join the registry queue.",
+          "trace": "You set aside part of the supplies you kept and went to the aid records.",
+          "nextNodeId": "ash_06_kayit_masasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_05_paket_b",
+          "text": "Go home before the chalk mark is washed away.",
+          "trace": "You went straight home to find the mark Ruth may have left.",
+          "nextNodeId": "ash_06_arka_avlu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_06_kayit_masasi",
+      "act": "Ash",
+      "date": "25 July 1943, 07:35",
+      "location": "Temporary aid desk",
+      "imageKey": "aid_registry",
+      "body": "At the school entrance two door leaves are being used instead of a table. Stones hold the papers down; the clerks copy addresses, injuries and destinations into separate lists. Olek is trying to have Irena Sawicka's name written down. The clerk says a different record is kept for forced labourers and leaves the line blank. No one has done anything; the line is simply empty. Olek wants the name to reach the right desk; Matthias wants not to lose Ruth's trail. The shipyard card might get the clerk's attention, but it would also tie Matthias's presence here to an official record.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_03_notebook_saved_result",
+          "text": "In the notebook Olek saved, Irena's surname and barracks number were both intact.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_04_notebook_left_result",
+          "text": "With the notebook left in the locker, Olek had to reconstruct Irena's barracks number from memory.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kees_placed",
+          "text": "You once left a child with a strange family until the war was over and thought it right. The registry table would have written that in one column: 'placed'.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kees_placed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_06_kayit_a",
+          "text": "Show the shipyard card and get Irena's name recorded.",
+          "trace": "You used the shipyard card to have Irena Sawicka's name added to the aid record.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "set",
+              "boolValue": true,
+              "text": "Irena's recorded name later let different aid desks search for the same person."
+            }
+          ]
+        },
+        {
+          "id": "ash_06_kayit_b",
+          "text": "Ask about Ruth first; let Olek carry the names himself.",
+          "trace": "At the registry desk you gave priority to Ruth's trail; Olek carried Irena's name to another desk.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_registry_clue",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "set",
+              "boolValue": true,
+              "text": "Olek carried the names to another desk himself, and your paths parted for a while."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_06_arka_avlu",
+      "act": "Ash",
+      "date": "25 July 1943, 07:35",
+      "location": "Ruth's street",
+      "imageKey": "bombed_street",
+      "body": "The front of Ruth's building is standing, but the stairwell cannot be used. In the back courtyard Elsbeth is collecting the neighbours' names. Beside the door, rain has thinned the chalk until only \"R.K. — School 17\" can be read. The cellar of the next building has been opened; there are tins and soap inside. Elsbeth wants the goods counted and entered in a record until the owners are found. Taking a few things now would be faster for the trip to the school, but she adds that people carrying undocumented goods are questioned at checkpoints.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "cross_kar_left_key",
+          "text": "Once you left a house key in the door and wrote a note on the table for a stranger. Beside this door too there is a chalk mark someone wrote for someone else.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_06_avlu_a",
+          "text": "Count the goods with Elsbeth and leave a handover note.",
+          "trace": "You logged the goods from the opened cellar with Elsbeth and left a handover note.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "pantry_logged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "set",
+              "boolValue": true,
+              "text": "The handover note you left for the cellar kept the goods from being counted as lost at the next check."
+            }
+          ]
+        },
+        {
+          "id": "ash_06_avlu_b",
+          "text": "Take a small bag of supplies to reach the school in time.",
+          "trace": "You took a small bag of supplies from the cellar and left for the school without waiting for the record.",
+          "nextNodeId": "ash_07_kanal_koprusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "pantry_unlogged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "set",
+              "boolValue": true,
+              "text": "The unlogged supplies helped, but the shortfall in the cellar count was later matched to your route."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_07_kanal_koprusu",
+      "act": "Ash",
+      "date": "25 July 1943, 09:10",
+      "location": "Canal bridge",
+      "imageKey": "bombed_street",
+      "body": "On the bridge toward School 17 the crossing has narrowed to a single lane. Olek comes against the flow of the crowd. He has learned that Irena is not at the workers' hostel and may have been sent to the harbour infirmary after the last shift. He says he will go to the records depot and look at the transfer list, and asks Matthias either to keep following Ruth's mark or to help him through the depot door with his card. Olek will make the final decision, but without the card he will have to use a longer, more closely watched route.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_05_shelter_entry_result",
+          "text": "A neighbour you helped at the shelter entrance confirmed that Ruth had gone toward the school.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_06_west_door_result",
+          "text": "A worker who got out through the west door told Olek where Irena was last seen.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_07_shelter_light_result",
+          "text": "Thanks to the lamp you repaired, Elsbeth's name slips came out of the shelter complete.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_taken",
+          "text": "On the Neretva you had a prisoner taken on a sledge; the column ran a day late. Walking beside Olek is that kind of thing.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_left",
+          "text": "On the Neretva you left a prisoner at the barn; the column came down on time. Now Olek is asking you to come with him.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_07_a",
+          "text": "Keep the card and follow Ruth's mark.",
+          "trace": "On the bridge you kept the shipyard card and chose to follow Ruth's trail.",
+          "nextNodeId": "ash_08_okul_avlusu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_07_b",
+          "text": "Go with Olek as far as the records depot.",
+          "trace": "You paused the search for Ruth and went after the transfer records with Olek.",
+          "nextNodeId": "ash_08_kayit_deposu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "olek_archive_help",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "set",
+              "boolValue": true,
+              "text": "The transfer line found in the records depot turned Irena's trail toward the harbour infirmary."
+            }
+          ],
+          "omission": "You did not go to the records depot with Olek."
+        }
+      ]
+    },
+    {
+      "id": "ash_08_okul_avlusu",
+      "act": "Ash",
+      "date": "25 July 1943, 10:05",
+      "location": "School 17 courtyard",
+      "imageKey": "aid_registry",
+      "body": "Address cards hang from washing lines in the school courtyard. Ruth's name is on the kitchen volunteer list, but she has gone to a distribution point a few streets away to collect medicine. The water pump in the boiler room has failed, so the kitchen is about to close. If Matthias repairs the pump, Ruth can find him here when she returns; if he goes to the medicine queue, they may meet sooner, but the school's hot meal will be delayed. The clock in the courtyard has stopped, and nobody knows the right time.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_08_okul_a",
+          "text": "Stay in the courtyard and repair the water pump.",
+          "trace": "While waiting for Ruth to return you repaired the school kitchen's water pump.",
+          "nextNodeId": "ash_09_okul_mutfagi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "school_pump_fixed",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_08_okul_b",
+          "text": "Follow Ruth to the medicine distribution point.",
+          "trace": "Instead of waiting at the school you followed Ruth to the medicine distribution point.",
+          "nextNodeId": "ash_09_yurt_kapisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "followed_ruth_route",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_08_kayit_deposu",
+      "act": "Ash",
+      "date": "25 July 1943, 10:05",
+      "location": "Shipyard records depot",
+      "imageKey": "aid_registry",
+      "body": "In the depot the windows are held together with paper strips and transfer cards lie scattered on the floor. Olek finds Irena's line: a faint note says she was sent to the harbour infirmary after the night shift. Olek says he will go to the infirmary himself, and that Matthias could take a copy of the note to the aid desk at School 17 if he wants. A copy might let different lists find each other. Going with him to the infirmary would mean Matthias's name entering the record of any questioning he witnesses.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ash_08_depo_a",
+          "text": "Take a copy of the note to School 17.",
+          "trace": "You copied Irena's transfer note and delivered it to the record at the aid desk.",
+          "nextNodeId": "ash_09_okul_mutfagi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "irena_note_delivered",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_08_depo_b",
+          "text": "Take the road to the harbour infirmary with Olek.",
+          "trace": "You left the copy behind and went with Olek toward the infirmary where Irena was taken.",
+          "nextNodeId": "ash_09_yurt_kapisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "went_to_infirmary",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_09_okul_mutfagi",
+      "act": "Ash",
+      "date": "25 July 1943, 11:40",
+      "location": "School 17 kitchen",
+      "imageKey": "aid_registry",
+      "body": "Ruth comes back to the school kitchen with two boxes of bandages. Her face is covered in ash, but she is not hurt. Before she embraces Matthias she hangs the missing list back in its place; she has been comparing the neighbours' names since morning. She says that if she stays in the building she can help with the evening distribution, and that if she leaves she can get into the evacuation queue early. She does not ask Matthias to rescue her, but to decide which burden they will carry together. Even with the kitchen boiler working, there are few supplies and few people to carry them.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_08_irena_registered_result",
+          "text": "Because you had Irena's name recorded, the school desk sent a query note to the harbour infirmary.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_09_olek_names_result",
+          "text": "Since Olek carried the names himself, Irena's line opened late and incomplete on the school list.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_09_mutfak_a",
+          "text": "Stay with Ruth and prepare the evening distribution.",
+          "trace": "After finding Ruth you prepared the school's evening distribution together.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "relief_shift_helped",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_09_mutfak_b",
+          "text": "Check the evacuation queue with Ruth.",
+          "trace": "You left the school with Ruth and checked the state of the evacuation queue.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_queue_checked",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_09_yurt_kapisi",
+      "act": "Ash",
+      "date": "25 July 1943, 11:40",
+      "location": "Road to the harbour infirmary",
+      "imageKey": "bombed_street",
+      "body": "At the checkpoint on the infirmary road, Olek's pass is refused. An orderly coming out whispers that Irena was not treated here and was sent north with another work detail. Olek decides to turn back and go after the new list; he tells Matthias not to put off the search for Ruth any longer. The broken bell at the gate rings without stopping. If Matthias repairs it, the guard offers to open the register. Going straight to the school would reach Ruth sooner, but Irena's new destination would stay uncertain.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_10_archive_result",
+          "text": "The transfer line you found in the depot revealed that Irena had been written onto another detail before the infirmary.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_09_yurt_a",
+          "text": "Repair the bell and check the new transfer register.",
+          "trace": "You repaired the bell at the checkpoint and looked for Irena's new transfer record.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "irena_transfer_found",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ash_09_yurt_b",
+          "text": "Respect Olek's decision and return to School 17.",
+          "trace": "You returned to the school to find Ruth while Olek searched for the new transfer list himself.",
+          "nextNodeId": "ash_10_bir_arada",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "olek_plan_respected",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ash_10_bir_arada",
+      "act": "Ash",
+      "date": "25 July 1943, 16:15",
+      "location": "School 17 aid centre",
+      "imageKey": "aid_registry",
+      "body": "In the afternoon Matthias and Ruth finally sit on two sides of the same table. Ruth is not hurt; all night she has been carrying the names of people sheltering in different cellars with the neighbours. She says going home is impossible and that the school needs a generator before dark. The evacuation list at the station stays open until evening. If Matthias gets the generator running, the centre can serve one more night. Going to the station with Ruth now would raise their chances of leaving the city, but they would have to leave the school's lists to Elsbeth.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_11_shared_food_result",
+          "text": "A woman who remembered the water you shared in the shelter carried Ruth's name to the right school list.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_12_saved_food_result",
+          "text": "The parcel of bread you kept gave you both a first calm meal when you met Ruth.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_13_pantry_logged_result",
+          "text": "The note you left for the cellar was accepted; the goods you brought to the school were not counted as lost.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_14_pantry_unlogged_result",
+          "text": "The unlogged supplies were used in the kitchen, but Elsbeth had to note your name for the shortfall.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ash_10_a",
+          "text": "Stay at the school and get the generator running.",
+          "trace": "After finding Ruth you stayed to get the aid centre's generator running.",
+          "nextNodeId": "ord_11_jenerator_nobeti",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_generator_repaired",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "set",
+              "boolValue": true,
+              "text": "The generator you started kept the aid centre's lists and kitchen open through the night."
+            }
+          ],
+          "omission": "You did not repair the relief centre's generator."
+        },
+        {
+          "id": "ash_10_b",
+          "text": "Go to the station evacuation list with Ruth.",
+          "trace": "You left the aid centre and went to the evacuation list with Ruth.",
+          "nextNodeId": "ord_11_istasyon_sirasi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "left_for_station",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_11_jenerator_nobeti",
+      "act": "The Order",
+      "date": "26 July 1943, 05:50",
+      "location": "School 17 boiler room",
+      "imageKey": "aid_registry",
+      "body": "The generator runs unevenly until morning. As the day breaks, Brehm arrives at the school with a list of indispensable workers who have not returned to the yard. He says Matthias's deferral depends on his maintenance duty, and that if he misses the morning muster the file will be reviewed again. Ruth's evacuation record will be confirmed at the station at the same hour. Brehm offers to leave his bicycle and a signed duty slip. Ruth asks Matthias not to decide on her behalf, only to choose how far they walk together.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_15_generator_result",
+          "text": "Getting the generator running meant Brehm found you on duty at the aid centre.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_11_jenerator_a",
+          "text": "Take Brehm's bicycle to the shipyard office.",
+          "trace": "You took Brehm's bicycle to the yard to clear up your deferral file.",
+          "nextNodeId": "ord_12_ustabasinin_burosu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "returned_toward_yard",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_11_jenerator_b",
+          "text": "Go to the station with Ruth and wait for the roll call.",
+          "trace": "You put off the yard muster and went with Ruth to the roll call at the station.",
+          "nextNodeId": "ord_12_belge_kontrolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_muster_missed",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_11_istasyon_sirasi",
+      "act": "The Order",
+      "date": "26 July 1943, 05:50",
+      "location": "Evacuation station",
+      "imageKey": "train_platform",
+      "body": "The station windows are boarded with cardboard. On the platform families hold small paper numbers in their palms; the train times are changed in chalk. Ruth's name is on the provisional list; Matthias's is not. A yard messenger hands Matthias two envelopes: a return-to-work notice and a call-up from the conscription office. Outside the crowd, Olek is working on his own pass; he says he will stay in the city to look for Irena. Opening the envelopes here could speed up the check. Taking them to Brehm risks losing the place in the evacuation queue.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_11_istasyon_a",
+          "text": "Open the envelopes in the queue and show the desk.",
+          "trace": "You opened the return-to-work and call-up envelopes at the station document desk.",
+          "nextNodeId": "ord_12_belge_kontrolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "orders_opened_publicly",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_11_istasyon_b",
+          "text": "Go to the yard to read them with Brehm.",
+          "trace": "You went back to the yard to ask Brehm's reading of the official envelopes before opening them.",
+          "nextNodeId": "ord_12_ustabasinin_burosu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "orders_taken_to_brehm",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_12_ustabasinin_burosu",
+      "act": "The Order",
+      "date": "26 July 1943, 07:10",
+      "location": "Shipyard administration hut",
+      "imageKey": "shipyard_evening",
+      "body": "In the administration hut the windows are open and the desks are covered in grey dust. Brehm lays the envelopes side by side. The return-to-work paper states that Matthias counts as an indispensable worker; the call-up requires him to report within two days so the deferral can be reassessed. Brehm says that if Matthias signs the shift book now, he will testify that he was present in the yard. Recording the family aid duty could buy time, but Brehm is wary of having his own authority questioned. The foreman's support is not protection; it is a conditional working arrangement.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_12_buro_a",
+          "text": "Sign the return book.",
+          "trace": "You signed the yard's return book to protect the temporary worker deferral.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "yard_return_signed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "set",
+              "boolValue": true,
+              "text": "The signature in the return book gave Brehm official ground to stand on at the deferral hearing."
+            }
+          ]
+        },
+        {
+          "id": "ord_12_buro_b",
+          "text": "Have the family aid duty entered in the book as well.",
+          "trace": "You had your family and aid centre responsibility recorded in the yard book too.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_12_belge_kontrolu",
+      "act": "The Order",
+      "date": "26 July 1943, 07:10",
+      "location": "Station document desk",
+      "imageKey": "train_platform",
+      "body": "The clerk at the document desk puts the papers of young men into a separate pile. Matthias's shipyard card, Ruth's evacuation number and the call-up are all on the desk at once. Presenting the call-up openly would send his file straight to the office; putting the aid centre duty slip on top could protect Ruth's place, but if he is thought to be hiding the envelope, suspicion will grow. Ruth reminds him that boarding a train will not make the order disappear. Behind the desk the official impatiently hurries the queue along.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_16_card_kept_result",
+          "text": "Having kept the shipyard card with you confirmed your identity and worker deferral in the same record.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_17_notebook_attention",
+          "text": "The note about the sealed locker being opened led to a short explanation being asked for alongside your card.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_hid_typhus",
+          "text": "In a barn you once kept typhus out of the report for a day. At this desk the thing to hide is an envelope.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:hid_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_reported_typhus",
+          "text": "In a barn you once put typhus in the report, knowing the cost. At this desk telling the truth has a cost too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:reported_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_12_belge_a",
+          "text": "Hand over the call-up with the other documents.",
+          "trace": "You presented the call-up openly to the station clerk.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "conscription_disclosed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Presenting the call-up openly made the file look delivered on time rather than missing."
+            }
+          ],
+          "omission": "You did not hand your call-up over openly at the document desk."
+        },
+        {
+          "id": "ord_12_belge_b",
+          "text": "Show the aid slip and keep the call-up in your bag.",
+          "trace": "You showed the aid document to protect the evacuation place and kept the call-up envelope in your bag.",
+          "nextNodeId": "ord_13_cifte_emir",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "conscription_concealed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Keeping the call-up in your bag protected Ruth's place, but the envelope number surfaced on a list later."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_13_cifte_emir",
+      "act": "The Order",
+      "date": "26 July 1943, 12:30",
+      "location": "Harbour tram stop",
+      "imageKey": "harbor_dawn",
+      "body": "Toward noon two provisional roads open in front of Matthias. The yard will issue a new letter for the worker deferral if he joins the maintenance shift the following morning. The station has moved Ruth's name to the evening train; there is no firm promise of a place for a family member beside her. The conscription office expects an answer within two days. No piece of paper stops the bombing, the evacuation or the forced labour system. Matthias can only choose which institution's door to reach first, and whose connection he keeps in the meantime.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_18_switchgear_vouch",
+          "text": "Having shut down the switch that first night gave Brehm a concrete work record for the deferral request.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_19_unlogged_pantry_pressure",
+          "text": "The missing record for the cellar added a small but official doubt to your account of aid duty.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_20_return_signature",
+          "text": "Because you signed the return book, the yard still counted you as a worker under its responsibility.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_21_concealed_order",
+          "text": "The number of the envelope you did not show at the station reached your file from another list.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_13_a",
+          "text": "Go to the yard first and secure the deferral letter.",
+          "trace": "Facing the double order, you went first to secure the worker deferral at the yard.",
+          "nextNodeId": "ord_14_tersane_kapisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "yard_priority",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_13_b",
+          "text": "Confirm Ruth's evacuation place first.",
+          "trace": "Facing the double order, you went first to confirm Ruth's evacuation place.",
+          "nextNodeId": "ord_14_tren_peronu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_priority",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_14_tersane_kapisi",
+      "act": "The Order",
+      "date": "27 July 1943, 05:35",
+      "location": "Shipyard main gate",
+      "imageKey": "harbor_dawn",
+      "body": "At dawn a muster desk has been set up at the shipyard gate. Brehm keeps Matthias's name open on the shift list, but expects him to start work at once. Across the road Olek is standing. He says he has learned that Irena is with a work detail to the north and that her name was entered wrongly on a hospital transfer list. He will take the correction to the evacuation office; Matthias does not have to come, though a maintenance card could speed the process up. The gate clerk calls a second time. Olek waits for an answer without begging for help.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_22_irena_route_result",
+          "text": "Irena's name, recorded earlier, let Olek compare the wrong transfer line against another list.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_23_olek_relation_result",
+          "text": "Because of your earlier help Olek shared his plan openly; the decision was still his own.",
+          "conditions": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 5
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_14_kapi_a",
+          "text": "Go through the gate with Brehm and start the shift.",
+          "trace": "You left the record work to Olek and went into the yard shift with Brehm.",
+          "nextNodeId": "ord_15_salter_evi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_shift_entered",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_14_kapi_b",
+          "text": "Go to the evacuation office with Olek.",
+          "trace": "Before starting your shift you went with Olek to correct the wrong transfer record.",
+          "nextNodeId": "ord_15_tahliye_burosu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "yard_gate_left",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_14_tren_peronu",
+      "act": "The Order",
+      "date": "27 July 1943, 05:35",
+      "location": "Evacuation platform",
+      "imageKey": "train_platform",
+      "body": "Those who spent the night on the platform are leaning against their suitcases. Ruth's number has been moved to the evening train, but the line for \"one family member\" is still blank. The papers of young men are being checked again. An apprentice sent by Brehm tells Matthias that if he returns to the yard he can still make the deferral hearing. Ruth says plainly that she wants to go, and that she does not want Matthias hiding his papers in order to come with her. Staying at the station means defending a place; going back to the yard means the chance of giving it up.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_24_evacuation_access_result",
+          "text": "Having reached the aid records earlier kept Ruth's provisional number from being struck off.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_25_disclosed_order_result",
+          "text": "Because you presented the call-up openly, the inspecting official did not mark the envelope as a hidden document.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_boarded",
+          "text": "Once you travelled four days in a freight wagon with your father, without speaking. A platform takes you somewhere; it also takes you from somewhere.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:boarded_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_14_peron_a",
+          "text": "Stay with Ruth and secure the family member line.",
+          "trace": "You stayed on the platform and tried to secure the family member place beside Ruth.",
+          "nextNodeId": "ord_15_tahliye_burosu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_slot_requested",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_14_peron_b",
+          "text": "Return to the yard for the deferral hearing.",
+          "trace": "You left Ruth's evacuation queue and returned to the yard for the deferral hearing.",
+          "nextNodeId": "ord_15_salter_evi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "left_platform_for_yard",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_15_salter_evi",
+      "act": "The Order",
+      "date": "27 July 1943, 08:00",
+      "location": "Shipyard switch house",
+      "imageKey": "shipyard_evening",
+      "body": "The panels in the switch house are working, but some cables have cracked in the heat. Brehm puts the indispensable worker declaration in front of Matthias. The signature will be strong ground for a temporary deferral; it will also commit him to reporting workers who leave without permission. Olek's name is on the absence list on the next desk, though Matthias knows where he is and why. Putting a name on a list takes a pen; leaving it there takes nothing at all. Signing the declaration as it stands protects his own file. Refusing to sign until the list is corrected leaves the deferral hearing uncertain.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_26_switchgear_physical_result",
+          "text": "The main switch you shut down that first night held; Brehm added it to the file as proof of maintenance competence.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_27_tools_result",
+          "text": "The tools you protected in the service tunnel let you measure the cracked cable without waiting for spares.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_kept_ristola",
+          "text": "At an exchange once you told no one about a family's decision to stay. Not striking a name from a list is another kind of silence; you have to choose which silence protects whom.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:kept_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_15_salter_a",
+          "text": "Sign the indispensable worker declaration as it stands.",
+          "trace": "You signed the indispensable worker declaration, reporting obligation included.",
+          "nextNodeId": "ord_16_erteleme_gorusmesi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_signed",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_15_salter_b",
+          "text": "Hold off signing until Olek's record is corrected.",
+          "trace": "You did not sign the indispensable worker declaration until the absence list was corrected.",
+          "nextNodeId": "ord_16_rihtim_safagi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_delayed",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_15_tahliye_burosu",
+      "act": "The Order",
+      "date": "27 July 1943, 08:00",
+      "location": "Evacuation office",
+      "imageKey": "train_platform",
+      "body": "In the evacuation office the paper rolls are tied with string and names are constantly moved into other columns. A place is confirmed for Ruth. The clerk says Matthias could be written onto the same train as a family member, but that the call-up will be reviewed again at the final check in the station. Ruth says she can go alone and will send her destination to Elsbeth. If Matthias goes with her, the worker deferral weakens; if he sends Ruth and stays in the city, he buys a short time to face both the yard and the conscription office.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_28_registry_access_result",
+          "text": "Your earlier steps through the aid records made it easier to add a family link to Ruth's line.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_29_relief_record_result",
+          "text": "Because your aid duty at the school was on record, the clerk could write you a temporary escort justification.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_15_tahliye_a",
+          "text": "Take the family member line and prepare to board with Ruth.",
+          "trace": "You accepted the family member place on the evacuation list and prepared to board with Ruth.",
+          "nextNodeId": "ord_16_hareket_cagrisi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_ticket_accepted",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_15_tahliye_b",
+          "text": "Leave the place to Ruth and settle the orders in the city.",
+          "trace": "You left the evacuation place to Ruth and stayed in the city to face the yard and conscription orders.",
+          "nextNodeId": "ord_16_rihtim_safagi",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_ticket_only",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_erteleme_gorusmesi",
+      "act": "The Order",
+      "date": "27 July 1943, 10:25",
+      "location": "Shipyard personnel room",
+      "imageKey": "harbor_dawn",
+      "body": "In the personnel room an official reads Brehm's letter and the call-up. Matthias is offered a four-week temporary deferral; in return he will go back to the night maintenance shift and report absentees the same day. Brehm says this is the only certain road. The official does not change his voice as he holds out the pen; to him this is not a wrong, only a form. Matthias can accept the work condition, and with it the duty of naming people. Or he can accept the maintenance work and say he will not report on his colleagues; the deferral may still be issued, but a note of insubordination will most likely go into his file.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_30_brehm_support_result",
+          "text": "The working relationship you kept with Brehm helped the personnel officer keep the temporary deferral on the table.",
+          "conditions": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "atleast",
+              "intValue": 5
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_declared_load",
+          "text": "At Den Oever you declared the whole load and lost a third of it. Telling everything in front of an official will cost something here too.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_16_erteleme_a",
+          "text": "Accept the deferral with all its conditions.",
+          "trace": "You accepted the four-week worker deferral with its night shift and reporting conditions.",
+          "nextNodeId": "end_gecici_erteleme",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "deferral_accepted",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_16_erteleme_b",
+          "text": "Accept the work, refuse to report names.",
+          "trace": "You accepted the maintenance duty but refused to report your colleagues' names.",
+          "nextNodeId": "end_gozetimli_vardiya",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "reporting_refused",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_hareket_cagrisi",
+      "act": "The Order",
+      "date": "27 July 1943, 18:05",
+      "location": "Evacuation platform",
+      "imageKey": "train_platform",
+      "body": "When the doors of the evening train open, the numbers of children and the elderly are read out first. Ruth's ticket is valid. Matthias's escort line also appears on the list, but the official at the final check notices the call-up envelope. He asks for a signature promising that, if Matthias boards, he will report to the office at the destination within three days. Ruth wants him to come, but says that if he stays she will accept that as his own choice. Before the whistle they will either leave together into an uncertain evacuation or openly take on the separation.",
+      "conditions": [],
+      "echoes": [],
+      "choices": [
+        {
+          "id": "ord_16_hareket_a",
+          "text": "Sign the undertaking and board with Ruth.",
+          "trace": "You boarded the evacuation train with Ruth, promising to report to the conscription office at the new place.",
+          "nextNodeId": "end_tahliye_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "evacuated_with_ruth",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_16_hareket_b",
+          "text": "Give the ticket to Ruth and stay on the platform.",
+          "trace": "You sent Ruth away on the evacuation train and stayed in Hamburg to settle the call-up.",
+          "nextNodeId": "end_ayri_peronlar",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "ruth_departed_alone",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ord_16_rihtim_safagi",
+      "act": "The Order",
+      "date": "28 July 1943, 06:10",
+      "location": "Harbour at dawn",
+      "imageKey": "harbor_dawn",
+      "body": "As a new morning opens over the harbour, Matthias is neither inside the yard gate nor on the evacuation train. Ruth's place has been set aside; Olek goes to another office with the corrected record for Irena. Elsbeth says she can open a one-day electrician's entry for the school aid team, and that it will not cancel the call-up. The conscription office expects him before noon. Going to the office would leave the uncertainty to an official decision. Signing on with the aid team might buy a little time, at the cost of the delay being recorded and the watching increasing.",
+      "conditions": [],
+      "echoes": [
+        {
+          "id": "echo_31_relief_network_result",
+          "text": "Having started the school generator meant Elsbeth could write you a genuine day of aid duty.",
+          "conditions": [
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "echo_32_olek_record_result",
+          "text": "The trust you built with Olek was enough for him to tell you the outcome of Irena's record; he still chose his own route.",
+          "conditions": [
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 7
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "ord_16_rihtim_a",
+          "text": "Take the call-up paper to the conscription office.",
+          "trace": "You went to the conscription office before the deadline and answered the call-up formally.",
+          "nextNodeId": "end_askerlik_yolu",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "flag",
+              "key": "reported_to_conscription",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "ord_16_rihtim_b",
+          "text": "Sign on with Elsbeth's aid team and ask for time.",
+          "trace": "You asked the conscription office for time and signed on with Elsbeth's civil aid team.",
+          "nextNodeId": "end_yardim_aginda",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_delay_requested",
+              "op": "set",
+              "boolValue": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "end_gecici_erteleme",
+      "act": "The Order",
+      "date": "August 1943",
+      "location": "Port of Hamburg",
+      "imageKey": "harbor_dawn",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "temporary_deferral",
+        "title": "A Paper for Four Weeks",
+        "paragraphs": [
+          "The deferral document that came out of the personnel room did not send Matthias to the front; it only pushed the decision four weeks further away. He returned to the night shift. While the repairs in the harbour continued, so did the flow of new raids and new orders. Brehm kept him on as a reliable electrician, but the muster lists now passed across Matthias's desk every morning.",
+          "Ruth stayed on the evacuation list and left the city. Her letters arrived irregularly. Olek confirmed that Irena had been transferred to another work detail; the information brought no freedom, it only made a vanished name visible again. Matthias's document was not a victory but a temporary breathing space, tied to the labour the regime needed.",
+          "The historical destruction of Hamburg did not change. Matthias carried the switch house key in his pocket. Being indispensable meant that a machine would not let him go; at the end of four weeks the same questions came back, and this time they were harder to answer because he knew the answer better."
+        ],
+        "traceFallbacks": [
+          "You chose to protect the worker deferral at the yard.",
+          "You left Ruth the means to get out of the city.",
+          "You accepted shift obligations in return for temporary safety.",
+          "Your personal decisions did not change the historical outcome of the raids."
+        ]
+      }
+    },
+    {
+      "id": "end_gozetimli_vardiya",
+      "act": "The Order",
+      "date": "August 1943",
+      "location": "Shipyard switch house",
+      "imageKey": "shipyard_evening",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "watched_shift",
+        "title": "An Open File",
+        "paragraphs": [
+          "Matthias went back to maintenance duty, but the sentence in which he refused to report his colleagues' names was written into his personnel file. The deferral paper was granted for a short period, together with a weekly check and the requirement of a new signature. Brehm let him carry on working, but now closed the door during conversations and no longer left lists open on the desk.",
+          "News of Ruth's evacuation came through Elsbeth. Olek continued his own effort to correct the records; Matthias's silence protected a little of his room to move, and did nothing to end the regime's forced labour system. Surveillance did not arrive as a single dramatic arrest but accumulated in shift rosters, small questions and lengthening waits.",
+          "The destruction of Hamburg and the course of the war did not change. All Matthias could decide was which names would not enter an official file in his own handwriting."
+        ],
+        "traceFallbacks": [
+          "You accepted a return to maintenance duty.",
+          "You refused the condition of reporting your colleagues.",
+          "Your temporary deferral continued under closer watch.",
+          "Your bond with Ruth carried on across distance."
+        ]
+      }
+    },
+    {
+      "id": "end_tahliye_yolu",
+      "act": "The Order",
+      "date": "Late July 1943",
+      "location": "Train out of Hamburg",
+      "imageKey": "train_platform",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "evacuation_route",
+        "title": "A Temporary Distance",
+        "paragraphs": [
+          "When the train moved, Matthias and Ruth were not in the same compartment; the crowd had separated them into two carriages. They found each other again at the destination and were given space in a school hall. Leaving the city did not mean a safe ending. The undertaking Matthias had signed was waiting for him three days later on the desk of the local conscription office.",
+          "In the temporary shelter Ruth began collecting the neighbours' names again. Matthias tried to have his yard deferral confirmed by post; until an answer came, neither his worker status nor the call-up was settled. About Olek and Irena, only Elsbeth's short notes arrived. Distance preserved their bonds and thinned their information at the same time.",
+          "What happened in Hamburg did not change. Matthias's choice was not an escape from the historical catastrophe but sharing another address of uncertainty with his family."
+        ],
+        "traceFallbacks": [
+          "You chose to board the evacuation train with Ruth.",
+          "You undertook to report to the conscription office at the new place.",
+          "You gave up the certainty of the deferral at the yard.",
+          "You kept the family bond and carried the official uncertainty with you."
+        ]
+      }
+    },
+    {
+      "id": "end_ayri_peronlar",
+      "act": "The Order",
+      "date": "Late July 1943",
+      "location": "Hamburg evacuation station",
+      "imageKey": "train_platform",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "separate_platforms",
+        "title": "Separate Platforms",
+        "paragraphs": [
+          "Ruth's train left the station in the evening dark. Matthias stayed on the platform; in his pocket the return-to-work paper and the call-up lay side by side. When he reported to the office the next morning, the worker deferral was reviewed again, but until a decision came he was ordered back to a temporary shift at the yard.",
+          "On her first postcard Ruth wrote her destination and the address of the school where she was staying. The separation did not push her into passive waiting; in the new place she went on keeping records for evacuated neighbours. Matthias's worker deferral was not renewed a few days later, and the date he was to join his unit was set. Elsbeth passed on the news Olek gathered about Irena; the bond between them rested less on being in the same city than on news being carried.",
+          "The conscription order took effect. Before joining his unit, Matthias had made sure Ruth left the city that day and had arranged the channels through which news would still reach her."
+        ],
+        "traceFallbacks": [
+          "You left the evacuation place to Ruth.",
+          "You stayed in Hamburg and answered the call-up.",
+          "A temporary posting at the yard kept you apart from your family.",
+          "You maintained your bonds through letters and carried news."
+        ]
+      }
+    },
+    {
+      "id": "end_askerlik_yolu",
+      "act": "The Order",
+      "date": "August 1943",
+      "location": "Hamburg conscription office",
+      "imageKey": "harbor_dawn",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "conscription_route",
+        "title": "Answering the Call",
+        "paragraphs": [
+          "Matthias reported to the conscription office within the deadline. The yard's letter went into the file, but this time the deferral was not renewed. He was given a few days to prepare before joining his unit. This outcome was not the beginning of any heroism; he knew the uniform did not decide what he would do, whom he would protect, or whether he would come back.",
+          "Ruth was evacuated and left her address with Elsbeth. Olek managed to have Irena's transfer record corrected, yet neither of them was released from the forced labour system. Before leaving, Matthias handed the switch house key to Brehm and Ruth's address to a neighbour he considered safe.",
+          "The destruction of Hamburg did not change. Matthias's personal front continued not because his decisions closed, but through the traces he left on papers other people now carried."
+        ],
+        "traceFallbacks": [
+          "You answered the call-up within the deadline.",
+          "Your worker deferral was not renewed this time.",
+          "You kept the connection to Ruth's evacuation.",
+          "You left your keys and your channels of news behind."
+        ]
+      }
+    },
+    {
+      "id": "end_yardim_aginda",
+      "act": "The Order",
+      "date": "August 1943",
+      "location": "School 17 aid centre",
+      "imageKey": "aid_registry",
+      "body": "",
+      "conditions": [],
+      "echoes": [],
+      "choices": [],
+      "ending": {
+        "id": "relief_under_watch",
+        "title": "One More Day on Record",
+        "paragraphs": [
+          "The daily duty slip Elsbeth wrote bought Matthias a short time. He kept the school's electricity and water pump running and helped copy the evacuation lists. The conscription office did not reject the deferral request, but left the file open. His address was checked twice; when the third summons would come remained unclear.",
+          "Ruth left the city. Olek received the paper confirming Irena's location and set his next step independently of Matthias. The relationships built in the aid network gave people information and a few hours of room to move; they did not equalise state repression or forced labour, and did not remove them either.",
+          "The historical outcome for Hamburg did not change. What Matthias gained was not a safe ending but a few days he could give to other people's daily needs, under watch."
+        ],
+        "traceFallbacks": [
+          "You signed on with Elsbeth's civil aid team.",
+          "You gained only a short time against the call-up.",
+          "You kept the aid centre's daily work going.",
+          "You stayed in the city and accepted the increased watching."
+        ]
+      }
+    }
+  ]
+}

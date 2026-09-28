@@ -31,6 +31,455 @@
       }
     ]
   },
+  "characters": [
+    {
+      "key": "brehm",
+      "name": "Ustabaşı Otto Brehm",
+      "warm": "Yoklamalarda adının karşısına hep \"vazgeçilmez\" yazdı.",
+      "cold": "Bir sabah listede adını savunmadı ve bunu sana hiç açıklamadı."
+    },
+    {
+      "key": "olek",
+      "name": "Olek Nowak",
+      "warm": "Kapıda seni beklediğini kimseye söylemedi, ama bekledi.",
+      "cold": "O geceden sonra senden bir daha hiçbir şey istemedi."
+    },
+    {
+      "key": "elsbeth",
+      "name": "Elsbeth",
+      "warm": "Sığınakta yerini hep senin yanında tuttu.",
+      "cold": "Sığınağa artık başka bir merdivenden iniyor."
+    },
+    {
+      "key": "ruth",
+      "name": "Kardeşin Ruth",
+      "warm": "Nerede olduğunu bilmediği gecelerde bile seni bekledi.",
+      "cold": "Aranızda o yazdan kalan bir sessizlik var."
+    }
+  ],
+  "acts": [
+    {
+      "name": "Sirenler",
+      "question": "Tehlike en yakındayken insan kime karşı sorumludur?"
+    },
+    {
+      "name": "Kül",
+      "question": "Aramak, yardım etmek ve kendini korumak aynı anda olmuyorsa, ne bırakılır?"
+    },
+    {
+      "name": "Emir",
+      "question": "Bir emre uymak seni koruyorsa, bedelini kim öder?"
+    }
+  ],
+  "testimony": {
+    "kicker": "Hamburg · Kasım 1983",
+    "setting": "Kırk yıl sonra. Bir lise öğrencisi tarih ödevi için o yazı yaşamış insanları dinliyor. Teybi Matthias Krüger'in mutfak masasına koyuyor; kırmızı ışık yanıyor. Matthias altmış dört yaşında. Pencerenin dışında tersanenin vinçleri hâlâ çalışıyor.",
+    "question": "“O yaz siz ne yaptınız?”",
+    "tellDone": "Yaptıklarını anlat.",
+    "tellUndone": "Yapmadıklarını anlat.",
+    "done": [
+      {
+        "text": "İlk gece şalteri kapattım, yangın çıkmasın diye. O iş dosyama girdi ve beni yıllarca korudu. Bir makineyi koruduğum için korundum; bunu hâlâ tuhaf buluyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sirenler başlayınca Olek'le çıktım. Kahramanlık değildi; kapıya aynı anda yürüdük, o kadar. Ama o gece onun sığınağının benimkinden ayrı olduğunu ilk kez gördüm.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in defterini mühürlü dolaptan çıkardım. Anahtar bendeydi. Bende olması benim bir erdemim değildi; onun olmaması da onun bir kusuru değildi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_saved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Servis geçidinde sıkışmış bir kapıyı levyeyle açtım; arkasında üç işçi vardı. Levye eğildi. Tersane levyenin hesabını sordu. İşçilerin hesabını soran olmadı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "west_door_opened",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınağın lambasını onardım. Işık yanınca insanların yüzünü gördüm. Bazen keşke görmeseydim diyorum; sonra görmemenin daha kötü olduğunu hatırlıyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shelter_light_fixed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Karanlıkta insanları elinden tutup merdivenden indirdim. Hiçbirinin yüzünü görmedim. Onları hatırlamamın tek yolu ellerim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "stairs_guided",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınakta ekmeğimi paylaştım. Ruth için almıştım. Ona bunu hiç söylemedim; söylesem ne derdi, biliyorum, ve o yüzden söylemedim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "shared_shelter_food",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Açılmış bir kilerdeki konserveleri tek tek saydık, bir not bıraktık. Yangının ortasında sayım yapmak gülünç gelebilir. Ama sayılmayan şey, sahibinden bir kez daha alınmış olur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_logged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Tersane kartımı gösterip bir Polonyalı kadının adını kayda yazdırdım. O masada kartım benim sesimden daha çok konuşuyordu. Adı bir satır oldu. Bir satır özgürlük değildir; ama hiç yoktan iyidir.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bir sabah Ruth'u aramayı bırakıp Olek'le kayıt deposuna gittim. Ruth bunu biliyor. Beni affetti mi, bilmiyorum. Ben de sormadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "olek_archive_help",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bir okulun jeneratörünü çalıştırdım. Elektrikçiydim, elimden gelen buydu. Işık yanınca herkes bir an elektrikçiye bakar, sonra unutur. Doğrusu da budur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_generator_repaired",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İstasyonda çağrı kâğıdımı açıkça masaya koydum. Dürüstlük müydü, korku mu? O gün ikisi aynı yüzü taşıyordu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_disclosed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in adı düzeltilmeden o beyanı imzalamadım. Bir gün bekledim, o kadar. O gün onun adı benim imzamla bir listeye girmedi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_delayed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ertelemeyi bütün şartlarıyla imzaladım. Dört hafta boyunca yoklama listesi her sabah masamdan geçti. Hiçbir adı ben yazmadım. Ama o liste benim masamdan geçti.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Personel odasında bir satırı imzalamadım: iş arkadaşlarımın adlarını bildirmeyi. Bunu cesaret sanma. Elim gitmedi, o kadar. Cesaret, ertesi sabah o masaya yeniden oturmaktı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'la trene bindim. Şehir arkamızda kaldıkça içim rahatladı. O rahatlamayı hâlâ utançla hatırlarım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'u trene ben bindirdim. El sallamadık. Birbirimize el sallayacak kadar emin değildik ne olacağından.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Süresi dolmadan şubeye gittim. Sonra iki yıl üniforma giydim. O yılları sormuyorsun; sorsaydın, bu kaset yetmezdi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Elsbeth'in ekibine yazıldım, süre istedim. Birkaç gün kazandım ve o günlerde bir okulun ışıklarını yaktım. Kazandığım zamanı kendime harcamadım. Bununla övünmüyorum; yalnızca biliyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "undone": [
+      {
+        "text": "İlk sirende Olek'le çıkmadım; şalterin başında kaldım. O gece onun hangi bodruma indiğini bilmiyordum. Sormak aklıma gelmedi. Sormamak da bir şeydi.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "switchgear_secured",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İlk gece şalteri kapatmadan çıktım. O gece atölyede ne olduğunu hiç sormadım. Sormamayı seçtim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "left_with_olek",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in defterini dolapta bıraktım. Vakit yoktu, doğru. Ama vakit hep o anda yoktur.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "worker_notebook_left",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Servis geçidinde sıkışmış kapıyı zorlamadım; aletlerimi korudum, tünelden geçtim. Kapının arkasında üç işçi vardı. Onları Olek çıkardı, ben değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "tools_preserved",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Sığınakta ekmeğimi paylaşmadım. Ruth içindi. Yanımdaki çocuğun kupası boştu. O kupanın rengini hâlâ hatırlıyorum: mavi emaye.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "saved_family_supplies",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kayıt masasında Olek'in yanında durmadım; önce kendi kardeşimi arattım. Kimse beni suçlamadı. Suçlanmamak her zaman haklı olmak demek değil.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_registry_clue",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kayıt masasında önce Ruth'u sormadım. Başkasının adını yazdırdım. O sabah kardeşimin nerede olduğunu bilmiyordum ve bir yabancının adını öne koydum. Bugün olsa ne yapardım, bilmiyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "irena_registered",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kilerden aldıklarımı yazmadım. Elsbeth eksik sayımın altına kendi adını yazdı. Bunu yıllar sonra öğrendim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "pantry_unlogged",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Köprüde Olek'le depoya gitmedim. Kartımı kendime sakladım. O kart bir kapıyı açardı; ben o kapıyı kendime ayırdım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "work_card_kept",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "İstasyonda çağrı zarfını göstermedim. Yalan söylemedim; yalnızca söylemedim. İkisinin farkını o gün öğrendiğimi sandım. Hâlâ emin değilim.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "conscription_concealed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Olek'in adı eksik listesindeydi ve ben nerede olduğunu biliyordum. Beyanı olduğu gibi imzaladım. Adını ben yazmadım. Ama silmedim de.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "essential_worker_signed",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Bildirme şartını reddetmedim. Kimseyi bildirmek zorunda kalmadım; şans eseri. Şansın ahlakı olmaz.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "deferral_accepted",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Emirlerin hepsine karşı çıkmadım, yalnızca bir satıra. Geri kalan her şeyi yaptım. Tersane benim ellerimle çalıştı.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reporting_refused",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Kalmadım. Olek kaldı, Elsbeth kaldı. Ben bir trene bindim, çünkü bir kâğıt bana izin veriyordu. Onların öyle bir kâğıdı yoktu.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "evacuated_with_ruth",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Ruth'la gitmedim. Emri çözmek için kaldım, dedim. Belki yalnızca gitmekten korktum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "ruth_departed_alone",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Çağrıdan kaçmadım. Başka bir yol var mıydı, bilmiyorum. Aramadım.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "reported_to_conscription",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      },
+      {
+        "text": "Şubeye gitmedim, süre istedim. Süre kazandım ama karar vermedim. Kırk yıldır o kararı veriyorum.",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "relief_delay_requested",
+            "op": "equals",
+            "boolValue": true
+          }
+        ]
+      }
+    ],
+    "closeDone": "Öğrenci teybi kapatmadan önce bir şey daha soruyor: “Yeterli miydi?” Matthias cevap vermiyor. Kaset bir süre boş dönüyor; kırmızı ışık yanık kalıyor.",
+    "closeUndone": "Öğrenci bunları neden anlattığını soruyor. “Yaptıklarımı herkes anlatabilir,” diyor Matthias. “Yapmadıklarımı benden başka bilen yok.”"
+  },
   "nodes": [
     {
       "id": "sir_01_vardiya_sonu",
@@ -38,7 +487,7 @@
       "date": "24/25 Temmuz 1943 gecesi",
       "location": "Liman tersanesi",
       "imageKey": "shipyard_evening",
-      "body": "Matthias Krüger, akşam vardiyasının son kontrolünü bitirirken limanın üzerinde sirenler yükselir. Vinçlerin kolları karanlıkta donmuş gibidir; atölye lambaları birer birer söner. Ustabaşı Otto Brehm, ana şalterin açık kalmasının yangın çıkarabileceğini söyler. Kapıda bekleyen Polonyalı zorunlu işçi Olek Nowak ise işçilere ayrılan sığınağın erken kilitlenmesinden kaygılıdır. Matthias'ın bakım elektrikçisi kartı bazı kapıları açar, fakat siren sürerken her dakika başka bir kapıyı kapatabilir.",
+      "body": "Matthias Krüger akşam vardiyasının son kontrolünü bitirirken limanın üzerinde sirenler yükselir. Vinçlerin kolları karanlıkta donmuş gibidir; atölye lambaları birer birer söner. Ustabaşı Otto Brehm, ana şalter açık kalırsa yangın çıkabileceğini söyler. Kapıda Polonyalı zorunlu işçi Olek Nowak bekler; işçilere ayrılan sığınağın erken kilitlenmesinden kaygılıdır. Matthias'ın cebindeki kartta tek bir damga vardır: vazgeçilmez. Siren sürerken o kelimenin kimin için, neye karşı geçerli olduğunu öğrenecektir.",
       "conditions": [],
       "echoes": [],
       "choices": [
@@ -49,9 +498,25 @@
           "nextNodeId": "sir_02_salter_dairesi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "switchgear_secured", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "set", "boolValue": true, "text": "Ana şalteri kapatman ilk saldırıdan sonra tersanedeki yangın riskini azalttı." }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "set",
+              "boolValue": true,
+              "text": "Ana şalteri kapatman ilk saldırıdan sonra tersanedeki yangın riskini azalttı."
+            }
           ]
         },
         {
@@ -61,9 +526,25 @@
           "nextNodeId": "sir_02_tophane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "left_with_olek", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_left_with_olek", "op": "set", "boolValue": true, "text": "Olek'le birlikte çıkman, kapanan servis kapısından önce avluya ulaşmanızı sağladı." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "left_with_olek",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "set",
+              "boolValue": true,
+              "text": "Olek'le birlikte çıkman, kapanan servis kapısından önce avluya ulaşmanızı sağladı."
+            }
           ]
         }
       ]
@@ -76,7 +557,32 @@
       "imageKey": "shipyard_evening",
       "body": "Son kolu indirdiğinde atölye sessizleşir. Brehm, kontrol defterini koltuğunun altına sıkıştırıp sığınağa yönelir. Olek geri dönmüştür; soyunma dolabında kendi kimlik kâğıtlarıyla arkadaşının adresi bulunan küçük bir defter kaldığını söyler. Dolap sırası mühürlü kapının arkasındadır. Olek, Matthias'tan kendisi adına karar vermesini istemez: Kilidi açarsa defteri alıp doğu servis yoluna tek başına gideceğini açıkça belirtir. Yaklaşan uçakların sesi, metal çatıda düzenli bir titreşime dönüşür.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_keeps_list",
+          "text": "Bir dağ yolunda yaralıların defterini tutmuştun; adları yazmak senin işin olmuştu. Dolaptaki defter de adlarla dolu.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:keeps_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_no_list",
+          "text": "Bir dağ yolunda sana uzatılan defteri almamıştın. Dolapta duran defter de birinin adlarını taşıyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:no_list",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "sir_02_salter_a",
@@ -85,10 +591,27 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "worker_notebook_saved", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_worker_notebook", "op": "set", "boolValue": true, "text": "Kurtarılan isim defteri, daha sonra kayıp işçiler için somut bir dayanak oldu." }
-          ]
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kurtarılan isim defteri, daha sonra kayıp işçiler için somut bir dayanak oldu."
+            }
+          ],
+          "omission": "Olek'in defterini dolaptan çıkarmadın."
         },
         {
           "id": "sir_02_salter_b",
@@ -97,9 +620,25 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "worker_notebook_left", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_worker_notebook_left", "op": "set", "boolValue": true, "text": "Dolapta kalan defter yüzünden bazı isimler daha sonra yalnızca hafızadan yazılabildi." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "worker_notebook_left",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dolapta kalan defter yüzünden bazı isimler daha sonra yalnızca hafızadan yazılabildi."
+            }
           ]
         }
       ]
@@ -121,8 +660,18 @@
           "nextNodeId": "sir_03_servis_gecidi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "service_route_chosen", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "service_route_chosen",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -132,9 +681,25 @@
           "nextNodeId": "sir_03_siginak_merdiveni",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "shelter_entry_helped", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shelter_entry", "op": "set", "boolValue": true, "text": "Merdiven girişinde yardım ettiğin insanlar, sonraki sabah seni Elsbeth'in yanında hatırladı." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "shelter_entry_helped",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "set",
+              "boolValue": true,
+              "text": "Merdiven girişinde yardım ettiğin insanlar, sonraki sabah seni Elsbeth'in yanında hatırladı."
+            }
           ]
         }
       ]
@@ -156,9 +721,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "west_door_opened", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_west_door", "op": "set", "boolValue": true, "text": "Açtığın batı kapısından çıkan işçiler, sabah kayıp listesini birbirlerine ulaştırdı." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "west_door_opened",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "set",
+              "boolValue": true,
+              "text": "Açtığın batı kapısından çıkan işçiler, sabah kayıp listesini birbirlerine ulaştırdı."
+            }
           ]
         },
         {
@@ -168,7 +749,12 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "tools_preserved", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -181,7 +767,32 @@
       "imageKey": "shelter_stairs",
       "body": "Taş merdiven insanlarla doludur. Elektrik kesilince aşağıdan kapının kapanmadığına dair sesler yükselir; yukarıdakiler ise karanlıkta basamaklara oturur. Elsbeth, acil durum lambasının kablosunu Matthias'a uzatır. Kabloyu bağlamak birkaç dakika alacak ve onu girişte tutacaktır. Diğer seçenek, lambayı bırakıp insanları el ele korkuluk boyunca aşağı indirmektir. İki yöntemde de sıra yavaşlar. Matthias, uzaktan gelen gümbürtüler arasında Ruth'un bu gece hangi sığınağa gittiğini düşünmemeye çalışır.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_cart_repaired",
+          "text": "Bir kafile kalkarken kağnının dingilini onarmıştın; taşımak yerine onarmayı seçmiştin. Elsbeth'in uzattığı kablo aynı soruyu soruyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:cart_repaired",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_carried_first",
+          "text": "Bir kafile kalkarken kağnıyı bırakıp sedyenin ucunu tutmuştun. Bu merdivende de onarılacak bir şey ve indirilecek insanlar var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:carried_first",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "sir_03_merdiven_a",
@@ -190,9 +801,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "shelter_light_fixed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shelter_light", "op": "set", "boolValue": true, "text": "Onardığın merdiven lambası, çıkışta insanların birbirini ezmeden ilerlemesine yardım etti." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "shelter_light_fixed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "set",
+              "boolValue": true,
+              "text": "Onardığın merdiven lambası, çıkışta insanların birbirini ezmeden ilerlemesine yardım etti."
+            }
           ]
         },
         {
@@ -202,10 +829,25 @@
           "nextNodeId": "sir_04_ilk_dalga",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "stairs_guided", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "stairs_guided",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
-      ]
+      ],
+      "interlude": {
+        "id": "shelter_lamp",
+        "kind": "lamp",
+        "chooses": true,
+        "caption": "Elektrik kesildi. Elsbeth kabloyu uzatıyor; aşağıda sıra karanlıkta duruyor.",
+        "results": [
+          "il_lamp_hands",
+          "il_stairs_hands"
+        ]
+      }
     },
     {
       "id": "sir_04_ilk_dalga",
@@ -213,21 +855,55 @@
       "date": "25 Temmuz 1943, gece yarısından sonra",
       "location": "Kanal kenarı sığınağı",
       "imageKey": "shelter_stairs",
-      "body": "İlk uzun sarsıntıdan sonra bodrumda yalnızca boruların tıkırtısı duyulur. Hava sıcak, sıva kokusu keskindir. Elsbeth isimleri kâğıt parçalarına yazarken bir kadın susayan çocuğuna boş bir kupa uzatır. Matthias'ın çantasında yarım matara ile Ruth için vardiya çıkışında aldığı küçük ekmek paketi vardır. Dışarı çıkmanın ne zaman mümkün olacağı bilinmez. Paylaşmak içerideki bekleyişi kolaylaştırabilir; saklamak ise sabah aile ararken ona hareket alanı bırakacaktır.",
+      "body": "İlk uzun sarsıntıdan sonra bodrumda yalnızca boruların tıkırtısı duyulur. Hava sıcak, sıva kokusu keskindir. Elsbeth isimleri kâğıt parçalarına yazarken bir kadın susayan çocuğuna boş bir kupa uzatır. Matthias'ın çantasında yarım matara ile Ruth için vardiya çıkışında aldığı küçük ekmek paketi vardır. Paketi bir kardeş için almıştı; kupayı tutan çocuk da birinin kardeşidir. Dışarı çıkmanın ne zaman mümkün olacağını kimse bilmez. Paylaşmak buradaki bekleyişi kolaylaştırır; saklamak sabah Ruth'u ararken ona hareket alanı bırakır.",
       "conditions": [],
       "echoes": [
         {
           "id": "echo_01_switchgear_result",
           "text": "Ana şalteri kapattığın için tersanenin yanındaki atölyeden yeni bir yangın haberi gelmedi.",
           "conditions": [
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_02_left_column_result",
           "text": "Şalter dairesinden erken ayrılman, doğu kapısı kapanmadan sığınak yoluna çıkmanızı sağladı.",
           "conditions": [
-            { "type": "echo", "key": "echo_left_with_olek", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_left_with_olek",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_hands",
+          "text": "Merdivende kabloyla iki dakika uğraştın; kıvılcım iki kez elini yaktı, parmaklarında izi duruyor.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_stairs_hands",
+          "text": "Merdivende dört kişiyi elinden tutup indirdin; hiçbirinin yüzünü görmedin, dördü de karanlıkta bir kez teşekkür etti.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_stairs_hands",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -239,9 +915,21 @@
           "nextNodeId": "ash_05_paylasilan_su",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "shared_shelter_food", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_shared_shelter_food", "op": "set", "boolValue": true, "text": "Sığınakta paylaştığın erzak, sabah kayıt sırasında bir tanığın seni hatırlamasını sağladı." }
-          ]
+            {
+              "type": "flag",
+              "key": "shared_shelter_food",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sığınakta paylaştığın erzak, sabah kayıt sırasında bir tanığın seni hatırlamasını sağladı."
+            }
+          ],
+          "omission": "Sığınakta suyunu ve ekmeğini paylaşmadın."
         },
         {
           "id": "sir_04_b",
@@ -250,8 +938,19 @@
           "nextNodeId": "ash_05_saklanan_paket",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "saved_family_supplies", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_saved_family_supplies", "op": "set", "boolValue": true, "text": "Sakladığın paket, Ruth'u bulduğunda ikinizin de ayakta kalmasına yaradı." }
+            {
+              "type": "flag",
+              "key": "saved_family_supplies",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "set",
+              "boolValue": true,
+              "text": "Sakladığın paket, Ruth'u bulduğunda ikinizin de ayakta kalmasına yaradı."
+            }
           ]
         }
       ]
@@ -264,7 +963,44 @@
       "imageKey": "bombed_street",
       "body": "Sabah olduğunda sokakların adları yerinde, görüntüleri değişmiştir. Islak kül ayakkabılara yapışır; elektrik telleri kaldırım boyunca sessizce uzanır. Elsbeth, Ruth'un mahallesinden gelen bir kadının okul binasına yönlendirildiğini söyler, fakat soyadını doğrulayamaz. Yardım masası aynı yönde, Ruth'un evi ise iki sokak ötededir. Matthias'ın matarası boştur ve kalabalık her iki yolu da yavaşlatır. Önce kayda geçmek bilgi sağlayabilir; doğrudan eve gitmek ise henüz silinmemiş bir iz bulma şansı taşır.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_buried_dead",
+          "text": "Bir çiftlikte üç mezar için kafileyi bir saat bekletmiştin. Bu sabah da ölüler var ve vakit yine dar.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:buried_dead",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_gave_ladle",
+          "text": "Bir merkez mutfakta annenin kepçesini kartı çalınan bir kadına vermiştin. Bu sabah paylaşılacak şey su ve ekmek; kural aynı.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:gave_ladle",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "il_echo_lamp_morning",
+          "text": "Sabah lambayı söndürmeyi kimse akıl etmedi; hâlâ yanıyordu.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "il_lamp_hands",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "ash_05_paylas_a",
@@ -273,7 +1009,12 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -283,7 +1024,12 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -305,7 +1051,12 @@
           "nextNodeId": "ash_06_kayit_masasi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "registry_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "registry_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -315,7 +1066,12 @@
           "nextNodeId": "ash_06_arka_avlu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "home_search_first", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "home_search_first",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -326,21 +1082,43 @@
       "date": "25 Temmuz 1943, 07.35",
       "location": "Geçici yardım masası",
       "imageKey": "aid_registry",
-      "body": "Okulun girişinde masa yerine iki kapı kanadı kullanılmıştır. Kâğıtlar taşlarla tutulur; görevliler adres, yaralanma ve gidilen yer bilgilerini ayrı listelere geçirir. Olek, Irena Sawicka'nın adını yazdırmaya çalışmaktadır. Görevli, zorunlu işçiler için başka kayıt tutulduğunu söyleyip satırı boş bırakır. Olek adın doğru masaya ulaşmasını, Matthias ise Ruth'un izini kaybetmemeyi ister. Tersane kartı görevlinin dikkatini çekebilir, ama Matthias'ın burada bulunduğunu da resmî bir kayda bağlayacaktır.",
+      "body": "Okulun girişinde masa yerine iki kapı kanadı kullanılmıştır. Kâğıtlar taşlarla tutulur; görevliler adres, yaralanma ve gidilen yer bilgilerini ayrı listelere geçirir. Olek, Irena Sawicka'nın adını yazdırmaya çalışmaktadır. Görevli, zorunlu işçiler için başka kayıt tutulduğunu söyleyip satırı boş bırakır. Kimse bir şey yapmış değildir; satır yalnızca boştur. Olek adın doğru masaya ulaşmasını, Matthias ise Ruth'un izini kaybetmemeyi ister. Tersane kartı görevlinin dikkatini çekebilir, ama Matthias'ın burada bulunduğunu da resmî bir kayda bağlayacaktır.",
       "conditions": [],
       "echoes": [
         {
           "id": "echo_03_notebook_saved_result",
           "text": "Olek'in kurtardığı defterde Irena'nın soyadı ve baraka numarası eksiksiz duruyordu.",
           "conditions": [
-            { "type": "echo", "key": "echo_worker_notebook", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_04_notebook_left_result",
           "text": "Dolapta kalan defter yüzünden Olek, Irena'nın baraka numarasını hafızasından tamamlamak zorunda kaldı.",
           "conditions": [
-            { "type": "echo", "key": "echo_worker_notebook_left", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_worker_notebook_left",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_kees_placed",
+          "text": "Bir çocuğu savaş bitene kadar yabancı bir ailede bırakmıştın ve doğru olduğunu düşünmüştün. Kayıt masası bunu bir sütuna yazardı: 'yerleştirildi'.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:kees_placed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -352,10 +1130,31 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "irena_registered", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_irena_registered", "op": "set", "boolValue": true, "text": "Irena'nın kayda geçen adı daha sonra farklı yardım masalarının aynı kişiyi aramasını sağladı." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "set",
+              "boolValue": true,
+              "text": "Irena'nın kayda geçen adı daha sonra farklı yardım masalarının aynı kişiyi aramasını sağladı."
+            }
           ]
         },
         {
@@ -365,9 +1164,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "ruth_registry_clue", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_olek_carried_names", "op": "set", "boolValue": true, "text": "Olek isimleri başka masaya kendi götürdü; bu yüzden yollarınız bir süre ayrıldı." }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_registry_clue",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "set",
+              "boolValue": true,
+              "text": "Olek isimleri başka masaya kendi götürdü; bu yüzden yollarınız bir süre ayrıldı."
+            }
           ]
         }
       ]
@@ -380,7 +1195,20 @@
       "imageKey": "bombed_street",
       "body": "Ruth'un apartmanının ön cephesi ayaktadır, fakat merdiven boşluğu kullanılamaz. Arka avluda Elsbeth komşuların adlarını toplar. Kapı yanında yağmurun incelttiği tebeşir yazısında yalnızca “R.K. — Okul 17” okunur. Yan binanın kileri açılmış; içeride konserve ve sabun vardır. Elsbeth, malzemenin sahipleri bulunana kadar sayılıp tutanağa geçirilmesini ister. Okula götürmek için hemen birkaç parça almak daha hızlıdır, ama belgesiz malzeme taşıyanların çevirmede sorgulandığını da ekler.",
       "conditions": [],
-      "echoes": [],
+      "echoes": [
+        {
+          "id": "cross_kar_left_key",
+          "text": "Bir evin anahtarını kapıda bırakıp masaya bir yabancı için not yazmıştın. Bu kapının yanında da birinin başkası için yazdığı tebeşir izi var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:left_key",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        }
+      ],
       "choices": [
         {
           "id": "ash_06_avlu_a",
@@ -389,9 +1217,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "pantry_logged", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_pantry_logged", "op": "set", "boolValue": true, "text": "Kiler için bıraktığın teslim notu, sonraki kontrolde malzemenin kayıp sayılmasını önledi." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "pantry_logged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kiler için bıraktığın teslim notu, sonraki kontrolde malzemenin kayıp sayılmasını önledi."
+            }
           ]
         },
         {
@@ -401,9 +1245,25 @@
           "nextNodeId": "ash_07_kanal_koprusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "pantry_unlogged", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "set", "boolValue": true, "text": "Tutanaksız aldığın erzak yardım etti, fakat kiler sayımındaki eksik daha sonra senin rotanla eşleştirildi." }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "pantry_unlogged",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "set",
+              "boolValue": true,
+              "text": "Tutanaksız aldığın erzak yardım etti, fakat kiler sayımındaki eksik daha sonra senin rotanla eşleştirildi."
+            }
           ]
         }
       ]
@@ -421,21 +1281,60 @@
           "id": "echo_05_shelter_entry_result",
           "text": "Sığınak girişinde yardım ettiğin bir komşu, Ruth'un okul yönüne gittiğini doğruladı.",
           "conditions": [
-            { "type": "echo", "key": "echo_shelter_entry", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shelter_entry",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_06_west_door_result",
           "text": "Batı kapısından çıkan bir işçi, Olek'e Irena'nın son görüldüğü reviri anlattı.",
           "conditions": [
-            { "type": "echo", "key": "echo_west_door", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_west_door",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_07_shelter_light_result",
           "text": "Onardığın lamba sayesinde Elsbeth'in isim kâğıtları sığınaktan eksiksiz çıkarılmıştı.",
           "conditions": [
-            { "type": "echo", "key": "echo_shelter_light", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shelter_light",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_taken",
+          "text": "Neretva'da bir esiri kızağa aldırmıştın; kafile bir gün gecikti. Olek'in yanında yürümek de böyle bir şey.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_taken",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_nello_left",
+          "text": "Neretva'da bir esiri ahırda bırakmıştın; kafile zamanında indi. Olek şimdi seninle gelmeni istiyor.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:nello_left",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -447,9 +1346,24 @@
           "nextNodeId": "ash_08_okul_avlusu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "relation", "key": "olek", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "work_card_kept", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -459,10 +1373,27 @@
           "nextNodeId": "ash_08_kayit_deposu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "olek_archive_help", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_olek_archive", "op": "set", "boolValue": true, "text": "Kayıt deposunda bulunan sevk satırı, Irena'nın izini liman revirine çevirdi." }
-          ]
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "olek_archive_help",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "set",
+              "boolValue": true,
+              "text": "Kayıt deposunda bulunan sevk satırı, Irena'nın izini liman revirine çevirdi."
+            }
+          ],
+          "omission": "Olek'le kayıt deposuna gitmedin."
         }
       ]
     },
@@ -483,7 +1414,12 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "school_pump_fixed", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "school_pump_fixed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -493,8 +1429,18 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "followed_ruth_route", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "followed_ruth_route",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -516,8 +1462,18 @@
           "nextNodeId": "ash_09_okul_mutfagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "irena_note_delivered", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "irena_note_delivered",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -527,8 +1483,18 @@
           "nextNodeId": "ash_09_yurt_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "went_to_infirmary", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "went_to_infirmary",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -546,14 +1512,24 @@
           "id": "echo_08_irena_registered_result",
           "text": "Irena'nın adını kayda ekletmen sayesinde okul masası liman revirine bir sorgu notu gönderdi.",
           "conditions": [
-            { "type": "echo", "key": "echo_irena_registered", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_09_olek_names_result",
           "text": "Olek isimleri kendi taşıdığı için okul listesinde Irena'nın satırı geç ve eksik açıldı.",
           "conditions": [
-            { "type": "echo", "key": "echo_olek_carried_names", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_olek_carried_names",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -565,8 +1541,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "relief_shift_helped", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "relief_shift_helped",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -576,9 +1562,24 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "evacuation_queue_checked", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_queue_checked",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -596,7 +1597,12 @@
           "id": "echo_10_archive_result",
           "text": "Depoda bulduğunuz sevk satırı, Irena'nın revirden önce başka bir ekibe yazıldığını ortaya çıkardı.",
           "conditions": [
-            { "type": "echo", "key": "echo_olek_archive", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_olek_archive",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -608,8 +1614,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "irena_transfer_found", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "irena_transfer_found",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -619,8 +1635,18 @@
           "nextNodeId": "ash_10_bir_arada",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "olek_plan_respected", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "olek_plan_respected",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -638,28 +1664,48 @@
           "id": "echo_11_shared_food_result",
           "text": "Sığınakta paylaştığın suyu hatırlayan bir kadın, Ruth'un adını doğru okul listesine taşıdı.",
           "conditions": [
-            { "type": "echo", "key": "echo_shared_shelter_food", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_shared_shelter_food",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_12_saved_food_result",
           "text": "Sakladığın ekmek paketi, Ruth'la buluştuğunuzda ikinize de ilk sakin öğünü verdi.",
           "conditions": [
-            { "type": "echo", "key": "echo_saved_family_supplies", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_saved_family_supplies",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_13_pantry_logged_result",
           "text": "Kiler için bıraktığın not kabul edildi; okula getirdiğin malzeme kayıp sayılmadı.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_logged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_logged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_14_pantry_unlogged_result",
           "text": "Tutanaksız erzak mutfakta kullanıldı, fakat Elsbeth eksik sayım için adını not etmek zorunda kaldı.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -671,10 +1717,27 @@
           "nextNodeId": "ord_11_jenerator_nobeti",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "relief_generator_repaired", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_relief_generator", "op": "set", "boolValue": true, "text": "Çalıştırdığın jeneratör, yardım merkezinin listelerini ve mutfağını gece boyunca açık tuttu." }
-          ]
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_generator_repaired",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "set",
+              "boolValue": true,
+              "text": "Çalıştırdığın jeneratör, yardım merkezinin listelerini ve mutfağını gece boyunca açık tuttu."
+            }
+          ],
+          "omission": "Yardım merkezinin jeneratörünü onarmadın."
         },
         {
           "id": "ash_10_b",
@@ -683,9 +1746,24 @@
           "nextNodeId": "ord_11_istasyon_sirasi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "evacuation_access", "op": "set", "boolValue": true },
-            { "type": "flag", "key": "left_for_station", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "flag",
+              "key": "left_for_station",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -703,7 +1781,12 @@
           "id": "echo_15_generator_result",
           "text": "Jeneratörü çalıştırman, Brehm'in seni yardım merkezinde görev yaparken bulmasını sağladı.",
           "conditions": [
-            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -715,8 +1798,18 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "returned_toward_yard", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "returned_toward_yard",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -726,8 +1819,18 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "yard_muster_missed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_muster_missed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -749,7 +1852,12 @@
           "nextNodeId": "ord_12_belge_kontrolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "orders_opened_publicly", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "orders_opened_publicly",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -759,9 +1867,24 @@
           "nextNodeId": "ord_12_ustabasinin_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": -1 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "orders_taken_to_brehm", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "orders_taken_to_brehm",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -783,9 +1906,25 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "yard_return_signed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_yard_return_signed", "op": "set", "boolValue": true, "text": "Dönüş defterindeki imza erteleme görüşmesinde Brehm'e resmî bir dayanak verdi." }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "yard_return_signed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Dönüş defterindeki imza erteleme görüşmesinde Brehm'e resmî bir dayanak verdi."
+            }
           ]
         },
         {
@@ -795,8 +1934,18 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -1 },
-            { "type": "flag", "key": "relief_duty_recorded", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -1
+            },
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -814,14 +1963,48 @@
           "id": "echo_16_card_kept_result",
           "text": "Tersane kartını yanında tutmuş olman, kimliğini ve işçi ertelemesini aynı kayıtta doğruladı.",
           "conditions": [
-            { "type": "flag", "key": "work_card_kept", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "work_card_kept",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_17_notebook_attention",
           "text": "Mühürlü dolabın açıldığına dair not, kartının yanında kısa bir açıklama istenmesine yol açtı.",
           "conditions": [
-            { "type": "flag", "key": "worker_notebook_saved", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "worker_notebook_saved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_hid_typhus",
+          "text": "Bir ahırda tifüsü rapordan bir gün saklamıştın. Bu masada saklanacak şey bir zarf.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:hid_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_reported_typhus",
+          "text": "Bir ahırda tifüsü rapora yazmıştın, bedelini bilerek. Bu masada da doğrusunu söylemenin bir bedeli var.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "neretva_1943:reported_typhus",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -833,9 +2016,21 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "conscription_disclosed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_conscription_disclosed", "op": "set", "boolValue": true, "text": "Çağrıyı açıkça sunman, dosyanın kayıp değil zamanında teslim edilmiş görünmesini sağladı." }
-          ]
+            {
+              "type": "flag",
+              "key": "conscription_disclosed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Çağrıyı açıkça sunman, dosyanın kayıp değil zamanında teslim edilmiş görünmesini sağladı."
+            }
+          ],
+          "omission": "Askerlik çağrını belge masasında açıkça sunmadın."
         },
         {
           "id": "ord_12_belge_b",
@@ -844,8 +2039,19 @@
           "nextNodeId": "ord_13_cifte_emir",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "conscription_concealed", "op": "set", "boolValue": true },
-            { "type": "echo", "key": "echo_conscription_concealed", "op": "set", "boolValue": true, "text": "Çağrıyı çantada tutman Ruth'un sırasını korudu, ancak zarf numarası daha sonra listede göründü." }
+            {
+              "type": "flag",
+              "key": "conscription_concealed",
+              "op": "set",
+              "boolValue": true
+            },
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "set",
+              "boolValue": true,
+              "text": "Çağrıyı çantada tutman Ruth'un sırasını korudu, ancak zarf numarası daha sonra listede göründü."
+            }
           ]
         }
       ]
@@ -863,28 +2069,48 @@
           "id": "echo_18_switchgear_vouch",
           "text": "İlk gece şalteri kapatmış olman, Brehm'in erteleme talebine yazabileceği somut bir iş kaydı verdi.",
           "conditions": [
-            { "type": "flag", "key": "switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_19_unlogged_pantry_pressure",
           "text": "Kilerdeki tutanak eksikliği, yardım görevi açıklamana küçük ama resmî bir şüphe ekledi.",
           "conditions": [
-            { "type": "echo", "key": "echo_pantry_unlogged", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_pantry_unlogged",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_20_return_signature",
           "text": "Dönüş defterini imzaladığın için tersane seni hâlâ kendi sorumluluğundaki işçi saydı.",
           "conditions": [
-            { "type": "echo", "key": "echo_yard_return_signed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_yard_return_signed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_21_concealed_order",
           "text": "İstasyonda göstermediğin zarfın numarası başka bir listeden dosyana ulaştı.",
           "conditions": [
-            { "type": "echo", "key": "echo_conscription_concealed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_conscription_concealed",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -896,8 +2122,18 @@
           "nextNodeId": "ord_14_tersane_kapisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "yard_priority", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "yard_priority",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -907,8 +2143,18 @@
           "nextNodeId": "ord_14_tren_peronu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "evacuation_priority", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "evacuation_priority",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -926,14 +2172,24 @@
           "id": "echo_22_irena_route_result",
           "text": "Daha önce kayda giren Irena adı, Olek'in yanlış sevk satırını başka bir listeyle karşılaştırmasını sağladı.",
           "conditions": [
-            { "type": "flag", "key": "irena_registered", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "irena_registered",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_23_olek_relation_result",
           "text": "Olek, önceki yardımların yüzünden planını açıkça paylaştı; kararı yine kendisi verdi.",
           "conditions": [
-            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 5 }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 5
+            }
           ]
         }
       ],
@@ -945,8 +2201,18 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "yard_shift_entered", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "yard_shift_entered",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -956,9 +2222,24 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 4 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
-            { "type": "flag", "key": "yard_gate_left", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "yard_gate_left",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -976,14 +2257,36 @@
           "id": "echo_24_evacuation_access_result",
           "text": "Daha önce yardım kayıtlarına erişmiş olman, Ruth'un geçici numarasının silinmesini önledi.",
           "conditions": [
-            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_25_disclosed_order_result",
           "text": "Çağrıyı açıkça sunduğun için kontrol memuru zarfı saklanmış belge olarak işaretlemedi.",
           "conditions": [
-            { "type": "echo", "key": "echo_conscription_disclosed", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_conscription_disclosed",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_boarded",
+          "text": "Bir yük vagonunda babanla dört gün, konuşmadan yol gitmiştin. Bir peron insanı bir yere götürür; bir yerden de koparır.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:boarded_with_father",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -995,8 +2298,18 @@
           "nextNodeId": "ord_15_tahliye_burosu",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "family_slot_requested", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_slot_requested",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1006,9 +2319,24 @@
           "nextNodeId": "ord_15_salter_evi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": -2 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "left_platform_for_yard", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "left_platform_for_yard",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1019,21 +2347,43 @@
       "date": "27 Temmuz 1943, 08.00",
       "location": "Tersane şalter evi",
       "imageKey": "shipyard_evening",
-      "body": "Şalter evindeki panolar çalışır durumdadır, fakat bazı kablolar ısıdan çatlamıştır. Brehm, Matthias'ın önüne gerekli işçi beyanını koyar. İmza, geçici erteleme için güçlü bir dayanak sağlayacak; aynı zamanda izinsiz ayrılan işçileri bildirme yükümlülüğünü de kabul ettirecektir. Yan masadaki eksik listesinde Olek'in adı vardır, oysa Matthias onun kayıt düzeltmek için nerede olduğunu bilir. Beyanı olduğu gibi imzalamak kendi dosyasını korur. Liste düzeltilmeden imzalamamak ise erteleme görüşmesini belirsizleştirir.",
+      "body": "Şalter evindeki panolar çalışır durumdadır, fakat bazı kablolar ısıdan çatlamıştır. Brehm, Matthias'ın önüne gerekli işçi beyanını koyar. İmza, geçici erteleme için güçlü bir dayanak olacak; aynı zamanda izinsiz ayrılan işçileri bildirme yükümlülüğünü de kabul ettirecektir. Yan masadaki eksik listesinde Olek'in adı vardır, oysa Matthias onun nerede ve neden olduğunu bilir. Bir adı listeye yazmak için kalem gerekir; orada kalması için hiçbir şey yapmamak yeter. Beyanı olduğu gibi imzalamak kendi dosyasını korur. Liste düzeltilmeden imzalamamak erteleme görüşmesini belirsizleştirir.",
       "conditions": [],
       "echoes": [
         {
           "id": "echo_26_switchgear_physical_result",
           "text": "İlk gece kapattığın ana şalter sağlam kaldı; Brehm bunu bakım yeterliliğinin kanıtı olarak dosyaya ekledi.",
           "conditions": [
-            { "type": "echo", "key": "echo_switchgear_secured", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_switchgear_secured",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_27_tools_result",
           "text": "Servis tünelinde koruduğun aletler, çatlamış kabloyu yedek beklemeden ölçmeni sağladı.",
           "conditions": [
-            { "type": "flag", "key": "tools_preserved", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "tools_preserved",
+              "op": "equals",
+              "boolValue": true
+            }
+          ]
+        },
+        {
+          "id": "cross_kar_kept_ristola",
+          "text": "Bir santralde, bir ailenin kalma kararını kimseye söylememiştin. Bir listedeki adı silmemek de bir susma biçimi; hangi susmanın kimi koruduğunu seçmek gerekir.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "karelia_1940:kept_ristola",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1045,8 +2395,18 @@
           "nextNodeId": "ord_16_erteleme_gorusmesi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "essential_worker_signed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_signed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1056,9 +2416,24 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "olek", "op": "add", "intValue": 3 },
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -3 },
-            { "type": "flag", "key": "essential_worker_delayed", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -3
+            },
+            {
+              "type": "flag",
+              "key": "essential_worker_delayed",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1076,14 +2451,24 @@
           "id": "echo_28_registry_access_result",
           "text": "Yardım kayıtlarındaki önceki adımların, Ruth'un satırına aile bağlantısı eklenmesini kolaylaştırdı.",
           "conditions": [
-            { "type": "flag", "key": "evacuation_access", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuation_access",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_29_relief_record_result",
           "text": "Okuldaki yardım görevin kayda geçtiği için görevli sana geçici bir refakat gerekçesi yazabildi.",
           "conditions": [
-            { "type": "flag", "key": "relief_duty_recorded", "op": "equals", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "relief_duty_recorded",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1095,8 +2480,18 @@
           "nextNodeId": "ord_16_hareket_cagrisi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 4 },
-            { "type": "flag", "key": "family_ticket_accepted", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 4
+            },
+            {
+              "type": "flag",
+              "key": "family_ticket_accepted",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1106,8 +2501,18 @@
           "nextNodeId": "ord_16_rihtim_safagi",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "ruth", "op": "add", "intValue": 2 },
-            { "type": "flag", "key": "ruth_ticket_only", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "ruth",
+              "op": "add",
+              "intValue": 2
+            },
+            {
+              "type": "flag",
+              "key": "ruth_ticket_only",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1118,14 +2523,31 @@
       "date": "27 Temmuz 1943, 10.25",
       "location": "Tersane personel odası",
       "imageKey": "harbor_dawn",
-      "body": "Personel odasında bir memur Brehm'in yazısını ve askerlik çağrısını okur. Matthias'a dört haftalık geçici erteleme önerilir; karşılığında gece bakım vardiyasına dönecek ve işe gelmeyenleri aynı gün bildirecektir. Brehm bunun tek kesin yol olduğunu söyler. Matthias çalışma koşulunu kabul edebilir, fakat isim bildirme yükümlülüğünü de üstlenmiş olur. Ya da bakım görevini kabul edip çalışanlar hakkında rapor vermeyeceğini söyleyebilir; bu durumda erteleme kâğıdı verilebilir, ama dosyasına itaatsizlik notu düşülmesi muhtemeldir.",
+      "body": "Personel odasında bir memur Brehm'in yazısını ve askerlik çağrısını okur. Matthias'a dört haftalık geçici erteleme önerilir; karşılığında gece bakım vardiyasına dönecek ve işe gelmeyenleri aynı gün bildirecektir. Brehm bunun tek kesin yol olduğunu söyler. Memur kalemi uzatırken sesini değiştirmez; onun için bu bir kötülük değil, bir formdur. Matthias çalışma koşulunu kabul edebilir ve isim bildirme yükümlülüğünü de üstlenir. Ya da bakım görevini kabul edip çalışanlar hakkında rapor vermeyeceğini söyleyebilir; erteleme yine verilebilir, ama dosyasına itaatsizlik notu düşülmesi muhtemeldir.",
       "conditions": [],
       "echoes": [
         {
           "id": "echo_30_brehm_support_result",
           "text": "Brehm'le koruduğun çalışma ilişkisi, personel memurunun geçici ertelemeyi masada tutmasını sağladı.",
           "conditions": [
-            { "type": "relation", "key": "brehm", "op": "atleast", "intValue": 5 }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "atleast",
+              "intValue": 5
+            }
+          ]
+        },
+        {
+          "id": "cross_ams_declared_load",
+          "text": "Den Oever'de yükün tamamını beyan etmiştin ve üçte birini kaybetmiştin. Bir memurun önünde her şeyi söylemek burada da bir şeye mal olacak.",
+          "conditions": [
+            {
+              "type": "archive",
+              "key": "amsterdam_1945:declared_load",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         }
       ],
@@ -1137,7 +2559,12 @@
           "nextNodeId": "end_gecici_erteleme",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "deferral_accepted", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "deferral_accepted",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1147,8 +2574,18 @@
           "nextNodeId": "end_gozetimli_vardiya",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "brehm", "op": "add", "intValue": -2 },
-            { "type": "flag", "key": "reporting_refused", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "brehm",
+              "op": "add",
+              "intValue": -2
+            },
+            {
+              "type": "flag",
+              "key": "reporting_refused",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1170,7 +2607,12 @@
           "nextNodeId": "end_tahliye_yolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "evacuated_with_ruth", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "evacuated_with_ruth",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1180,7 +2622,12 @@
           "nextNodeId": "end_ayri_peronlar",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "ruth_departed_alone", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "ruth_departed_alone",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1198,14 +2645,24 @@
           "id": "echo_31_relief_network_result",
           "text": "Okul jeneratörünü çalıştırmış olman, Elsbeth'in sana gerçek bir günlük yardım görevi yazabilmesini sağladı.",
           "conditions": [
-            { "type": "echo", "key": "echo_relief_generator", "op": "equals", "boolValue": true }
+            {
+              "type": "echo",
+              "key": "echo_relief_generator",
+              "op": "equals",
+              "boolValue": true
+            }
           ]
         },
         {
           "id": "echo_32_olek_record_result",
           "text": "Olek'le kurduğun güven, Irena kaydının sonucunu sana bildirmesine yetti; rotasını yine kendisi seçti.",
           "conditions": [
-            { "type": "relation", "key": "olek", "op": "atleast", "intValue": 7 }
+            {
+              "type": "relation",
+              "key": "olek",
+              "op": "atleast",
+              "intValue": 7
+            }
           ]
         }
       ],
@@ -1217,7 +2674,12 @@
           "nextNodeId": "end_askerlik_yolu",
           "conditions": [],
           "effects": [
-            { "type": "flag", "key": "reported_to_conscription", "op": "set", "boolValue": true }
+            {
+              "type": "flag",
+              "key": "reported_to_conscription",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         },
         {
@@ -1227,8 +2689,18 @@
           "nextNodeId": "end_yardim_aginda",
           "conditions": [],
           "effects": [
-            { "type": "relation", "key": "elsbeth", "op": "add", "intValue": 3 },
-            { "type": "flag", "key": "relief_delay_requested", "op": "set", "boolValue": true }
+            {
+              "type": "relation",
+              "key": "elsbeth",
+              "op": "add",
+              "intValue": 3
+            },
+            {
+              "type": "flag",
+              "key": "relief_delay_requested",
+              "op": "set",
+              "boolValue": true
+            }
           ]
         }
       ]
@@ -1249,7 +2721,7 @@
         "paragraphs": [
           "Personel odasından çıkan erteleme belgesi Matthias'ı cepheye göndermedi; yalnızca kararı dört hafta öteledi. Gece vardiyasına döndü. Limandaki onarımlar sürerken yeni saldırıların ve emirlerin akışı da sürdü. Brehm onu güvenilir bir elektrikçi olarak tuttu, fakat yoklama listeleri artık her sabah Matthias'ın masasından geçiyordu.",
           "Ruth tahliye listesinde kaldı ve şehir dışına çıktı. Mektupları düzensiz ulaştı. Olek, Irena'nın başka bir çalışma ekibine sevk edildiğini doğruladı; bu bilgi özgürlük getirmedi, yalnızca kaybolmuş bir adı yeniden görünür kıldı. Matthias'ın belgesi bir zafer değil, rejimin ihtiyaç duyduğu emeğe bağlanmış geçici bir soluklanmaydı.",
-          "Hamburg'un tarihî yıkımı değişmedi. Matthias, dört haftanın sonunda aynı soruların yeniden geleceğini bilerek şalter evinin anahtarını cebinde taşıdı."
+          "Hamburg'un tarihî yıkımı değişmedi. Matthias şalter evinin anahtarını cebinde taşıdı. Vazgeçilmez olmak, bir makinenin onu bırakmaması demekti; dört haftanın sonunda aynı sorular yeniden geldi ve bu kez cevabı daha iyi bildiği için vermesi daha zor oldu."
         ],
         "traceFallbacks": [
           "Tersanedeki işçi ertelemesini korumayı seçtin.",

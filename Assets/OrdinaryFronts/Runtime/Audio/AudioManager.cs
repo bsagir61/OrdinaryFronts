@@ -8,6 +8,13 @@ namespace OrdinaryFronts
         [SerializeField] private AudioClip paperClip;
         [SerializeField] private AudioClip confirmClip;
         [SerializeField] private AudioClip backClip;
+        [SerializeField] private AudioClip windAmbience;
+        [SerializeField] private AudioClip gustClip;
+        [SerializeField] private AudioClip sparkClip;
+        [SerializeField] private AudioClip creakClip;
+        [SerializeField] private AudioClip riverAmbience;
+        [SerializeField] private AudioClip stampClip;
+        [SerializeField] private AudioClip actToneClip;
         [SerializeField] private AudioClip cityAmbience;
         [SerializeField] private AudioClip shelterAmbience;
         [SerializeField] private AudioClip trainAmbience;
@@ -45,6 +52,29 @@ namespace OrdinaryFronts
             trainAmbience = train;
         }
 
+        /// <summary>Set rüzgârı: Afsluitdijk düğümlerinin ortam sesi ve ara sahnenin bora vuruşu.</summary>
+        public void ConfigureInterludeClips(AudioClip wind, AudioClip gust, AudioClip spark, AudioClip creak, AudioClip river)
+        {
+            windAmbience = wind;
+            gustClip = gust;
+            sparkClip = spark;
+            creakClip = creak;
+            riverAmbience = river;
+        }
+
+        /// <summary>1.1 sunum sesleri: final mührünün tıkı ve perde kartının alçak tonu.</summary>
+        public void ConfigurePresentationClips(AudioClip stamp, AudioClip actTone)
+        {
+            stampClip = stamp;
+            actToneClip = actTone;
+        }
+
+        public void PlayStamp() { PlayOneShot(stampClip); }
+        public void PlayActTone() { PlayOneShot(actToneClip); }
+        public void PlayGust() { PlayOneShot(gustClip); }
+        public void PlaySpark() { PlayOneShot(sparkClip); }
+        public void PlayCreak() { PlayOneShot(creakClip); }
+
         public void ApplySettings(SettingsData value)
         {
             EnsureSources();
@@ -65,6 +95,9 @@ namespace OrdinaryFronts
             AudioClip requested = cityAmbience;
             if (imageKey == "shelter_stairs") requested = shelterAmbience;
             else if (imageKey == "train_platform") requested = trainAmbience;
+            else if (imageKey == "afsluitdijk" && windAmbience != null) requested = windAmbience;
+            else if ((imageKey == "broken_bridge" || imageKey == "river_gorge" || imageKey == "stream_ford" || imageKey == "bank_night" || imageKey == "far_bank") && riverAmbience != null) requested = riverAmbience;
+            else if ((imageKey == "snow_ridge" || imageKey == "frozen_bay" || imageKey == "evacuation_road") && windAmbience != null) requested = windAmbience;
             if (requested == ambientSource.clip && ambientSource.isPlaying) return;
             if (ambientRoutine != null) StopCoroutine(ambientRoutine);
             ambientRoutine = StartCoroutine(CrossFade(requested));

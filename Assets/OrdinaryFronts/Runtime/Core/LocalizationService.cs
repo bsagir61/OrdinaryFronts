@@ -1,0 +1,308 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+namespace OrdinaryFronts
+{
+    /// <summary>
+    /// Arayüz metinlerinde kullanılan anahtarlar. Sabit olarak tutulurlar ki koddaki her
+    /// kullanım derleme zamanında denetlensin; testler bu listeyi gezip her dil dosyasında
+    /// karşılığının bulunduğunu doğrular.
+    /// </summary>
+    public static class UiKey
+    {
+        public const string MenuNewGame = "menu.newGame";
+        public const string MenuContinue = "menu.continue";
+        public const string MenuSettings = "menu.settings";
+        public const string MenuExit = "menu.exit";
+
+        public const string StorySelectTitle = "storySelect.title";
+        public const string StorySelectIntro = "storySelect.intro";
+        public const string StorySelectLocked = "storySelect.locked";
+        public const string StorySelectUnknown = "storySelect.unknown";
+        public const string StorySelectBegin = "storySelect.begin";
+        public const string StorySelectContinue = "storySelect.continue";
+        public const string StorySelectRestart = "storySelect.restart";
+        public const string MapThreadsTitle = "map.threadsTitle";
+        public const string MapThreadsEmpty = "map.threadsEmpty";
+        public const string MapThreadsHint = "map.threadsHint";
+        public const string MapTimelineHintKeys = "map.timelineHintKeys";
+        public const string MapTimelineHintPad = "map.timelineHintPad";
+        public const string MapLastTestimony = "map.lastTestimony";
+        public const string ActLabel = "act.label";
+        public const string MenuTagline = "menu.tagline";
+        public const string EndingStamp = "ending.stamp";
+        public const string InterludeSkipHint = "interlude.skipHint";
+        public const string GlyphKeyAction = "glyph.key.action";
+        public const string GlyphPadAction = "glyph.pad.action";
+        public const string GlyphPadPause = "glyph.pad.pause";
+        public const string RouteOpen = "route.open";
+        public const string RouteTitle = "route.title";
+        public const string RouteLegendCurrent = "route.legend.current";
+        public const string RouteLegendWalked = "route.legend.walked";
+        public const string RouteLegendUntaken = "route.legend.untaken";
+        public const string RouteUntaken = "route.untaken";
+        public const string RouteThisRun = "route.thisRun";
+        public const string RouteLastRun = "route.lastRun";
+        public const string RouteEndingReached = "route.endingReached";
+        public const string RouteHere = "route.here";
+        public const string RouteHint = "route.hint";
+        public const string TestimonyContinue = "testimony.continue";
+        public const string TestimonySkipHint = "testimony.skipHint";
+        public const string IlChooseHint = "il.chooseHint";
+        public const string IlWalkTitle = "il.walk.title";
+        public const string IlWalkHow = "il.walk.how";
+        public const string IlWalkHint = "il.walk.hint";
+        public const string IlGustWarn = "il.gustWarn";
+        public const string IlGust = "il.gust";
+        public const string IlWalkPushed = "il.walk.pushed";
+        public const string IlWalkWaited = "il.walk.waited";
+        public const string IlLampTitle = "il.lamp.title";
+        public const string IlLampHow = "il.lamp.how";
+        public const string IlWireHint = "il.wireHint";
+        public const string IlSparkWarn = "il.sparkWarn";
+        public const string IlSparkJolt = "il.sparkJolt";
+        public const string IlSparkPassed = "il.sparkPassed";
+        public const string IlGuideHint = "il.guideHint";
+        public const string IlCaught = "il.caught";
+        public const string IlEarly = "il.early";
+        public const string IlLate = "il.late";
+        public const string IlPlankTitle = "il.plank.title";
+        public const string IlPlankHow = "il.plank.how";
+        public const string IlBalanceHint = "il.balanceHint";
+        public const string IlStumble = "il.stumble";
+        public const string IlSlip = "il.slip";
+        public const string IlHoldHint = "il.holdHint";
+        public const string IlHeld = "il.held";
+        public const string IlLetGo = "il.letGo";
+        public const string IlAutoHint = "il.autoHint";
+        public const string IlHoldTapHint = "il.holdTapHint";
+        public const string IlGustTap = "il.gustTap";
+        public const string SettingsHandScenes = "settings.handScenes";
+        public const string SettingsHandStandard = "settings.handStandard";
+        public const string SettingsHandGentle = "settings.handGentle";
+        public const string SettingsHandFree = "settings.handFree";
+        public const string IlBoardTitle = "il.board.title";
+        public const string IlBoardHow = "il.board.how";
+        public const string IlPlugHint = "il.plugHint";
+        public const string IlCrankHint = "il.crankHint";
+        public const string IlPlugged = "il.plugged";
+        public const string IlBoardMiss = "il.boardMiss";
+        public const string IlBoardOther = "il.boardOther";
+        public const string InterludeBoardDone = "interlude.boardDone";
+        public const string InterludeChoiceHint = "interlude.choiceHint";
+        public const string InterludeLampLit = "interlude.lampLit";
+        public const string InterludeStairsDone = "interlude.stairsDone";
+
+        public const string GameplayPauseHint = "gameplay.pauseHint";
+        public const string GameplayNoChoice = "gameplay.noChoice";
+        public const string EchoPrefix = "gameplay.echoPrefix";
+
+        public const string IntroSkipHint = "intro.skipHint";
+
+        public const string SettingsTitle = "settings.title";
+        public const string SettingsMasterVolume = "settings.masterVolume";
+        public const string SettingsAmbientVolume = "settings.ambientVolume";
+        public const string SettingsEffectsVolume = "settings.effectsVolume";
+        public const string SettingsFullscreen = "settings.fullscreen";
+        public const string SettingsTextSize = "settings.textSize";
+        public const string SettingsReduceMotion = "settings.reduceMotion";
+        public const string SettingsLanguage = "settings.language";
+        public const string SettingsBack = "settings.back";
+        public const string SettingsTextSizeNormal = "settings.textSizeNormal";
+        public const string SettingsTextSizeLarge = "settings.textSizeLarge";
+
+        public const string CommonOn = "common.on";
+        public const string CommonOff = "common.off";
+        public const string CommonMainMenu = "common.mainMenu";
+
+        public const string PauseTitle = "pause.title";
+        public const string PauseResume = "pause.resume";
+        public const string PauseJournal = "pause.journal";
+
+        public const string JournalTitle = "journal.title";
+        public const string JournalEmpty = "journal.empty";
+        public const string JournalPreviousRun = "journal.previousRun";
+
+        public const string EndingPeopleTitle = "ending.peopleTitle";
+        public const string EndingOmissionsTitle = "ending.omissionsTitle";
+        public const string EndingTracesTitle = "ending.tracesTitle";
+        public const string EndingTracesFallback = "ending.tracesFallback";
+        public const string EndingReplay = "ending.replay";
+
+        public const string ErrorTitle = "error.title";
+        public const string ErrorGeneric = "error.generic";
+        public const string ErrorStoryUnavailable = "error.storyUnavailable";
+        public const string ErrorInitFailed = "error.initFailed";
+        public const string ErrorNewGameFailed = "error.newGameFailed";
+        public const string ErrorChoiceFailed = "error.choiceFailed";
+        public const string ErrorStoryValidation = "error.storyValidation";
+
+        public const string SaveNone = "save.none";
+        public const string SaveUnreadable = "save.unreadable";
+        public const string SaveIncompatible = "save.incompatible";
+
+        /// <summary>Her dil dosyasında bulunması gereken anahtarların tamamı.</summary>
+        public static string[] All()
+        {
+            return new[]
+            {
+                MenuNewGame, MenuContinue, MenuSettings, MenuExit,
+                StorySelectTitle, StorySelectIntro, StorySelectLocked, StorySelectUnknown, StorySelectBegin, StorySelectContinue, StorySelectRestart, MapThreadsTitle, MapThreadsEmpty, MapThreadsHint, MapTimelineHintKeys, MapTimelineHintPad, MapLastTestimony,
+                IlChooseHint, IlWalkTitle, IlWalkHow, IlWalkHint, IlGustWarn, IlGust, IlWalkPushed, IlWalkWaited, IlLampTitle, IlLampHow, IlWireHint, IlSparkWarn, IlSparkJolt, IlSparkPassed, IlGuideHint, IlCaught, IlEarly, IlLate, IlPlankTitle, IlPlankHow, IlBalanceHint, IlStumble, IlSlip, IlHoldHint, IlHeld, IlLetGo,
+                GlyphKeyAction, GlyphPadAction, GlyphPadPause, RouteOpen, RouteTitle, RouteLegendCurrent, RouteLegendWalked, RouteLegendUntaken, RouteUntaken, RouteThisRun, RouteLastRun, RouteEndingReached, RouteHere, RouteHint, TestimonyContinue, TestimonySkipHint,
+                InterludeSkipHint, InterludeChoiceHint, ActLabel, MenuTagline, EndingStamp,
+                InterludeLampLit, InterludeStairsDone, IlAutoHint, IlHoldTapHint, IlGustTap, SettingsHandScenes, SettingsHandStandard, SettingsHandGentle, SettingsHandFree, IlBoardTitle, IlBoardHow, IlPlugHint, IlCrankHint, IlPlugged, IlBoardMiss, IlBoardOther, InterludeBoardDone,
+                GameplayPauseHint, GameplayNoChoice, EchoPrefix,
+                IntroSkipHint,
+                SettingsTitle, SettingsMasterVolume, SettingsAmbientVolume, SettingsEffectsVolume,
+                SettingsFullscreen, SettingsTextSize, SettingsReduceMotion, SettingsLanguage, SettingsBack,
+                SettingsTextSizeNormal, SettingsTextSizeLarge,
+                CommonOn, CommonOff, CommonMainMenu,
+                PauseTitle, PauseResume, PauseJournal,
+                JournalTitle, JournalEmpty, JournalPreviousRun,
+                EndingPeopleTitle, EndingOmissionsTitle, EndingTracesTitle, EndingTracesFallback, EndingReplay,
+                ErrorTitle, ErrorGeneric, ErrorStoryUnavailable, ErrorInitFailed, ErrorNewGameFailed,
+                ErrorChoiceFailed, ErrorStoryValidation,
+                SaveNone, SaveUnreadable, SaveIncompatible
+            };
+        }
+    }
+
+    [Serializable]
+    public sealed class UiStringEntry
+    {
+        public string key;
+        public string value;
+    }
+
+    [Serializable]
+    public sealed class UiStringTable
+    {
+        public string locale;
+        public UiStringEntry[] entries = Array.Empty<UiStringEntry>();
+    }
+
+    /// <summary>
+    /// Arayüz metinlerini <c>StreamingAssets/Localization/&lt;locale&gt;.json</c> dosyalarından
+    /// okur. Yeni bir dil eklemek için kod değişikliği gerekmez: bir arayüz tablosu ve bir
+    /// hikâye dosyası eklemek yeterlidir.
+    /// </summary>
+    public sealed class LocalizationService
+    {
+        public const string DefaultLocale = "en-US";
+        public const string RelativeFolder = "Localization";
+
+        /// <summary>Ayarlar ekranında sunulan diller; sıralama listedeki sıradır.</summary>
+        public static readonly string[] SupportedLocales = { "en-US", "tr-TR" };
+
+        private readonly Dictionary<string, string> entries = new Dictionary<string, string>();
+        private readonly string rootOverride;
+
+        public string Locale { get; private set; }
+
+        public LocalizationService(string streamingAssetsRootOverride = null)
+        {
+            rootOverride = streamingAssetsRootOverride;
+        }
+
+        public static bool IsSupported(string locale)
+        {
+            if (string.IsNullOrWhiteSpace(locale)) return false;
+            for (int i = 0; i < SupportedLocales.Length; i++)
+                if (string.Equals(SupportedLocales[i], locale, StringComparison.OrdinalIgnoreCase)) return true;
+            return false;
+        }
+
+        public static string Normalize(string locale)
+        {
+            for (int i = 0; i < SupportedLocales.Length; i++)
+                if (string.Equals(SupportedLocales[i], locale, StringComparison.OrdinalIgnoreCase)) return SupportedLocales[i];
+            return DefaultLocale;
+        }
+
+        /// <summary>
+        /// Dilin kendi dilindeki adı. Ayarlarda her zaman böyle gösterilir ki oyuncu
+        /// anlamadığı bir dilde açtığında da seçeneği tanıyabilsin.
+        /// </summary>
+        public static string DisplayName(string locale)
+        {
+            switch (Normalize(locale))
+            {
+                case "tr-TR": return "Türkçe";
+                default: return "English";
+            }
+        }
+
+        /// <summary>Sıradaki dile geçer; ayarlardaki tek düğmeli seçim bunu kullanır.</summary>
+        public static string NextLocale(string current)
+        {
+            string normalized = Normalize(current);
+            for (int i = 0; i < SupportedLocales.Length; i++)
+                if (SupportedLocales[i] == normalized) return SupportedLocales[(i + 1) % SupportedLocales.Length];
+            return DefaultLocale;
+        }
+
+        public static string PathFor(string locale, string streamingAssetsRootOverride = null)
+        {
+            string root = streamingAssetsRootOverride ?? Application.streamingAssetsPath;
+            return Path.Combine(root, RelativeFolder, Normalize(locale) + ".json");
+        }
+
+        public void Load(string locale)
+        {
+            string normalized = Normalize(locale);
+            string path = PathFor(normalized, rootOverride);
+            entries.Clear();
+            Locale = normalized;
+
+            if (!File.Exists(path)) throw new FileNotFoundException("Arayüz dil dosyası bulunamadı.", path);
+            UiStringTable table = JsonUtility.FromJson<UiStringTable>(File.ReadAllText(path));
+            if (table == null || table.entries == null || table.entries.Length == 0)
+                throw new InvalidDataException("Arayüz dil dosyası okunamadı veya boş: " + path);
+
+            for (int i = 0; i < table.entries.Length; i++)
+            {
+                UiStringEntry entry = table.entries[i];
+                if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                entries[entry.key] = entry.value ?? string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Eksik anahtarda oyunu metinsiz bırakmamak için anahtarın kendisi döner ve hata
+        /// bırakılır; testler zaten her anahtarın her dilde bulunmasını zorunlu kılar.
+        /// </summary>
+        public string Get(string key)
+        {
+            string value;
+            if (entries.TryGetValue(key, out value)) return value;
+            Debug.LogError("Eksik arayüz metni: " + key + " (" + Locale + ")");
+            return key;
+        }
+
+        public bool Has(string key)
+        {
+            return entries.ContainsKey(key);
+        }
+
+        /// <summary>
+        /// Etkin dilin kurallarına göre büyük harfe çevirir. Kültürden bağımsız büyütme
+        /// Türkçede yanlıştır: "Sirenler" → "SIRENLER" (noktasız I) verir, doğrusu
+        /// "SİRENLER"dir. Bölüm başlıkları ve final raporu bu yüzden buradan geçer.
+        /// </summary>
+        public string ToUpper(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return value;
+            try
+            {
+                return value.ToUpper(System.Globalization.CultureInfo.GetCultureInfo(Locale ?? DefaultLocale));
+            }
+            catch (System.Globalization.CultureNotFoundException)
+            {
+                return value.ToUpperInvariant();
+            }
+        }
+    }
+}

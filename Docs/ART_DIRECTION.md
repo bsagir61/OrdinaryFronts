@@ -95,6 +95,22 @@ Parallax yalnız 2-3 büyük katmanda, birkaç piksel ölçüsünde ve ağır ha
 
 Görsellerin içinde yazı, logo, bayrak, filigran, oyun adı veya slogan bulunmaz.
 
+### 5.7 Amsterdam 1945 sahneleri (üretici: `HungerWinterSceneFactory`)
+
+Beş sahne, Yugoslavya sahneleriyle aynı teknik ve paletle üretilir; fark konudur. Düz arazi
+silüette derinliği dağ sırtından değil, ufka kaçan tek bir çizgiden alır: yol, hendek, set.
+
+- **Donmuş kanal (`frozen_canal`):** karşı kıyıda basamaklı/boyunlu/çan alınlıklı cepheler, buzda pencere yansımaları, bu kıyıda kap taşıyan kuyruk. Işık sağdan ve alçak.
+- **Polder yolu (`polder_road`):** kaçış noktasına giden yol ve hendek, sağda küçülen kavak sırası, solda çit, ufukta değirmen. Güneş solda.
+- **Afsluitdijk (`afsluitdijk`):** iki su arasında ufka kaçan set; gök kadrajın üçte ikisi, bulut kütleleri rüzgârı gösterir; yolda uzaklaştıkça küçülen insan zinciri.
+- **Frizya çiftliği (`frisian_farm`):** büyük saz çatı, aydınlık pencereler, kapı ışığının karda yelpazesi, söğütler ve samanlık. Akşamüstü, ışık sağdan.
+- **Kanal gece (`canal_night`):** dar cepheler, birkaç sıcak pencere, açık bir kapı; ışık kaynağı kapının kendisi.
+
+İnsan ve ağaç bu üreticide yeniden çizilir: figür omuz kavisi, palto boyu (dize/bileğe), başlık
+(kasket, kenarlı şapka, başörtüsü) ve taşıdığı yükle (kap, çanta, el arabası kolu, tutulan el)
+ayrışır; ağaç özyineli dallanmayla çizilir. Elle hazırlanmış bir illüstrasyon aynı dosya adına
+konduğunda üretici o sahneyi atlar.
+
 ## 6. Arayüz sistemi
 
 ### Anlatı ekranı
@@ -188,6 +204,28 @@ Deterministik Editor üretimi kullanılırsa:
 - Sıkıştırma, kâğıt dokusunda blok artefaktı üretmeyecek kaliteyle ayarlanır.
 - Sprite sınırları ve 9-slice kenarları yeniden üretim sonrası otomatik doğrulanır.
 
+## 10b. Atmosfer ve sunum (1.1)
+
+Atmosfer katmanı görselin üstüne, anlatı kartının altına çizilir; parçacıklar arayüz sprite'larından (`il_puff`, `il_streak`) üretilir ve paletten renk alır. Sahne başına hava:
+
+| Sahne | Hava | Renk ayarı |
+|---|---|---|
+| `bombed_street` | Kül (düşen, savrulan) + kıvılcım (yükselen, titreyen) | pas, %7 |
+| `burned_village` | Kül + seyrek kar | pas, %5 |
+| `aid_registry` | Toz + seyrek kül | hardal, %5 |
+| `shelter_stairs`, `typhus_barn` | Işıkta asılı toz | hardal, %6 |
+| `train_platform` | Sis + yükselen buhar | kâğıt, %4 |
+| `harbor_dawn`, `shipyard_evening` | Sis | kâğıt, %3,5 |
+| `river_gorge`, `broken_bridge` | Yağmur + sis | petrol, %10 |
+| `mountain_column`, `polder_road` | Rüzgârlı kar + rüzgâr şeritleri | petrol, %7 |
+| `afsluitdijk` | Yoğun kar + rüzgâr şeritleri | petrol, %8 |
+| `frozen_canal`, `frisian_farm` | Hafif kar | petrol, %6 |
+| `canal_night` | Seyrek kar | is lacivert, %10 |
+
+Kurallar: hiçbir parçacık metnin üstüne çıkmaz (kart katmanı atmosferin üstündedir); renk ayarı %10'u geçmez; hareket azaltma açıkken parçacıklar kapanır, renk ayarı kalır. Yeni bir sahne eklendiğinde bu tabloya bir satır eklenir; eklenmezse sahne havasız ve ayarsız görünür.
+
+Perde kartı: is lacivert örtü (%80) + vinyet; üstte daktilo, hardal, geniş aralıklı "PERDE II"; ortada serif, kâğıt rengi perde adı (açılırken harf aralığı daralır); altında uzayan pas çizgi; en altta daktilo tarih · yer. Final mührü: pas rengi çift çerçeve, daktilo "DOSYA KAPANDI", −8° eğik, kâğıda oturduktan sonra %80 opaklık.
+
 ## 11. Sesle görsel eşleşme
 
 - Kâğıt geçişi, kart hareketinin başladığı anda çok düşük seviyede çalar.
@@ -198,7 +236,7 @@ Deterministik Editor üretimi kullanılırsa:
 
 ## 12. Marka ve içerik yasakları
 
-- `Ordinary Fronts` adı yalnız ana menü ve emeği geçenler ekranında görünür. İşletim sistemi pencere başlığı doğal istisnadır.
+- `Ordinary Fronts` adı yalnız ana menüde görünür. İşletim sistemi pencere başlığı doğal istisnadır.
 - Oynanış, duraklatma, ayarlar, yükleme ve final ekranında büyük ürün adı/logo yoktur.
 - Slogan üretilmez veya gösterilmez.
 - Nazi sembolleri logo, desen, menü süsü veya dekoratif tekrar olarak kullanılmaz.
@@ -215,6 +253,54 @@ Deterministik Editor üretimi kullanılırsa:
 - Fare hover, klavye odağı ve pasif durum renk dışında da ayırt ediliyor mu?
 - `1366x768`, `1920x1080`, `2560x1440`, 16:10 ve ultrawide’da öğeler üst üste biniyor mu?
 - Hareket azaltma açıkken parallax, titreşim ve büyük geçişler tamamen kapanıyor mu?
-- Ürün adı ana menü ve emeği geçenler ekranı dışında veya görsel asset içinde yanlışlıkla görünüyor mu?
+- Ürün adı ana menü dışında veya görsel asset içinde yanlışlıkla görünüyor mu?
 - Varsayılan Unity mavi butonu, kayıp sprite/font veya pembe shader yüzeyi var mı?
 - Duman, vignette ve halftone metin okunurluğunu etkiliyor mu?
+
+## Tipografi
+
+Oyun iki yazı tipi kullanır ve ayrım keyfî değil, kurgusaldır: **anlatılan** şey serif, **kayda geçen** şey daktilodur.
+
+| Katman | Yazı tipi | Nerede |
+|---|---|---|
+| Anlatı | PT Serif | Ürün adı, ekran başlıkları, düğüm gövdesi, seçim metinleri, final paragrafları, menü düğmeleri |
+| Belge | Courier Prime | Tarih/konum satırı, karar yankısı, kayıt defteri, final raporu (`İzler` ve `İnsanlar`) |
+
+Bu ayrım oyunun kendi dünyasından çıkar: Milena bir defter tutar, Matthias'ın adı yoklama listelerine yazılır. Belge katmanının daktilo görünmesi bu yüzden yerindedir; oyuncu bir metnin anlatı mı yoksa kayıt mı olduğunu okumadan önce anlar.
+
+Kâğıt üzerindeki metin renkleri de bu ayrımı destekler ve paletten türetilir:
+
+- **Arşiv mürekkebi** `#402C26` — ikincil gövde metni (mürekkep, pasa doğru %22 kırılmış).
+- **Damga kırmızısı** `#7A3B2F` — başlık ve etiketler (pas, mürekkebe doğru %30 kırılmış).
+
+Daha önce bu katmanda petrol mavisi kullanılıyordu; kâğıt zeminde soğuk kalıyor ve sahne illüstrasyonlarının sıcak tonuyla çakışıyordu. Başlıklar renkle değil, küçük punto + büyük harf + harf aralığı ile ayrışır.
+
+Her iki yazı tipi de SIL Open Font License altındadır ve Türkçenin tamamını (`ş ğ ı İ`) ve karakter adlarındaki `ć` harfini kapsar. Ok işaretleri (`← →`) hiçbirinde yoktur; onlar yedek font zincirinden gelir.
+
+## Neretva görsel yenilemesi (1.4)
+
+Neretva bölümünün sahneleri `PaintedSceneFactory` ile çizilir (1.5'ten beri Karelya sahnelerini de çizen ortak ressam). Eski üretici beş sahneyle yirmi dokuz düğümü taşıyordu; düz bloklar, gökte arayüz hatasına benzeyen kesik çizgiler ve yırtık bir çerçeve kullanıyordu. Yenisi on dört sahne çizer ve her düğüm kendi yerinde geçer.
+
+| Sahne | Düğümler |
+|---|---|
+| `burned_village` — Prozor'un kuzeyi, şafak | açılış |
+| `mountain_column` — Rama yolu, yamacı kesen kafile | kağnı, sedye |
+| `snow_ridge` — açık sırt, rüzgâr | kısa yol |
+| `pine_forest` — ağaç sınırı, alacakaranlık, fener | orman yolu |
+| `burned_farm` — yanmış çiftlik, ambar, iki kürek | çiftlik |
+| `stream_ford` — dere geçidi, suyun içinde sedye | dere |
+| `night_camp` — ateşsiz gece molası, tek fener | defter |
+| `typhus_barn` — ahır avlusu, ışıklı kapı | ilk belirti, esir, emir |
+| `barn_interior` — ahırın içi, ikiye bölen battaniye | ayırma, morfin, doktorun gecesi |
+| `barn_night` — gece kuyu başı ve sundurma | su kuyruğu, battaniyeler |
+| `river_gorge` — kanyon kenarı, zikzak patika | kanyon, geride kalanlar |
+| `broken_bridge` — kanyonun içinden yıkık köprü | geçit |
+| `bank_night` — gece sol yaka | kıyı bekleyişi, ikinci gün |
+| `far_bank` — şafakta karşı yaka | karşı yaka ve finaller |
+
+**Teknik.** Sahneler iki kat çözünürlükte çizilip küçültülür (kenar yumuşatma). Dağlar gürültüden türeyen keskin profillerdir ve baskın zirveler taşır; yamaç, zirveden inen kaburgalar ile aralarındaki oluklardan kurulur. Işık bu iki boyutlu alanın eğiminden gelir ve **lino baskı gibi dört düz tona** ayrılır; kar önce oluklara ve zirveye yakın yerlere yağar, alt yamaçları ağaç çizgisiyle kesilen bir orman bandı kaplar. Kar alanlarında eğim gölgesi yalnız kenarda uygulanır (bütün sütuna uygulandığında dikey şeritler çıkıyordu). Bitirme: kâğıt dokusu, ince gren, yumuşak köşe kararması; yırtık çerçeve yoktur.
+
+**İnsanlar.** Ayakta duranlar Amsterdam bölümünün sivil silüetini kullanır. Sedye taşıyan çift, battaniyeye sarılı oturan, battaniye altında uyuyan ve diz çöken figürler bu dosyada çizilir. Hiçbir sahnede silah, yara ya da ölü beden yoktur; yaralılar battaniye altındaki kütlelerdir.
+
+**Önizleme.** `PaintedSceneFactory.Preview` sahneleri oyun varlıklarına dokunmadan `Logs/ScenePreview` altına yazar (`-scenes a,b` ile yalnız seçilenler).
+

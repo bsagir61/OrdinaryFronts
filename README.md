@@ -9,7 +9,9 @@ Hamburg, 1943 dikey kesiti. Proje Unity `2021.3.45f2`, 3D Built-In Render Pipeli
 3. Gerekirse **Ordinary Fronts > Build Demo Assets and Scene** menüsünü çalıştırın; bunun batch eşdeğeri `OrdinaryFronts.Editor.DemoBuilder.BuildAll` metodudur.
 4. `Assets/OrdinaryFronts/Scenes/Main.unity` sahnesini açın ve **Play** düğmesine basın.
 
-Ana menüde `Yeni Oyun`, geçerli kayıt varsa `Devam Et`, `Ayarlar`, `Emeği Geçenler` ve `Çıkış` bulunur. Seçimler fareyle veya `A`/`Sol Ok` ve `D`/`Sağ Ok` ile; duraklatma `Escape` ile çalışır.
+Oyun **varsayılan olarak İngilizce başlar**. Dil, Ayarlar ekranındaki ilk satırdan `English` ↔ `Türkçe` olarak değiştirilir; değişiklik oyunun ortasında yapılsa bile ilerleme korunur. Ayrıntılar için `Docs/GDD.md` §17.
+
+Ana menüde `New Game`, geçerli kayıt varsa `Continue`, `Settings` ve `Exit` bulunur. Seçimler fareyle veya `A`/`Sol Ok` ve `D`/`Sağ Ok` ile; duraklatma `Escape` ile çalışır.
 
 Oynanış ekranı üç bölgeden oluşur: ince bir başlık şeridi (bölüm · tarih · konum), nefes alan sahne illüstrasyonu ve altta arşiv kâğıdı anlatı kartı. **Görünür durum çubuğu, puan veya sayaç yoktur** — bkz. `Docs/GDD.md` §8.
 
@@ -78,13 +80,80 @@ Invoke-Unity '-quit -executeMethod OrdinaryFronts.Editor.DemoBuilder.BuildWindow
 
 Windows Standalone Build Support modülü kurulu değilse Unity Hub üzerinden yalnız `2021.3.45f2` editörüne ait modülü ekleyin; proje veya diğer paketleri yükseltmeyin.
 
+### Yayın (dağıtım) derlemesi
+
+Dağıtıma gidecek sürüm ayrı bir metotla alınır:
+
+```powershell
+Invoke-Unity '-quit -executeMethod OrdinaryFronts.Editor.DemoBuilder.BuildWindowsRelease' '07-windows-release.log'
+```
+
+Development derlemesinden farkı yalnız hız değil, **gizliliktir**. Yönetilen derlemeler, yanlarındaki `.pdb` silinse bile PE hata ayıklama dizininde derlendikleri **mutlak yolu** taşır. Proje kullanıcı profilinin altındaysa bu yol Windows kullanıcı adını içerir — çoğu kurulumda kişinin gerçek adıdır — ve oyunu indiren herkes dosyaların içinde görebilir.
+
+Ölçüm: bu depo mevcut konumundan derlendiğinde development çıktısında **33**, yayın çıktısında **15** dosya geliştiricinin tam yolunu taşıyordu. Unity bu gömmeyi bir ayarla kapatmaz.
+
+Bu yüzden `BuildWindowsRelease` iki koruma içerir ve ikisi de derlemeyi durdurur:
+
+1. **Yol denetimi:** proje `/Users/` veya `/home/` altındaysa derleme başlamadan durur.
+2. **Çıktı taraması:** üretilen bütün dosyalar kullanıcı adına karşı taranır; bulunursa derleme başarısız olur.
+
+Yayın derlemesi almak için projeyi kişisel bilgi içermeyen bir yola kopyalayın ve oradan derleyin. `Library` kopyalanmaz; Unity ilk açılışta yeniden üretir:
+
+```powershell
+$dst = 'C:\Build\OrdinaryFronts'
+New-Item -ItemType Directory -Force -Path $dst | Out-Null
+foreach ($d in @('Assets','Packages','ProjectSettings')) {
+    Copy-Item -Path (Join-Path (Get-Location) $d) -Destination $dst -Recurse -Force
+}
+```
+
+Ardından o yolda önce `BuildAll`, sonra `BuildWindowsRelease` çalıştırın.
+
+**Çıktı denetimi neyi arar:** çıplak kullanıcı adını değil, **kullanıcı profilinin tam yolunu** — çünkü şirket adı oyuncuya gösterilmek üzere kasıtlı olarak çıktıda bulunur ve kullanıcı adıyla aynı olabilir. Arama bayt düzeyinde, UTF-8 ve UTF-16 olarak yapılır; metni ASCII'ye çözmek, adında `ğ ı ö ü` gibi harf bulunan kullanıcılarda eşleşmeyi sessizce kaçırırdı.
+
+Doğrulandı: bu depo kullanıcı profili altından derlendiğinde denetim `17` dosya yakalıyor, `C:\Build\OrdinaryFronts` altından derlendiğinde `0`.
+
+`C:\Build\OrdinaryFronts` altından alınan 1.0.0 paketinde kalan tek gömülü yol, PE hata ayıklama dizinindeki `C:\Build\OrdinaryFronts\Library\Bee\artifacts\...` kaydıdır. Kullanıcı adı, profil klasörü, `Documents`, `AppData` veya `Desktop` içermez; nötr yolun amacı tam olarak budur.
+
+### Pakette yalnız oyuncuya yönelik içerik
+
+Yayın derlemesi üç ayrı düzeyde temizlenir:
+
+1. **Test ve QA yüzeyi derlenmez.** `AppController` içindeki duman koşusu, ekran görüntüsü yakalama ve `*ForTests` giriş noktalarının tamamı `#if UNITY_EDITOR || DEVELOPMENT_BUILD` içindedir. Bunlar yayın montajında ulaşılamaz değil, **hiç yoktur**; dağıtılan ikilide komut satırından klasör açıp dosya yazan veya oyunu kendi kendine oynatan kod bulunmaz.
+2. **Kullanılmayan paketler projeden çıkarıldı.** `com.unity.visualscripting` ve `com.unity.timeline` hiçbir yerde kullanılmıyordu ama player'a beş yönetilen derleme olarak giriyordu; bunlardan biri üçüncü bir geliştiricinin mutlak dosya yolunu taşıyordu. Kaldırıldıktan sonra pakette bu yol da yok.
+3. **Hata ayıklama kalıntıları silinir.** `.pdb` dosyaları ve Unity'nin `DoNotShip` klasörü çıktıdan otomatik atılır.
+
+Çalıştırılabilir dosyanın adı `OrdinaryFronts.exe`, veri klasörü `OrdinaryFronts_Data`'dır. Yapı hattı etiketleri (`Release`, `Demo` vb.) dosya adlarına girmez; oyuncunun gördüğü ilk şey budur.
+
+**Bilinen kozmetik eksik:** Unity, Windows sürüm kaynağını (dosya özelliklerindeki "Ürün sürümü" alanı) oyunun değil editörün sürümüyle doldurur; `OrdinaryFronts.exe` orada `2021.3.45f2` görünür. Steam bu alanı kullanmaz. Düzeltmek için derleme sonrası `rcedit` gibi bir araç gerekir.
+
+### Yayın kimliği
+
+Aşağıdaki değerler `BrandConfig` varlığından gelir ve `BuildAll` tarafından `PlayerSettings`'e yazılır; elle değiştirmeyin:
+
+| Alan | Değer | Not |
+|---|---|---|
+| Şirket | `Berat Sağır` | Kayıt yolunun parçası. Yayından sonra değişirse mevcut kayıtlar erişilemez olur. |
+| Uygulama adı | `Ordinary Fronts Demo` | Pencere başlığı ve kayıt klasörü. Demo, tam sürümden ayrı bir uygulama olduğu için ek kasıtlıdır. |
+| Oyun içi ad | `Ordinary Fronts` | Yalnız ana menüde görünür. |
+| Sürüm | `1.7.0` | Sürüm notları: `CHANGELOG.md` |
+
+Uygulama ikonu `Assets/OrdinaryFronts/Art/Generated/Icon/` altında her boyut için ayrı üretilir (`BuildAll`). `PlayerSettings` bellekte üretilmiş dokuları kabul etmediği için ikonlar asset olarak yazılır; aksi hâlde slotlar sessizce boş kalır.
+
+Yayın derlemesi ayrıca çıktı köküne bir `THIRD-PARTY-NOTICES.txt` yazar. Oyun iki yazı tipini (PT Serif, Courier Prime) gömülü dağıtır ve SIL Open Font License lisans metninin dağıtımla birlikte gitmesini şart koşar; bu dosya o yükümlülüğü karşılar ve eksikse derleme durur.
+
+Ayrıca yayın derlemesi `.pdb` sembol dosyalarını ve Unity'nin adını birebir `DoNotShip` koyduğu Burst hata ayıklama klasörünü çıktıdan otomatik siler. Geliştirme derlemesi bu kısıtlardan etkilenmez; günlük doğrulama akışı değişmez.
+
 Bu çalışma sürecinde Windows x86_64 Development Build başarıyla üretildi: `Builds/Windows/OrdinaryFrontsDemo.exe`. Derlenmiş player 1366×768, 1920×1080, 1920×1200 ve 2560×1080 çözünürlüklerinde ayrı kayıt dizinleriyle açıldı; her koşu iki seçimi, node geçişini, autosave’i ve hem Normal hem Büyük metinde TMP taşma kontrolünü tamamladı. Loglar `Logs/PlayerSmokeRelease/`, görsel QA çıktıları `Logs/PlayerCapturesRelease/` altındadır.
+
+> `Builds/Windows/` altındaki development derlemesi **dağıtılmaz**. Yerel doğrulama içindir, geliştiricinin mutlak dosya yolunu taşır ve QA kancaları içinde derlenmiştir. Dağıtıma yalnız `BuildWindowsRelease` çıktısı gider.
 
 ## İçerik ve veri
 
 - Ana sahne: `Assets/OrdinaryFronts/Scenes/Main.unity`
-- Türkçe Hamburg hikâyesi: `Assets/StreamingAssets/Story/tr-TR/hamburg_1943.json`
-- Yeni oyun açılış kurgusu: aynı dosyadaki `intro.beats` dizisi (kod değişikliği gerektirmeden düzenlenebilir; her zaman atlanabilir)
+- Hikâye verisi: `Assets/StreamingAssets/Story/<locale>/hamburg_1943.json` (`en-US`, `tr-TR`)
+- Arayüz metinleri: `Assets/StreamingAssets/Localization/<locale>.json`
+- Yeni oyun açılış kurgusu: hikâye dosyasındaki `intro.beats` dizisi (kod değişikliği gerektirmeden düzenlenebilir; her zaman atlanabilir)
 - Tasarım: `Docs/GDD.md`
 - Sanat yönü: `Docs/ART_DIRECTION.md`
 - Tarihsel kaynak ve kurgu ayrımı: `Docs/HISTORICAL_NOTES.md`

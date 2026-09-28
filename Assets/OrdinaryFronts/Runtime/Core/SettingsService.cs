@@ -7,20 +7,35 @@ namespace OrdinaryFronts
     [Serializable]
     public sealed class SettingsData
     {
-        public int schemaVersion = 1;
+        // Sürüm 2: dil tercihi eklendi. Sürüm 1 ayarları varsayılanlara döner, yani mevcut
+        // kurulumlar da yeni kurulumlar gibi İngilizce başlar.
+        public int schemaVersion = 2;
+        public string locale = LocalizationService.DefaultLocale;
         public float masterVolume = 0.82f;
         public float ambientVolume = 0.56f;
         public float effectsVolume = 0.68f;
         public bool fullscreen;
         public bool largeText;
         public bool reduceMotion;
-        public bool contentNoteSeen;
+
+        /// <summary>
+        /// El sahneleri (1.6): 0 standart, 1 kolay (geniş zamanlama, kısa basılı tutma),
+        /// 2 eller serbest (basılı tutma ve zamanlama kendiliğinden; kararlar oyuncuda).
+        /// Alan eski ayar dosyalarında yoktur; JsonUtility 0 bırakır.
+        /// </summary>
+        public int handScenes;
+
+        public const int HandScenesStandard = 0;
+        public const int HandScenesGentle = 1;
+        public const int HandScenesFree = 2;
 
         public void Clamp()
         {
             masterVolume = Mathf.Clamp01(masterVolume);
             ambientVolume = Mathf.Clamp01(ambientVolume);
             effectsVolume = Mathf.Clamp01(effectsVolume);
+            locale = LocalizationService.Normalize(locale);
+            handScenes = Mathf.Clamp(handScenes, HandScenesStandard, HandScenesFree);
         }
     }
 
@@ -41,7 +56,7 @@ namespace OrdinaryFronts
             {
                 if (!File.Exists(SettingsPath)) return new SettingsData { fullscreen = Screen.fullScreen };
                 SettingsData data = JsonUtility.FromJson<SettingsData>(File.ReadAllText(SettingsPath));
-                if (data == null || data.schemaVersion != 1) return new SettingsData { fullscreen = Screen.fullScreen };
+                if (data == null || data.schemaVersion != 2) return new SettingsData { fullscreen = Screen.fullScreen };
                 data.Clamp();
                 return data;
             }

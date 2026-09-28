@@ -1,0 +1,57 @@
+{
+  "locale": "tr-TR",
+  "entries": [
+    {
+      "storyId": "hamburg_1943",
+      "title": "Hamburg",
+      "period": "Temmuz 1943",
+      "date": "1943-07",
+      "line": "Tersane, bir emir ve kız kardeşi arasında kalan bir bakım elektrikçisi.",
+      "imageKey": "shipyard_evening",
+      "available": true,
+      "latitude": 53.55,
+      "longitude": 9.99
+    },
+    {
+      "storyId": "neretva_1943",
+      "title": "Neretva",
+      "period": "Mart 1943",
+      "date": "1943-03",
+      "line": "Yaralı kafilesinin defterini tutan bir köy ebesi ve yıkık bir köprü.",
+      "imageKey": "broken_bridge",
+      "available": true,
+      "latitude": 43.66,
+      "longitude": 17.76
+    },
+    {
+      "storyId": "amsterdam_1945",
+      "title": "Amsterdam",
+      "period": "Ocak 1945",
+      "date": "1945-01",
+      "line": "Açlık kışında kuzeye yiyecek için yürüyen bir öğretmen ve el arabasındaki çocuk.",
+      "imageKey": "afsluitdijk",
+      "available": true,
+      "latitude": 52.37,
+      "longitude": 4.9
+    },
+    {
+      "storyId": "karelia_1940",
+      "title": "Karelya",
+      "period": "Mart 1940",
+      "date": "1940-03",
+      "line": "Barış geldiğinde evini bırakmak zorunda kalan bir köyün telefon santralcisi.",
+      "imageKey": "frozen_bay",
+      "available": true,
+      "latitude": 61.7,
+      "longitude": 30.69
+    },
+    {
+      "storyId": "",
+      "title": "",
+      "period": "",
+      "line": "",
+      "imageKey": "",
+      "available": false
+    }
+  ]
+}

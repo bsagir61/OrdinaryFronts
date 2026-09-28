@@ -27,8 +27,13 @@ namespace OrdinaryFronts.Editor
             GenerateUiTextures();
             GenerateIntroGrain();
             GenerateIntroTextScrim();
+            GenerateApplicationIcon();
             GenerateMissingBackgrounds();
             GenerateAudio();
+            FontAssetFactory.EnsureAll();
+            GenerateEuropeMap();
+            GenerateMapMarker();
+            GenerateInterludeSprites();
             AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
             ConfigureTextureImports();
             ConfigureAudioImports();
@@ -157,6 +162,123 @@ namespace OrdinaryFronts.Editor
             UnityEngine.Object.DestroyImmediate(texture);
         }
 
+        /// <summary>
+        /// Uygulama ikonu. 16 piksele kadar okunabilmesi gerektiği için sahne görsellerinin
+        /// ayrıntı dilini kullanmaz: is lacivert zemin, tek bir kalın vinç silüeti (dikey
+        /// direk + çapraz bom) ve altta pas rengi bir ufuk çizgisi. Üç şekil, üç renk.
+        /// Koordinatlar normalize edilir; her boyut kendi çözünürlüğünde çizilir, böylece
+        /// küçük boyutlarda ölçek küçültmeden gelen bulanıklık oluşmaz.
+        /// </summary>
+        internal static Texture2D CreateApplicationIcon(int size)
+        {
+            Texture2D texture = NewTexture(size, size);
+            Color32[] pixels = new Color32[size * size];
+            System.Random random = new System.Random(19430724);
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    int grain = size >= 64 ? random.Next(-5, 6) : 0;
+                    pixels[y * size + x] = Shift(Soot, grain);
+                }
+            }
+            texture.SetPixels32(pixels);
+
+            int thick = Mathf.Max(2, Mathf.RoundToInt(size * 0.085f));
+            int P(float n) { return Mathf.RoundToInt(n * (size - 1)); }
+
+            // Ufuk: pas çizgisi, alt üçte birde.
+            FillRect(texture, 0, P(0.26f), size, P(0.26f) + Mathf.Max(1, thick / 2), Rust);
+
+            // Vinç direği ve bomu: ikonun tanınan silüeti.
+            DrawLine(texture, P(0.34f), P(0.26f), P(0.34f), P(0.82f), Paper, thick);
+            DrawLine(texture, P(0.34f), P(0.78f), P(0.78f), P(0.60f), Paper, thick);
+            // Kısa askı hattı; büyük boyutlarda derinlik verir, küçükte kaybolur.
+            if (size >= 48) DrawLine(texture, P(0.72f), P(0.62f), P(0.72f), P(0.44f), Paper, Mathf.Max(1, thick / 2));
+
+            texture.Apply(false, false);
+            return texture;
+        }
+
+        internal const string IconRoot = ArtRoot + "/Icon";
+
+        internal static string IconPath(int size)
+        {
+            return IconRoot + "/app_icon_" + size + ".png";
+        }
+
+        /// <summary>
+        /// Her ikon boyutu ayrı bir asset olarak yazılır. PlayerSettings bellekte üretilmiş
+        /// dokuları kabul etmez; yalnız GUID'i olan asset referanslarını saklar, aksi hâlde
+        /// ikon slotları sessizce boş kalır.
+        /// </summary>
+        private static void GenerateApplicationIcon()
+        {
+            Directory.CreateDirectory(IconRoot);
+            int[] sizes = UnityEditor.PlayerSettings.GetIconSizesForTargetGroup(UnityEditor.BuildTargetGroup.Standalone);
+            if (sizes == null || sizes.Length == 0) sizes = new[] { 1024, 512, 256, 128, 64, 48, 32, 16 };
+            for (int i = 0; i < sizes.Length; i++)
+            {
+                Texture2D icon = CreateApplicationIcon(sizes[i]);
+                WritePng(IconPath(sizes[i]), icon);
+                UnityEngine.Object.DestroyImmediate(icon);
+            }
+        }
+
+        /// <summary>Ara sahnelerin saydam sprite'ları; dosya varsa yeniden üretilmez.</summary>
+        private static void GenerateInterludeSprites()
+        {
+            string folder = ArtRoot + "/" + InterludeSpriteFactory.Folder;
+            Directory.CreateDirectory(folder);
+            for (int i = 0; i < InterludeSpriteFactory.Keys.Length; i++)
+            {
+                string path = folder + "/" + InterludeSpriteFactory.Keys[i] + ".png";
+                if (File.Exists(path)) continue;
+                Texture2D texture = InterludeSpriteFactory.Render(InterludeSpriteFactory.Keys[i]);
+                WritePng(path, texture);
+                UnityEngine.Object.DestroyImmediate(texture);
+            }
+        }
+
+        /// <summary>Bölüm seçim haritası; dosya varsa yeniden üretilmez.</summary>
+        private static void GenerateEuropeMap()
+        {
+            string path = UiRoot + "/" + EuropeMapFactory.FileName;
+            if (File.Exists(path)) return;
+            Texture2D texture = EuropeMapFactory.Render();
+            WritePng(path, texture);
+            UnityEngine.Object.DestroyImmediate(texture);
+        }
+
+        /// <summary>
+        /// Harita işaretlerinin yuvarlak diski: kenarı yumuşatılmış beyaz bir daire. Halka,
+        /// iç halka ve nokta aynı diskin farklı boyut ve renklerde üst üste konmasıyla
+        /// çizilir; dosya varsa yeniden üretilmez.
+        /// </summary>
+        private static void GenerateMapMarker()
+        {
+            string path = UiRoot + "/map_marker.png";
+            if (File.Exists(path)) return;
+            const int size = 64;
+            Texture2D texture = NewTexture(size, size);
+            Color32[] pixels = new Color32[size * size];
+            float center = (size - 1) * 0.5f;
+            float radius = size * 0.5f - 1.5f;
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float d = Mathf.Sqrt((x - center) * (x - center) + (y - center) * (y - center));
+                    float a = Mathf.Clamp01(radius - d + 0.5f);
+                    pixels[y * size + x] = new Color32(255, 255, 255, (byte)Mathf.RoundToInt(a * 255f));
+                }
+            }
+            texture.SetPixels32(pixels);
+            texture.Apply(false, false);
+            WritePng(path, texture);
+            UnityEngine.Object.DestroyImmediate(texture);
+        }
+
         private static void GenerateMissingBackgrounds()
         {
             string[] names =
@@ -169,6 +291,28 @@ namespace OrdinaryFronts.Editor
                 string path = ArtRoot + "/" + names[i];
                 if (File.Exists(path)) continue;
                 Texture2D texture = GenerateFallbackScene(i);
+                WritePng(path, texture);
+                UnityEngine.Object.DestroyImmediate(texture);
+            }
+
+            // Neretva bölümünün on dört sahnesi ayrı bir ressamdan gelir (1.4). Dosya varsa
+            // dokunulmaz; elle hazırlanmış bir illüstrasyon aynı ada konduğunda kod
+            // değişikliği gerekmeden onun yerini alır.
+            for (int i = 0; i < PaintedSceneFactory.Keys.Length; i++)
+            {
+                string path = ArtRoot + "/" + PaintedSceneFactory.FileName(i);
+                if (File.Exists(path)) continue;
+                Texture2D texture = PaintedSceneFactory.Render(i);
+                WritePng(path, texture);
+                UnityEngine.Object.DestroyImmediate(texture);
+            }
+
+            // Amsterdam bölümünün sahneleri: aynı teknik, düz arazi konuları.
+            for (int i = 0; i < HungerWinterSceneFactory.FileNames.Length; i++)
+            {
+                string path = ArtRoot + "/" + HungerWinterSceneFactory.FileNames[i];
+                if (File.Exists(path)) continue;
+                Texture2D texture = HungerWinterSceneFactory.Render(i);
                 WritePng(path, texture);
                 UnityEngine.Object.DestroyImmediate(texture);
             }
@@ -328,6 +472,73 @@ namespace OrdinaryFronts.Editor
                 float beat = Mathf.Pow(Mathf.Max(0f, Mathf.Sin(t * Mathf.PI * 2f * 1.65f)), 24f) * 0.028f;
                 return (bed + beat) * fade;
             }, 1945);
+            GenerateWindAudio();
+        }
+
+        /// <summary>
+        /// Set rüzgârı: iki katmanlı gürültü; yavaş bir salınım şiddeti taşır, hızlı bir
+        /// çırpıntı yüzeyi verir. Döngü kenarları sessize iner.
+        /// </summary>
+        private static void GenerateWindAudio()
+        {
+            WriteWave(AudioRoot + "/wind_dike_ambience.wav", 14f, (i, t, random) =>
+            {
+                float fade = LoopFade(t, 14f);
+                float swell = 0.55f + 0.45f * Mathf.Sin(t * Mathf.PI * 2f * 0.11f) * Mathf.Sin(t * Mathf.PI * 2f * 0.07f + 1.3f);
+                float body = ((float)random.NextDouble() * 2f - 1f) * 0.018f * swell;
+                float low = Mathf.Sin(t * Mathf.PI * 2f * 31f) * 0.006f * swell;
+                return (body + low) * fade;
+            }, 1945_01);
+            WriteWave(AudioRoot + "/wind_gust.wav", 3.2f, (i, t, random) =>
+            {
+                float envelope = Mathf.Sin(Mathf.Clamp01(t / 3.2f) * Mathf.PI);
+                envelope *= envelope;
+                float body = ((float)random.NextDouble() * 2f - 1f) * 0.16f;
+                float whistle = Mathf.Sin(t * Mathf.PI * 2f * (640f + 90f * Mathf.Sin(t * 2.1f))) * 0.012f;
+                return (body + whistle) * envelope;
+            }, 1945_02);
+            // Kıvılcım: üç kısa gürültü patlaması, tizde.
+            WriteWave(AudioRoot + "/spark_crackle.wav", 0.6f, (i, t, random) =>
+            {
+                float burst = 0f;
+                for (int k = 0; k < 3; k++)
+                {
+                    float centre = 0.06f + k * 0.17f;
+                    burst += Mathf.Exp(-Mathf.Abs(t - centre) * 60f);
+                }
+                return ((float)random.NextDouble() * 2f - 1f) * 0.22f * burst;
+            }, 1943_03);
+            // Kiriş gıcırtısı: aşağı kayan bir ton ve ahşap gürültüsü.
+            WriteWave(AudioRoot + "/plank_creak.wav", 0.9f, (i, t, random) =>
+            {
+                float envelope = Mathf.Sin(Mathf.Clamp01(t / 0.9f) * Mathf.PI);
+                float tone = Mathf.Sin(t * Mathf.PI * 2f * (210f - t * 120f)) * 0.08f;
+                float wood = ((float)random.NextDouble() * 2f - 1f) * 0.05f * Mathf.PerlinNoise(t * 40f, 0.5f);
+                return (tone + wood) * envelope;
+            }, 1943_04);
+            // Nehir: sürekli beyaz gürültü, yavaş dalgalanma.
+            WriteWave(AudioRoot + "/river_ambience.wav", 12f, (i, t, random) =>
+            {
+                float fade = LoopFade(t, 12f);
+                float swell = 0.7f + 0.3f * Mathf.Sin(t * Mathf.PI * 2f * 0.23f);
+                return ((float)random.NextDouble() * 2f - 1f) * 0.014f * swell * fade;
+            }, 1943_05);
+            // Mühür: kısa, boğuk bir darbe ve kâğıt hışırtısı.
+            WriteWave(AudioRoot + "/stamp_thud.wav", 0.42f, (i, t, random) =>
+            {
+                float body = Mathf.Sin(t * Mathf.PI * 2f * (95f - t * 80f)) * Mathf.Exp(-t * 22f) * 0.34f;
+                float paper = ((float)random.NextDouble() * 2f - 1f) * Mathf.Exp(-t * 30f) * 0.12f;
+                return body + paper;
+            }, 1945_11);
+            // Perde tonu: iki alçak, uzun sönen kısmi ton; bir piyano telinin uzaktan duyulması gibi.
+            WriteWave(AudioRoot + "/act_tone.wav", 2.6f, (i, t, random) =>
+            {
+                float attack = Mathf.Clamp01(t / 0.02f);
+                float decay = Mathf.Exp(-t * 1.6f);
+                float tone = Mathf.Sin(t * Mathf.PI * 2f * 110f) * 0.10f + Mathf.Sin(t * Mathf.PI * 2f * 165f) * 0.045f
+                    + Mathf.Sin(t * Mathf.PI * 2f * 220.6f) * 0.02f * Mathf.Exp(-t * 3f);
+                return tone * attack * decay;
+            }, 1945_12);
         }
 
         private static float LoopFade(float time, float duration)
@@ -375,14 +586,37 @@ namespace OrdinaryFronts.Editor
                 string path = AssetDatabase.GUIDToAssetPath(guids[i]);
                 TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
                 if (importer == null) continue;
-                bool ui = path.Contains("/UI/");
+
+                // Uygulama ikonları sprite değildir ve sıkıştırılmamalıdır: PlayerSettings
+                // bunları doğrudan doku olarak kullanır, sıkıştırma küçük boyutlarda kenarları
+                // bozar.
+                if (path.Contains("/Icon/"))
+                {
+                    importer.textureType = TextureImporterType.Default;
+                    importer.mipmapEnabled = false;
+                    importer.wrapMode = TextureWrapMode.Clamp;
+                    importer.filterMode = FilterMode.Bilinear;
+                    importer.textureCompression = TextureImporterCompression.Uncompressed;
+                    importer.maxTextureSize = 1024;
+                    importer.alphaIsTransparency = false;
+                    importer.SaveAndReimport();
+                    continue;
+                }
+
+                // Ara sahne sprite'ları saydam zeminlidir ve tek tek ölçeklenir; arayüz
+                // dokuları gibi işlenir ama 512 sınırı figür karelerini bulanıklaştırırdı.
+                bool interlude = path.Contains("/" + InterludeSpriteFactory.Folder + "/");
+                bool ui = path.Contains("/UI/") || interlude;
                 importer.textureType = TextureImporterType.Sprite;
                 importer.spriteImportMode = SpriteImportMode.Single;
                 importer.alphaIsTransparency = ui;
                 importer.mipmapEnabled = false;
                 importer.filterMode = FilterMode.Bilinear;
                 importer.wrapMode = TextureWrapMode.Clamp;
-                importer.maxTextureSize = ui ? 512 : 2048;
+                // Harita bir arayüz dokusu ama okunması gereken kıyı çizgileri taşır; 512'ye
+                // küçültülürse bulanır.
+                bool map = path.EndsWith(EuropeMapFactory.FileName, StringComparison.OrdinalIgnoreCase);
+                importer.maxTextureSize = interlude ? 1024 : (ui && !map ? 512 : 2048);
                 importer.textureCompression = TextureImporterCompression.CompressedHQ;
                 if (path.EndsWith("paper_panel.png", StringComparison.OrdinalIgnoreCase) || path.EndsWith("button_panel.png", StringComparison.OrdinalIgnoreCase))
                     importer.spriteBorder = new Vector4(18f, 18f, 18f, 18f);

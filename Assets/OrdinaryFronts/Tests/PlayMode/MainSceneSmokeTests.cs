@@ -74,23 +74,62 @@ namespace OrdinaryFronts.Tests.PlayMode
             for (int i = 0; i < text.Length; i++) Assert.That(text[i].text, Does.Not.Contain("Ordinary Fronts"), "Ürün adı oynanış HUD'ında görünmemeli.");
         }
 
+        /// <summary>
+        /// Ana menü dört düğmeden ibarettir. Emeği geçenler ekranı ve yeni oyundan önceki
+        /// içerik notu kaldırıldı; ikisinin de geri sızmadığı burada doğrulanır.
+        /// </summary>
         [UnityTest]
-        public IEnumerator Credits_AreLabelledEmegiGecenlerAndNameTheAuthor()
+        public IEnumerator MainMenu_HasNoCreditsEntryAndNoContentNote()
         {
             AppController app = UnityEngine.Object.FindObjectOfType<AppController>();
             Assert.That(app, Is.Not.Null, "Main sahnesinde AppController yok.");
             yield return null;
 
             TMP_Text[] all = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
-            bool hasMenuButton = false;
-            bool namesAuthor = false;
             for (int i = 0; i < all.Length; i++)
             {
-                if (all[i].text == "Emeği Geçenler") hasMenuButton = true;
-                if (all[i].text.Contains("Berat Sağır")) namesAuthor = true;
+                Assert.That(all[i].text, Is.Not.EqualTo("Credits"), "Ana menüde emeği geçenler düğmesi kalmış.");
+                Assert.That(all[i].text, Is.Not.EqualTo("Emeği Geçenler"), "Ana menüde emeği geçenler düğmesi kalmış.");
+                Assert.That(all[i].text, Does.Not.Contain("Content Note"), "İçerik notu ekranı kalmış.");
+                Assert.That(all[i].text, Does.Not.Contain("İçerik Notu"), "İçerik notu ekranı kalmış.");
             }
-            Assert.That(hasMenuButton, Is.True, "Ana menüde 'Emeği Geçenler' düğmesi bulunamadı.");
-            Assert.That(namesAuthor, Is.True, "Emeği geçenler ekranında yazar adı bulunamadı.");
+
+            // Yeni oyun artık ara ekran olmadan doğrudan açılış kurgusuna geçmelidir.
+            app.PlayIntroForTests();
+            yield return null;
+            yield return null;
+            Assert.That(app.CurrentScreen, Is.EqualTo(AppScreen.Intro),
+                "Yeni oyun doğrudan açılış kurgusuyla başlamalı.");
+        }
+
+        /// <summary>
+        /// Dil değişimi arayüzü sıfırdan kurar. Yeni oluşturulan arka plan Image'ı sprite'sız
+        /// başladığı için, etkin sahne görseli geri yüklenmezse ekranda düz bir yüzey kalıyordu.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator Language_SwitchKeepsTheSceneBackdrop()
+        {
+            AppController app = UnityEngine.Object.FindObjectOfType<AppController>();
+            Assert.That(app, Is.Not.Null, "Main sahnesinde AppController yok.");
+            yield return null;
+
+            Assert.That(app.BackgroundHasSprite, Is.True, "Açılışta arka plan görseli bulunmalı.");
+            string before = app.CurrentLocale;
+            Assert.That(before, Is.EqualTo("en-US"), "Varsayılan dil İngilizce olmalı.");
+
+            app.ToggleLanguageForTests();
+            yield return null;
+            yield return null;
+
+            Assert.That(app.CurrentLocale, Is.Not.EqualTo(before), "Dil değişmeliydi.");
+            Assert.That(app.BackgroundHasSprite, Is.True, "Dil değişiminden sonra arka plan görseli kaybolmamalı.");
+
+            app.ToggleLanguageForTests();
+            yield return null;
+            yield return null;
+
+            Assert.That(app.CurrentLocale, Is.EqualTo(before), "İkinci geçişte başlangıç diline dönülmeli.");
+            Assert.That(app.BackgroundHasSprite, Is.True, "İkinci dil geçişinde de arka plan korunmalı.");
         }
 
         [UnityTest]

@@ -1,7 +1,7 @@
 # Ordinary Fronts - Tarihsel Notlar
 
 Son kaynak kontrolü: 3 Ağustos 2026  
-Kapsam: Hamburg dikey kesiti, 24/25 Temmuz - Ağustos 1943
+Kapsam: Hamburg dikey kesiti, 24/25 Temmuz - Ağustos 1943. Neretva bölümü için aşağıdaki ayrı başlığa bakınız.
 
 ## Kullanım ilkesi
 
@@ -41,6 +41,94 @@ Anlatı, bombardımandan etkilenen Alman siviller ile Nazi rejimi tarafından zo
 - [Deutsches Historisches Museum - Zwangsarbeit](https://www.dhm.de/lemo/kapitel/der-zweite-weltkrieg/industrie-und-wirtschaft/zwangsarbeit) ve [Bundeszentrale für politische Bildung - genel bakış](https://www.bpb.de/themen/nationalsozialismus-zweiter-weltkrieg/ns-zwangsarbeit/222627/ueberblick-die-nationalsozialistische-zwangsarbeit/), zorunlu çalıştırmanın ölçeği, statü farklılıkları, ırksal hiyerarşi ve denetim mekanizması için çapraz kontrol sağlar.
 - [KZ-Gedenkstätte Neuengamme zaman çizelgesi](https://www.kz-gedenkstaette-neuengamme.de/geschichte/zeittafel/), Ağustos 1943’ten itibaren toplama kampı mahkûmlarının bombalanmış şehirlerde son derece tehlikeli enkaz işlerine zorlandığını doğrular. Oyundaki Polonyalı sivil zorunlu işçi bu mahkûm kategorisiyle birleştirilmez.
 
+## Neretva 1943 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin ikinci bölümü (`neretva_1943`), Yugoslav partizanlarının merkez hastane kafilesini ve
+Neretva geçişini konu alır. **Bu bölümün tarihsel çerçevesi henüz yukarıdaki tabloda kullanılan
+biçimde kaynağa bağlanmamıştır.** Aşağıdaki liste, bölümün dayandığı iddiaları ve hangilerinin
+kurgu olduğunu açıkça kaydeder; hiçbiri "doğrulandı" sayılmamalıdır. Uydurma kaynak
+bağlantısı eklemektense iddiaları açıkta bırakmak tercih edilmiştir.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Şubat–Mart 1943'te Bosna'da yürütülen büyük Mihver harekâtı ve partizanların güneye çekilmesi | **Doğrulanmadı** — kaynak taraması yapılmalı |
+| Partizanların merkez hastanesinin binlerce yaralı ve hastayla dağlara çekilmesi | **Doğrulanmadı** — yaralı sayısı oyunda hiçbir yerde kesin rakam olarak verilmez |
+| Kafilede lekeli humma (pjegavi tifus) salgını | **Doğrulanmadı** — salgının kafile içindeki yönetimi tümüyle kurgudur |
+| Prozor'un Şubat 1943'te partizanlarca alınması ve İtalyan esirler | **Doğrulanmadı** — esir Nello ve onunla ilgili her şey kurgudur |
+| Neretva köprülerinin yıkılması ve yıkık köprü üzerine derme çatma bir geçit kurulması | **Doğrulanmadı** — geçidin oyundaki fiziksel ayrıntıları kurgudur |
+| Yaralıların karda sedyeyle taşınması, ilaç ve battaniye kıtlığı | **Doğrulanmadı** — sahnelerdeki somut sayılar dramatik kurgudur |
+
+Bölümün bütün kişileri kurgusaldır: Milena Radić, Stevan Lukić, Dragica, Dr. Vlado Perić,
+komiser Rade Bogdan ve İtalyan er Nello. Hiçbir gerçek komutan, birlik veya belgelenmiş olay
+kişiselleştirilmemiştir. Altı finalin hiçbiri harekâtın sonucunu, geçişin gerçekleşmesini veya
+tarihini değiştirmez; yalnız Milena'nın ve etrafındakilerin kaderi değişir.
+
+> Yapılacak iş: yukarıdaki altı satır için, Hamburg bölümündeki standarda uygun (kurumsal arşiv,
+> müze veya üniversite yayını düzeyinde) kaynaklar bulunmalı ve tablo ana doğrulama tablosuna
+> taşınmalıdır. Bu yapılana kadar bölüm, tarihsel doğruluk iddiası taşıyan bir materyal olarak
+> tanıtılmamalıdır.
+
+## Amsterdam 1945 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin üçüncü bölümü (`amsterdam_1945`), batı Hollanda'daki "Açlık Kışı"nı (Hongerwinter,
+1944–45) ve Amsterdam'dan Friesland'a yapılan bir yiyecek yürüyüşünü konu alır. Neretva bölümü
+gibi bu bölümün çerçevesi de henüz ana doğrulama tablosunun standardında kaynağa bağlanmamıştır.
+Aşağıdaki liste iddiaları ve kurgu sınırını kaydeder.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Eylül 1944 demiryolu grevinin ardından batı Hollanda'ya yiyecek sevkiyatının durdurulması | **Doğrulanmadı** — açılış kartında genel ifadeyle geçer |
+| Ocak 1945'te Amsterdam'da resmî tayının günde yaklaşık 500 kaloriye düşmesi | **Doğrulanmadı** — rakam "yaklaşık" olarak verilir, kesinleştirilmez |
+| Kentlerden kırsala yiyecek yürüyüşleri (hongertochten) ve Afsluitdijk üzerinden Friesland'a gidilmesi | **Doğrulanmadı** — güzergâh (Purmerend–Hoorn–Medemblik–Den Oever–Kornwerderzand–Bolsward) makul ama kaynaklanmadı |
+| Kilise komitelerinin kent çocuklarını kuzeydeki çiftliklere yerleştirmesi (kinderuitzendingen) | **Doğrulanmadı** — oyundaki komite, liste ve aile adları kurgudur |
+| Merkez mutfaklar (Centrale Keuken) ve kart başına kepçe uygulaması | **Doğrulanmadı** — "bugün iki kepçe" ayrıntısı kurgudur |
+| Elektrik kesintisiyle tramvayların durması ve ray aralarındaki ahşap blokların sökülmesi | **Doğrulanmadı** — ay ("ekimden beri") kesinleştirilmemelidir |
+| Kontrol noktalarında dönüş yükünden pay alınması, tütün ve içkiye el konması | **Doğrulanmadı** — kural "kâğıtta yok, nöbetçiye göre değişir" diye bilinçli belirsiz bırakılır |
+| Kış sonu ölümlerinin batı kentlerinde "yirmi bine yakın" olması | **Doğrulanmadı** — finallerde geçer; yaygın tahmin aralığı içinde, kesin sayı verilmez |
+| Mayıs 1945'te Kanada birliklerinin Amsterdam'a girmesi | **Doğrulanmadı** — gün verilmez |
+
+Bölümün bütün kişileri kurgusaldır: Truus Bakker, annesi, Kees, Jan Dekker, Greet Visser, Doktor
+Veen, Wiebe Hoekstra, Tjeerd de Boer, Dominee Rinsma ve Van der Meer ailesi. Hiçbir gerçek kişi,
+birlik, kurum görevlisi veya belgelenmiş tekil olay kişiselleştirilmemiştir. Alman nöbetçiler yalnız
+kimlik kontrolü ve yük payı alan görevliler olarak görünür; savaş suçu, sürgün ya da şiddet sahnesi
+yoktur. Kanal boyundaki boş evler tek cümleyle ve kimin evi olduğu söylenmeden geçer; bu, sürgün
+edilen komşuların varlığını silmemek ile onları dekor yapmamak arasındaki bilinçli sınırdır. Altı
+finalin hiçbiri kışın sonucunu, kurtuluş tarihini veya ölü sayısını değiştirmez.
+
+> Yapılacak iş: yukarıdaki satırlar için Hamburg standardında kaynak bulunmalı ve tablo ana
+> doğrulama tablosuna taşınmalıdır. Bu yapılana kadar bölüm, tarihsel doğruluk iddiası taşıyan
+> bir materyal olarak tanıtılmamalıdır.
+
+## Karelya 1940 bölümü — kaynak doğrulaması bekleyen iddialar
+
+Antolojinin dördüncü bölümü (`karelia_1940`), Kış Savaşı'nın sona ermesinin ardından Moskova
+Barışı ile bırakılan Karelya topraklarının boşaltılmasını, Ladoga kıyısındaki kurgusal bir köyün
+(Honkaranta) telefon santralcisinin gözünden anlatır. Bölüm **ateşkesten sonra** başlar; hiçbir
+sahnede çatışma, bombardıman ya da bir tarafın suçu yoktur. Diğer bölümler gibi çerçeve henüz ana
+doğrulama tablosunun standardında kaynağa bağlanmamıştır.
+
+| Oyunda kullanılan unsur | Durum |
+|---|---|
+| Kış Savaşı'nın 30 Kasım 1939'da başlaması ve üç buçuk ay sürmesi | **Doğrulanmadı** — açılış kartında genel ifadeyle geçer |
+| Moskova Barışı'nın 12 Mart 1940'ta imzalanması, ateşin 13 Mart'ta öğleden önce kesilmesi | **Doğrulanmadı** — oyunda "saat on bir" denir; saat dilimi kesinleştirilmedi |
+| Bırakılan topraklardaki halkın iki haftadan kısa sürede evlerini boşaltması | **Doğrulanmadı** — bölgeye göre değişen teslim tarihleri tek bir takvime indirgenmedi |
+| Boşaltılanların sayısının "dört yüz bini aşkın" olması | **Doğrulanmadı** — finallerde yaklaşık olarak geçer |
+| Hayvanların yoldan sürülerek batıya götürülmesi, insanların tren ve kızakla gitmesi | **Doğrulanmadı** — köyün takvimi (17'sinde sürü, 19'undan itibaren tren) kurgudur |
+| Bazı ailelerin evlerini bırakmak yerine yakması; binaların sağlam bırakılması yönünde talimat | **Doğrulanmadı** — oyunda talimat Nuutinen'in okuduğu emir olarak geçer, belge biçimi verilmez |
+| Kalmayı seçenlerin olması ve geri dönemeyecek olması | **Doğrulanmadı** — tek cümleyle geçer, sayı verilmez |
+| Yaz 1940'ta boşaltılanlara toprak veren bir yasa | **Doğrulanmadı** — yasanın adı ve tarihi verilmez |
+| Ladoga Karelyası'nda Ortodoks cemaatler, tsasounalar ve ikonaların taşınması | **Doğrulanmadı** — Anni'nin tsasounası ve Aziz Nikolaos ikonası kurgudur |
+| Köy telefon santralleri ve santralcilerin görevi | **Doğrulanmadı** — "duyduğunu söylememe" kuralı genel meslek ahlakı olarak sunulur |
+
+Bölümün bütün kişileri ve köyü kurgusaldır: Aino Kettunen, Heikki Kettunen, Martta ve Toivo Kokko,
+Anni Jeskanen ve oğlu Vasili, Paavo Nuutinen, Iivari Ristola. Honkaranta haritada Sortavala
+yakınına yerleştirilir ama gerçek bir köy olarak sunulmaz. Sovyet tarafı yalnız "barış", "sınır" ve
+"bırakılan topraklar" olarak görünür; hiçbir asker, görevli ya da olay kişiselleştirilmez. 1941–44
+dönemi (geri dönüş ve ikinci boşaltma) bölümde anılmaz.
+
+> Yapılacak iş: yukarıdaki satırlar için Hamburg standardında kaynak bulunmalı ve tablo ana
+> doğrulama tablosuna taşınmalıdır.
+
 ## Kurgu güvenlik sınırları
 
 1. Gerçek tarihî kişilere kurmaca diyalog verilmez; Marione Ingram oyunda görünmez.
@@ -50,3 +138,5 @@ Anlatı, bombardımandan etkilenen Alman siviller ile Nazi rejimi tarafından zo
 5. Nazi sembolleri dekor, menü motifi veya görsel vurgu olarak kullanılmaz. Rejim yalnızca gerekli tarihsel bağlam ve baskı mekanizmaları üzerinden görünür.
 6. Grafik şiddet, askerî güç fantezisi ve tarihsel sonucu değiştiren final kullanılmaz.
 7. Kaynaklarda doğrulanmayan sokak adı, belge biçimi, kurum içi görev veya kesin zamanlama tarihsel gerçek gibi sunulmaz.
+8. Hiçbir rota, gerçek bir tarafın (partizanlar, Alman ya da İtalyan birlikleri, Hollanda polisi) esirlere, yaralılara ya da sivillere karşı bir savaş suçu işlediğini tasvir etmez veya ima etmez. 1.3'te Neretva bölümünde üç yer bu ilkeye göre yeniden yazıldı: esir Nello bırakıldığında su, battaniye ve kapıda beyaz bir bezle kendi tarafının bulacağı yerde bırakılır; kanyonun üstünde kalan Nello kendi tarafının yolunun kenarında bırakılır; "Kapanan Defter" finalinde kıyıda kalan sedyelerin sonu belirsiz bir "devriye"ye değil gecenin ayazına bağlanır; "Geride Kalanlar" finalinde kulübedekileri bulan kişi bir çobandır ve köy yardım eder.
+9. Tanıklık çerçeveleri (Hamburg 1983, Saraybosna 1983, Amsterdam 1985) kurgusaldır; kurum, okul ya da program adı verilmez, gerçek bir tanıklık arşivine veya projesine atıf yapılmaz.

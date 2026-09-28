@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: BrandConfig
   m_EditorClassIdentifier: 
   productName: Ordinary Fronts
+  applicationName: Ordinary Fronts Demo
+  companyName: "Berat Sa\u011F\u0131r"
+  version: 1.7.0

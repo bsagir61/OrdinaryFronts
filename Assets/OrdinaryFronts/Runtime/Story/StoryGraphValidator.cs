@@ -70,6 +70,7 @@ namespace OrdinaryFronts
                 }
             }
 
+            ValidateInterludes(nodes, knownFlags, issues);
             if (endingCount < 5) issues.Add("Beşten az final var: " + endingCount);
             HashSet<string> reachable = ReachableNodeIds(story, nodes);
             foreach (string id in nodes.Keys) if (!reachable.Contains(id)) issues.Add("Ulaşılamayan düğüm: " + id);
@@ -101,7 +102,66 @@ namespace OrdinaryFronts
             }
 
             ValidateIntro(story.intro, nodes, issues);
+            ValidateCharacters(story, knownRelations, issues);
+            ValidateActs(story, nodes, issues);
+            ValidateTestimony(story.testimony, knownFlags, knownRelations, issues);
             return issues;
+        }
+
+        /// <summary>
+        /// Perde soruları isteğe bağlıdır; tanımlıysa her biri gerçekten var olan bir perdeye
+        /// bağlanmalı ve bir soru taşımalıdır. Yazım hatası, kartta sorunun sessizce
+        /// görünmemesi demek olurdu.
+        /// </summary>
+        private static void ValidateActs(StoryDatabase story, Dictionary<string, StoryNode> nodes, List<string> issues)
+        {
+            if (story.acts == null || story.acts.Length == 0) return;
+            HashSet<string> actNames = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values) if (!string.IsNullOrWhiteSpace(node.act)) actNames.Add(node.act);
+            HashSet<string> seen = new HashSet<string>();
+            for (int i = 0; i < story.acts.Length; i++)
+            {
+                ActData act = story.acts[i];
+                if (act == null || string.IsNullOrWhiteSpace(act.name) || string.IsNullOrWhiteSpace(act.question))
+                {
+                    issues.Add("Eksik perde sorusu: #" + i);
+                    continue;
+                }
+                if (!seen.Add(act.name)) issues.Add("Yinelenen perde sorusu: " + act.name);
+                if (!actNames.Contains(act.name)) issues.Add("Hiçbir düğümde geçmeyen perde: " + act.name);
+            }
+        }
+
+        /// <summary>
+        /// Tanıklık isteğe bağlıdır; tanımlıysa eksiksiz olmalı ve satırları yalnız bu
+        /// bölümde gerçekten üretilen bayraklara bağlanmalıdır.
+        /// </summary>
+        private static void ValidateTestimony(TestimonyData testimony, HashSet<string> flags, HashSet<string> relations, List<string> issues)
+        {
+            if (testimony == null || testimony.IsEmpty) return;
+            if (!testimony.IsComplete)
+            {
+                issues.Add("Eksik tanıklık tanımı.");
+                return;
+            }
+            ValidateTestimonyLines("tanıklık/yapılanlar", testimony.done, flags, relations, issues);
+            ValidateTestimonyLines("tanıklık/yapılmayanlar", testimony.undone, flags, relations, issues);
+        }
+
+        private static void ValidateTestimonyLines(string owner, TestimonyLine[] lines, HashSet<string> flags, HashSet<string> relations, List<string> issues)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                TestimonyLine line = lines[i];
+                if (line == null || string.IsNullOrWhiteSpace(line.text))
+                {
+                    issues.Add("Boş tanıklık satırı: " + owner + " #" + i);
+                    continue;
+                }
+                if (line.conditions == null || line.conditions.Length == 0)
+                    issues.Add("Koşulsuz tanıklık satırı: " + owner + " #" + i);
+                ValidateConditions(owner + " #" + i, line.conditions, flags, relations, issues);
+            }
         }
 
         public static HashSet<string> ReachableNodeIds(StoryDatabase story)
@@ -183,6 +243,17 @@ namespace OrdinaryFronts
                     issues.Add("Bilinmeyen koşul operasyonu: " + owner + " -> " + condition.type + "/" + condition.op);
 
                 string type = StoryVocabulary.Normalize(condition.type);
+                if (StoryVocabulary.IsArchiveType(type))
+                {
+                    // Arşiv koşulu başka bir bölümün bayrağına bakar; bu dosyanın bayrak
+                    // listesiyle denetlenemez, ama anahtar biçimi denetlenir.
+                    string archiveStory, archiveFlag;
+                    if (!StoryVocabulary.TrySplitArchiveKey(condition.key, out archiveStory, out archiveFlag))
+                        issues.Add("Arşiv anahtarı 'bölüm:bayrak' biçiminde olmalı: " + owner + " -> " + condition.key);
+                    else if (archiveStory == null || StoryRepository.SanitizeStoryId(archiveStory) != archiveStory)
+                        issues.Add("Arşiv anahtarındaki bölüm kimliği geçersiz: " + owner + " -> " + condition.key);
+                    continue;
+                }
                 if (StoryVocabulary.IsFlagType(type) && !flags.Contains(condition.key))
                     issues.Add("Üretilmeyen bayrağa bağlı yankı/koşul: " + owner + " -> " + condition.key);
                 if (type == StoryVocabulary.TypeRelation && !relations.Contains(condition.key))
@@ -213,6 +284,65 @@ namespace OrdinaryFronts
                 }
                 if (string.IsNullOrWhiteSpace(beat.imageKey) || !imageKeys.Contains(beat.imageKey))
                     issues.Add("Açılış kartında bilinmeyen görsel anahtarı: " + owner + " -> " + beat.imageKey);
+            }
+        }
+
+        /// <summary>
+        /// Kişi tanımları isteğe bağlıdır, fakat tanımlıysa eksiksiz olmalı ve hikâyede
+        /// fiilen kullanılan bir ilişki anahtarına bağlanmalıdır. Yazım hatası, final
+        /// raporunda o kişiyi sessizce hiç göstermezdi.
+        /// </summary>
+        private static void ValidateCharacters(StoryDatabase story, HashSet<string> knownRelations, List<string> issues)
+        {
+            if (story.characters == null || story.characters.Length == 0) return;
+            HashSet<string> seen = new HashSet<string>();
+            for (int i = 0; i < story.characters.Length; i++)
+            {
+                CharacterData character = story.characters[i];
+                if (character == null || !character.IsComplete)
+                {
+                    issues.Add("Eksik kişi tanımı: #" + i);
+                    continue;
+                }
+                if (!seen.Add(character.key)) issues.Add("Yinelenen kişi anahtarı: " + character.key);
+                if (!knownRelations.Contains(character.key))
+                    issues.Add("Hiçbir seçimde üretilmeyen ilişkiye bağlı kişi: " + character.key);
+            }
+        }
+
+        /// <summary>
+        /// Ara sahneler isteğe bağlıdır; tanımlıysa türü kodda karşılığı olan bir tür, kimliği
+        /// bölüm içinde tekil olmalı ve ürettiği bayraklar bilinen bayraklara katılmalıdır.
+        /// Yazım hatası olan bir tür, oyunda sahnenin sessizce atlanması demek olurdu.
+        /// </summary>
+        private static void ValidateInterludes(Dictionary<string, StoryNode> nodes, HashSet<string> knownFlags, List<string> issues)
+        {
+            HashSet<string> ids = new HashSet<string>();
+            foreach (StoryNode node in nodes.Values)
+            {
+                // JsonUtility, alan JSON'da hiç yoksa bile boş bir nesne üretir; boş nesne
+                // "ara sahne yok" demektir, yarım doldurulmuş nesne ise hata.
+                if (node.interlude == null || node.interlude.IsEmpty) continue;
+                InterludeData interlude = node.interlude;
+                if (!interlude.IsDefined)
+                {
+                    issues.Add("Eksik ara sahne tanımı: " + node.id);
+                    continue;
+                }
+                if (node.IsEnding) issues.Add("Final düğümünde ara sahne: " + node.id);
+                if (!StoryVocabulary.IsKnownInterludeKind(interlude.kind))
+                    issues.Add("Bilinmeyen ara sahne türü: " + node.id + " -> " + interlude.kind);
+                if (!ids.Add(interlude.id)) issues.Add("Yinelenen ara sahne kimliği: " + interlude.id);
+                if (interlude.results == null || interlude.results.Length == 0)
+                    issues.Add("Sonuç üretmeyen ara sahne: " + node.id);
+                else if (interlude.chooses && interlude.results.Length < 2)
+                    issues.Add("Karar sahnesi iki seçime iki sonuç ister: " + node.id);
+                else
+                    for (int i = 0; i < interlude.results.Length; i++)
+                    {
+                        if (string.IsNullOrWhiteSpace(interlude.results[i])) issues.Add("Boş ara sahne sonucu: " + node.id);
+                        else knownFlags.Add(interlude.results[i]);
+                    }
             }
         }
 
